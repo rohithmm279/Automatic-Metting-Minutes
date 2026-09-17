@@ -1,0 +1,45 @@
+{
+  "meeting_id": "SC022",
+  "category": "cultural_club",
+  "summary": "The club discussed cultural night rehearsals, covering 3 action item(s), 1 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "Book the rehearsal hall",
+    "Finalize the dance performance lineup",
+    "cultural night rehearsals"
+  ],
+  "action_items": [
+    {
+      "task": "Book the rehearsal hall",
+      "owner": "Ananya",
+      "deadline": "Not specified",
+      "evidence": "Ananya will book the rehearsal hall.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Finalize the dance performance lineup",
+      "owner": "Divya",
+      "deadline": "Wednesday",
+      "evidence": "Divya, can you finalize the dance performance lineup by Wednesday?",
+      "confidence": "high"
+    },
+    {
+      "task": "Shortlist performers for auditions",
+      "owner": "Riya",
+      "deadline": "sometime next week",
+      "evidence": "I'll shortlist performers for auditions sometime next week.",
+      "confidence": "medium"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the final theme.",
+      "evidence": "Okay, let's finalize the final theme then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The final headcount remains unresolved.",
+      "evidence": "The final headcount is still not confirmed."
+    }
+  ]
+}

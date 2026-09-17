@@ -1,0 +1,56 @@
+{
+  "meeting_id": "SC024",
+  "category": "cultural_club",
+  "summary": "The club discussed cultural night rehearsals, covering 4 action item(s), 2 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "Finalize the dance performance lineup",
+    "Shortlist performers for auditions",
+    "cultural night rehearsals"
+  ],
+  "action_items": [
+    {
+      "task": "Shortlist performers for auditions",
+      "owner": "Ananya",
+      "deadline": "end of this week",
+      "evidence": "Ananya, can you shortlist performers for auditions by end of this week?",
+      "confidence": "high"
+    },
+    {
+      "task": "Finalize the dance performance lineup",
+      "owner": "Divya",
+      "deadline": "before it gets too late",
+      "evidence": "I'll finalize the dance performance lineup before it gets too late.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Arrange costumes for the play",
+      "owner": "Ananya",
+      "deadline": "end of this week",
+      "evidence": "Ananya, can you arrange costumes for the play by end of this week?",
+      "confidence": "high"
+    },
+    {
+      "task": "Book the rehearsal hall",
+      "owner": "Kavya",
+      "deadline": "Not specified",
+      "evidence": "Kavya will book the rehearsal hall.",
+      "confidence": "medium"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the event date.",
+      "evidence": "Okay, let's finalize the event date then — that's settled."
+    },
+    {
+      "decision": "Finalized the ticket price.",
+      "evidence": "Okay, let's finalize the ticket price then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The auditorium booking remains unresolved.",
+      "evidence": "The auditorium booking is still not confirmed."
+    }
+  ]
+}

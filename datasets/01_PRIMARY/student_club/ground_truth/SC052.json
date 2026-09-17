@@ -1,0 +1,53 @@
+{
+  "meeting_id": "SC052",
+  "category": "workshops_seminars",
+  "summary": "The club discussed guest workshop planning, covering 3 action item(s), 2 decision(s), and 2 open issue(s).",
+  "key_topics": [
+    "Arrange the projector and mic",
+    "guest workshop planning",
+    "Invite the guest speaker"
+  ],
+  "action_items": [
+    {
+      "task": "Invite the guest speaker",
+      "owner": "Naveen",
+      "deadline": "Thursday evening",
+      "evidence": "Naveen, can you invite the guest speaker by Thursday evening?",
+      "confidence": "high"
+    },
+    {
+      "task": "Arrange the projector and mic",
+      "owner": "Aditya",
+      "deadline": "Not specified",
+      "evidence": "Aditya will arrange the projector and mic.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Prepare the workshop handouts",
+      "owner": "Vikram",
+      "deadline": "Not specified",
+      "evidence": "Vikram will prepare the workshop handouts.",
+      "confidence": "medium"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the vendor to go with.",
+      "evidence": "Okay, let's finalize the vendor to go with then — that's settled."
+    },
+    {
+      "decision": "Finalized the team composition.",
+      "evidence": "Okay, let's finalize the team composition then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The auditorium booking remains unresolved.",
+      "evidence": "The auditorium booking is still not confirmed."
+    },
+    {
+      "issue": "The sponsorship confirmation remains unresolved.",
+      "evidence": "The sponsorship confirmation is still not confirmed."
+    }
+  ]
+}

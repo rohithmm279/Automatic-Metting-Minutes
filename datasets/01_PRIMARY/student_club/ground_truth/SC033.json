@@ -1,0 +1,60 @@
+{
+  "meeting_id": "SC033",
+  "category": "project_meetings",
+  "summary": "The club discussed club project progress, covering 4 action item(s), 2 decision(s), and 2 open issue(s).",
+  "key_topics": [
+    "club project progress",
+    "Fix the pending bugs in the demo",
+    "Finish the data collection module"
+  ],
+  "action_items": [
+    {
+      "task": "Fix the pending bugs in the demo",
+      "owner": "Sneha",
+      "deadline": "next Monday",
+      "evidence": "Sneha, can you fix the pending bugs in the demo before next Monday?",
+      "confidence": "high"
+    },
+    {
+      "task": "Finish the data collection module",
+      "owner": "Rohith",
+      "deadline": "Not specified",
+      "evidence": "Rohith will finish the data collection module.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Prepare the presentation slides",
+      "owner": "Rohith",
+      "deadline": "Not specified",
+      "evidence": "Rohith will prepare the presentation slides.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Write the project report draft",
+      "owner": "Karthik",
+      "deadline": "Not specified",
+      "evidence": "Karthik will write the project report draft.",
+      "confidence": "medium"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the ticket price.",
+      "evidence": "Okay, let's finalize the ticket price then — that's settled."
+    },
+    {
+      "decision": "Finalized the schedule change.",
+      "evidence": "Okay, let's finalize the schedule change then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The final headcount remains unresolved.",
+      "evidence": "The final headcount is still not confirmed."
+    },
+    {
+      "issue": "The equipment availability remains unresolved.",
+      "evidence": "The equipment availability is still not confirmed."
+    }
+  ]
+}

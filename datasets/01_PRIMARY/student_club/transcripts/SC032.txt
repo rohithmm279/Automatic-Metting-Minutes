@@ -1,0 +1,21 @@
+[Meeting: Club Project Progress | Attendees: Aditya, Sanjay, Ananya, Pooja, Kavya]
+Aditya: Right, let's get started, today we're talking about club project progress.
+Sanjay: Right, any update on the equipment availability?
+Kavya: The equipment availability is still not confirmed. We're waiting to hear back.
+Pooja: Okay so what should we do about the team composition?
+Aditya: Maybe we should go with team composition we discussed earlier.
+Kavya: I think we should reconsider it, actually.
+Pooja: Okay, let's finalize the team composition then — that's settled.
+Pooja: Alright, Kavya, would you be able to finish the data collection module?
+Kavya: Kavya will finish the data collection module.
+Sanjay: Right, Pooja, would you be able to test the prototype?
+Pooja: Pooja will test the prototype.
+Kavya: So yeah, Ananya, can you look into it — we need to prepare the presentation slides?
+Ananya: I'll prepare the presentation slides soon.
+Aditya: Umm, Pooja, would you be able to write the project report draft?
+Pooja: Pooja will write the project report draft.
+Aditya: Just circling back — about test the prototype, are we still on track?
+Kavya: Yeah, on it, will update the group soon.
+Pooja: Alright, switching gears for a second — anything else before we wrap up?
+Sanjay: Nah, I think that covers it for today.
+Aditya: Cool, thanks everyone, meeting adjourned.

@@ -1,0 +1,27 @@
+[Meeting: Upcoming Hackathon | Attendees: Lakshmi, Divya, Priya, Meera]
+Lakshmi: Alright, let's get started, today we're talking about upcoming hackathon.
+Priya: Alright, Someone needs to set up the Discord server for the club, it can't wait too long.
+Meera: (jumping in) Actually, can I add something—
+Priya: Yeah, true, we'll figure out who.
+Lakshmi: Wait, let me correct that — it's actually by Wednesday.
+Priya: So yeah, what should we do about the ticket price?
+Meera: Maybe we should go with ticket price we discussed earlier.
+Lakshmi: I think we should reconsider it, actually.
+Priya: Okay, let's finalize the ticket price then — that's settled.
+Divya: Cool, so what should we do about the team composition?
+Priya: Maybe we should go with team composition we discussed earlier.
+Lakshmi: I think we should reconsider it, actually.
+Divya: Okay, let's finalize the team composition then — that's settled.
+Meera: Okay so Priya, would you be able to draft the API documentation?
+Meera: (cutting in) Hold on, one sec—
+Priya: Priya will draft the API documentation.
+Meera: So yeah, any update on the auditorium booking?
+Priya: The auditorium booking is still not confirmed. We're waiting to hear back.
+Priya: Alright, Meera, can you set up the GitHub repository by Wednesday?
+Priya: (cutting in) Hold on, one sec—
+Meera: Sure, I'll set up the GitHub repository by Wednesday.
+Priya: Just circling back — about set up the github repository, are we still on track?
+Meera: Yeah, on it, will update the group soon.
+Meera: Alright, switching gears for a second — anything else before we wrap up?
+Lakshmi: Nah, I think that covers it for today.
+Lakshmi: Cool, thanks everyone, meeting adjourned.

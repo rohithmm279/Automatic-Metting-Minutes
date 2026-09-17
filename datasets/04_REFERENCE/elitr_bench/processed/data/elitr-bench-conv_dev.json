@@ -1,0 +1,1042 @@
+{
+  "split": "dev",
+  "meetings": [
+    {
+      "id": "meeting_en_dev_001",
+      "questions": [
+        {
+          "id": "1",
+          "question-type": "who",
+          "answer-position": "S",
+          "question": "Who were the participants of the meeting?",
+          "groundtruth-answer": "[PERSON3], [PERSON6], [PERSON4], [PERSON10], and [PERSON5]"
+        },
+        {
+          "id": "2",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "What was the purpose of the meeting?",
+          "groundtruth-answer": "Discussion on the inclusion of different corpora in a shared task data (for summarization)"
+        },
+        {
+          "id": "3",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "What is the organization whose data inclusion was mainly discussed?",
+          "groundtruth-answer": "[ORGANIZATION1]"
+        },
+        {
+          "id": "4",
+          "question-type": "howmany",
+          "answer-position": "M",
+          "question": "How many subsets will there be in the shared task data?",
+          "groundtruth-answer": "There will be three subsets in the shared task data. These subsets include the original corpus, [ORGANIZATION1] corpus, and [ORGANIZATION2] and [PROJECT1] data."
+        },
+        {
+          "id": "5",
+          "question-type": "who",
+          "answer-position": "E",
+          "question": "Who is the contact person if there are audio diarization needs?",
+          "groundtruth-answer": "[PERSON7]"
+        },
+        {
+          "id": "6",
+          "question-type": "who",
+          "answer-position": "E",
+          "question": "Who is in charge of preparing the corpus?",
+          "groundtruth-answer": "[PERSON6]"
+        },
+        {
+          "id": "7",
+          "question-type": "what",
+          "answer-position": "E",
+          "question": "What should [PERSON3] do next?",
+          "groundtruth-answer": "[PERSON3] will continue annotate data with annotators"
+        },
+        {
+          "id": "8",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who are the two people you think are in the same team and explain why?",
+          "groundtruth-answer": "[PERSON5] and [PERSON10]"
+        },
+        {
+          "id": "9",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "Why are [PERSON5] and [PERSON10] in the same team?",
+          "groundtruth-answer": "Because it was mentioned at the beginning of the transcript that they could gather in the same office for the present meeting"
+        },
+        {
+          "id": "10",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "What are the two target languages for the shared task?",
+          "groundtruth-answer": "English and Czech"
+        },
+        {
+          "id": "11",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "What was decided for [ORGANIZATION1] data?",
+          "groundtruth-answer": "Include [ORGANIZATION1] data as a separate track in the shared task"
+        },
+        {
+          "id": "12",
+          "question-type": "what",
+          "answer-position": "M",
+          "question": "What is interesting in [ORGANIZATION1] data?",
+          "groundtruth-answer": "It includes different types of meetings (compared to current corpus)"
+        },
+        {
+          "id": "13",
+          "question-type": "who",
+          "answer-position": "S",
+          "question": "Who was chairing the discussion and recapping what was said from time to time?",
+          "groundtruth-answer": "[PERSON10] was clearly doing this"
+        },
+        {
+          "id": "14",
+          "question-type": "who",
+          "answer-position": "M",
+          "question": "Who should try sending an e-mail to [PERSON8] who is on vacation?",
+          "groundtruth-answer": "[PERSON3]"
+        },
+        {
+          "id": "15",
+          "question-type": "who",
+          "answer-position": "M",
+          "question": "Who had connection problems during the call?",
+          "groundtruth-answer": "[PERSON5] left and went back from time to time; [PERSON3] froze from time to time"
+        },
+        {
+          "id": "16",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "What are the two discussed options to associate minutes to the transcripts of [ORGANIZATION1] corpus?",
+          "groundtruth-answer": "(1) Manually search on the data repo for the minutes corresponding to each transcript and (2) Have some people creating the minutes from the existing transcripts"
+        },
+        {
+          "id": "17",
+          "question-type": "when",
+          "answer-position": "M",
+          "question": "When will [PERSON8] come back?",
+          "groundtruth-answer": "Next week (they are on vacation this week)"
+        }
+      ]
+    },
+    {
+      "id": "meeting_en_dev_002",
+      "questions": [
+        {
+          "id": "1",
+          "question-type": "who",
+          "answer-position": "S",
+          "question": "Who were the participants of the meeting?",
+          "groundtruth-answer": "[PERSON14], [PERSON10], [PERSON5], [PERSON9], [PERSON1], [PERSON11]"
+        },
+        {
+          "id": "2",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "What was the main purpose of this meeting?",
+          "groundtruth-answer": "Discuss and finalize the technical setup for a demo"
+        },
+        {
+          "id": "3",
+          "question-type": "howmany",
+          "answer-position": "S",
+          "question": "How many scenarios were discussed?",
+          "groundtruth-answer": "3 (plans A, B and C)"
+        },
+        {
+          "id": "4",
+          "question-type": "what",
+          "answer-position": "M",
+          "question": "Which scenario was chosen eventually?",
+          "groundtruth-answer": "Plan C"
+        },
+        {
+          "id": "5",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who (which person) is the main target for this demo?",
+          "groundtruth-answer": "The project officer"
+        },
+        {
+          "id": "6",
+          "question-type": "who",
+          "answer-position": "S",
+          "question": "Who will provide the server for the demo?",
+          "groundtruth-answer": "[ORGANIZATION5]"
+        },
+        {
+          "id": "7",
+          "question-type": "who",
+          "answer-position": "M",
+          "question": "Who presented plan A?",
+          "groundtruth-answer": "[PERSON1]"
+        },
+        {
+          "id": "8",
+          "question-type": "who",
+          "answer-position": "M",
+          "question": "Who presented plan B?",
+          "groundtruth-answer": "[PERSON14]"
+        },
+        {
+          "id": "9",
+          "question-type": "who",
+          "answer-position": "S",
+          "question": "Who presented plan C?",
+          "groundtruth-answer": "[PERSON9]"
+        },
+        {
+          "id": "10",
+          "question-type": "who",
+          "answer-position": "M",
+          "question": "Who will take care of the selection of videos for the demonstration?",
+          "groundtruth-answer": "[PERSON5] and [PERSON11] should select the video"
+        },
+        {
+          "id": "11",
+          "question-type": "when",
+          "answer-position": "E",
+          "question": "When are the next demo tests planned?",
+          "groundtruth-answer": "Next demo test session is scheduled for the following day"
+        },
+        {
+          "id": "12",
+          "question-type": "what",
+          "answer-position": "M",
+          "question": "Why plan B was not considered as the first plan?",
+          "groundtruth-answer": "It might face copyright issues"
+        },
+        {
+          "id": "13",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "Why is [PERSON14] nervous?",
+          "groundtruth-answer": "Because of the pressure of showcasing the demo to the project officer and struggling with the setup"
+        },
+        {
+          "id": "14",
+          "question-type": "what",
+          "answer-position": "E",
+          "question": "What is the preferred videoconferencing software for the meeting tomorrow?",
+          "groundtruth-answer": "Zoom"
+        }
+      ]
+    },
+    {
+      "id": "meeting_en_dev_003",
+      "questions": [
+        {
+          "id": "1",
+          "question-type": "who",
+          "answer-position": "S",
+          "question": "Who were the participants of the meeting?",
+          "groundtruth-answer": "[PERSON12], [PERSON11], [PERSON3], [PERSON4], [PERSON1]"
+        },
+        {
+          "id": "2",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "At which conference was a paper accepted?",
+          "groundtruth-answer": "A paper was accepted to [PROJECT2]"
+        },
+        {
+          "id": "3",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "What is the location of the conference?",
+          "groundtruth-answer": "It is in [LOCATION2]"
+        },
+        {
+          "id": "4",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who is going to register to the conference?",
+          "groundtruth-answer": "[PERSON3]"
+        },
+        {
+          "id": "5",
+          "question-type": "when",
+          "answer-position": "B",
+          "question": "When will be the meeting to talk about paper reviews?",
+          "groundtruth-answer": "Same day, after lunch"
+        },
+        {
+          "id": "6",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who is a possible new contributor to the book?",
+          "groundtruth-answer": "[PERSON1]"
+        },
+        {
+          "id": "7",
+          "question-type": "howmany",
+          "answer-position": "B",
+          "question": "How many conference papers were accepted so far?",
+          "groundtruth-answer": "3"
+        },
+        {
+          "id": "8",
+          "question-type": "who",
+          "answer-position": "M",
+          "question": "Who offered to read other people's parts/chapters?",
+          "groundtruth-answer": "[PERSON11]"
+        },
+        {
+          "id": "9",
+          "question-type": "what",
+          "answer-position": "M",
+          "question": "Which conference was planned in [LOCATION7]?",
+          "groundtruth-answer": "[PROJECT1]"
+        },
+        {
+          "id": "10",
+          "question-type": "who",
+          "answer-position": "E",
+          "question": "Who has written a survey paper and is looking for a venue to publish it?",
+          "groundtruth-answer": "[PERSON1]"
+        },
+        {
+          "id": "11",
+          "question-type": "when",
+          "answer-position": "S",
+          "question": "Did this discussion occur before, during or after the COVID 19 crisis?",
+          "groundtruth-answer": "During COVID 19"
+        },
+        {
+          "id": "12",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "What is the general research domain of the book?",
+          "groundtruth-answer": "NLP, parsing, neural models for NLP"
+        },
+        {
+          "id": "13",
+          "question-type": "what",
+          "answer-position": "E",
+          "question": "What's funny about the end of the meeting?",
+          "groundtruth-answer": "It was about attending an official event; it was said that if someone didn't want to let them in, they could mention that it is a deal with [PERSON7] and [PERSON10]"
+        }
+      ]
+    },
+    {
+      "id": "meeting_en_dev_004",
+      "questions": [
+        {
+          "id": "1",
+          "question-type": "who",
+          "answer-position": "S",
+          "question": "Who was there in the meeting?",
+          "groundtruth-answer": "[PERSON14], [PERSON6], [PERSON17], [PERSON10], [PERSON5]"
+        },
+        {
+          "id": "2",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who will write an introduction?",
+          "groundtruth-answer": "[PERSON6]"
+        },
+        {
+          "id": "3",
+          "question-type": "when",
+          "answer-position": "E",
+          "question": "When will be the next meeting?",
+          "groundtruth-answer": "July 21st"
+        },
+        {
+          "id": "4",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "What was the purpose of the meeting?",
+          "groundtruth-answer": "Discuss the progress of the book and to provide updates on the chapters that have been written"
+        },
+        {
+          "id": "5",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "Which general decision was taken about the writing style of the book?",
+          "groundtruth-answer": "In the book it's better to say 'we' when referring to their own work"
+        },
+        {
+          "id": "6",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "Make a list of what remains to be written for the book.",
+          "groundtruth-answer": "Intro, Probing, Unsupervised Methods, Conclusion"
+        },
+        {
+          "id": "7",
+          "question-type": "who",
+          "answer-position": "E",
+          "question": "Who will take care of the list of figures?",
+          "groundtruth-answer": "[PERSON6]"
+        },
+        {
+          "id": "8",
+          "question-type": "who",
+          "answer-position": "M",
+          "question": "Who explained to [PERSON17] what they wanted to say in their comments?",
+          "groundtruth-answer": "[PERSON5]"
+        },
+        {
+          "id": "9",
+          "question-type": "howmany",
+          "answer-position": "M",
+          "question": "How long is the tutorial [PERSON14] wants to watch?",
+          "groundtruth-answer": "3h approximately"
+        },
+        {
+          "id": "10",
+          "question-type": "what",
+          "answer-position": "M",
+          "question": "What was the topic of the chapter where people already made comments and some of them had to be explained to the writer of the chapter?",
+          "groundtruth-answer": "interpretation of neural networks"
+        },
+        {
+          "id": "11",
+          "question-type": "howmany",
+          "answer-position": "E",
+          "question": "How long is the book at the moment?",
+          "groundtruth-answer": "150 pages"
+        },
+        {
+          "id": "12",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who is in charge of writing something about gender bias?",
+          "groundtruth-answer": "[PERSON17]"
+        },
+        {
+          "id": "13",
+          "question-type": "who",
+          "answer-position": "E",
+          "question": "Who is not available next week?",
+          "groundtruth-answer": "[PERSON14]"
+        }
+      ]
+    },
+    {
+      "id": "meeting_en_dev_005",
+      "questions": [
+        {
+          "id": "1",
+          "question-type": "when",
+          "answer-position": "B",
+          "question": "When will [PERSON14] give a presentation?",
+          "groundtruth-answer": "17th February"
+        },
+        {
+          "id": "2",
+          "question-type": "who",
+          "answer-position": "S",
+          "question": "Who attended the meeting?",
+          "groundtruth-answer": "[PERSON14], [PERSON17], [PERSON11], [PERSON2], [PERSON7]"
+        },
+        {
+          "id": "3",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "What is the main event targeted to test the demo system?",
+          "groundtruth-answer": "The Students Firm Fair"
+        },
+        {
+          "id": "4",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "What is challenging about this event?",
+          "groundtruth-answer": "Noisy environment"
+        },
+        {
+          "id": "5",
+          "question-type": "howmany",
+          "answer-position": "B",
+          "question": "How many participants are expected to the students firm fair?",
+          "groundtruth-answer": "400 approximately"
+        },
+        {
+          "id": "6",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "Why profanity filtering is particularly needed for this event?",
+          "groundtruth-answer": "High school students will participate, so attendees are likely to be younger individuals and it is important to ensure a suitable and safe environment for them"
+        },
+        {
+          "id": "7",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "Did the system already output some toxic content in the past?",
+          "groundtruth-answer": "Yes, there was a reference to an incident where an incorrect translation of a word led to a profane word being displayed in the subtitle"
+        },
+        {
+          "id": "8",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "Which profane word was uttered?",
+          "groundtruth-answer": "scrotum"
+        },
+        {
+          "id": "9",
+          "question-type": "what",
+          "answer-position": "M",
+          "question": "What kind of segmentation [PERSON17] is talking about?",
+          "groundtruth-answer": "Audio segmentation of the recordings for automatic subtitling"
+        },
+        {
+          "id": "10",
+          "question-type": "who",
+          "answer-position": "S",
+          "question": "Who is attending remotely?",
+          "groundtruth-answer": "[PERSON2], [PERSON7] ([PERSON8] may as well but it is unclear)"
+        },
+        {
+          "id": "11",
+          "question-type": "who",
+          "answer-position": "E",
+          "question": "Who is [PERSON2] waiting for to move forward with their segmentation work?",
+          "groundtruth-answer": "[PERSON13]"
+        },
+        {
+          "id": "12",
+          "question-type": "what",
+          "answer-position": "E",
+          "question": "Why is speaker diarization not absolutely needed for some talks?",
+          "groundtruth-answer": "Because they are mono-speaker (one single speaker is talking)"
+        },
+        {
+          "id": "13",
+          "question-type": "who",
+          "answer-position": "E",
+          "question": "Who is a newcomer?",
+          "groundtruth-answer": "[PERSON8]"
+        },
+        {
+          "id": "14",
+          "question-type": "who",
+          "answer-position": "E",
+          "question": "Which person was mentioned several times as needed but not responsive?",
+          "groundtruth-answer": "[PERSON13]"
+        },
+        {
+          "id": "15",
+          "question-type": "what",
+          "answer-position": "E",
+          "question": "What system mentioned could drastically speed up automatic transcription?",
+          "groundtruth-answer": "FastSpeech"
+        },
+        {
+          "id": "16",
+          "question-type": "when",
+          "answer-position": "E",
+          "question": "Was the next meeting date set?",
+          "groundtruth-answer": "No (there will be a doodle)"
+        }
+      ]
+    },
+    {
+      "id": "meeting_en_dev_006",
+      "questions": [
+        {
+          "id": "1",
+          "question-type": "when",
+          "answer-position": "B",
+          "question": "When should the interface to upload files be ready?",
+          "groundtruth-answer": "In March"
+        },
+        {
+          "id": "2",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who will use this uploading interface massively?",
+          "groundtruth-answer": "[ORGANIZATION2]"
+        },
+        {
+          "id": "3",
+          "question-type": "when",
+          "answer-position": "S",
+          "question": "Based on the transcript, can you infer when (which month) does the meeting take place?",
+          "groundtruth-answer": "February (several references to March as being the 'next month')"
+        },
+        {
+          "id": "4",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "Which important issue was raised about the data of [ORGANIZATION2]?",
+          "groundtruth-answer": "Confidentiality of the files: some files would be public and some others would be strictly confidential"
+        },
+        {
+          "id": "5",
+          "question-type": "who",
+          "answer-position": "E",
+          "question": "Who are the two people involved in the documentation?",
+          "groundtruth-answer": "[PERSON7] and the speaker (whose name is not annotated)"
+        },
+        {
+          "id": "6",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "Based on the transcript, would you say this is a (a) fully offline, (b) fully online, or (c) hybrid meeting?",
+          "groundtruth-answer": "Hybrid"
+        },
+        {
+          "id": "7",
+          "question-type": "when",
+          "answer-position": "M",
+          "question": "Is it possible to schedule a call with [PERSON7] this week?",
+          "groundtruth-answer": "No (they are already busy this week)"
+        },
+        {
+          "id": "8",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "What is everyone's homework after the meeting?",
+          "groundtruth-answer": "Enter things they have done to the Google sheet"
+        },
+        {
+          "id": "9",
+          "question-type": "when",
+          "answer-position": "E",
+          "question": "Is the slot for regular meetings set already?",
+          "groundtruth-answer": "No (there is a doodle to be filled)"
+        },
+        {
+          "id": "10",
+          "question-type": "who",
+          "answer-position": "M",
+          "question": "Who is trying to make webster kit connection working?",
+          "groundtruth-answer": "[PERSON5]"
+        },
+        {
+          "id": "11",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who has the goal to compress their multiple scripts into one?",
+          "groundtruth-answer": "[PERSON10]"
+        },
+        {
+          "id": "12",
+          "question-type": "what",
+          "answer-position": "E",
+          "question": "What should [PERSON1] ask to [PERSON4]?",
+          "groundtruth-answer": "Ask about virtual machine (docker)"
+        },
+        {
+          "id": "13",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who was busy with exams?",
+          "groundtruth-answer": "[PERSON10]"
+        }
+      ]
+    },
+    {
+      "id": "meeting_en_dev_007",
+      "questions": [
+        {
+          "id": "1",
+          "question-type": "who",
+          "answer-position": "S",
+          "question": "Who attended the meeting?",
+          "groundtruth-answer": "[PERSON2], [PERSON3], [PERSON5], [PERSON1]"
+        },
+        {
+          "id": "2",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "What was the meeting's main purpose?",
+          "groundtruth-answer": "Discuss progress and next steps for the shared task proposal"
+        },
+        {
+          "id": "3",
+          "question-type": "when",
+          "answer-position": "B",
+          "question": "When should the shared task data be ready?",
+          "groundtruth-answer": "End of November"
+        },
+        {
+          "id": "4",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "What is the shared task about?",
+          "groundtruth-answer": "Summarization"
+        },
+        {
+          "id": "5",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "Will the alignment tool of [PERSON6] eventually be used for the shared task?",
+          "groundtruth-answer": "No"
+        },
+        {
+          "id": "6",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who is going to contribute mostly to the choice of evaluation metrics?",
+          "groundtruth-answer": "[PERSON1]"
+        },
+        {
+          "id": "7",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who is the data provider for the shared task?",
+          "groundtruth-answer": "[ORGANIZATION1]"
+        },
+        {
+          "id": "8",
+          "question-type": "what",
+          "answer-position": "M",
+          "question": "Will the alignment tool of [PERSON6] eventually be used by the annotators?",
+          "groundtruth-answer": "Yes"
+        },
+        {
+          "id": "9",
+          "question-type": "what",
+          "answer-position": "M",
+          "question": "Which task could perhaps be transferred to [PERSON5]?",
+          "groundtruth-answer": "Technical aspects related to the alignment tool"
+        },
+        {
+          "id": "10",
+          "question-type": "what",
+          "answer-position": "E",
+          "question": "What did [PERSON5] answer to this transfer request?",
+          "groundtruth-answer": "Okay (yes)"
+        },
+        {
+          "id": "11",
+          "question-type": "what",
+          "answer-position": "E",
+          "question": "What should start asap?",
+          "groundtruth-answer": "Annotation work and alignment task"
+        },
+        {
+          "id": "12",
+          "question-type": "when",
+          "answer-position": "E",
+          "question": "When should [ORGANIZATION1] data be available?",
+          "groundtruth-answer": "By the end of the week"
+        },
+        {
+          "id": "13",
+          "question-type": "howmany",
+          "answer-position": "E",
+          "question": "How much data should be annotated?",
+          "groundtruth-answer": "130 minutes of English data and 110 minutes of Czech data"
+        },
+        {
+          "id": "14",
+          "question-type": "what",
+          "answer-position": "M",
+          "question": "What would the alignment provide exactly?",
+          "groundtruth-answer": "Align specific portions or segments of the transcripts with corresponding lines of summary"
+        },
+        {
+          "id": "15",
+          "question-type": "who",
+          "answer-position": "S",
+          "question": "Who is the leader of this discussion?",
+          "groundtruth-answer": "[PERSON2]"
+        }
+      ]
+    },
+    {
+      "id": "meeting_en_dev_008",
+      "questions": [
+        {
+          "id": "1",
+          "question-type": "who",
+          "answer-position": "S",
+          "question": "Who was there?",
+          "groundtruth-answer": "[PERSON7], [PERSON5], [PERSON1]"
+        },
+        {
+          "id": "2",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "What was the objective of the meeting?",
+          "groundtruth-answer": "Discuss the deliverable documents for the publishing platform"
+        },
+        {
+          "id": "3",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "What is the collaborative editor used for this?",
+          "groundtruth-answer": "Overleaf"
+        },
+        {
+          "id": "4",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who should be contacted, at [ORGANIZATION7], to help with the deliverable?",
+          "groundtruth-answer": "[PERSON2]"
+        },
+        {
+          "id": "5",
+          "question-type": "howmany",
+          "answer-position": "B",
+          "question": "How many different platforms should be presented in the deliverable?",
+          "groundtruth-answer": "The deliverable should include information about three different platforms"
+        },
+        {
+          "id": "6",
+          "question-type": "what",
+          "answer-position": "M",
+          "question": "Which venue is targeted for publishing the content of the deliverable?",
+          "groundtruth-answer": "ELG workshop"
+        },
+        {
+          "id": "7",
+          "question-type": "when",
+          "answer-position": "M",
+          "question": "What is the deadline for submitting the ELG paper?",
+          "groundtruth-answer": "21.02.2020 (Feb 21st)"
+        },
+        {
+          "id": "8",
+          "question-type": "who",
+          "answer-position": "M",
+          "question": "Who is in charge of contacting people from [ORGANIZATION6] and [ORGANIZATION5] to find reviewers for the deliverable?",
+          "groundtruth-answer": "[PERSON7]"
+        },
+        {
+          "id": "9",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "What is the current problem with the online document that describes the deliverable?",
+          "groundtruth-answer": "It does not compile (on overleaf)"
+        },
+        {
+          "id": "10",
+          "question-type": "who",
+          "answer-position": "E",
+          "question": "Who left the meeting before the end?",
+          "groundtruth-answer": "[PERSON7]"
+        },
+        {
+          "id": "11",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "Was the overleaf compilation problem eventually solved?",
+          "groundtruth-answer": "No"
+        },
+        {
+          "id": "12",
+          "question-type": "when",
+          "answer-position": "E",
+          "question": "When is the next meeting?",
+          "groundtruth-answer": "It is not known"
+        },
+        {
+          "id": "13",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who prepared the overleaf initially?",
+          "groundtruth-answer": "[PERSON3]"
+        }
+      ]
+    },
+    {
+      "id": "meeting_en_dev_009",
+      "questions": [
+        {
+          "id": "1",
+          "question-type": "who",
+          "answer-position": "S",
+          "question": "Who are the participants of the meeting?",
+          "groundtruth-answer": "[PERSON2], [PERSON6], [PERSON7]"
+        },
+        {
+          "id": "2",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "Purpose of the meeting?",
+          "groundtruth-answer": "To discuss manually annotated transcripts and the associated process"
+        },
+        {
+          "id": "3",
+          "question-type": "howmany",
+          "answer-position": "B",
+          "question": "What is the maximum duration for which the online meeting software is free?",
+          "groundtruth-answer": "1h"
+        },
+        {
+          "id": "4",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "Summarize the data collection methodology of [PERSON6]",
+          "groundtruth-answer": "ASR (automatic transcription) transcripts are generated and then sent to annotators with the corresponding audio for correction. Then they write the minutes based on the corrected transcript. Everything is then sent back to [PERSON6]."
+        },
+        {
+          "id": "5",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "What is the difference between annotators' minutes and original minutes?",
+          "groundtruth-answer": "The original minutes were written before the annotation (they typically include the agenda and relevant information related to the meeting) while annotators' minutes were created from the corrected transcripts (during annotation)"
+        },
+        {
+          "id": "6",
+          "question-type": "what",
+          "answer-position": "M",
+          "question": "Can we directly use summarization metrics for evaluating automatic minuting?",
+          "groundtruth-answer": "No (summarization metrics can be deceptive when evaluating automatic minuting)"
+        },
+        {
+          "id": "7",
+          "question-type": "what",
+          "answer-position": "E",
+          "question": "What issues related to data processing were discussed in the last part of the meeting?",
+          "groundtruth-answer": "Anonymization"
+        },
+        {
+          "id": "8",
+          "question-type": "who",
+          "answer-position": "M",
+          "question": "Who has a different opinion from [PERSON6]?",
+          "groundtruth-answer": "[PERSON2]"
+        },
+        {
+          "id": "9",
+          "question-type": "when",
+          "answer-position": "E",
+          "question": "When should the next meeting with [PERSON6] happen?",
+          "groundtruth-answer": "As soon as possible"
+        },
+        {
+          "id": "10",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "What is the question that is important but was however left unanswered during the meeting?",
+          "groundtruth-answer": "How are we going to use the alignment information in evaluation?"
+        },
+        {
+          "id": "11",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "Explain why [PERSON7] and [PERSON2] laughed at a particular moment of the meeting?",
+          "groundtruth-answer": "[PERSON2] thought [PERSON6] was talking to [PERSON7] whereas [PERSON6] was talking to [PERSON2]"
+        }
+      ]
+    },
+    {
+      "id": "meeting_en_dev_010",
+      "questions": [
+        {
+          "id": "1",
+          "question-type": "what",
+          "answer-position": "E",
+          "question": "Which paper will provide a pre-recorded presentation for IWSLT?",
+          "groundtruth-answer": "[PROJECT5] system paper"
+        },
+        {
+          "id": "2",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who has not provided yet their financial information for the review?",
+          "groundtruth-answer": "[ORGANIZATION5]"
+        },
+        {
+          "id": "3",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who is speaking for [ORGANIZATION5]?",
+          "groundtruth-answer": "[PERSON20]"
+        },
+        {
+          "id": "4",
+          "question-type": "when",
+          "answer-position": "B",
+          "question": "What is the new date for the postponed review?",
+          "groundtruth-answer": "It is not known yet (a doodle is ongoing)"
+        },
+        {
+          "id": "5",
+          "question-type": "when",
+          "answer-position": "B",
+          "question": "What is the deadline to finalize the financial report?",
+          "groundtruth-answer": "End of August"
+        },
+        {
+          "id": "6",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who is in charge of the dissemination report?",
+          "groundtruth-answer": "[ORGANIZATION5]"
+        },
+        {
+          "id": "7",
+          "question-type": "what",
+          "answer-position": "E",
+          "question": "What should be frozen 1 or 2 weeks before the demo?",
+          "groundtruth-answer": "The stable components of the systems should be frozen 1-2 weeks before the demo"
+        },
+        {
+          "id": "8",
+          "question-type": "what",
+          "answer-position": "M",
+          "question": "Which component is run by [ORGANIZATION2]?",
+          "groundtruth-answer": "ASR"
+        },
+        {
+          "id": "9",
+          "question-type": "who",
+          "answer-position": "M",
+          "question": "Which entity is running the translation module?",
+          "groundtruth-answer": "[ORGANIZATION11]"
+        },
+        {
+          "id": "10",
+          "question-type": "howmany",
+          "answer-position": "E",
+          "question": "About the project extension, how many additional months were decided?",
+          "groundtruth-answer": "2-3 months"
+        },
+        {
+          "id": "11",
+          "question-type": "when",
+          "answer-position": "E",
+          "question": "When should the recorded demo be provided?",
+          "groundtruth-answer": "17th of June"
+        },
+        {
+          "id": "12",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "About the dissemination, one workshop did not take place, why?",
+          "groundtruth-answer": "Because of the Covid crisis"
+        },
+        {
+          "id": "13",
+          "question-type": "when",
+          "answer-position": "M",
+          "question": "When will the workshop happen?",
+          "groundtruth-answer": "1st of June"
+        },
+        {
+          "id": "14",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "Which risk, related to the demo, was discussed?",
+          "groundtruth-answer": "Power outages at [ORGANIZATION2]"
+        },
+        {
+          "id": "15",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who is in charge of reviewing the speech translation part in the deliverable?",
+          "groundtruth-answer": "[PERSON3]"
+        },
+        {
+          "id": "16",
+          "question-type": "when",
+          "answer-position": "S",
+          "question": "What is the current deadline for providing all the deliverables?",
+          "groundtruth-answer": "End of June"
+        }
+      ]
+    }
+  ]
+}

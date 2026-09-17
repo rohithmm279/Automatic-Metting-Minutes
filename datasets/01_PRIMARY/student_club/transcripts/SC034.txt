@@ -1,0 +1,25 @@
+[Meeting: Club Project Progress | Attendees: Kavya, Meera, Suresh, Sneha, Nisha]
+Kavya: Right, let's get started, today we're talking about club project progress.
+Meera: Okay so Someone needs to fix the pending bugs in the demo, it can't wait too long.
+Sneha: Yeah, true, we'll figure out who.
+Nisha: So yeah, Meera, can you finish the data collection module by Thursday evening?
+Meera: Sure, I'll finish the data collection module by Thursday evening.
+Meera: Umm, any update on the budget approval?
+Suresh: The budget approval is still not confirmed. We're waiting to hear back.
+Kavya: Right, Meera, can you test the prototype by Thursday evening?
+Meera: Sure, I'll test the prototype by Thursday evening.
+Sneha: So yeah, what should we do about the venue?
+Meera: Maybe we should go with venue we discussed earlier.
+Kavya: I think we should reconsider it, actually.
+Sneha: Okay, let's finalize the venue then — that's settled.
+Sneha: Umm, what should we do about the schedule change?
+Meera: Maybe we should go with schedule change we discussed earlier.
+Suresh: I think we should reconsider it, actually.
+Sneha: Okay, let's finalize the schedule change then — that's settled.
+Suresh: Umm, Kavya, can you complete the literature review before next Monday?
+Kavya: Sure, I'll complete the literature review before next Monday.
+Meera: Just circling back — about complete the literature review, are we still on track?
+Nisha: Yeah, on it, will update the group soon.
+Sneha: Alright, switching gears for a second — anything else before we wrap up?
+Suresh: Nah, I think that covers it for today.
+Kavya: Cool, thanks everyone, meeting adjourned.

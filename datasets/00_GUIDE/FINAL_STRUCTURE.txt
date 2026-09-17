@@ -1,0 +1,20 @@
+Meeting_Project_Datasets/
+├── 00_GUIDE/
+│   ├── README.md
+│   ├── DATASET_USAGE_PLAN.md
+│   ├── DATASET_INVENTORY_original.csv
+│   ├── DATASET_SOURCES_original.md
+│   └── DATASET_CAPABILITIES_original.md
+├── 01_PRIMARY/
+│   └── student_club/
+├── 02_BENCHMARKS/
+│   ├── qmsum/
+│   └── meetingbank/
+├── 03_SUPPLEMENTARY/
+│   └── mised/
+├── 04_REFERENCE/
+│   ├── ami/
+│   ├── icsi/
+│   └── elitr_bench/
+└── 99_ARCHIVE_NOTES/
+    └── REMOVED_DUPLICATES.md

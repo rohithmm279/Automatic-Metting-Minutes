@@ -1,0 +1,56 @@
+{
+  "meeting_id": "SC028",
+  "category": "cultural_club",
+  "summary": "The club discussed cultural night rehearsals, covering 4 action item(s), 2 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "Coordinate with the music band",
+    "Shortlist performers for auditions",
+    "cultural night rehearsals"
+  ],
+  "action_items": [
+    {
+      "task": "Coordinate with the music band",
+      "owner": "Naveen",
+      "deadline": "Not specified",
+      "evidence": "Naveen will coordinate with the music band.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Shortlist performers for auditions",
+      "owner": "Naveen",
+      "deadline": "Not specified",
+      "evidence": "Naveen will shortlist performers for auditions.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Design the cultural fest poster",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to design the cultural fest poster, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Arrange costumes for the play",
+      "owner": "Rohith",
+      "deadline": "in a few days",
+      "evidence": "I'll arrange costumes for the play in a few days.",
+      "confidence": "medium"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the venue.",
+      "evidence": "Okay, let's finalize the venue then — that's settled."
+    },
+    {
+      "decision": "Finalized the event date.",
+      "evidence": "Okay, let's finalize the event date then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The printing order remains unresolved.",
+      "evidence": "The printing order is still not confirmed."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+[Meeting: Cultural Night Rehearsals | Attendees: Naveen, Sanjay, Pooja, Divya]
+Naveen: Right, let's get started, today we're talking about cultural night rehearsals.
+Pooja: Umm, what should we do about the team composition?
+Naveen: Maybe we should go with team composition we discussed earlier.
+Sanjay: I think we should reconsider it, actually.
+Pooja: Okay, let's finalize the team composition then — that's settled.
+Sanjay: Alright, what should we do about the venue?
+Divya: Maybe we should go with venue we discussed earlier.
+Pooja: I think we should reconsider it, actually.
+Sanjay: Okay, let's finalize the venue then — that's settled.
+Sanjay: Okay so any update on the sponsorship confirmation?
+Naveen: The sponsorship confirmation is still not confirmed. We're waiting to hear back.
+Naveen: Umm, Pooja, can you arrange costumes for the play before the weekend?
+Pooja: Sure, I'll arrange costumes for the play before the weekend.
+Sanjay: Right, Someone needs to book the rehearsal hall, it can't wait too long.
+Sanjay: Yeah, true, we'll figure out who.
+Pooja: Sorry, scratch that, it should be before next Monday.
+Pooja: So yeah, Divya, can you look into it — we need to coordinate with the music band?
+Divya: I'll coordinate with the music band sometime next week.
+Divya: Umm, any update on the equipment availability?
+Naveen: The equipment availability is still not confirmed. We're waiting to hear back.
+Divya: Just circling back — about coordinate with the music band, are we still on track?
+Divya: Yeah, on it, will update the group soon.
+Pooja: Alright, switching gears for a second — anything else before we wrap up?
+Divya: Nah, I think that covers it for today.
+Naveen: Cool, thanks everyone, meeting adjourned.

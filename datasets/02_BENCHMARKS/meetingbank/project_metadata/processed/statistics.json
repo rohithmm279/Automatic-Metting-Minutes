@@ -1,0 +1,19 @@
+{
+  "dataset_name": "MeetingBank",
+  "number_of_meetings": 0,
+  "number_of_examples": 0,
+  "number_of_transcripts": 0,
+  "average_transcript_length_words": null,
+  "minimum_transcript_length_words": null,
+  "maximum_transcript_length_words": null,
+  "number_of_summaries": 0,
+  "number_of_questions": 0,
+  "number_of_action_annotations": 0,
+  "number_of_decision_annotations": 0,
+  "number_of_issue_annotations": 0,
+  "train_count": 0,
+  "validation_count": 0,
+  "test_count": 0,
+  "storage_size": "14.9KB",
+  "note": "NOT ACQUIRED in this environment (network-blocked source). See NOT_DOWNLOADED.txt."
+}

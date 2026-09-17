@@ -1,0 +1,1052 @@
+{
+  "aggregate": {
+    "meetings_evaluated": 14,
+    "json_validity_rate": 1.0,
+    "pydantic_validity_rate": 1.0,
+    "issue_sem_macro_f1": {
+      "v1": 0.1476,
+      "v2": 0.4228,
+      "delta": 0.2752
+    },
+    "decision_sem_macro_f1": {
+      "v1": 0.6048,
+      "v2": 0.4908,
+      "delta": -0.114
+    },
+    "action_sem_macro_f1": {
+      "v1": 0.7261,
+      "v2": 0.8144,
+      "delta": 0.0883
+    },
+    "hallucinations": {
+      "total_owners": 0,
+      "total_deadlines": 0,
+      "rate": 0.0
+    }
+  },
+  "per_meeting": [
+    {
+      "meeting_id": "SC012",
+      "parse_ok": true,
+      "pydantic_ok": true,
+      "pydantic_error": null,
+      "elapsed_s": 10.52,
+      "has_summary": true,
+      "n_pred_tasks": 3,
+      "n_gt_tasks": 4,
+      "n_pred_decs": 2,
+      "n_gt_decs": 2,
+      "n_pred_issues": 2,
+      "n_gt_issues": 1,
+      "lex_ai_f1": 0.8571,
+      "sem_ai_p": 1.0,
+      "sem_ai_r": 0.75,
+      "sem_ai_f1": 0.8571,
+      "lex_dec_f1": 1.0,
+      "sem_dec_p": 1.0,
+      "sem_dec_r": 1.0,
+      "sem_dec_f1": 1.0,
+      "lex_iss_f1": 0.0,
+      "sem_iss_p": 0.5,
+      "sem_iss_r": 1.0,
+      "sem_iss_f1": 0.6667,
+      "v1_sem_iss_f1": 0.0,
+      "delta_sem_iss_f1": 0.6667,
+      "v1_sem_ai_f1": 0.5714,
+      "delta_sem_ai_f1": 0.2857,
+      "v1_sem_dec_f1": 1.0,
+      "delta_sem_dec_f1": 0.0,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "hallucination_count": 0,
+      "v1_pred_issues": [
+        "Guest's travel plans",
+        "Budget approval",
+        "Laptop arrangements",
+        "Workshop slides preparation"
+      ],
+      "v2_pred_issues": [
+        "Final headcount confirmation",
+        "Who will test the hackathon judging portal"
+      ],
+      "v1_pred_decs": [
+        "Finalize the venue",
+        "Finalize the event date"
+      ],
+      "v2_pred_decs": [
+        "Finalize the venue",
+        "Finalize the event date"
+      ],
+      "v1_pred_tasks": [
+        "Arrange laptops for the coding session",
+        "Prepare the GitHub repository",
+        "Prepare the workshop slides"
+      ],
+      "v2_pred_tasks": [
+        "Arrange laptops for the coding session",
+        "Set up the GitHub repository",
+        "Prepare the workshop slides"
+      ],
+      "gt_issues": [
+        "The final headcount remains unresolved."
+      ],
+      "gt_decs": [
+        "Finalized the venue.",
+        "Finalized the event date."
+      ],
+      "gt_tasks": [
+        "Arrange laptops for the coding session",
+        "Test the hackathon judging portal",
+        "Set up the github repository",
+        "Prepare the workshop slides"
+      ]
+    },
+    {
+      "meeting_id": "SC016",
+      "parse_ok": true,
+      "pydantic_ok": true,
+      "pydantic_error": null,
+      "elapsed_s": 7.6,
+      "has_summary": true,
+      "n_pred_tasks": 3,
+      "n_gt_tasks": 3,
+      "n_pred_decs": 1,
+      "n_gt_decs": 2,
+      "n_pred_issues": 1,
+      "n_gt_issues": 1,
+      "lex_ai_f1": 1.0,
+      "sem_ai_p": 1.0,
+      "sem_ai_r": 1.0,
+      "sem_ai_f1": 1.0,
+      "lex_dec_f1": 0.0,
+      "sem_dec_p": 0.0,
+      "sem_dec_r": 0.0,
+      "sem_dec_f1": 0.0,
+      "lex_iss_f1": 0.0,
+      "sem_iss_p": 0.0,
+      "sem_iss_r": 0.0,
+      "sem_iss_f1": 0.0,
+      "v1_sem_iss_f1": 0.0,
+      "delta_sem_iss_f1": 0.0,
+      "v1_sem_ai_f1": 0.8,
+      "delta_sem_ai_f1": 0.2,
+      "v1_sem_dec_f1": 0.6667,
+      "delta_sem_dec_f1": -0.6667,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "hallucination_count": 0,
+      "v1_pred_issues": [
+        "Guest's travel plans",
+        "Budget approval"
+      ],
+      "v2_pred_issues": [
+        "<Vendor to go with still awaiting approval>"
+      ],
+      "v1_pred_decs": [
+        "Finalize the event date",
+        "Finalize the vendor to go with",
+        "Set up the GitHub repository by the weekend",
+        "Arrange laptops for the coding session by Wednesday"
+      ],
+      "v2_pred_decs": [
+        "<Confirmed agreement or decision>"
+      ],
+      "v1_pred_tasks": [
+        "Set up the GitHub repository",
+        "Arrange laptops for the coding session"
+      ],
+      "v2_pred_tasks": [
+        "Set up the Discord server for the club",
+        "Arrange laptops for the coding session",
+        "Set up the GitHub repository"
+      ],
+      "gt_issues": [
+        "The equipment availability remains unresolved."
+      ],
+      "gt_decs": [
+        "Finalized the event date.",
+        "Finalized the vendor to go with."
+      ],
+      "gt_tasks": [
+        "Set up the discord server for the club",
+        "Arrange laptops for the coding session",
+        "Set up the github repository"
+      ]
+    },
+    {
+      "meeting_id": "SC018",
+      "parse_ok": true,
+      "pydantic_ok": true,
+      "pydantic_error": null,
+      "elapsed_s": 8.11,
+      "has_summary": true,
+      "n_pred_tasks": 4,
+      "n_gt_tasks": 4,
+      "n_pred_decs": 0,
+      "n_gt_decs": 1,
+      "n_pred_issues": 1,
+      "n_gt_issues": 1,
+      "lex_ai_f1": 1.0,
+      "sem_ai_p": 1.0,
+      "sem_ai_r": 1.0,
+      "sem_ai_f1": 1.0,
+      "lex_dec_f1": 0.0,
+      "sem_dec_p": 0.0,
+      "sem_dec_r": 0.0,
+      "sem_dec_f1": 0.0,
+      "lex_iss_f1": 0.0,
+      "sem_iss_p": 1.0,
+      "sem_iss_r": 1.0,
+      "sem_iss_f1": 1.0,
+      "v1_sem_iss_f1": 0.0,
+      "delta_sem_iss_f1": 1.0,
+      "v1_sem_ai_f1": 1.0,
+      "delta_sem_ai_f1": 0.0,
+      "v1_sem_dec_f1": 0.0,
+      "delta_sem_dec_f1": 0.0,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "hallucination_count": 0,
+      "v1_pred_issues": [
+        "Guest's travel plans",
+        "Budget approval"
+      ],
+      "v2_pred_issues": [
+        "Printing order is still not confirmed"
+      ],
+      "v1_pred_decs": [
+        "Finalize the event date"
+      ],
+      "v2_pred_decs": [],
+      "v1_pred_tasks": [
+        "Prepare the workshop slides",
+        "Arrange laptops for the coding session by Thursday evening",
+        "Set up the Discord server for the club",
+        "Fix the club website bug by end of this week"
+      ],
+      "v2_pred_tasks": [
+        "Prepare the workshop slides",
+        "Arrange laptops for the coding session by Thursday evening",
+        "Set up the Discord server for the club",
+        "Fix the club website bug by end of this week"
+      ],
+      "gt_issues": [
+        "The printing order remains unresolved."
+      ],
+      "gt_decs": [
+        "Finalized the schedule change."
+      ],
+      "gt_tasks": [
+        "Prepare the workshop slides",
+        "Arrange laptops for the coding session",
+        "Set up the discord server for the club",
+        "Fix the club website bug"
+      ]
+    },
+    {
+      "meeting_id": "SC025",
+      "parse_ok": true,
+      "pydantic_ok": true,
+      "pydantic_error": null,
+      "elapsed_s": 7.29,
+      "has_summary": true,
+      "n_pred_tasks": 3,
+      "n_gt_tasks": 3,
+      "n_pred_decs": 0,
+      "n_gt_decs": 2,
+      "n_pred_issues": 2,
+      "n_gt_issues": 2,
+      "lex_ai_f1": 1.0,
+      "sem_ai_p": 1.0,
+      "sem_ai_r": 1.0,
+      "sem_ai_f1": 1.0,
+      "lex_dec_f1": 0.0,
+      "sem_dec_p": 0.0,
+      "sem_dec_r": 0.0,
+      "sem_dec_f1": 0.0,
+      "lex_iss_f1": 0.0,
+      "sem_iss_p": 0.5,
+      "sem_iss_r": 0.5,
+      "sem_iss_f1": 0.5,
+      "v1_sem_iss_f1": 1.0,
+      "delta_sem_iss_f1": -0.5,
+      "v1_sem_ai_f1": 1.0,
+      "delta_sem_ai_f1": 0.0,
+      "v1_sem_dec_f1": 0.0,
+      "delta_sem_dec_f1": 0.0,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "hallucination_count": 0,
+      "v1_pred_issues": [
+        "Sponsorship confirmation",
+        "Equipment availability"
+      ],
+      "v2_pred_issues": [
+        "Equipment availability",
+        "Coordination with the music band"
+      ],
+      "v1_pred_decs": [],
+      "v2_pred_decs": [],
+      "v1_pred_tasks": [
+        "Arrange costumes for the play before the weekend",
+        "Book the rehearsal hall before next Monday",
+        "Coordinate with the music band"
+      ],
+      "v2_pred_tasks": [
+        "Arrange costumes for the play before the weekend",
+        "Book the rehearsal hall before next Monday",
+        "Coordinate with the music band sometime next week"
+      ],
+      "gt_issues": [
+        "The sponsorship confirmation remains unresolved.",
+        "The equipment availability remains unresolved."
+      ],
+      "gt_decs": [
+        "Finalized the team composition.",
+        "Finalized the venue."
+      ],
+      "gt_tasks": [
+        "Arrange costumes for the play",
+        "Book the rehearsal hall",
+        "Coordinate with the music band"
+      ]
+    },
+    {
+      "meeting_id": "SC030",
+      "parse_ok": true,
+      "pydantic_ok": true,
+      "pydantic_error": null,
+      "elapsed_s": 9.6,
+      "has_summary": true,
+      "n_pred_tasks": 4,
+      "n_gt_tasks": 4,
+      "n_pred_decs": 6,
+      "n_gt_decs": 2,
+      "n_pred_issues": 0,
+      "n_gt_issues": 1,
+      "lex_ai_f1": 1.0,
+      "sem_ai_p": 1.0,
+      "sem_ai_r": 1.0,
+      "sem_ai_f1": 1.0,
+      "lex_dec_f1": 0.5,
+      "sem_dec_p": 0.3333,
+      "sem_dec_r": 1.0,
+      "sem_dec_f1": 0.5,
+      "lex_iss_f1": 0.0,
+      "sem_iss_p": 0.0,
+      "sem_iss_r": 0.0,
+      "sem_iss_f1": 0.0,
+      "v1_sem_iss_f1": 0.0,
+      "delta_sem_iss_f1": 0.0,
+      "v1_sem_ai_f1": 1.0,
+      "delta_sem_ai_f1": 0.0,
+      "v1_sem_dec_f1": 0.0,
+      "delta_sem_dec_f1": 0.5,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "hallucination_count": 0,
+      "v1_pred_issues": [
+        "Guest's travel plans",
+        "Budget approval"
+      ],
+      "v2_pred_issues": [],
+      "v1_pred_decs": [],
+      "v2_pred_decs": [
+        "Finalize the venue",
+        "Finalize the schedule change",
+        "Book the rehearsal hall",
+        "Shortlist performers for auditions by the weekend",
+        "Finalize the dance performance lineup before the weekend",
+        "Arrange costumes for the play in a few days"
+      ],
+      "v1_pred_tasks": [
+        "Book the rehearsal hall",
+        "Shortlist performers for auditions by the weekend",
+        "Finalize the dance performance lineup before the weekend",
+        "Arrange costumes for the play in a few days"
+      ],
+      "v2_pred_tasks": [
+        "Book the rehearsal hall",
+        "Shortlist performers for auditions by the weekend",
+        "Finalize the dance performance lineup before the weekend",
+        "Arrange costumes for the play in a few days"
+      ],
+      "gt_issues": [
+        "The sponsorship confirmation remains unresolved."
+      ],
+      "gt_decs": [
+        "Finalized the venue.",
+        "Finalized the schedule change."
+      ],
+      "gt_tasks": [
+        "Book the rehearsal hall",
+        "Shortlist performers for auditions",
+        "Finalize the dance performance lineup",
+        "Arrange costumes for the play"
+      ]
+    },
+    {
+      "meeting_id": "SC033",
+      "parse_ok": true,
+      "pydantic_ok": true,
+      "pydantic_error": null,
+      "elapsed_s": 8.82,
+      "has_summary": true,
+      "n_pred_tasks": 4,
+      "n_gt_tasks": 4,
+      "n_pred_decs": 5,
+      "n_gt_decs": 2,
+      "n_pred_issues": 3,
+      "n_gt_issues": 2,
+      "lex_ai_f1": 1.0,
+      "sem_ai_p": 1.0,
+      "sem_ai_r": 1.0,
+      "sem_ai_f1": 1.0,
+      "lex_dec_f1": 0.5714,
+      "sem_dec_p": 0.4,
+      "sem_dec_r": 1.0,
+      "sem_dec_f1": 0.5714,
+      "lex_iss_f1": 0.0,
+      "sem_iss_p": 0.6667,
+      "sem_iss_r": 1.0,
+      "sem_iss_f1": 0.8,
+      "v1_sem_iss_f1": 0.0,
+      "delta_sem_iss_f1": 0.8,
+      "v1_sem_ai_f1": 1.0,
+      "delta_sem_ai_f1": 0.0,
+      "v1_sem_dec_f1": 1.0,
+      "delta_sem_dec_f1": -0.4286,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "hallucination_count": 0,
+      "v1_pred_issues": [
+        "Guest's travel plans",
+        "Budget approval"
+      ],
+      "v2_pred_issues": [
+        "Final headcount confirmation",
+        "Equipment availability confirmation",
+        "Data collection module progress update"
+      ],
+      "v1_pred_decs": [
+        "Finalize the ticket price",
+        "Finalize the schedule change"
+      ],
+      "v2_pred_decs": [
+        "Finalize the ticket price",
+        "Finalize the schedule change",
+        "Rohith will finish the data collection module",
+        "Rohith will prepare the presentation slides",
+        "Rohith will write the project report draft"
+      ],
+      "v1_pred_tasks": [
+        "Fix the pending bugs in the demo",
+        "Prepare the presentation slides",
+        "Write the project report draft",
+        "Finish the data collection module"
+      ],
+      "v2_pred_tasks": [
+        "Fix the pending bugs in the demo",
+        "Prepare the presentation slides",
+        "Write the project report draft",
+        "Finish the data collection module"
+      ],
+      "gt_issues": [
+        "The final headcount remains unresolved.",
+        "The equipment availability remains unresolved."
+      ],
+      "gt_decs": [
+        "Finalized the ticket price.",
+        "Finalized the schedule change."
+      ],
+      "gt_tasks": [
+        "Fix the pending bugs in the demo",
+        "Finish the data collection module",
+        "Prepare the presentation slides",
+        "Write the project report draft"
+      ]
+    },
+    {
+      "meeting_id": "SC037",
+      "parse_ok": true,
+      "pydantic_ok": true,
+      "pydantic_error": null,
+      "elapsed_s": 5.77,
+      "has_summary": true,
+      "n_pred_tasks": 1,
+      "n_gt_tasks": 3,
+      "n_pred_decs": 2,
+      "n_gt_decs": 2,
+      "n_pred_issues": 2,
+      "n_gt_issues": 1,
+      "lex_ai_f1": 0.5,
+      "sem_ai_p": 1.0,
+      "sem_ai_r": 0.3333,
+      "sem_ai_f1": 0.5,
+      "lex_dec_f1": 1.0,
+      "sem_dec_p": 1.0,
+      "sem_dec_r": 1.0,
+      "sem_dec_f1": 1.0,
+      "lex_iss_f1": 0.0,
+      "sem_iss_p": 0.5,
+      "sem_iss_r": 1.0,
+      "sem_iss_f1": 0.6667,
+      "v1_sem_iss_f1": 0.0,
+      "delta_sem_iss_f1": 0.6667,
+      "v1_sem_ai_f1": 0.5,
+      "delta_sem_ai_f1": 0.0,
+      "v1_sem_dec_f1": 1.0,
+      "delta_sem_dec_f1": 0.0,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "hallucination_count": 0,
+      "v1_pred_issues": [
+        "Write the project report draft"
+      ],
+      "v2_pred_issues": [
+        "Printing order confirmation",
+        "Who will complete the literature review"
+      ],
+      "v1_pred_decs": [
+        "Finalize the event date",
+        "Finalize the team composition"
+      ],
+      "v2_pred_decs": [
+        "Finalize the event date",
+        "Finalize the team composition"
+      ],
+      "v1_pred_tasks": [
+        "Complete the literature review"
+      ],
+      "v2_pred_tasks": [
+        "Complete the literature review"
+      ],
+      "gt_issues": [
+        "The printing order remains unresolved."
+      ],
+      "gt_decs": [
+        "Finalized the event date.",
+        "Finalized the team composition."
+      ],
+      "gt_tasks": [
+        "Write the project report draft",
+        "Test the prototype",
+        "Complete the literature review"
+      ]
+    },
+    {
+      "meeting_id": "SC043",
+      "parse_ok": true,
+      "pydantic_ok": true,
+      "pydantic_error": null,
+      "elapsed_s": 10.03,
+      "has_summary": true,
+      "n_pred_tasks": 7,
+      "n_gt_tasks": 4,
+      "n_pred_decs": 1,
+      "n_gt_decs": 2,
+      "n_pred_issues": 1,
+      "n_gt_issues": 2,
+      "lex_ai_f1": 0.7273,
+      "sem_ai_p": 0.5714,
+      "sem_ai_r": 1.0,
+      "sem_ai_f1": 0.7273,
+      "lex_dec_f1": 0.0,
+      "sem_dec_p": 0.0,
+      "sem_dec_r": 0.0,
+      "sem_dec_f1": 0.0,
+      "lex_iss_f1": 0.0,
+      "sem_iss_p": 0.0,
+      "sem_iss_r": 0.0,
+      "sem_iss_f1": 0.0,
+      "v1_sem_iss_f1": 0.0,
+      "delta_sem_iss_f1": 0.0,
+      "v1_sem_ai_f1": 0.6667,
+      "delta_sem_ai_f1": 0.0606,
+      "v1_sem_dec_f1": 1.0,
+      "delta_sem_dec_f1": -1.0,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "hallucination_count": 0,
+      "v1_pred_issues": [
+        "Guest's travel plans",
+        "Budget approval"
+      ],
+      "v2_pred_issues": [
+        "<Topic or item awaiting resolution>"
+      ],
+      "v1_pred_decs": [
+        "Finalize the venue",
+        "Finalize the ticket price"
+      ],
+      "v2_pred_decs": [
+        "<Confirmed agreement or decision>"
+      ],
+      "v1_pred_tasks": [
+        "Shortlist candidates for the technical round",
+        "Prepare interview questions before the weekend",
+        "Finalize the venue",
+        "Finalize the ticket price",
+        "Schedule interview slots before it gets too late"
+      ],
+      "v2_pred_tasks": [
+        "Shortlist candidates for the technical round",
+        "Send the recruitment announcement",
+        "Prepare interview questions",
+        "Finalize the venue",
+        "Schedule interview slots",
+        "Finalize the ticket price",
+        "Shortlist candidates for the technical round"
+      ],
+      "gt_issues": [
+        "The sponsorship confirmation remains unresolved.",
+        "The sponsorship confirmation remains unresolved."
+      ],
+      "gt_decs": [
+        "Finalized the venue.",
+        "Finalized the ticket price."
+      ],
+      "gt_tasks": [
+        "Shortlist candidates for the technical round",
+        "Send the recruitment announcement",
+        "Prepare interview questions",
+        "Schedule interview slots"
+      ]
+    },
+    {
+      "meeting_id": "SC049",
+      "parse_ok": true,
+      "pydantic_ok": true,
+      "pydantic_error": null,
+      "elapsed_s": 5.96,
+      "has_summary": true,
+      "n_pred_tasks": 1,
+      "n_gt_tasks": 3,
+      "n_pred_decs": 1,
+      "n_gt_decs": 1,
+      "n_pred_issues": 2,
+      "n_gt_issues": 2,
+      "lex_ai_f1": 0.0,
+      "sem_ai_p": 0.0,
+      "sem_ai_r": 0.0,
+      "sem_ai_f1": 0.0,
+      "lex_dec_f1": 0.0,
+      "sem_dec_p": 0.0,
+      "sem_dec_r": 0.0,
+      "sem_dec_f1": 0.0,
+      "lex_iss_f1": 0.0,
+      "sem_iss_p": 0.5,
+      "sem_iss_r": 0.5,
+      "sem_iss_f1": 0.5,
+      "v1_sem_iss_f1": 0.6667,
+      "delta_sem_iss_f1": -0.1667,
+      "v1_sem_ai_f1": 0.0,
+      "delta_sem_ai_f1": 0.0,
+      "v1_sem_dec_f1": 1.0,
+      "delta_sem_dec_f1": -1.0,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "hallucination_count": 0,
+      "v1_pred_issues": [
+        "Equipment availability"
+      ],
+      "v2_pred_issues": [
+        "Equipment availability",
+        "Submit the budget proposal to the department"
+      ],
+      "v1_pred_decs": [
+        "Finalize the event date"
+      ],
+      "v2_pred_decs": [
+        "<Confirmed agreement or decision>"
+      ],
+      "v1_pred_tasks": [
+        "Finalize the event date"
+      ],
+      "v2_pred_tasks": [
+        "Finalize the event date"
+      ],
+      "gt_issues": [
+        "The sponsorship confirmation remains unresolved.",
+        "The equipment availability remains unresolved."
+      ],
+      "gt_decs": [
+        "Finalized the event date."
+      ],
+      "gt_tasks": [
+        "Reconcile last month's expenses",
+        "Get sponsorship quotations",
+        "Submit the budget proposal to the department"
+      ]
+    },
+    {
+      "meeting_id": "SC054",
+      "parse_ok": true,
+      "pydantic_ok": true,
+      "pydantic_error": null,
+      "elapsed_s": 8.59,
+      "has_summary": true,
+      "n_pred_tasks": 5,
+      "n_gt_tasks": 4,
+      "n_pred_decs": 1,
+      "n_gt_decs": 1,
+      "n_pred_issues": 1,
+      "n_gt_issues": 1,
+      "lex_ai_f1": 0.8889,
+      "sem_ai_p": 0.8,
+      "sem_ai_r": 1.0,
+      "sem_ai_f1": 0.8889,
+      "lex_dec_f1": 0.0,
+      "sem_dec_p": 0.0,
+      "sem_dec_r": 0.0,
+      "sem_dec_f1": 0.0,
+      "lex_iss_f1": 0.0,
+      "sem_iss_p": 0.0,
+      "sem_iss_r": 0.0,
+      "sem_iss_f1": 0.0,
+      "v1_sem_iss_f1": 0.0,
+      "delta_sem_iss_f1": 0.0,
+      "v1_sem_ai_f1": 0.8889,
+      "delta_sem_ai_f1": 0.0,
+      "v1_sem_dec_f1": 0.0,
+      "delta_sem_dec_f1": 0.0,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "hallucination_count": 0,
+      "v1_pred_issues": [
+        "Guest's travel plans",
+        "Budget approval"
+      ],
+      "v2_pred_issues": [
+        "<Topic or item awaiting resolution>"
+      ],
+      "v1_pred_decs": [
+        "Finalize the event date"
+      ],
+      "v2_pred_decs": [
+        "<Confirmed agreement or decision>"
+      ],
+      "v1_pred_tasks": [
+        "Arrange the projector and mic",
+        "Book the seminar hall",
+        "Send certificates to workshop attendees",
+        "Prepare workshop handouts",
+        "Finalize the venue"
+      ],
+      "v2_pred_tasks": [
+        "Arrange the projector and mic",
+        "Book the seminar hall",
+        "Send certificates to workshop attendees",
+        "Prepare the workshop handouts",
+        "Finalize the venue"
+      ],
+      "gt_issues": [
+        "The sponsorship confirmation remains unresolved."
+      ],
+      "gt_decs": [
+        "Finalized the venue."
+      ],
+      "gt_tasks": [
+        "Arrange the projector and mic",
+        "Book the seminar hall",
+        "Send certificates to workshop attendees",
+        "Prepare the workshop handouts"
+      ]
+    },
+    {
+      "meeting_id": "SC056",
+      "parse_ok": true,
+      "pydantic_ok": true,
+      "pydantic_error": null,
+      "elapsed_s": 7.26,
+      "has_summary": true,
+      "n_pred_tasks": 3,
+      "n_gt_tasks": 3,
+      "n_pred_decs": 2,
+      "n_gt_decs": 2,
+      "n_pred_issues": 0,
+      "n_gt_issues": 1,
+      "lex_ai_f1": 1.0,
+      "sem_ai_p": 1.0,
+      "sem_ai_r": 1.0,
+      "sem_ai_f1": 1.0,
+      "lex_dec_f1": 1.0,
+      "sem_dec_p": 1.0,
+      "sem_dec_r": 1.0,
+      "sem_dec_f1": 1.0,
+      "lex_iss_f1": 0.0,
+      "sem_iss_p": 0.0,
+      "sem_iss_r": 0.0,
+      "sem_iss_f1": 0.0,
+      "v1_sem_iss_f1": 0.0,
+      "delta_sem_iss_f1": 0.0,
+      "v1_sem_ai_f1": 1.0,
+      "delta_sem_ai_f1": 0.0,
+      "v1_sem_dec_f1": 1.0,
+      "delta_sem_dec_f1": 0.0,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "hallucination_count": 0,
+      "v1_pred_issues": [
+        "Guest's travel plans",
+        "Budget approval"
+      ],
+      "v2_pred_issues": [],
+      "v1_pred_decs": [
+        "Finalize the final theme",
+        "Finalize the ticket price"
+      ],
+      "v2_pred_decs": [
+        "Finalize the final theme",
+        "Finalize the ticket price"
+      ],
+      "v1_pred_tasks": [
+        "Arrange practice sessions before the contest by the 25th",
+        "Book transport for the away competition before the weekend",
+        "Prepare the competition rulebook by Wednesday"
+      ],
+      "v2_pred_tasks": [
+        "Arrange practice sessions before the contest by the 25th",
+        "Book transport for the away competition before the weekend",
+        "Prepare the competition rulebook by Wednesday"
+      ],
+      "gt_issues": [
+        "The equipment availability remains unresolved."
+      ],
+      "gt_decs": [
+        "Finalized the final theme.",
+        "Finalized the ticket price."
+      ],
+      "gt_tasks": [
+        "Arrange practice sessions before the contest",
+        "Book transport for the away competition",
+        "Prepare the competition rulebook"
+      ]
+    },
+    {
+      "meeting_id": "SC059",
+      "parse_ok": true,
+      "pydantic_ok": true,
+      "pydantic_error": null,
+      "elapsed_s": 7.08,
+      "has_summary": true,
+      "n_pred_tasks": 3,
+      "n_gt_tasks": 4,
+      "n_pred_decs": 1,
+      "n_gt_decs": 1,
+      "n_pred_issues": 2,
+      "n_gt_issues": 2,
+      "lex_ai_f1": 0.8571,
+      "sem_ai_p": 1.0,
+      "sem_ai_r": 0.75,
+      "sem_ai_f1": 0.8571,
+      "lex_dec_f1": 0.0,
+      "sem_dec_p": 1.0,
+      "sem_dec_r": 1.0,
+      "sem_dec_f1": 1.0,
+      "lex_iss_f1": 0.0,
+      "sem_iss_p": 0.5,
+      "sem_iss_r": 0.5,
+      "sem_iss_f1": 0.5,
+      "v1_sem_iss_f1": 0.4,
+      "delta_sem_iss_f1": 0.1,
+      "v1_sem_ai_f1": 0.6667,
+      "delta_sem_ai_f1": 0.1904,
+      "v1_sem_dec_f1": 0.0,
+      "delta_sem_dec_f1": 1.0,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "hallucination_count": 0,
+      "v1_pred_issues": [
+        "Sponsorship confirmation",
+        "Guest's travel plans",
+        "Team registration for the competition"
+      ],
+      "v2_pred_issues": [
+        "<Sponsorship confirmation>",
+        "<Team registration>"
+      ],
+      "v1_pred_decs": [
+        "Finalize the event date"
+      ],
+      "v2_pred_decs": [
+        "<Confirmed schedule change>"
+      ],
+      "v1_pred_tasks": [
+        "Book transport for the away competition before the weekend",
+        "Register the team for the competition before next Monday"
+      ],
+      "v2_pred_tasks": [
+        "Finalize the competition judges",
+        "Book transport for the away competition before the weekend",
+        "Register the team for the competition before next Monday"
+      ],
+      "gt_issues": [
+        "The printing order remains unresolved.",
+        "The sponsorship confirmation remains unresolved."
+      ],
+      "gt_decs": [
+        "Finalized the schedule change."
+      ],
+      "gt_tasks": [
+        "Arrange practice sessions before the contest",
+        "Book transport for the away competition",
+        "Finalize the competition judges",
+        "Register the team for the competition"
+      ]
+    },
+    {
+      "meeting_id": "SC060",
+      "parse_ok": true,
+      "pydantic_ok": true,
+      "pydantic_error": null,
+      "elapsed_s": 8.13,
+      "has_summary": true,
+      "n_pred_tasks": 4,
+      "n_gt_tasks": 3,
+      "n_pred_decs": 3,
+      "n_gt_decs": 2,
+      "n_pred_issues": 1,
+      "n_gt_issues": 1,
+      "lex_ai_f1": 0.5714,
+      "sem_ai_p": 0.5,
+      "sem_ai_r": 0.6667,
+      "sem_ai_f1": 0.5714,
+      "lex_dec_f1": 0.8,
+      "sem_dec_p": 0.6667,
+      "sem_dec_r": 1.0,
+      "sem_dec_f1": 0.8,
+      "lex_iss_f1": 0.0,
+      "sem_iss_p": 1.0,
+      "sem_iss_r": 1.0,
+      "sem_iss_f1": 1.0,
+      "v1_sem_iss_f1": 0.0,
+      "delta_sem_iss_f1": 1.0,
+      "v1_sem_ai_f1": 0.5714,
+      "delta_sem_ai_f1": 0.0,
+      "v1_sem_dec_f1": 0.8,
+      "delta_sem_dec_f1": 0.0,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "hallucination_count": 0,
+      "v1_pred_issues": [],
+      "v2_pred_issues": [
+        "Auditorium booking"
+      ],
+      "v1_pred_decs": [
+        "Finalize the venue",
+        "Finalize the team composition",
+        "Prepare the competition rulebook by Thursday evening"
+      ],
+      "v2_pred_decs": [
+        "Finalize the venue",
+        "Finalize the team composition",
+        "Prepare the competition rulebook by Thursday evening"
+      ],
+      "v1_pred_tasks": [
+        "Finalize the venue",
+        "Finalize the team composition",
+        "Arrange practice sessions",
+        "Prepare the competition rulebook"
+      ],
+      "v2_pred_tasks": [
+        "Finalize the venue",
+        "Finalize the team composition",
+        "Arrange practice sessions",
+        "Prepare the competition rulebook"
+      ],
+      "gt_issues": [
+        "The auditorium booking remains unresolved."
+      ],
+      "gt_decs": [
+        "Finalized the venue.",
+        "Finalized the team composition."
+      ],
+      "gt_tasks": [
+        "Book transport for the away competition",
+        "Arrange practice sessions before the contest",
+        "Prepare the competition rulebook"
+      ]
+    },
+    {
+      "meeting_id": "SC064",
+      "parse_ok": true,
+      "pydantic_ok": true,
+      "pydantic_error": null,
+      "elapsed_s": 8.46,
+      "has_summary": true,
+      "n_pred_tasks": 4,
+      "n_gt_tasks": 4,
+      "n_pred_decs": 2,
+      "n_gt_decs": 2,
+      "n_pred_issues": 6,
+      "n_gt_issues": 1,
+      "lex_ai_f1": 1.0,
+      "sem_ai_p": 1.0,
+      "sem_ai_r": 1.0,
+      "sem_ai_f1": 1.0,
+      "lex_dec_f1": 1.0,
+      "sem_dec_p": 1.0,
+      "sem_dec_r": 1.0,
+      "sem_dec_f1": 1.0,
+      "lex_iss_f1": 0.0,
+      "sem_iss_p": 0.1667,
+      "sem_iss_r": 1.0,
+      "sem_iss_f1": 0.2857,
+      "v1_sem_iss_f1": 0.0,
+      "delta_sem_iss_f1": 0.2857,
+      "v1_sem_ai_f1": 0.5,
+      "delta_sem_ai_f1": 0.5,
+      "v1_sem_dec_f1": 1.0,
+      "delta_sem_dec_f1": 0.0,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "hallucination_count": 0,
+      "v1_pred_issues": [
+        "Plan the orientation session",
+        "Coordinate the inter-club meeting"
+      ],
+      "v2_pred_issues": [
+        "Final headcount confirmation",
+        "Vendor to go with",
+        "Event date",
+        "Monthly newsletter draft",
+        "Orientation session planning",
+        "Feedback survey organization"
+      ],
+      "v1_pred_decs": [
+        "Finalize the vendor to go with",
+        "Finalize the event date"
+      ],
+      "v2_pred_decs": [
+        "Finalize the vendor to go with",
+        "Finalize the event date"
+      ],
+      "v1_pred_tasks": [
+        "Finalize the vendor to go with",
+        "Finalize the event date",
+        "Plan the orientation session",
+        "Coordinate the inter-club meeting"
+      ],
+      "v2_pred_tasks": [
+        "Draft the monthly newsletter",
+        "Organize the feedback survey",
+        "Plan the orientation session",
+        "Coordinate the inter-club meeting"
+      ],
+      "gt_issues": [
+        "The final headcount remains unresolved."
+      ],
+      "gt_decs": [
+        "Finalized the vendor to go with.",
+        "Finalized the event date."
+      ],
+      "gt_tasks": [
+        "Draft the monthly newsletter",
+        "Organize the feedback survey",
+        "Plan the orientation session",
+        "Coordinate the inter-club meeting"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "meeting_id": "SC070",
+  "category": "mixed",
+  "summary": "The club discussed general club coordination, covering 4 action item(s), 1 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "Update the club notice board",
+    "Plan the orientation session",
+    "general club coordination"
+  ],
+  "action_items": [
+    {
+      "task": "Update the club notice board",
+      "owner": "Lakshmi",
+      "deadline": "Not specified",
+      "evidence": "Lakshmi will update the club notice board.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Plan the orientation session",
+      "owner": "Sanjay",
+      "deadline": "Not specified",
+      "evidence": "Sanjay will plan the orientation session.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Organize the feedback survey",
+      "owner": "Sanjay",
+      "deadline": "Thursday evening",
+      "evidence": "Sanjay, can you organize the feedback survey by Thursday evening?",
+      "confidence": "high"
+    },
+    {
+      "task": "Draft the monthly newsletter",
+      "owner": "Naveen",
+      "deadline": "Thursday evening",
+      "evidence": "Naveen, can you draft the monthly newsletter by Thursday evening?",
+      "confidence": "high"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the schedule change.",
+      "evidence": "Okay, let's finalize the schedule change then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The auditorium booking remains unresolved.",
+      "evidence": "The auditorium booking is still not confirmed."
+    }
+  ]
+}

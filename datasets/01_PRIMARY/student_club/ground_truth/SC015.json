@@ -1,0 +1,49 @@
+{
+  "meeting_id": "SC015",
+  "category": "technical_club",
+  "summary": "The club discussed upcoming hackathon, covering 3 action item(s), 1 decision(s), and 2 open issue(s).",
+  "key_topics": [
+    "upcoming hackathon",
+    "Fix the club website bug",
+    "Set up the discord server for the club"
+  ],
+  "action_items": [
+    {
+      "task": "Set up the discord server for the club",
+      "owner": "Sanjay",
+      "deadline": "the weekend",
+      "evidence": "Sanjay, can you set up the Discord server for the club before the weekend?",
+      "confidence": "high"
+    },
+    {
+      "task": "Fix the club website bug",
+      "owner": "Sanjay",
+      "deadline": "before it gets too late",
+      "evidence": "I'll fix the club website bug before it gets too late.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Test the hackathon judging portal",
+      "owner": "Karthik",
+      "deadline": "in a few days",
+      "evidence": "I'll test the hackathon judging portal in a few days.",
+      "confidence": "medium"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the final theme.",
+      "evidence": "Okay, let's finalize the final theme then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The sponsorship confirmation remains unresolved.",
+      "evidence": "The sponsorship confirmation is still not confirmed."
+    },
+    {
+      "issue": "The guest's travel plans remains unresolved.",
+      "evidence": "The guest's travel plans is still not confirmed."
+    }
+  ]
+}

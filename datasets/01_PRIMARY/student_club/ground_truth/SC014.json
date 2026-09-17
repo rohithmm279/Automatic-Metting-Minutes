@@ -1,0 +1,52 @@
+{
+  "meeting_id": "SC014",
+  "category": "technical_club",
+  "summary": "The club discussed upcoming hackathon, covering 4 action item(s), 1 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "upcoming hackathon",
+    "Set up the github repository",
+    "Arrange laptops for the coding session"
+  ],
+  "action_items": [
+    {
+      "task": "Arrange laptops for the coding session",
+      "owner": "Lakshmi",
+      "deadline": "Thursday evening",
+      "evidence": "Lakshmi, can you arrange laptops for the coding session by Thursday evening?",
+      "confidence": "high"
+    },
+    {
+      "task": "Set up the github repository",
+      "owner": "Rohith",
+      "deadline": "whenever possible",
+      "evidence": "I'll set up the GitHub repository whenever possible.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Fix the club website bug",
+      "owner": "Rohith",
+      "deadline": "in a few days",
+      "evidence": "I'll fix the club website bug in a few days.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Prepare the workshop slides",
+      "owner": "Rahul",
+      "deadline": "in a few days",
+      "evidence": "I'll prepare the workshop slides in a few days.",
+      "confidence": "medium"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the ticket price.",
+      "evidence": "Okay, let's finalize the ticket price then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The guest's travel plans remains unresolved.",
+      "evidence": "The guest's travel plans is still not confirmed."
+    }
+  ]
+}

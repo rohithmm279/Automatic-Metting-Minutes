@@ -1,0 +1,24 @@
+[Meeting: Upcoming Hackathon | Attendees: Sanjay, Riya, Rohith, Karthik, Sneha]
+Sanjay: Cool, so let's get started, today we're talking about upcoming hackathon.
+Sanjay: Cool, so what should we do about the venue?
+Karthik: Maybe we should go with venue we discussed earlier.
+Riya: I think we should reconsider it, actually.
+Sanjay: Okay, let's finalize the venue then — that's settled.
+Rohith: Alright, Sanjay, can you look into it — we need to arrange laptops for the coding session?
+Sanjay: I'll arrange laptops for the coding session whenever possible.
+Riya: Cool, so Rohith, can you fix the club website bug by end of this week?
+Rohith: Sure, I'll fix the club website bug by end of this week.
+Sanjay: Alright, what should we do about the ticket price?
+Riya: Maybe we should go with ticket price we discussed earlier.
+Rohith: I think we should reconsider it, actually.
+Sanjay: Okay, let's finalize the ticket price then — that's settled.
+Riya: Okay so any update on the final headcount?
+Sanjay: The final headcount is still not confirmed. We're waiting to hear back.
+Sneha: So yeah, Rohith, would you be able to prepare the workshop slides?
+Rohith: (jumping in) Actually, can I add something—
+Rohith: Rohith will prepare the workshop slides.
+Sneha: Just circling back — about fix the club website bug, are we still on track?
+Sneha: Yeah, on it, will update the group soon.
+Karthik: Alright, switching gears for a second — anything else before we wrap up?
+Karthik: Nah, I think that covers it for today.
+Sanjay: Cool, thanks everyone, meeting adjourned.

@@ -1,0 +1,49 @@
+{
+  "meeting_id": "SC056",
+  "category": "competitions",
+  "summary": "The club discussed inter-college competition prep, covering 3 action item(s), 2 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "Book transport for the away competition",
+    "Arrange practice sessions before the contest",
+    "inter-college competition prep"
+  ],
+  "action_items": [
+    {
+      "task": "Arrange practice sessions before the contest",
+      "owner": "Karthik",
+      "deadline": "the 25th",
+      "evidence": "Karthik, can you arrange practice sessions before the contest by the 25th?",
+      "confidence": "high"
+    },
+    {
+      "task": "Book transport for the away competition",
+      "owner": "Vikram",
+      "deadline": "the weekend",
+      "evidence": "Vikram, can you book transport for the away competition before the weekend?",
+      "confidence": "high"
+    },
+    {
+      "task": "Prepare the competition rulebook",
+      "owner": "Lakshmi",
+      "deadline": "Wednesday",
+      "evidence": "Lakshmi, can you prepare the competition rulebook by Wednesday?",
+      "confidence": "high"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the final theme.",
+      "evidence": "Okay, let's finalize the final theme then — that's settled."
+    },
+    {
+      "decision": "Finalized the ticket price.",
+      "evidence": "Okay, let's finalize the ticket price then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The equipment availability remains unresolved.",
+      "evidence": "The equipment availability is still not confirmed."
+    }
+  ]
+}

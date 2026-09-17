@@ -1,0 +1,219 @@
+{
+  "dataset_name": "Student Club Meeting Evaluation Dataset",
+  "schema_version": "1.0",
+  "purpose": "Canonical meeting-level and task-specific processed views without altering source data.",
+  "source_root": "datasets/01_PRIMARY/student_club",
+  "output_root": "datasets/01_PRIMARY/student_club/preprocessed",
+  "output_format": "jsonl",
+  "record_identity": {
+    "required_fields": [
+      "meeting_id",
+      "split",
+      "category",
+      "transcript"
+    ],
+    "join_key": "meeting_id",
+    "relationship": "one transcript and one JSON per meeting"
+  },
+  "task_views": {
+    "canonical": {
+      "record_type": "meeting_level",
+      "format": "jsonl",
+      "records_per_meeting": 1,
+      "required_fields": [
+        "meeting_id",
+        "split",
+        "category",
+        "transcript",
+        "target"
+      ],
+      "target_fields": [
+        "summary",
+        "key_topics",
+        "action_items",
+        "decisions",
+        "unresolved_issues"
+      ],
+      "expected_counts": {
+        "train_dev": 49,
+        "validation": 10,
+        "test": 11,
+        "total": 70
+      },
+      "notes": "One complete meeting record per JSONL line; target preserves all available ground-truth arrays and nested objects."
+    },
+    "summary": {
+      "record_type": "meeting_level",
+      "required_fields": [
+        "meeting_id",
+        "split",
+        "category",
+        "summary",
+        "key_topics",
+        "transcript"
+      ],
+      "notes": "One record per meeting."
+    },
+    "action_item_extraction": {
+      "record_type": "item_level",
+      "required_fields": [
+        "meeting_id",
+        "split",
+        "category",
+        "transcript",
+        "task",
+        "owner",
+        "deadline",
+        "evidence",
+        "confidence"
+      ],
+      "notes": "One record per action item extracted from a meeting."
+    },
+    "decision_extraction": {
+      "record_type": "item_level",
+      "required_fields": [
+        "meeting_id",
+        "split",
+        "category",
+        "transcript",
+        "decision",
+        "evidence"
+      ],
+      "notes": "One record per decision extracted from a meeting."
+    },
+    "unresolved_issue_extraction": {
+      "record_type": "item_level",
+      "required_fields": [
+        "meeting_id",
+        "split",
+        "category",
+        "transcript",
+        "issue",
+        "evidence"
+      ],
+      "notes": "One record per unresolved issue extracted from a meeting."
+    }
+  },
+  "canonical_metadata": {
+    "file": "datasets/01_PRIMARY/student_club/metadata/metadata.csv",
+    "columns": {
+      "meeting_id": {
+        "type": "string",
+        "required": true
+      },
+      "category": {
+        "type": "string",
+        "required": true
+      },
+      "num_speakers": {
+        "type": "integer",
+        "required": true
+      },
+      "num_action_items": {
+        "type": "integer",
+        "required": true
+      },
+      "num_decisions": {
+        "type": "integer",
+        "required": true
+      },
+      "num_issues": {
+        "type": "integer",
+        "required": true
+      },
+      "transcript_word_count": {
+        "type": "integer",
+        "required": true
+      },
+      "split": {
+        "type": "string",
+        "required": true,
+        "allowed_values": [
+          "train_dev",
+          "validation",
+          "test"
+        ]
+      }
+    }
+  },
+  "source_json_schema": {
+    "meeting_id": {
+      "type": "string",
+      "required": true
+    },
+    "category": {
+      "type": "string",
+      "required": true
+    },
+    "summary": {
+      "type": "string",
+      "required": true
+    },
+    "key_topics": {
+      "type": "array<string>",
+      "required": true
+    },
+    "action_items": {
+      "type": "array<object>",
+      "required": true,
+      "item_fields": {
+        "task": "string",
+        "owner": "string",
+        "deadline": "string",
+        "evidence": "string",
+        "confidence": "string"
+      }
+    },
+    "decisions": {
+      "type": "array<object>",
+      "required": true,
+      "item_fields": {
+        "decision": "string",
+        "evidence": "string"
+      }
+    },
+    "unresolved_issues": {
+      "type": "array<object>",
+      "required": true,
+      "item_fields": {
+        "issue": "string",
+        "evidence": "string"
+      }
+    }
+  },
+  "preservation_rules": {
+    "preserve_meeting_id": true,
+    "preserve_original_split": true,
+    "preserve_original_transcript": true,
+    "preserve_evidence_fields": true,
+    "preserve_owner_values": true,
+    "preserve_deadline_values": true,
+    "preserve_confidence_as_string": true,
+    "do_not_invent_missing_information": true,
+    "do_not_modify_source_files": true,
+    "canonical_one_record_per_meeting": true,
+    "canonical_preserve_nested_target": true,
+    "canonical_use_metadata_split": true
+  },
+  "validation_rules": {
+    "missing_transcript_file": "error",
+    "missing_json_file": "error",
+    "missing_metadata_row": "error",
+    "invalid_json": "error",
+    "duplicate_meeting_id": "error",
+    "invalid_split": "error",
+    "empty_transcript": "warning",
+    "empty_action_items_array": "valid",
+    "empty_decisions_array": "valid",
+    "empty_issue_array": "valid",
+    "canonical_record_count": {
+      "train_dev": 49,
+      "validation": 10,
+      "test": 11,
+      "total": 70
+    },
+    "canonical_duplicate_meeting_id": "error",
+    "canonical_invalid_top_level_fields": "error",
+    "canonical_split_mismatch": "error"
+  }
+}

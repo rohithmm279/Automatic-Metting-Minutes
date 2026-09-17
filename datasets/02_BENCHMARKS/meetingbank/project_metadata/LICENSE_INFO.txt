@@ -1,0 +1,5 @@
+MeetingBank
+License: research use per HuggingFace dataset card (not independently
+re-verified here because the data itself was not downloaded).
+Verify exact terms at https://huggingface.co/datasets/huuuyeah/meetingbank
+before any redistribution.

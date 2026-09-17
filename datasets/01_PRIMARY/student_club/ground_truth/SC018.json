@@ -1,0 +1,52 @@
+{
+  "meeting_id": "SC018",
+  "category": "technical_club",
+  "summary": "The club discussed upcoming hackathon, covering 4 action item(s), 1 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "upcoming hackathon",
+    "Arrange laptops for the coding session",
+    "Prepare the workshop slides"
+  ],
+  "action_items": [
+    {
+      "task": "Prepare the workshop slides",
+      "owner": "Karthik",
+      "deadline": "Not specified",
+      "evidence": "Karthik will prepare the workshop slides.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Arrange laptops for the coding session",
+      "owner": "Karthik",
+      "deadline": "Thursday evening",
+      "evidence": "Karthik, can you arrange laptops for the coding session by Thursday evening?",
+      "confidence": "high"
+    },
+    {
+      "task": "Set up the discord server for the club",
+      "owner": "Rohith",
+      "deadline": "Not specified",
+      "evidence": "Rohith will set up the Discord server for the club.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Fix the club website bug",
+      "owner": "Kavya",
+      "deadline": "end of this week",
+      "evidence": "Kavya, can you fix the club website bug by end of this week?",
+      "confidence": "high"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the schedule change.",
+      "evidence": "Okay, let's finalize the schedule change then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The printing order remains unresolved.",
+      "evidence": "The printing order is still not confirmed."
+    }
+  ]
+}

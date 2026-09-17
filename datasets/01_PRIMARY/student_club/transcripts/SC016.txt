@@ -1,0 +1,26 @@
+[Meeting: Upcoming Hackathon | Attendees: Lakshmi, Suresh, Pooja, Aditya]
+Lakshmi: Cool, so let's get started, today we're talking about upcoming hackathon.
+Aditya: So yeah, what should we do about the event date?
+Lakshmi: Maybe we should go with event date we discussed earlier.
+Pooja: I think we should reconsider it, actually.
+Aditya: Okay, let's finalize the event date then — that's settled.
+Suresh: So yeah, any update on the equipment availability?
+Lakshmi: The equipment availability is still not confirmed. We're waiting to hear back.
+Pooja: Cool, so Aditya, would you be able to set up the Discord server for the club?
+Aditya: Aditya will set up the Discord server for the club.
+Aditya: Sorry, scratch that, it should be before next Monday.
+Pooja: Cool, so Aditya, can you look into it — we need to arrange laptops for the coding session?
+Aditya: I'll arrange laptops for the coding session in a few days.
+Aditya: Actually, sorry, I meant by Wednesday, not what I said earlier.
+Pooja: So yeah, what should we do about the vendor to go with?
+Lakshmi: Maybe we should go with vendor to go with we discussed earlier.
+Aditya: I think we should reconsider it, actually.
+Pooja: Okay, let's finalize the vendor to go with then — that's settled.
+Aditya: Cool, so Lakshmi, can you set up the GitHub repository before next Monday?
+Lakshmi: Sure, I'll set up the GitHub repository before next Monday.
+Lakshmi: Actually, sorry, I meant before the weekend, not what I said earlier.
+Pooja: Just circling back — about arrange laptops for the coding session, are we still on track?
+Pooja: Yeah, on it, will update the group soon.
+Aditya: Alright, switching gears for a second — anything else before we wrap up?
+Suresh: Nah, I think that covers it for today.
+Lakshmi: Cool, thanks everyone, meeting adjourned.

@@ -1,0 +1,56 @@
+{
+  "meeting_id": "SC064",
+  "category": "mixed",
+  "summary": "The club discussed general club coordination, covering 4 action item(s), 2 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "Draft the monthly newsletter",
+    "Organize the feedback survey",
+    "general club coordination"
+  ],
+  "action_items": [
+    {
+      "task": "Draft the monthly newsletter",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to draft the monthly newsletter, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Organize the feedback survey",
+      "owner": "Nisha",
+      "deadline": "Not specified",
+      "evidence": "Nisha will organize the feedback survey.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Plan the orientation session",
+      "owner": "Sneha",
+      "deadline": "Not specified",
+      "evidence": "Sneha will plan the orientation session.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Coordinate the inter-club meeting",
+      "owner": "Meera",
+      "deadline": "Not specified",
+      "evidence": "Meera will coordinate the inter-club meeting.",
+      "confidence": "medium"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the vendor to go with.",
+      "evidence": "Okay, let's finalize the vendor to go with then — that's settled."
+    },
+    {
+      "decision": "Finalized the event date.",
+      "evidence": "Okay, let's finalize the event date then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The final headcount remains unresolved.",
+      "evidence": "The final headcount is still not confirmed."
+    }
+  ]
+}

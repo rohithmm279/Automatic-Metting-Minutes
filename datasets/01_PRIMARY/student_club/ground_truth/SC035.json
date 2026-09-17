@@ -1,0 +1,52 @@
+{
+  "meeting_id": "SC035",
+  "category": "project_meetings",
+  "summary": "The club discussed club project progress, covering 4 action item(s), 1 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "Test the prototype",
+    "club project progress",
+    "Finish the data collection module"
+  ],
+  "action_items": [
+    {
+      "task": "Finish the data collection module",
+      "owner": "Arjun",
+      "deadline": "soon",
+      "evidence": "I'll finish the data collection module soon.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Test the prototype",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to test the prototype, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Prepare the presentation slides",
+      "owner": "Lakshmi",
+      "deadline": "Not specified",
+      "evidence": "Lakshmi will prepare the presentation slides.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Write the project report draft",
+      "owner": "Arjun",
+      "deadline": "Not specified",
+      "evidence": "Arjun will write the project report draft.",
+      "confidence": "medium"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the vendor to go with.",
+      "evidence": "Okay, let's finalize the vendor to go with then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The sponsorship confirmation remains unresolved.",
+      "evidence": "The sponsorship confirmation is still not confirmed."
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+[Meeting: Inter-College Competition Prep | Attendees: Aditya, Rahul, Vikram, Rohith, Pooja]
+Aditya: Right, let's get started, today we're talking about inter-college competition prep.
+Aditya: Alright, Someone needs to book transport for the away competition, it can't wait too long.
+Rahul: Yeah, true, we'll figure out who.
+Aditya: Cool, so what should we do about the venue?
+Rohith: Maybe we should go with venue we discussed earlier.
+Pooja: I think we should reconsider it, actually.
+Aditya: Okay, let's finalize the venue then — that's settled.
+Rahul: Umm, what should we do about the ticket price?
+Pooja: Maybe we should go with ticket price we discussed earlier.
+Vikram: I think we should reconsider it, actually.
+Rahul: Okay, let's finalize the ticket price then — that's settled.
+Aditya: So yeah, any update on the final headcount?
+Pooja: The final headcount is still not confirmed. We're waiting to hear back.
+Vikram: Okay so Rohith, would you be able to finalize the competition judges?
+Rohith: Rohith will finalize the competition judges.
+Aditya: Alright, Rohith, can you look into it — we need to arrange practice sessions before the contest?
+Rohith: I'll arrange practice sessions before the contest sometime next week.
+Pooja: Umm, Aditya, can you register the team for the competition before the weekend?
+Aditya: Sure, I'll register the team for the competition before the weekend.
+Vikram: Just circling back — about register the team for the competition, are we still on track?
+Rohith: Yeah, on it, will update the group soon.
+Rohith: Alright, switching gears for a second — anything else before we wrap up?
+Pooja: Nah, I think that covers it for today.
+Aditya: Cool, thanks everyone, meeting adjourned.

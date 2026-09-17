@@ -1,0 +1,49 @@
+{
+  "meeting_id": "SC005",
+  "category": "event_planning",
+  "summary": "The club discussed annual fest planning, covering 3 action item(s), 2 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "Arrange the sound system",
+    "Set up the registration desk",
+    "annual fest planning"
+  ],
+  "action_items": [
+    {
+      "task": "Arrange the sound system",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to arrange the sound system, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Set up the registration desk",
+      "owner": "Riya",
+      "deadline": "Not specified",
+      "evidence": "Riya will set up the registration desk.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Confirm the guest list",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to confirm the guest list, it can't wait too long.",
+      "confidence": "low"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the ticket price.",
+      "evidence": "Okay, let's finalize the ticket price then — that's settled."
+    },
+    {
+      "decision": "Finalized the team composition.",
+      "evidence": "Okay, let's finalize the team composition then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The final headcount remains unresolved.",
+      "evidence": "The final headcount is still not confirmed."
+    }
+  ]
+}

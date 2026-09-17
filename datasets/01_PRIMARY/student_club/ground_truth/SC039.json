@@ -1,0 +1,45 @@
+{
+  "meeting_id": "SC039",
+  "category": "project_meetings",
+  "summary": "The club discussed club project progress, covering 3 action item(s), 1 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "club project progress",
+    "Write the project report draft",
+    "Prepare the presentation slides"
+  ],
+  "action_items": [
+    {
+      "task": "Write the project report draft",
+      "owner": "Lakshmi",
+      "deadline": "whenever possible",
+      "evidence": "I'll write the project report draft whenever possible.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Prepare the presentation slides",
+      "owner": "Lakshmi",
+      "deadline": "whenever possible",
+      "evidence": "I'll prepare the presentation slides whenever possible.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Fix the pending bugs in the demo",
+      "owner": "Lakshmi",
+      "deadline": "Wednesday",
+      "evidence": "Lakshmi, can you fix the pending bugs in the demo by Wednesday?",
+      "confidence": "high"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the ticket price.",
+      "evidence": "Okay, let's finalize the ticket price then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The budget approval remains unresolved.",
+      "evidence": "The budget approval is still not confirmed."
+    }
+  ]
+}

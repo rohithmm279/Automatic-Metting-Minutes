@@ -1,0 +1,49 @@
+{
+  "meeting_id": "SC067",
+  "category": "mixed",
+  "summary": "The club discussed general club coordination, covering 3 action item(s), 2 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "Coordinate the inter-club meeting",
+    "Plan the orientation session",
+    "general club coordination"
+  ],
+  "action_items": [
+    {
+      "task": "Plan the orientation session",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to plan the orientation session, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Coordinate the inter-club meeting",
+      "owner": "Rohith",
+      "deadline": "Not specified",
+      "evidence": "Rohith will coordinate the inter-club meeting.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Organize the feedback survey",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to organize the feedback survey, it can't wait too long.",
+      "confidence": "low"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the vendor to go with.",
+      "evidence": "Okay, let's finalize the vendor to go with then — that's settled."
+    },
+    {
+      "decision": "Finalized the venue.",
+      "evidence": "Okay, let's finalize the venue then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The guest's travel plans remains unresolved.",
+      "evidence": "The guest's travel plans is still not confirmed."
+    }
+  ]
+}

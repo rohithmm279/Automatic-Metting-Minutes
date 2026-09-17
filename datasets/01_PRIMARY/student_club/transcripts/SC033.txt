@@ -1,0 +1,27 @@
+[Meeting: Club Project Progress | Attendees: Divya, Vikram, Rohith, Karthik, Sneha]
+Divya: Okay so let's get started, today we're talking about club project progress.
+Vikram: Right, Sneha, can you fix the pending bugs in the demo before next Monday?
+Sneha: Sure, I'll fix the pending bugs in the demo before next Monday.
+Rohith: Right, what should we do about the ticket price?
+Vikram: Maybe we should go with ticket price we discussed earlier.
+Karthik: I think we should reconsider it, actually.
+Rohith: Okay, let's finalize the ticket price then — that's settled.
+Sneha: Cool, so any update on the final headcount?
+Rohith: The final headcount is still not confirmed. We're waiting to hear back.
+Rohith: Alright, any update on the equipment availability?
+Karthik: The equipment availability is still not confirmed. We're waiting to hear back.
+Sneha: Alright, Rohith, would you be able to finish the data collection module?
+Rohith: Rohith will finish the data collection module.
+Rohith: Cool, so what should we do about the schedule change?
+Vikram: Maybe we should go with schedule change we discussed earlier.
+Sneha: I think we should reconsider it, actually.
+Rohith: Okay, let's finalize the schedule change then — that's settled.
+Karthik: Right, Rohith, would you be able to prepare the presentation slides?
+Rohith: Rohith will prepare the presentation slides.
+Divya: So yeah, Karthik, would you be able to write the project report draft?
+Karthik: Karthik will write the project report draft.
+Rohith: Just circling back — about finish the data collection module, are we still on track?
+Divya: Yeah, on it, will update the group soon.
+Rohith: Alright, switching gears for a second — anything else before we wrap up?
+Divya: Nah, I think that covers it for today.
+Divya: Cool, thanks everyone, meeting adjourned.

@@ -1,0 +1,60 @@
+{
+  "meeting_id": "SC050",
+  "category": "budget_finance",
+  "summary": "The club discussed club budget review, covering 4 action item(s), 2 decision(s), and 2 open issue(s).",
+  "key_topics": [
+    "Get sponsorship quotations",
+    "Collect the membership fees",
+    "club budget review"
+  ],
+  "action_items": [
+    {
+      "task": "Get sponsorship quotations",
+      "owner": "Priya",
+      "deadline": "next Monday",
+      "evidence": "Priya, can you get sponsorship quotations before next Monday?",
+      "confidence": "high"
+    },
+    {
+      "task": "Collect the membership fees",
+      "owner": "Meera",
+      "deadline": "before it gets too late",
+      "evidence": "I'll collect the membership fees before it gets too late.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Submit the budget proposal to the department",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to submit the budget proposal to the department, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Prepare the finance report for the review",
+      "owner": "Meera",
+      "deadline": "next Monday",
+      "evidence": "Meera, can you prepare the finance report for the review before next Monday?",
+      "confidence": "high"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the schedule change.",
+      "evidence": "Okay, let's finalize the schedule change then — that's settled."
+    },
+    {
+      "decision": "Finalized the team composition.",
+      "evidence": "Okay, let's finalize the team composition then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The equipment availability remains unresolved.",
+      "evidence": "The equipment availability is still not confirmed."
+    },
+    {
+      "issue": "The final headcount remains unresolved.",
+      "evidence": "The final headcount is still not confirmed."
+    }
+  ]
+}

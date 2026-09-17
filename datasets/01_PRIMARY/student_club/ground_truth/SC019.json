@@ -1,0 +1,45 @@
+{
+  "meeting_id": "SC019",
+  "category": "technical_club",
+  "summary": "The club discussed upcoming hackathon, covering 3 action item(s), 1 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "upcoming hackathon",
+    "Fix the club website bug",
+    "Test the hackathon judging portal"
+  ],
+  "action_items": [
+    {
+      "task": "Test the hackathon judging portal",
+      "owner": "Sanjay",
+      "deadline": "soon",
+      "evidence": "I'll test the hackathon judging portal soon.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Fix the club website bug",
+      "owner": "Divya",
+      "deadline": "the 25th",
+      "evidence": "Divya, can you fix the club website bug by the 25th?",
+      "confidence": "high"
+    },
+    {
+      "task": "Draft the api documentation",
+      "owner": "Divya",
+      "deadline": "Not specified",
+      "evidence": "Divya will draft the API documentation.",
+      "confidence": "medium"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the event date.",
+      "evidence": "Okay, let's finalize the event date then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The auditorium booking remains unresolved.",
+      "evidence": "The auditorium booking is still not confirmed."
+    }
+  ]
+}

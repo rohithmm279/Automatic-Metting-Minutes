@@ -1,0 +1,18 @@
+{
+  "dataset_name": "MISeD",
+  "number_of_meetings": 0,
+  "number_of_examples": 432,
+  "number_of_transcripts": 432,
+  "average_transcript_length_words": 8308.9,
+  "minimum_transcript_length_words": 920,
+  "maximum_transcript_length_words": 21169,
+  "number_of_summaries": 0,
+  "number_of_questions": 4161,
+  "number_of_action_annotations": 0,
+  "number_of_decision_annotations": 0,
+  "number_of_issue_annotations": 0,
+  "train_count": 303,
+  "validation_count": 63,
+  "test_count": 66,
+  "storage_size": "53.0MB"
+}

@@ -1,0 +1,22 @@
+[Meeting: Upcoming Hackathon | Attendees: Manoj, Rohith, Rahul, Lakshmi]
+Manoj: Right, let's get started, today we're talking about upcoming hackathon.
+Rohith: Right, Lakshmi, can you arrange laptops for the coding session by Thursday evening?
+Lakshmi: Sure, I'll arrange laptops for the coding session by Thursday evening.
+Lakshmi: So yeah, any update on the guest's travel plans?
+Rahul: The guest's travel plans is still not confirmed. We're waiting to hear back.
+Rahul: Umm, Rohith, can you look into it — we need to set up the GitHub repository?
+Rohith: I'll set up the GitHub repository whenever possible.
+Lakshmi: Cool, so Rohith, can you look into it — we need to fix the club website bug?
+Rohith: I'll fix the club website bug in a few days.
+Manoj: Umm, what should we do about the ticket price?
+Rohith: Maybe we should go with ticket price we discussed earlier.
+Rahul: I think we should reconsider it, actually.
+Manoj: Okay, let's finalize the ticket price then — that's settled.
+Manoj: Right, Rahul, can you look into it — we need to prepare the workshop slides?
+Rahul: I'll prepare the workshop slides in a few days.
+Rahul: Sorry, scratch that, it should be before next Monday.
+Lakshmi: Just circling back — about prepare the workshop slides, are we still on track?
+Manoj: Yeah, on it, will update the group soon.
+Rohith: Alright, switching gears for a second — anything else before we wrap up?
+Rahul: Nah, I think that covers it for today.
+Manoj: Cool, thanks everyone, meeting adjourned.

@@ -1,0 +1,5 @@
+MISeD (Meeting Information Seeking Dialogs)
+License: no standalone LICENSE file was present in the official
+google-research-datasets/MISeD repository at clone time. Verify
+current terms at https://github.com/google-research-datasets/MISeD
+before any redistribution.

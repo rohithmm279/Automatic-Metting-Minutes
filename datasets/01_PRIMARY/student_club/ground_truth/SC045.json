@@ -1,0 +1,45 @@
+{
+  "meeting_id": "SC045",
+  "category": "recruitment",
+  "summary": "The club discussed new member recruitment drive, covering 3 action item(s), 1 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "Shortlist candidates for the technical round",
+    "new member recruitment drive",
+    "Send the recruitment announcement"
+  ],
+  "action_items": [
+    {
+      "task": "Shortlist candidates for the technical round",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to shortlist candidates for the technical round, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Send the recruitment announcement",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to send the recruitment announcement, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Screen the club application forms",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to screen the club application forms, it can't wait too long.",
+      "confidence": "low"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the final theme.",
+      "evidence": "Okay, let's finalize the final theme then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The guest's travel plans remains unresolved.",
+      "evidence": "The guest's travel plans is still not confirmed."
+    }
+  ]
+}

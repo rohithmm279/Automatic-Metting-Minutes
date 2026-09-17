@@ -1,0 +1,22 @@
+[Meeting: Upcoming Hackathon | Attendees: Karthik, Rohith, Sanjay, Kavya]
+Karthik: Okay so let's get started, today we're talking about upcoming hackathon.
+Sanjay: Umm, Karthik, would you be able to prepare the workshop slides?
+Karthik: Karthik will prepare the workshop slides.
+Sanjay: Okay so what should we do about the schedule change?
+Kavya: Maybe we should go with schedule change we discussed earlier.
+Rohith: I think we should reconsider it, actually.
+Sanjay: Okay, let's finalize the schedule change then — that's settled.
+Rohith: Cool, so Karthik, can you arrange laptops for the coding session by Thursday evening?
+Karthik: Sure, I'll arrange laptops for the coding session by Thursday evening.
+Karthik: Okay so Rohith, would you be able to set up the Discord server for the club?
+Karthik: (cutting in) Hold on, one sec—
+Rohith: Rohith will set up the Discord server for the club.
+Sanjay: So yeah, any update on the printing order?
+Kavya: The printing order is still not confirmed. We're waiting to hear back.
+Rohith: Okay so Kavya, can you fix the club website bug by end of this week?
+Kavya: Sure, I'll fix the club website bug by end of this week.
+Karthik: Just circling back — about arrange laptops for the coding session, are we still on track?
+Kavya: Yeah, on it, will update the group soon.
+Sanjay: Alright, switching gears for a second — anything else before we wrap up?
+Kavya: Nah, I think that covers it for today.
+Karthik: Cool, thanks everyone, meeting adjourned.

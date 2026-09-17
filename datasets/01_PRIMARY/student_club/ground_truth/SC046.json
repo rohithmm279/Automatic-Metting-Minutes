@@ -1,0 +1,56 @@
+{
+  "meeting_id": "SC046",
+  "category": "budget_finance",
+  "summary": "The club discussed club budget review, covering 4 action item(s), 1 decision(s), and 2 open issue(s).",
+  "key_topics": [
+    "Collect the membership fees",
+    "Reconcile last month's expenses",
+    "club budget review"
+  ],
+  "action_items": [
+    {
+      "task": "Reconcile last month's expenses",
+      "owner": "Suresh",
+      "deadline": "soon",
+      "evidence": "I'll reconcile last month's expenses soon.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Collect the membership fees",
+      "owner": "Arjun",
+      "deadline": "end of this week",
+      "evidence": "Arjun, can you collect the membership fees by end of this week?",
+      "confidence": "high"
+    },
+    {
+      "task": "Prepare the finance report for the review",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to prepare the finance report for the review, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Submit the budget proposal to the department",
+      "owner": "Arjun",
+      "deadline": "before it gets too late",
+      "evidence": "I'll submit the budget proposal to the department before it gets too late.",
+      "confidence": "medium"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the final theme.",
+      "evidence": "Okay, let's finalize the final theme then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The budget approval remains unresolved.",
+      "evidence": "The budget approval is still not confirmed."
+    },
+    {
+      "issue": "The auditorium booking remains unresolved.",
+      "evidence": "The auditorium booking is still not confirmed."
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "meeting_id": "SC004",
+  "category": "event_planning",
+  "summary": "The club discussed annual fest planning, covering 4 action item(s), 2 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "Confirm the guest list",
+    "Set up the registration desk",
+    "annual fest planning"
+  ],
+  "action_items": [
+    {
+      "task": "Set up the registration desk",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to set up the registration desk, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Confirm the guest list",
+      "owner": "Nisha",
+      "deadline": "Not specified",
+      "evidence": "Nisha will confirm the guest list.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Print the banners",
+      "owner": "Rohith",
+      "deadline": "before it gets too late",
+      "evidence": "I'll print the banners before it gets too late.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Coordinate with campus security",
+      "owner": "Nisha",
+      "deadline": "sometime next week",
+      "evidence": "I'll coordinate with campus security sometime next week.",
+      "confidence": "medium"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the schedule change.",
+      "evidence": "Okay, let's finalize the schedule change then — that's settled."
+    },
+    {
+      "decision": "Finalized the final theme.",
+      "evidence": "Okay, let's finalize the final theme then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The equipment availability remains unresolved.",
+      "evidence": "The equipment availability is still not confirmed."
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "start_time_utc": "2026-09-08T08:32:19.320526+00:00",
+  "end_time_utc": "2026-09-08T08:32:19.410906+00:00",
+  "validation": "PASSED",
+  "records_processed": 70,
+  "records_skipped": 0,
+  "errors": [],
+  "warnings": [],
+  "source_integrity": "PASSED"
+}

@@ -1,0 +1,60 @@
+{
+  "meeting_id": "SC009",
+  "category": "event_planning",
+  "summary": "The club discussed annual fest planning, covering 4 action item(s), 2 decision(s), and 2 open issue(s).",
+  "key_topics": [
+    "Organize the seating layout",
+    "annual fest planning",
+    "Book the auditorium"
+  ],
+  "action_items": [
+    {
+      "task": "Organize the seating layout",
+      "owner": "Rahul",
+      "deadline": "whenever possible",
+      "evidence": "I'll organize the seating layout whenever possible.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Book the auditorium",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to book the auditorium, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Finalize the event schedule",
+      "owner": "Manoj",
+      "deadline": "Wednesday",
+      "evidence": "Manoj, can you finalize the event schedule by Wednesday?",
+      "confidence": "high"
+    },
+    {
+      "task": "Coordinate with campus security",
+      "owner": "Nisha",
+      "deadline": "Not specified",
+      "evidence": "Nisha will coordinate with campus security.",
+      "confidence": "medium"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the team composition.",
+      "evidence": "Okay, let's finalize the team composition then — that's settled."
+    },
+    {
+      "decision": "Finalized the ticket price.",
+      "evidence": "Okay, let's finalize the ticket price then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The equipment availability remains unresolved.",
+      "evidence": "The equipment availability is still not confirmed."
+    },
+    {
+      "issue": "The final headcount remains unresolved.",
+      "evidence": "The final headcount is still not confirmed."
+    }
+  ]
+}

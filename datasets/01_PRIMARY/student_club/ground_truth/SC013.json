@@ -1,0 +1,49 @@
+{
+  "meeting_id": "SC013",
+  "category": "technical_club",
+  "summary": "The club discussed upcoming hackathon, covering 3 action item(s), 2 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "upcoming hackathon",
+    "Fix the club website bug",
+    "Arrange laptops for the coding session"
+  ],
+  "action_items": [
+    {
+      "task": "Arrange laptops for the coding session",
+      "owner": "Sanjay",
+      "deadline": "whenever possible",
+      "evidence": "I'll arrange laptops for the coding session whenever possible.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Fix the club website bug",
+      "owner": "Rohith",
+      "deadline": "end of this week",
+      "evidence": "Rohith, can you fix the club website bug by end of this week?",
+      "confidence": "high"
+    },
+    {
+      "task": "Prepare the workshop slides",
+      "owner": "Rohith",
+      "deadline": "Not specified",
+      "evidence": "Rohith will prepare the workshop slides.",
+      "confidence": "medium"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the venue.",
+      "evidence": "Okay, let's finalize the venue then — that's settled."
+    },
+    {
+      "decision": "Finalized the ticket price.",
+      "evidence": "Okay, let's finalize the ticket price then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The final headcount remains unresolved.",
+      "evidence": "The final headcount is still not confirmed."
+    }
+  ]
+}

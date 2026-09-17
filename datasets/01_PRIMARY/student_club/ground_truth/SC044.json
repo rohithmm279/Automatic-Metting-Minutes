@@ -1,0 +1,49 @@
+{
+  "meeting_id": "SC044",
+  "category": "recruitment",
+  "summary": "The club discussed new member recruitment drive, covering 3 action item(s), 1 decision(s), and 2 open issue(s).",
+  "key_topics": [
+    "new member recruitment drive",
+    "Send the recruitment announcement",
+    "Prepare interview questions"
+  ],
+  "action_items": [
+    {
+      "task": "Send the recruitment announcement",
+      "owner": "Rahul",
+      "deadline": "in a few days",
+      "evidence": "I'll send the recruitment announcement in a few days.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Prepare interview questions",
+      "owner": "Pooja",
+      "deadline": "Not specified",
+      "evidence": "Pooja will prepare interview questions.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Screen the club application forms",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to screen the club application forms, it can't wait too long.",
+      "confidence": "low"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the event date.",
+      "evidence": "Okay, let's finalize the event date then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The auditorium booking remains unresolved.",
+      "evidence": "The auditorium booking is still not confirmed."
+    },
+    {
+      "issue": "The auditorium booking remains unresolved.",
+      "evidence": "The auditorium booking is still not confirmed."
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "dataset_name": "Student Club Meeting Evaluation Dataset",
+  "dataset_root": "datasets/01_PRIMARY/student_club",
+  "archive_status": "inspection_only",
+  "transcript_format": {
+    "file_pattern": "SC###.txt",
+    "required": true,
+    "type": "string",
+    "notes": "Plain-text meeting transcript with a header line and speaker-labeled turns."
+  },
+  "ground_truth_format": {
+    "file_pattern": "SC###.json",
+    "required": true,
+    "type": "string",
+    "notes": "JSON annotation object for one meeting."
+  },
+  "join_key": {
+    "field": "meeting_id",
+    "relationship": "one_to_one",
+    "rule": "Base filename before extension, e.g. SC001.txt matches SC001.json",
+    "required": true
+  },
+  "schema": {
+    "transcript_file": {
+      "content": {
+        "type": "string",
+        "required": true,
+        "notes": "Conversation text with explicit speaker labels such as 'Priya: ...'"
+      }
+    },
+    "ground_truth_record": {
+      "meeting_id": {
+        "type": "string",
+        "required": true,
+        "example": "SC001"
+      },
+      "category": {
+        "type": "string",
+        "required": true,
+        "example": "event_planning"
+      },
+      "summary": {
+        "type": "string",
+        "required": true,
+        "description": "Meeting summary text"
+      },
+      "key_topics": {
+        "type": "array<string>",
+        "required": true,
+        "description": "Main topic list"
+      },
+      "action_items": {
+        "type": "array<object>",
+        "required": true,
+        "description": "Extracted action items",
+        "item_schema": {
+          "task": {
+            "type": "string",
+            "required": true
+          },
+          "owner": {
+            "type": "string",
+            "required": true,
+            "notes": "May be 'Not specified'"
+          },
+          "deadline": {
+            "type": "string",
+            "required": true,
+            "notes": "May be 'Not specified'"
+          },
+          "evidence": {
+            "type": "string",
+            "required": true,
+            "notes": "Verbatim transcript evidence"
+          },
+          "confidence": {
+            "type": "string",
+            "required": true,
+            "notes": "Example values: low, medium"
+          }
+        }
+      },
+      "decisions": {
+        "type": "array<object>",
+        "required": true,
+        "description": "Decisions extracted from the meeting",
+        "item_schema": {
+          "decision": {
+            "type": "string",
+            "required": true
+          },
+          "evidence": {
+            "type": "string",
+            "required": true,
+            "notes": "Verbatim transcript evidence"
+          }
+        }
+      },
+      "unresolved_issues": {
+        "type": "array<object>",
+        "required": true,
+        "description": "Open issues or unresolved topics",
+        "item_schema": {
+          "issue": {
+            "type": "string",
+            "required": true
+          },
+          "evidence": {
+            "type": "string",
+            "required": true,
+            "notes": "Verbatim transcript evidence"
+          }
+        }
+      }
+    }
+  },
+  "metadata_schema": {
+    "file": "datasets/01_PRIMARY/student_club/metadata/metadata.csv",
+    "columns": {
+      "meeting_id": {
+        "type": "string",
+        "required": true
+      },
+      "category": {
+        "type": "string",
+        "required": true
+      },
+      "num_speakers": {
+        "type": "integer",
+        "required": true
+      },
+      "num_action_items": {
+        "type": "integer",
+        "required": true
+      },
+      "num_decisions": {
+        "type": "integer",
+        "required": true
+      },
+      "num_issues": {
+        "type": "integer",
+        "required": true
+      },
+      "transcript_word_count": {
+        "type": "integer",
+        "required": true
+      },
+      "split": {
+        "type": "string",
+        "required": true,
+        "allowed_values": ["validation", "train_dev", "test"]
+      }
+    }
+  },
+  "observed_quality": {
+    "transcript_count": 70,
+    "ground_truth_count": 70,
+    "matched_pairs": 70,
+    "duplicate_ids": 0,
+    "invalid_json": 0,
+    "empty_transcripts": 0,
+    "missing_pairs": 0,
+    "split_counts": {
+      "validation": 10,
+      "train_dev": 49,
+      "test": 11
+    }
+  }
+}

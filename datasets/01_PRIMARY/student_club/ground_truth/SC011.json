@@ -1,0 +1,53 @@
+{
+  "meeting_id": "SC011",
+  "category": "technical_club",
+  "summary": "The club discussed upcoming hackathon, covering 3 action item(s), 2 decision(s), and 2 open issue(s).",
+  "key_topics": [
+    "upcoming hackathon",
+    "Arrange laptops for the coding session",
+    "Prepare the workshop slides"
+  ],
+  "action_items": [
+    {
+      "task": "Prepare the workshop slides",
+      "owner": "Kavya",
+      "deadline": "soon",
+      "evidence": "I'll prepare the workshop slides soon.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Arrange laptops for the coding session",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to arrange laptops for the coding session, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Fix the club website bug",
+      "owner": "Rahul",
+      "deadline": "Friday",
+      "evidence": "Rahul, can you fix the club website bug by Friday?",
+      "confidence": "high"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the schedule change.",
+      "evidence": "Okay, let's finalize the schedule change then — that's settled."
+    },
+    {
+      "decision": "Finalized the final theme.",
+      "evidence": "Okay, let's finalize the final theme then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The equipment availability remains unresolved.",
+      "evidence": "The equipment availability is still not confirmed."
+    },
+    {
+      "issue": "The budget approval remains unresolved.",
+      "evidence": "The budget approval is still not confirmed."
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+[Meeting: Upcoming Hackathon | Attendees: Divya, Rohith, Riya, Sanjay]
+Divya: So yeah, let's get started, today we're talking about upcoming hackathon.
+Rohith: Cool, so Sanjay, can you look into it — we need to test the hackathon judging portal?
+Sanjay: I'll test the hackathon judging portal soon.
+Riya: So yeah, Divya, can you fix the club website bug by the 25th?
+Divya: Sure, I'll fix the club website bug by the 25th.
+Riya: Okay so what should we do about the event date?
+Sanjay: Maybe we should go with event date we discussed earlier.
+Rohith: I think we should reconsider it, actually.
+Riya: Okay, let's finalize the event date then — that's settled.
+Rohith: So yeah, Divya, would you be able to draft the API documentation?
+Rohith: (jumping in) Actually, can I add something—
+Divya: Divya will draft the API documentation.
+Divya: Alright, any update on the auditorium booking?
+Rohith: The auditorium booking is still not confirmed. We're waiting to hear back.
+Rohith: Just circling back — about test the hackathon judging portal, are we still on track?
+Divya: Yeah, on it, will update the group soon.
+Rohith: Alright, switching gears for a second — anything else before we wrap up?
+Rohith: Nah, I think that covers it for today.
+Divya: Cool, thanks everyone, meeting adjourned.

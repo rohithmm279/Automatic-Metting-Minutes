@@ -1,0 +1,56 @@
+{
+  "meeting_id": "SC026",
+  "category": "cultural_club",
+  "summary": "The club discussed cultural night rehearsals, covering 4 action item(s), 2 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "Design the cultural fest poster",
+    "cultural night rehearsals",
+    "Arrange costumes for the play"
+  ],
+  "action_items": [
+    {
+      "task": "Arrange costumes for the play",
+      "owner": "Sneha",
+      "deadline": "soon",
+      "evidence": "I'll arrange costumes for the play soon.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Design the cultural fest poster",
+      "owner": "Meera",
+      "deadline": "Not specified",
+      "evidence": "Meera will design the cultural fest poster.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Finalize the dance performance lineup",
+      "owner": "Divya",
+      "deadline": "Not specified",
+      "evidence": "Divya will finalize the dance performance lineup.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Book the rehearsal hall",
+      "owner": "Arjun",
+      "deadline": "soon",
+      "evidence": "I'll book the rehearsal hall soon.",
+      "confidence": "medium"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the team composition.",
+      "evidence": "Okay, let's finalize the team composition then — that's settled."
+    },
+    {
+      "decision": "Finalized the venue.",
+      "evidence": "Okay, let's finalize the venue then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The budget approval remains unresolved.",
+      "evidence": "The budget approval is still not confirmed."
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "meeting_id": "SC043",
+  "category": "recruitment",
+  "summary": "The club discussed new member recruitment drive, covering 4 action item(s), 2 decision(s), and 2 open issue(s).",
+  "key_topics": [
+    "Shortlist candidates for the technical round",
+    "new member recruitment drive",
+    "Send the recruitment announcement"
+  ],
+  "action_items": [
+    {
+      "task": "Shortlist candidates for the technical round",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to shortlist candidates for the technical round, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Send the recruitment announcement",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to send the recruitment announcement, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Prepare interview questions",
+      "owner": "Divya",
+      "deadline": "the weekend",
+      "evidence": "Divya, can you prepare interview questions before the weekend?",
+      "confidence": "high"
+    },
+    {
+      "task": "Schedule interview slots",
+      "owner": "Priya",
+      "deadline": "before it gets too late",
+      "evidence": "I'll schedule interview slots before it gets too late.",
+      "confidence": "medium"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the venue.",
+      "evidence": "Okay, let's finalize the venue then — that's settled."
+    },
+    {
+      "decision": "Finalized the ticket price.",
+      "evidence": "Okay, let's finalize the ticket price then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The sponsorship confirmation remains unresolved.",
+      "evidence": "The sponsorship confirmation is still not confirmed."
+    },
+    {
+      "issue": "The sponsorship confirmation remains unresolved.",
+      "evidence": "The sponsorship confirmation is still not confirmed."
+    }
+  ]
+}

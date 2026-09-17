@@ -1,0 +1,52 @@
+{
+  "meeting_id": "SC053",
+  "category": "workshops_seminars",
+  "summary": "The club discussed guest workshop planning, covering 4 action item(s), 1 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "Prepare the workshop handouts",
+    "guest workshop planning",
+    "Invite the guest speaker"
+  ],
+  "action_items": [
+    {
+      "task": "Prepare the workshop handouts",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to prepare the workshop handouts, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Invite the guest speaker",
+      "owner": "Ananya",
+      "deadline": "the weekend",
+      "evidence": "Ananya, can you invite the guest speaker before the weekend?",
+      "confidence": "high"
+    },
+    {
+      "task": "Send certificates to workshop attendees",
+      "owner": "Meera",
+      "deadline": "Wednesday",
+      "evidence": "Meera, can you send certificates to workshop attendees by Wednesday?",
+      "confidence": "high"
+    },
+    {
+      "task": "Book the seminar hall",
+      "owner": "Sanjay",
+      "deadline": "the 25th",
+      "evidence": "Sanjay, can you book the seminar hall by the 25th?",
+      "confidence": "high"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the final theme.",
+      "evidence": "Okay, let's finalize the final theme then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The budget approval remains unresolved.",
+      "evidence": "The budget approval is still not confirmed."
+    }
+  ]
+}

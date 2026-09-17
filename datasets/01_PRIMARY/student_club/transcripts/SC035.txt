@@ -1,0 +1,22 @@
+[Meeting: Club Project Progress | Attendees: Karthik, Lakshmi, Arjun, Kavya]
+Karthik: Cool, so let's get started, today we're talking about club project progress.
+Kavya: Umm, Arjun, can you look into it — we need to finish the data collection module?
+Arjun: I'll finish the data collection module soon.
+Arjun: Wait, let me correct that — it's actually by Friday.
+Karthik: So yeah, Someone needs to test the prototype, it can't wait too long.
+Lakshmi: Yeah, true, we'll figure out who.
+Karthik: Cool, so Lakshmi, would you be able to prepare the presentation slides?
+Lakshmi: Lakshmi will prepare the presentation slides.
+Karthik: Alright, what should we do about the vendor to go with?
+Lakshmi: Maybe we should go with vendor to go with we discussed earlier.
+Arjun: I think we should reconsider it, actually.
+Karthik: Okay, let's finalize the vendor to go with then — that's settled.
+Karthik: Umm, Arjun, would you be able to write the project report draft?
+Arjun: Arjun will write the project report draft.
+Kavya: So yeah, any update on the sponsorship confirmation?
+Karthik: The sponsorship confirmation is still not confirmed. We're waiting to hear back.
+Kavya: Just circling back — about prepare the presentation slides, are we still on track?
+Kavya: Yeah, on it, will update the group soon.
+Lakshmi: Alright, switching gears for a second — anything else before we wrap up?
+Lakshmi: Nah, I think that covers it for today.
+Karthik: Cool, thanks everyone, meeting adjourned.

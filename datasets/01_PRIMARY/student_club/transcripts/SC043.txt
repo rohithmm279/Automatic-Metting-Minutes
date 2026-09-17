@@ -1,0 +1,28 @@
+[Meeting: New Member Recruitment Drive | Attendees: Karthik, Divya, Sanjay, Priya, Pooja]
+Karthik: Umm, let's get started, today we're talking about new member recruitment drive.
+Priya: Alright, Someone needs to shortlist candidates for the technical round, it can't wait too long.
+Priya: Yeah, true, we'll figure out who.
+Sanjay: Umm, Someone needs to send the recruitment announcement, it can't wait too long.
+Priya: Yeah, true, we'll figure out who.
+Pooja: Cool, so any update on the sponsorship confirmation?
+Divya: The sponsorship confirmation is still not confirmed. We're waiting to hear back.
+Priya: So yeah, Divya, can you prepare interview questions before the weekend?
+Karthik: (cutting in) Hold on, one sec—
+Divya: Sure, I'll prepare interview questions before the weekend.
+Sanjay: Cool, so what should we do about the venue?
+Divya: Maybe we should go with venue we discussed earlier.
+Priya: I think we should reconsider it, actually.
+Sanjay: Okay, let's finalize the venue then — that's settled.
+Priya: Okay so any update on the sponsorship confirmation?
+Pooja: The sponsorship confirmation is still not confirmed. We're waiting to hear back.
+Pooja: Right, Priya, can you look into it — we need to schedule interview slots?
+Priya: I'll schedule interview slots before it gets too late.
+Pooja: Cool, so what should we do about the ticket price?
+Karthik: Maybe we should go with ticket price we discussed earlier.
+Divya: I think we should reconsider it, actually.
+Pooja: Okay, let's finalize the ticket price then — that's settled.
+Karthik: Just circling back — about shortlist candidates for the technical round, are we still on track?
+Divya: Yeah, on it, will update the group soon.
+Sanjay: Alright, switching gears for a second — anything else before we wrap up?
+Divya: Nah, I think that covers it for today.
+Karthik: Cool, thanks everyone, meeting adjourned.

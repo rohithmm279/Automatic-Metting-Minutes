@@ -1,0 +1,49 @@
+{
+  "meeting_id": "SC016",
+  "category": "technical_club",
+  "summary": "The club discussed upcoming hackathon, covering 3 action item(s), 2 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "upcoming hackathon",
+    "Arrange laptops for the coding session",
+    "Set up the discord server for the club"
+  ],
+  "action_items": [
+    {
+      "task": "Set up the discord server for the club",
+      "owner": "Aditya",
+      "deadline": "Not specified",
+      "evidence": "Aditya will set up the Discord server for the club.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Arrange laptops for the coding session",
+      "owner": "Aditya",
+      "deadline": "in a few days",
+      "evidence": "I'll arrange laptops for the coding session in a few days.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Set up the github repository",
+      "owner": "Lakshmi",
+      "deadline": "next Monday",
+      "evidence": "Lakshmi, can you set up the GitHub repository before next Monday?",
+      "confidence": "high"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the event date.",
+      "evidence": "Okay, let's finalize the event date then — that's settled."
+    },
+    {
+      "decision": "Finalized the vendor to go with.",
+      "evidence": "Okay, let's finalize the vendor to go with then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The equipment availability remains unresolved.",
+      "evidence": "The equipment availability is still not confirmed."
+    }
+  ]
+}

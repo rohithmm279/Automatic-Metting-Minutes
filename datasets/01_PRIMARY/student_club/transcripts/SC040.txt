@@ -1,0 +1,21 @@
+[Meeting: Club Project Progress | Attendees: Divya, Aditya, Suresh, Arjun]
+Divya: Right, let's get started, today we're talking about club project progress.
+Divya: Alright, Someone needs to fix the pending bugs in the demo, it can't wait too long.
+Arjun: (cutting in) Hold on, one sec—
+Divya: Yeah, true, we'll figure out who.
+Suresh: Sorry, scratch that, it should be by Thursday evening.
+Arjun: Okay so what should we do about the team composition?
+Suresh: Maybe we should go with team composition we discussed earlier.
+Aditya: I think we should reconsider it, actually.
+Arjun: Okay, let's finalize the team composition then — that's settled.
+Divya: Right, Arjun, can you look into it — we need to complete the literature review?
+Arjun: I'll complete the literature review whenever possible.
+Arjun: Okay so any update on the guest's travel plans?
+Divya: The guest's travel plans is still not confirmed. We're waiting to hear back.
+Aditya: Right, Someone needs to finish the data collection module, it can't wait too long.
+Suresh: Yeah, true, we'll figure out who.
+Divya: Just circling back — about complete the literature review, are we still on track?
+Suresh: Yeah, on it, will update the group soon.
+Arjun: Alright, switching gears for a second — anything else before we wrap up?
+Arjun: Nah, I think that covers it for today.
+Divya: Cool, thanks everyone, meeting adjourned.

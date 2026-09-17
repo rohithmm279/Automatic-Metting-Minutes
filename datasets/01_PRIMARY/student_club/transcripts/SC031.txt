@@ -1,0 +1,27 @@
+[Meeting: Club Project Progress | Attendees: Sneha, Lakshmi, Divya, Riya, Nisha]
+Sneha: Cool, so let's get started, today we're talking about club project progress.
+Sneha: Alright, what should we do about the ticket price?
+Divya: Maybe we should go with ticket price we discussed earlier.
+Lakshmi: I think we should reconsider it, actually.
+Sneha: Okay, let's finalize the ticket price then — that's settled.
+Sneha: So yeah, Divya, can you finish the data collection module before the weekend?
+Divya: Sure, I'll finish the data collection module before the weekend.
+Nisha: Alright, Divya, would you be able to write the project report draft?
+Divya: Divya will write the project report draft.
+Divya: Okay so Riya, can you look into it — we need to fix the pending bugs in the demo?
+Riya: I'll fix the pending bugs in the demo soon.
+Lakshmi: Okay so what should we do about the venue?
+Divya: Maybe we should go with venue we discussed earlier.
+Sneha: I think we should reconsider it, actually.
+Lakshmi: Okay, let's finalize the venue then — that's settled.
+Nisha: Umm, Riya, can you look into it — we need to test the prototype?
+Sneha: (cutting in) Hold on, one sec—
+Riya: I'll test the prototype before it gets too late.
+Riya: Sorry, scratch that, it should be before next Monday.
+Riya: Okay so any update on the final headcount?
+Divya: The final headcount is still not confirmed. We're waiting to hear back.
+Sneha: Just circling back — about test the prototype, are we still on track?
+Nisha: Yeah, on it, will update the group soon.
+Nisha: Alright, switching gears for a second — anything else before we wrap up?
+Lakshmi: Nah, I think that covers it for today.
+Sneha: Cool, thanks everyone, meeting adjourned.

@@ -1,0 +1,53 @@
+{
+  "meeting_id": "SC055",
+  "category": "workshops_seminars",
+  "summary": "The club discussed guest workshop planning, covering 3 action item(s), 2 decision(s), and 2 open issue(s).",
+  "key_topics": [
+    "Prepare the workshop handouts",
+    "Arrange the projector and mic",
+    "guest workshop planning"
+  ],
+  "action_items": [
+    {
+      "task": "Arrange the projector and mic",
+      "owner": "Riya",
+      "deadline": "next Monday",
+      "evidence": "Riya, can you arrange the projector and mic before next Monday?",
+      "confidence": "high"
+    },
+    {
+      "task": "Prepare the workshop handouts",
+      "owner": "Manoj",
+      "deadline": "Wednesday",
+      "evidence": "Manoj, can you prepare the workshop handouts by Wednesday?",
+      "confidence": "high"
+    },
+    {
+      "task": "Invite the guest speaker",
+      "owner": "Divya",
+      "deadline": "Not specified",
+      "evidence": "Divya will invite the guest speaker.",
+      "confidence": "medium"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the venue.",
+      "evidence": "Okay, let's finalize the venue then — that's settled."
+    },
+    {
+      "decision": "Finalized the venue.",
+      "evidence": "Okay, let's finalize the venue then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The guest's travel plans remains unresolved.",
+      "evidence": "The guest's travel plans is still not confirmed."
+    },
+    {
+      "issue": "The equipment availability remains unresolved.",
+      "evidence": "The equipment availability is still not confirmed."
+    }
+  ]
+}

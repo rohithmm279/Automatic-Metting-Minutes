@@ -1,0 +1,49 @@
+{
+  "meeting_id": "SC057",
+  "category": "competitions",
+  "summary": "The club discussed inter-college competition prep, covering 3 action item(s), 2 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "Book transport for the away competition",
+    "Arrange practice sessions before the contest",
+    "inter-college competition prep"
+  ],
+  "action_items": [
+    {
+      "task": "Arrange practice sessions before the contest",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to arrange practice sessions before the contest, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Book transport for the away competition",
+      "owner": "Arjun",
+      "deadline": "the 25th",
+      "evidence": "Arjun, can you book transport for the away competition by the 25th?",
+      "confidence": "high"
+    },
+    {
+      "task": "Prepare the competition rulebook",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to prepare the competition rulebook, it can't wait too long.",
+      "confidence": "low"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the event date.",
+      "evidence": "Okay, let's finalize the event date then — that's settled."
+    },
+    {
+      "decision": "Finalized the vendor to go with.",
+      "evidence": "Okay, let's finalize the vendor to go with then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The final headcount remains unresolved.",
+      "evidence": "The final headcount is still not confirmed."
+    }
+  ]
+}

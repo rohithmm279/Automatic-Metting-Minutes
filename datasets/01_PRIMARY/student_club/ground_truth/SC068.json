@@ -1,0 +1,45 @@
+{
+  "meeting_id": "SC068",
+  "category": "mixed",
+  "summary": "The club discussed general club coordination, covering 3 action item(s), 1 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "Draft the monthly newsletter",
+    "Plan the orientation session",
+    "general club coordination"
+  ],
+  "action_items": [
+    {
+      "task": "Plan the orientation session",
+      "owner": "Nisha",
+      "deadline": "Wednesday",
+      "evidence": "Nisha, can you plan the orientation session by Wednesday?",
+      "confidence": "high"
+    },
+    {
+      "task": "Draft the monthly newsletter",
+      "owner": "Pooja",
+      "deadline": "the weekend",
+      "evidence": "Pooja, can you draft the monthly newsletter before the weekend?",
+      "confidence": "high"
+    },
+    {
+      "task": "Organize the feedback survey",
+      "owner": "Karthik",
+      "deadline": "end of this week",
+      "evidence": "Karthik, can you organize the feedback survey by end of this week?",
+      "confidence": "high"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the vendor to go with.",
+      "evidence": "Okay, let's finalize the vendor to go with then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The guest's travel plans remains unresolved.",
+      "evidence": "The guest's travel plans is still not confirmed."
+    }
+  ]
+}

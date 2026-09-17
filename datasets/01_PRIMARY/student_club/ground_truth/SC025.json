@@ -1,0 +1,53 @@
+{
+  "meeting_id": "SC025",
+  "category": "cultural_club",
+  "summary": "The club discussed cultural night rehearsals, covering 3 action item(s), 2 decision(s), and 2 open issue(s).",
+  "key_topics": [
+    "Book the rehearsal hall",
+    "cultural night rehearsals",
+    "Arrange costumes for the play"
+  ],
+  "action_items": [
+    {
+      "task": "Arrange costumes for the play",
+      "owner": "Pooja",
+      "deadline": "the weekend",
+      "evidence": "Pooja, can you arrange costumes for the play before the weekend?",
+      "confidence": "high"
+    },
+    {
+      "task": "Book the rehearsal hall",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to book the rehearsal hall, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Coordinate with the music band",
+      "owner": "Divya",
+      "deadline": "sometime next week",
+      "evidence": "I'll coordinate with the music band sometime next week.",
+      "confidence": "medium"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the team composition.",
+      "evidence": "Okay, let's finalize the team composition then — that's settled."
+    },
+    {
+      "decision": "Finalized the venue.",
+      "evidence": "Okay, let's finalize the venue then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The sponsorship confirmation remains unresolved.",
+      "evidence": "The sponsorship confirmation is still not confirmed."
+    },
+    {
+      "issue": "The equipment availability remains unresolved.",
+      "evidence": "The equipment availability is still not confirmed."
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "meeting_id": "SC030",
+  "category": "cultural_club",
+  "summary": "The club discussed cultural night rehearsals, covering 4 action item(s), 2 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "Book the rehearsal hall",
+    "Shortlist performers for auditions",
+    "cultural night rehearsals"
+  ],
+  "action_items": [
+    {
+      "task": "Book the rehearsal hall",
+      "owner": "Ananya",
+      "deadline": "Not specified",
+      "evidence": "Ananya will book the rehearsal hall.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Shortlist performers for auditions",
+      "owner": "Pooja",
+      "deadline": "Friday",
+      "evidence": "Pooja, can you shortlist performers for auditions by Friday?",
+      "confidence": "high"
+    },
+    {
+      "task": "Finalize the dance performance lineup",
+      "owner": "Suresh",
+      "deadline": "the weekend",
+      "evidence": "Suresh, can you finalize the dance performance lineup before the weekend?",
+      "confidence": "high"
+    },
+    {
+      "task": "Arrange costumes for the play",
+      "owner": "Suresh",
+      "deadline": "in a few days",
+      "evidence": "I'll arrange costumes for the play in a few days.",
+      "confidence": "medium"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the venue.",
+      "evidence": "Okay, let's finalize the venue then — that's settled."
+    },
+    {
+      "decision": "Finalized the schedule change.",
+      "evidence": "Okay, let's finalize the schedule change then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The sponsorship confirmation remains unresolved.",
+      "evidence": "The sponsorship confirmation is still not confirmed."
+    }
+  ]
+}

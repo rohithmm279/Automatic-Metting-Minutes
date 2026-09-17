@@ -1,0 +1,53 @@
+{
+  "meeting_id": "SC038",
+  "category": "project_meetings",
+  "summary": "The club discussed club project progress, covering 3 action item(s), 2 decision(s), and 2 open issue(s).",
+  "key_topics": [
+    "club project progress",
+    "Write the project report draft",
+    "Finish the data collection module"
+  ],
+  "action_items": [
+    {
+      "task": "Finish the data collection module",
+      "owner": "Divya",
+      "deadline": "sometime next week",
+      "evidence": "I'll finish the data collection module sometime next week.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Write the project report draft",
+      "owner": "Vikram",
+      "deadline": "whenever possible",
+      "evidence": "I'll write the project report draft whenever possible.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Prepare the presentation slides",
+      "owner": "Lakshmi",
+      "deadline": "next Monday",
+      "evidence": "Lakshmi, can you prepare the presentation slides before next Monday?",
+      "confidence": "high"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the vendor to go with.",
+      "evidence": "Okay, let's finalize the vendor to go with then — that's settled."
+    },
+    {
+      "decision": "Finalized the team composition.",
+      "evidence": "Okay, let's finalize the team composition then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The guest's travel plans remains unresolved.",
+      "evidence": "The guest's travel plans is still not confirmed."
+    },
+    {
+      "issue": "The budget approval remains unresolved.",
+      "evidence": "The budget approval is still not confirmed."
+    }
+  ]
+}

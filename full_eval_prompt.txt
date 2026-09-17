@@ -1,0 +1,386 @@
+<USER_REQUEST>
+We are now entering the **FULL EVALUATION PHASE**.
+
+The project already has:
+
+* React + Vite frontend
+* FastAPI backend
+* SQLite persistence
+* Qwen2.5:3b via Ollama
+* Transcript preprocessing
+* MeetingOrchestrator
+* Pydantic structured output
+* Validation
+* SC001–SC010 benchmark already completed
+* Existing benchmark/evaluation scripts and report
+
+**Do NOT modify the frontend.**
+**Do NOT redesign the backend.**
+**Do NOT change the database schema.**
+**Do NOT automatically tune prompts yet.**
+
+The goal of this task is to evaluate the existing system across:
+
+**SC001 → SC070**
+
+and produce a reliable full benchmark report.
+
+---
+
+## STEP 1 — INSPECT EXISTING EVALUATION
+
+Before changing anything, inspect:
+
+* `eval_qwen_SC001_SC010.py`
+* `QWEN_SC001_SC010_BENCHMARK_REPORT.md`
+* `qwen_eval_SC001_SC010_raw.json`
+* Existing ground-truth files
+* Existing dataset/test directory structure
+* Existing evaluation utilities
+* Existing metric implementations
+
+Understand exactly how SC001–SC010 were evaluated.
+
+**Do not create a second incompatible evaluation methodology.**
+
+The SC011–SC070 evaluation must use the SAME methodology and metric definitions as SC001–SC010 wherever possible.
+
+---
+
+## STEP 2 — VERIFY ALL 70 TEST CASES
+
+Confirm that:
+
+* SC001–SC070 transcripts exist
+* Corresponding ground truth exists
+* Transcript ↔ ground truth mapping is correct
+* No meeting is accidentally skipped
+* No meeting is evaluated twice
+* Required fields are available for scoring
+
+Produce a short dataset verification table:
+
+| Range       | Available | Ground Truth | Ready |
+| ----------- | --------: | -----------: | ----: |
+| SC001–SC010 |           |              |       |
+| SC011–SC020 |           |              |       |
+| SC021–SC030 |           |              |       |
+| SC031–SC040 |           |              |       |
+| SC041–SC050 |           |              |       |
+| SC051–SC060 |           |              |       |
+| SC061–SC070 |           |              |       |
+
+---
+
+## STEP 3 — CREATE/EXTEND FULL EVALUATION
+
+Extend the existing evaluation logic so it can process:
+
+**SC001–SC070**
+
+Do not destroy the existing SC001–SC010 script.
+
+Prefer creating a clearly named full benchmark script, for example:
+
+`eval_qwen_SC001_SC070.py`
+
+if that fits the existing project conventions.
+
+Requirements:
+
+* Use the same Qwen2.5:3b model
+* Use the same Ollama configuration
+* Use the same prompts
+* Use the same preprocessing
+* Use the same validation
+* Use the same scoring methodology
+* Save raw model outputs
+* Save per-meeting metrics
+* Continue safely if one meeting fails
+* Clearly record failures/errors
+* Do not silently discard failed cases
+
+---
+
+## STEP 4 — EVALUATE EVERY MEETING
+
+For every SC001–SC070 meeting, collect:
+
+### Output validity
+
+* JSON valid/invalid
+* Pydantic validation success/failure
+
+### Action Items
+
+* Precision
+* Recall
+* Semantic F1
+
+### Decisions
+
+* Precision
+* Recall
+* Semantic F1
+
+### Unresolved Issues
+
+* Precision
+* Recall
+* Semantic F1
+
+### Hallucination
+
+* Hallucination count/rate if the existing evaluation supports it
+
+### Runtime
+
+* Per-meeting runtime
+* Total runtime
+
+Also save the generated structured output for every meeting.
+
+---
+
+## STEP 5 — AGGREGATE RESULTS
+
+Calculate the complete SC001–SC070 metrics using the SAME aggregation methodology as the existing SC001–SC010 benchmark.
+
+At minimum report:
+
+* JSON validity
+* Action-item Precision
+* Action-item Recall
+* Action-item Semantic F1
+* Decision Precision
+* Decision Recall
+* Decision Semantic F1
+* Unresolved Issue Precision
+* Unresolved Issue Recall
+* Unresolved Issue Semantic F1
+* Hallucination rate
+* Average runtime
+* Total runtime
+* Number of successful meetings
+* Number of failed meetings
+
+---
+
+## STEP 6 — COMPARE AGAINST SC001–SC010
+
+Create a comparison:
+
+| Metric             | SC001–SC010 | SC001–SC070 | Change |
+| ------------------ | ----------: | ----------: | -----: |
+| JSON Validity      |             |             |        |
+| Action F1          |             |             |        |
+| Decision F1        |             |             |        |
+| Issue F1           |             |             |        |
+| Hallucination Rate |             |             |        |
+| Avg Runtime        |             |             |        |
+
+Explain whether performance:
+
+* improved
+* remained stable
+* degraded
+
+Do not manipulate the metrics to make the results look better.
+
+---
+
+## STEP 7 — FAILURE ANALYSIS
+
+Identify the weakest meetings.
+
+For example:
+
+* Lowest Action F1
+* Lowest Decision F1
+* Lowest Issue F1
+* Invalid JSON cases
+* Hallucination cases
+* Missing owners
+* Incorrect deadlines
+* Missed action items
+* False-positive action items
+* Incorrect decisions
+* Incorrect unresolved issues
+
+For each important failure, provide:
+
+**Meeting ID**
+→ **Problem**
+→ **Expected**
+→ **Generated**
+→ **Likely cause**
+
+Keep examples concise.
+
+---
+
+## STEP 8 — THRESHOLD CHECK
+
+Use:
+
+**0.75 Semantic F1**
+
+as the warning threshold specified for this evaluation.
+
+Check separately:
+
+* Action Items
+* Decisions
+* Unresolved Issues
+
+If a metric is below 0.75:
+
+**DO NOT automatically modify the prompt.**
+
+Instead report:
+
+`⚠️ Below threshold — prompt/model investigation required`
+
+If all major metrics remain ≥ 0.75:
+
+`✅ Threshold satisfied`
+
+---
+
+## STEP 9 — PROMPT TUNING DECISION
+
+Only after seeing the complete SC001–SC070 results, determine whether prompt tuning is necessary.
+
+Do NOT change the production prompt during the benchmark.
+
+If tuning is needed:
+
+1. Identify the failure pattern.
+2. Propose the smallest prompt modification.
+3. Create a separate experimental version.
+4. Re-evaluate the affected cases.
+5. Compare before vs after.
+
+Do not replace the entire prompt without evidence.
+
+---
+
+## STEP 10 — SAVE ARTIFACTS
+
+Save:
+
+1. Full raw outputs
+2. Per-meeting evaluation results
+3. Aggregated metrics
+4. Failure analysis
+5. Final benchmark report
+
+Use clear filenames, for example:
+
+`qwen_eval_SC001_SC070_raw.json`
+
+`qwen_eval_SC001_SC070_metrics.json`
+
+`QWEN_SC001_SC070_BENCHMARK_REPORT.md`
+
+Do not overwrite the existing SC001–SC010 results.
+
+---
+
+# IMPORTANT RELIABILITY RULES
+
+* Do not fake results.
+* Do not estimate missing metrics.
+* Do not silently skip meetings.
+* Do not change the production prompt before evaluation.
+* Do not change the model during this benchmark.
+* Do not change the scoring methodology.
+* Do not modify frontend/backend functionality unless an evaluation bug requires it.
+* If Ollama stops or a meeting fails, record the failure clearly and continue where possible.
+* At the end, verify the number of evaluated meetings is exactly 70.
+
+---
+
+# FINAL REPORT
+
+When the benchmark finishes, provide:
+
+## FULL BENCHMARK RESULT
+
+**Meetings expected:** 70
+**Meetings successfully evaluated:** X
+**Meetings failed:** X
+
+### Overall Metrics
+
+| Metric               | Result |
+| -------------------- | -----: |
+| JSON Validity        |        |
+| Action Precision     |        |
+| Action Recall        |        |
+| Action Semantic F1   |        |
+| Decision Precision   |        |
+| Decision Recall      |        |
+| Decision Semantic F1 |        |
+| Issue Precision      |        |
+| Issue Recall         |        |
+| Issue Semantic F1    |        |
+| Hallucination Rate   |        |
+| Average Runtime      |        |
+| Total Runtime        |        |
+
+### Threshold Result
+
+Action Items: PASS/FAIL
+Decisions: PASS/FAIL
+Unresolved Issues: PASS/FAIL
+
+### Comparison With SC001–SC010
+
+Provide the comparison table and explain the major changes.
+
+### Failure Analysis
+
+List the most important failure patterns.
+
+### Prompt Tuning
+
+State one of:
+
+**NOT REQUIRED — metrics remain acceptable**
+
+or
+
+**RECOMMENDED — explain exactly why and what should be changed**
+
+### Artifacts Created
+
+List every output file with its path.
+
+### FINAL DECISION
+
+Answer exactly:
+
+**Is the current Qwen2.5:3b pipeline ready to be used as the project's evaluated AI baseline? YES/NO**
+
+Explain why in 2–4 sentences.
+
+**STOP after producing this report. Do not start frontend changes, deployment, or additional features.**
+
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-09-15T18:49:26+05:30.
+
+The user's current state is as follows:
+Active Document: r:\S5 mini datasets\frontend\src\components\StatCard.jsx (LANGUAGE_JAVASCRIPT)
+Cursor is on line: 1
+Other open documents:
+- r:\S5 mini datasets\backend\database\connection.py (LANGUAGE_PYTHON)
+- r:\S5 mini datasets\frontend\src\index.css (LANGUAGE_CSS)
+- r:\S5 mini datasets\frontend\src\components\Header.jsx (LANGUAGE_JAVASCRIPT)
+- r:\S5 mini datasets\frontend\src\components\StatCard.jsx (LANGUAGE_JAVASCRIPT)
+- r:\S5 mini datasets\test_qwen_inference.py (LANGUAGE_PYTHON)
+Browser State:
+  Page 11166E8E2C7A360B1B352A0B4BE03DE9 (Automatic Meeting Minutes & Action Item Generator) - http://127.0.0.1:5173/ [ACTIVE]
+    Viewport: 1536x730, Page Height: 1216
+</ADDITIONAL_METADATA>

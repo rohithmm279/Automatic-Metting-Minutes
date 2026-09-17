@@ -1,0 +1,45 @@
+{
+  "meeting_id": "SC040",
+  "category": "project_meetings",
+  "summary": "The club discussed club project progress, covering 3 action item(s), 1 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "club project progress",
+    "Fix the pending bugs in the demo",
+    "Complete the literature review"
+  ],
+  "action_items": [
+    {
+      "task": "Fix the pending bugs in the demo",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to fix the pending bugs in the demo, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Complete the literature review",
+      "owner": "Arjun",
+      "deadline": "whenever possible",
+      "evidence": "I'll complete the literature review whenever possible.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Finish the data collection module",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to finish the data collection module, it can't wait too long.",
+      "confidence": "low"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the team composition.",
+      "evidence": "Okay, let's finalize the team composition then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The guest's travel plans remains unresolved.",
+      "evidence": "The guest's travel plans is still not confirmed."
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "meeting_id": "SC047",
+  "category": "budget_finance",
+  "summary": "The club discussed club budget review, covering 3 action item(s), 2 decision(s), and 2 open issue(s).",
+  "key_topics": [
+    "Submit the budget proposal to the department",
+    "Prepare the finance report for the review",
+    "club budget review"
+  ],
+  "action_items": [
+    {
+      "task": "Submit the budget proposal to the department",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to submit the budget proposal to the department, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Prepare the finance report for the review",
+      "owner": "Riya",
+      "deadline": "soon",
+      "evidence": "I'll prepare the finance report for the review soon.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Get sponsorship quotations",
+      "owner": "Aditya",
+      "deadline": "Not specified",
+      "evidence": "Aditya will get sponsorship quotations.",
+      "confidence": "medium"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the ticket price.",
+      "evidence": "Okay, let's finalize the ticket price then — that's settled."
+    },
+    {
+      "decision": "Finalized the final theme.",
+      "evidence": "Okay, let's finalize the final theme then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The auditorium booking remains unresolved.",
+      "evidence": "The auditorium booking is still not confirmed."
+    },
+    {
+      "issue": "The printing order remains unresolved.",
+      "evidence": "The printing order is still not confirmed."
+    }
+  ]
+}

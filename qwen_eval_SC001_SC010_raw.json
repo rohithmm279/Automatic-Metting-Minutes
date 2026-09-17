@@ -1,0 +1,688 @@
+{
+  "per_meeting": [
+    {
+      "meeting_id": "SC001",
+      "parse_ok": true,
+      "elapsed_s": 14.75,
+      "has_summary": true,
+      "n_pred_tasks": 3,
+      "n_gt_tasks": 3,
+      "n_pred_decs": 1,
+      "n_gt_decs": 1,
+      "n_pred_issues": 2,
+      "n_gt_issues": 2,
+      "lex_ai_matches": 3,
+      "lex_ai_p": 1.0,
+      "lex_ai_r": 1.0,
+      "lex_ai_f1": 1.0,
+      "lex_dec_matches": 1,
+      "lex_dec_p": 1.0,
+      "lex_dec_r": 1.0,
+      "lex_dec_f1": 1.0,
+      "lex_iss_matches": 1,
+      "lex_iss_p": 0.5,
+      "lex_iss_r": 0.5,
+      "lex_iss_f1": 0.5,
+      "sem_ai_matches": 3,
+      "sem_ai_p": 1.0,
+      "sem_ai_r": 1.0,
+      "sem_ai_f1": 1.0,
+      "sem_dec_matches": 1,
+      "sem_dec_p": 1.0,
+      "sem_dec_r": 1.0,
+      "sem_dec_f1": 1.0,
+      "sem_iss_matches": 2,
+      "sem_iss_p": 1.0,
+      "sem_iss_r": 1.0,
+      "sem_iss_f1": 1.0,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "pred_tasks": [
+        "Book the auditorium",
+        "Set up the registration desk",
+        "Coordinate with campus security"
+      ],
+      "pred_decs": [
+        "Finalize the event date"
+      ],
+      "pred_issues": [
+        "Guest's travel plans",
+        "Budget approval"
+      ],
+      "gt_tasks": [
+        "Book the auditorium",
+        "Set up the registration desk",
+        "Coordinate with campus security"
+      ],
+      "gt_decs": [
+        "Finalized the event date."
+      ],
+      "gt_issues": [
+        "The guest's travel plans remains unresolved.",
+        "The budget approval remains unresolved."
+      ]
+    },
+    {
+      "meeting_id": "SC002",
+      "parse_ok": true,
+      "elapsed_s": 8.58,
+      "has_summary": true,
+      "n_pred_tasks": 5,
+      "n_gt_tasks": 4,
+      "n_pred_decs": 2,
+      "n_gt_decs": 1,
+      "n_pred_issues": 2,
+      "n_gt_issues": 1,
+      "lex_ai_matches": 3,
+      "lex_ai_p": 0.6,
+      "lex_ai_r": 0.75,
+      "lex_ai_f1": 0.6667,
+      "lex_dec_matches": 1,
+      "lex_dec_p": 0.5,
+      "lex_dec_r": 1.0,
+      "lex_dec_f1": 0.6667,
+      "lex_iss_matches": 0,
+      "lex_iss_p": 0.0,
+      "lex_iss_r": 0.0,
+      "lex_iss_f1": 0.0,
+      "sem_ai_matches": 3,
+      "sem_ai_p": 0.6,
+      "sem_ai_r": 0.75,
+      "sem_ai_f1": 0.6667,
+      "sem_dec_matches": 1,
+      "sem_dec_p": 0.5,
+      "sem_dec_r": 1.0,
+      "sem_dec_f1": 0.6667,
+      "sem_iss_matches": 1,
+      "sem_iss_p": 0.5,
+      "sem_iss_r": 1.0,
+      "sem_iss_f1": 0.6667,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "pred_tasks": [
+        "Finalize the ticket price",
+        "Print the banners by Friday",
+        "Print the banners",
+        "Book the auditorium",
+        "Coordinate with campus security"
+      ],
+      "pred_decs": [
+        "Finalize the event date",
+        "Finalize the ticket price"
+      ],
+      "pred_issues": [
+        "Guest's travel plans",
+        "Budget approval"
+      ],
+      "gt_tasks": [
+        "Organize the seating layout",
+        "Book the auditorium",
+        "Coordinate with campus security",
+        "Print the banners"
+      ],
+      "gt_decs": [
+        "Finalized the ticket price."
+      ],
+      "gt_issues": [
+        "The budget approval remains unresolved."
+      ]
+    },
+    {
+      "meeting_id": "SC003",
+      "parse_ok": true,
+      "elapsed_s": 9.16,
+      "has_summary": true,
+      "n_pred_tasks": 4,
+      "n_gt_tasks": 4,
+      "n_pred_decs": 1,
+      "n_gt_decs": 1,
+      "n_pred_issues": 2,
+      "n_gt_issues": 2,
+      "lex_ai_matches": 3,
+      "lex_ai_p": 0.75,
+      "lex_ai_r": 0.75,
+      "lex_ai_f1": 0.75,
+      "lex_dec_matches": 1,
+      "lex_dec_p": 1.0,
+      "lex_dec_r": 1.0,
+      "lex_dec_f1": 1.0,
+      "lex_iss_matches": 0,
+      "lex_iss_p": 0.0,
+      "lex_iss_r": 0.0,
+      "lex_iss_f1": 0.0,
+      "sem_ai_matches": 3,
+      "sem_ai_p": 0.75,
+      "sem_ai_r": 0.75,
+      "sem_ai_f1": 0.75,
+      "sem_dec_matches": 1,
+      "sem_dec_p": 1.0,
+      "sem_dec_r": 1.0,
+      "sem_dec_f1": 1.0,
+      "sem_iss_matches": 2,
+      "sem_iss_p": 1.0,
+      "sem_iss_r": 1.0,
+      "sem_iss_f1": 1.0,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "pred_tasks": [
+        "Finalize the event date",
+        "Set up the registration desk",
+        "Arrange the sound system",
+        "Confirm the guest list"
+      ],
+      "pred_decs": [
+        "Finalize the event date"
+      ],
+      "pred_issues": [
+        "Auditorium booking",
+        "Printing order"
+      ],
+      "gt_tasks": [
+        "Organize the seating layout",
+        "Set up the registration desk",
+        "Arrange the sound system",
+        "Confirm the guest list"
+      ],
+      "gt_decs": [
+        "Finalized the event date."
+      ],
+      "gt_issues": [
+        "The auditorium booking remains unresolved.",
+        "The printing order remains unresolved."
+      ]
+    },
+    {
+      "meeting_id": "SC004",
+      "parse_ok": true,
+      "elapsed_s": 8.03,
+      "has_summary": true,
+      "n_pred_tasks": 4,
+      "n_gt_tasks": 4,
+      "n_pred_decs": 2,
+      "n_gt_decs": 2,
+      "n_pred_issues": 1,
+      "n_gt_issues": 1,
+      "lex_ai_matches": 3,
+      "lex_ai_p": 0.75,
+      "lex_ai_r": 0.75,
+      "lex_ai_f1": 0.75,
+      "lex_dec_matches": 2,
+      "lex_dec_p": 1.0,
+      "lex_dec_r": 1.0,
+      "lex_dec_f1": 1.0,
+      "lex_iss_matches": 0,
+      "lex_iss_p": 0.0,
+      "lex_iss_r": 0.0,
+      "lex_iss_f1": 0.0,
+      "sem_ai_matches": 3,
+      "sem_ai_p": 0.75,
+      "sem_ai_r": 0.75,
+      "sem_ai_f1": 0.75,
+      "sem_dec_matches": 2,
+      "sem_dec_p": 1.0,
+      "sem_dec_r": 1.0,
+      "sem_dec_f1": 1.0,
+      "sem_iss_matches": 1,
+      "sem_iss_p": 1.0,
+      "sem_iss_r": 1.0,
+      "sem_iss_f1": 1.0,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "pred_tasks": [
+        "Confirm the guest list",
+        "Print the banners",
+        "Coordinate with campus security",
+        "Finalize the final theme"
+      ],
+      "pred_decs": [
+        "Finalize the schedule change",
+        "Finalize the final theme"
+      ],
+      "pred_issues": [
+        "Equipment availability"
+      ],
+      "gt_tasks": [
+        "Set up the registration desk",
+        "Confirm the guest list",
+        "Print the banners",
+        "Coordinate with campus security"
+      ],
+      "gt_decs": [
+        "Finalized the schedule change.",
+        "Finalized the final theme."
+      ],
+      "gt_issues": [
+        "The equipment availability remains unresolved."
+      ]
+    },
+    {
+      "meeting_id": "SC005",
+      "parse_ok": true,
+      "elapsed_s": 8.14,
+      "has_summary": true,
+      "n_pred_tasks": 4,
+      "n_gt_tasks": 3,
+      "n_pred_decs": 2,
+      "n_gt_decs": 2,
+      "n_pred_issues": 1,
+      "n_gt_issues": 1,
+      "lex_ai_matches": 2,
+      "lex_ai_p": 0.5,
+      "lex_ai_r": 0.6667,
+      "lex_ai_f1": 0.5714,
+      "lex_dec_matches": 2,
+      "lex_dec_p": 1.0,
+      "lex_dec_r": 1.0,
+      "lex_dec_f1": 1.0,
+      "lex_iss_matches": 0,
+      "lex_iss_p": 0.0,
+      "lex_iss_r": 0.0,
+      "lex_iss_f1": 0.0,
+      "sem_ai_matches": 2,
+      "sem_ai_p": 0.5,
+      "sem_ai_r": 0.6667,
+      "sem_ai_f1": 0.5714,
+      "sem_dec_matches": 2,
+      "sem_dec_p": 1.0,
+      "sem_dec_r": 1.0,
+      "sem_dec_f1": 1.0,
+      "sem_iss_matches": 0,
+      "sem_iss_p": 0.0,
+      "sem_iss_r": 0.0,
+      "sem_iss_f1": 0.0,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "pred_tasks": [
+        "Set up the registration desk",
+        "Finalize the ticket price",
+        "Finalize the team composition",
+        "Confirm the guest list"
+      ],
+      "pred_decs": [
+        "Finalize the ticket price",
+        "Finalize the team composition"
+      ],
+      "pred_issues": [
+        "Confirm the guest list"
+      ],
+      "gt_tasks": [
+        "Arrange the sound system",
+        "Set up the registration desk",
+        "Confirm the guest list"
+      ],
+      "gt_decs": [
+        "Finalized the ticket price.",
+        "Finalized the team composition."
+      ],
+      "gt_issues": [
+        "The final headcount remains unresolved."
+      ]
+    },
+    {
+      "meeting_id": "SC006",
+      "parse_ok": true,
+      "elapsed_s": 7.45,
+      "has_summary": true,
+      "n_pred_tasks": 3,
+      "n_gt_tasks": 3,
+      "n_pred_decs": 2,
+      "n_gt_decs": 2,
+      "n_pred_issues": 1,
+      "n_gt_issues": 1,
+      "lex_ai_matches": 3,
+      "lex_ai_p": 1.0,
+      "lex_ai_r": 1.0,
+      "lex_ai_f1": 1.0,
+      "lex_dec_matches": 2,
+      "lex_dec_p": 1.0,
+      "lex_dec_r": 1.0,
+      "lex_dec_f1": 1.0,
+      "lex_iss_matches": 1,
+      "lex_iss_p": 1.0,
+      "lex_iss_r": 1.0,
+      "lex_iss_f1": 1.0,
+      "sem_ai_matches": 3,
+      "sem_ai_p": 1.0,
+      "sem_ai_r": 1.0,
+      "sem_ai_f1": 1.0,
+      "sem_dec_matches": 2,
+      "sem_dec_p": 1.0,
+      "sem_dec_r": 1.0,
+      "sem_dec_f1": 1.0,
+      "sem_iss_matches": 1,
+      "sem_iss_p": 1.0,
+      "sem_iss_r": 1.0,
+      "sem_iss_f1": 1.0,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "pred_tasks": [
+        "Book the auditorium by Wednesday",
+        "Confirm the guest list by Friday",
+        "Coordinate with campus security"
+      ],
+      "pred_decs": [
+        "Finalize the event date",
+        "Finalize the venue"
+      ],
+      "pred_issues": [
+        "Guest's travel plans"
+      ],
+      "gt_tasks": [
+        "Coordinate with campus security",
+        "Book the auditorium",
+        "Confirm the guest list"
+      ],
+      "gt_decs": [
+        "Finalized the event date.",
+        "Finalized the venue."
+      ],
+      "gt_issues": [
+        "The guest's travel plans remains unresolved."
+      ]
+    },
+    {
+      "meeting_id": "SC007",
+      "parse_ok": true,
+      "elapsed_s": 7.59,
+      "has_summary": true,
+      "n_pred_tasks": 3,
+      "n_gt_tasks": 3,
+      "n_pred_decs": 2,
+      "n_gt_decs": 2,
+      "n_pred_issues": 2,
+      "n_gt_issues": 1,
+      "lex_ai_matches": 2,
+      "lex_ai_p": 0.6667,
+      "lex_ai_r": 0.6667,
+      "lex_ai_f1": 0.6667,
+      "lex_dec_matches": 2,
+      "lex_dec_p": 1.0,
+      "lex_dec_r": 1.0,
+      "lex_dec_f1": 1.0,
+      "lex_iss_matches": 1,
+      "lex_iss_p": 0.5,
+      "lex_iss_r": 1.0,
+      "lex_iss_f1": 0.6667,
+      "sem_ai_matches": 3,
+      "sem_ai_p": 1.0,
+      "sem_ai_r": 1.0,
+      "sem_ai_f1": 1.0,
+      "sem_dec_matches": 2,
+      "sem_dec_p": 1.0,
+      "sem_dec_r": 1.0,
+      "sem_dec_f1": 1.0,
+      "sem_iss_matches": 1,
+      "sem_iss_p": 0.5,
+      "sem_iss_r": 1.0,
+      "sem_iss_f1": 0.6667,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "pred_tasks": [
+        "Organize the seating layout by end of this week",
+        "Print the banners",
+        "Book the auditorium before the weekend"
+      ],
+      "pred_decs": [
+        "Finalize the venue",
+        "Finalize the schedule change"
+      ],
+      "pred_issues": [
+        "Guest's travel plans",
+        "Auditorium booking"
+      ],
+      "gt_tasks": [
+        "Organize the seating layout",
+        "Print the banners",
+        "Book the auditorium"
+      ],
+      "gt_decs": [
+        "Finalized the venue.",
+        "Finalized the schedule change."
+      ],
+      "gt_issues": [
+        "The guest's travel plans remains unresolved."
+      ]
+    },
+    {
+      "meeting_id": "SC008",
+      "parse_ok": true,
+      "elapsed_s": 8.93,
+      "has_summary": true,
+      "n_pred_tasks": 5,
+      "n_gt_tasks": 4,
+      "n_pred_decs": 2,
+      "n_gt_decs": 2,
+      "n_pred_issues": 3,
+      "n_gt_issues": 2,
+      "lex_ai_matches": 3,
+      "lex_ai_p": 0.6,
+      "lex_ai_r": 0.75,
+      "lex_ai_f1": 0.6667,
+      "lex_dec_matches": 1,
+      "lex_dec_p": 0.5,
+      "lex_dec_r": 0.5,
+      "lex_dec_f1": 0.5,
+      "lex_iss_matches": 0,
+      "lex_iss_p": 0.0,
+      "lex_iss_r": 0.0,
+      "lex_iss_f1": 0.0,
+      "sem_ai_matches": 3,
+      "sem_ai_p": 0.6,
+      "sem_ai_r": 0.75,
+      "sem_ai_f1": 0.6667,
+      "sem_dec_matches": 1,
+      "sem_dec_p": 0.5,
+      "sem_dec_r": 0.5,
+      "sem_dec_f1": 0.5,
+      "sem_iss_matches": 2,
+      "sem_iss_p": 0.6667,
+      "sem_iss_r": 1.0,
+      "sem_iss_f1": 0.8,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "pred_tasks": [
+        "Set up the registration desk",
+        "Coordinate with campus security",
+        "Finalize the event schedule",
+        "Finalize the venue",
+        "Confirm sponsorship"
+      ],
+      "pred_decs": [
+        "Finalize the venue",
+        "Confirm sponsorship"
+      ],
+      "pred_issues": [
+        "Final headcount",
+        "Registration desk setup",
+        "Sponsorship confirmation"
+      ],
+      "gt_tasks": [
+        "Print the banners",
+        "Set up the registration desk",
+        "Finalize the event schedule",
+        "Coordinate with campus security"
+      ],
+      "gt_decs": [
+        "Finalized the venue.",
+        "Finalized the venue."
+      ],
+      "gt_issues": [
+        "The final headcount remains unresolved.",
+        "The sponsorship confirmation remains unresolved."
+      ]
+    },
+    {
+      "meeting_id": "SC009",
+      "parse_ok": true,
+      "elapsed_s": 10.39,
+      "has_summary": true,
+      "n_pred_tasks": 6,
+      "n_gt_tasks": 4,
+      "n_pred_decs": 3,
+      "n_gt_decs": 2,
+      "n_pred_issues": 3,
+      "n_gt_issues": 2,
+      "lex_ai_matches": 4,
+      "lex_ai_p": 0.6667,
+      "lex_ai_r": 1.0,
+      "lex_ai_f1": 0.8,
+      "lex_dec_matches": 2,
+      "lex_dec_p": 0.6667,
+      "lex_dec_r": 1.0,
+      "lex_dec_f1": 0.8,
+      "lex_iss_matches": 0,
+      "lex_iss_p": 0.0,
+      "lex_iss_r": 0.0,
+      "lex_iss_f1": 0.0,
+      "sem_ai_matches": 4,
+      "sem_ai_p": 0.6667,
+      "sem_ai_r": 1.0,
+      "sem_ai_f1": 0.8,
+      "sem_dec_matches": 2,
+      "sem_dec_p": 0.6667,
+      "sem_dec_r": 1.0,
+      "sem_dec_f1": 0.8,
+      "sem_iss_matches": 1,
+      "sem_iss_p": 0.3333,
+      "sem_iss_r": 0.5,
+      "sem_iss_f1": 0.4,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "pred_tasks": [
+        "Organize the seating layout",
+        "Book the auditorium",
+        "Finalize the team composition",
+        "Finalize the event schedule",
+        "Finalize the ticket price",
+        "Coordinate with campus security"
+      ],
+      "pred_decs": [
+        "Finalize the team composition",
+        "Finalize the event schedule by Wednesday",
+        "Finalize the ticket price"
+      ],
+      "pred_issues": [
+        "Auditorium booking",
+        "Headcount confirmation",
+        "Equipment availability confirmation"
+      ],
+      "gt_tasks": [
+        "Organize the seating layout",
+        "Book the auditorium",
+        "Finalize the event schedule",
+        "Coordinate with campus security"
+      ],
+      "gt_decs": [
+        "Finalized the team composition.",
+        "Finalized the ticket price."
+      ],
+      "gt_issues": [
+        "The equipment availability remains unresolved.",
+        "The final headcount remains unresolved."
+      ]
+    },
+    {
+      "meeting_id": "SC010",
+      "parse_ok": true,
+      "elapsed_s": 8.31,
+      "has_summary": true,
+      "n_pred_tasks": 4,
+      "n_gt_tasks": 4,
+      "n_pred_decs": 1,
+      "n_gt_decs": 2,
+      "n_pred_issues": 2,
+      "n_gt_issues": 2,
+      "lex_ai_matches": 4,
+      "lex_ai_p": 1.0,
+      "lex_ai_r": 1.0,
+      "lex_ai_f1": 1.0,
+      "lex_dec_matches": 1,
+      "lex_dec_p": 1.0,
+      "lex_dec_r": 0.5,
+      "lex_dec_f1": 0.6667,
+      "lex_iss_matches": 0,
+      "lex_iss_p": 0.0,
+      "lex_iss_r": 0.0,
+      "lex_iss_f1": 0.0,
+      "sem_ai_matches": 4,
+      "sem_ai_p": 1.0,
+      "sem_ai_r": 1.0,
+      "sem_ai_f1": 1.0,
+      "sem_dec_matches": 1,
+      "sem_dec_p": 1.0,
+      "sem_dec_r": 0.5,
+      "sem_dec_f1": 0.6667,
+      "sem_iss_matches": 2,
+      "sem_iss_p": 1.0,
+      "sem_iss_r": 1.0,
+      "sem_iss_f1": 1.0,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "pred_tasks": [
+        "Organize the seating layout",
+        "Finalize the event schedule",
+        "Arrange the sound system",
+        "Print the banners"
+      ],
+      "pred_decs": [
+        "Finalize the schedule change"
+      ],
+      "pred_issues": [
+        "Sponsorship confirmation",
+        "Printing order"
+      ],
+      "gt_tasks": [
+        "Organize the seating layout",
+        "Finalize the event schedule",
+        "Print the banners",
+        "Arrange the sound system"
+      ],
+      "gt_decs": [
+        "Finalized the schedule change.",
+        "Finalized the schedule change."
+      ],
+      "gt_issues": [
+        "The sponsorship confirmation remains unresolved.",
+        "The printing order remains unresolved."
+      ]
+    }
+  ],
+  "aggregate": {
+    "lex_ai_f1_macro": 0.7872,
+    "sem_ai_f1_macro": 0.8205,
+    "lex_dec_f1_macro": 0.8633,
+    "sem_dec_f1_macro": 0.8633,
+    "lex_iss_f1_macro": 0.2167,
+    "sem_iss_f1_macro": 0.7533,
+    "micro_lex_ai": [
+      0.7317,
+      0.8333,
+      0.7792
+    ],
+    "micro_sem_ai": [
+      0.7561,
+      0.8611,
+      0.8052
+    ],
+    "micro_lex_dec": [
+      0.8333,
+      0.8824,
+      0.8571
+    ],
+    "micro_sem_dec": [
+      0.8333,
+      0.8824,
+      0.8571
+    ],
+    "micro_lex_iss": [
+      0.1579,
+      0.2,
+      0.1765
+    ],
+    "micro_sem_iss": [
+      0.6842,
+      0.8667,
+      0.7647
+    ]
+  }
+}

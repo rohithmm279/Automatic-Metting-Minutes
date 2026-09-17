@@ -1,0 +1,56 @@
+{
+  "meeting_id": "SC003",
+  "category": "event_planning",
+  "summary": "The club discussed annual fest planning, covering 4 action item(s), 1 decision(s), and 2 open issue(s).",
+  "key_topics": [
+    "Organize the seating layout",
+    "Set up the registration desk",
+    "annual fest planning"
+  ],
+  "action_items": [
+    {
+      "task": "Organize the seating layout",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to organize the seating layout, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Set up the registration desk",
+      "owner": "Lakshmi",
+      "deadline": "sometime next week",
+      "evidence": "I'll set up the registration desk sometime next week.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Arrange the sound system",
+      "owner": "Aditya",
+      "deadline": "Not specified",
+      "evidence": "Aditya will arrange the sound system.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Confirm the guest list",
+      "owner": "Aditya",
+      "deadline": "sometime next week",
+      "evidence": "I'll confirm the guest list sometime next week.",
+      "confidence": "medium"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the event date.",
+      "evidence": "Okay, let's finalize the event date then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The auditorium booking remains unresolved.",
+      "evidence": "The auditorium booking is still not confirmed."
+    },
+    {
+      "issue": "The printing order remains unresolved.",
+      "evidence": "The printing order is still not confirmed."
+    }
+  ]
+}

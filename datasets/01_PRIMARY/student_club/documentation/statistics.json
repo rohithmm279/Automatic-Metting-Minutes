@@ -1,0 +1,18 @@
+{
+  "dataset_name": "Student Club Meeting Evaluation Dataset",
+  "number_of_meetings": 70,
+  "number_of_examples": 70,
+  "number_of_transcripts": 70,
+  "average_transcript_length_words": 265.8,
+  "minimum_transcript_length_words": 197,
+  "maximum_transcript_length_words": 322,
+  "number_of_summaries": 70,
+  "number_of_questions": 0,
+  "number_of_action_annotations": 243,
+  "number_of_decision_annotations": 113,
+  "number_of_issue_annotations": 98,
+  "train_count": 49,
+  "validation_count": 10,
+  "test_count": 11,
+  "storage_size": "239.1KB"
+}

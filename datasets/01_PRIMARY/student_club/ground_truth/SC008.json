@@ -1,0 +1,60 @@
+{
+  "meeting_id": "SC008",
+  "category": "event_planning",
+  "summary": "The club discussed annual fest planning, covering 4 action item(s), 2 decision(s), and 2 open issue(s).",
+  "key_topics": [
+    "Print the banners",
+    "Set up the registration desk",
+    "annual fest planning"
+  ],
+  "action_items": [
+    {
+      "task": "Print the banners",
+      "owner": "Manoj",
+      "deadline": "Not specified",
+      "evidence": "Manoj will print the banners.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Set up the registration desk",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to set up the registration desk, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Finalize the event schedule",
+      "owner": "Lakshmi",
+      "deadline": "Not specified",
+      "evidence": "Lakshmi will finalize the event schedule.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Coordinate with campus security",
+      "owner": "Nisha",
+      "deadline": "end of this week",
+      "evidence": "Nisha, can you coordinate with campus security by end of this week?",
+      "confidence": "high"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the venue.",
+      "evidence": "Okay, let's finalize the venue then — that's settled."
+    },
+    {
+      "decision": "Finalized the venue.",
+      "evidence": "Okay, let's finalize the venue then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The final headcount remains unresolved.",
+      "evidence": "The final headcount is still not confirmed."
+    },
+    {
+      "issue": "The sponsorship confirmation remains unresolved.",
+      "evidence": "The sponsorship confirmation is still not confirmed."
+    }
+  ]
+}

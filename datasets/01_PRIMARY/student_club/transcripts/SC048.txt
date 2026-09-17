@@ -1,0 +1,27 @@
+[Meeting: Club Budget Review | Attendees: Rohith, Manoj, Karthik, Kavya, Priya]
+Rohith: Okay so let's get started, today we're talking about club budget review.
+Karthik: Cool, so any update on the sponsorship confirmation?
+Rohith: The sponsorship confirmation is still not confirmed. We're waiting to hear back.
+Karthik: Umm, any update on the final headcount?
+Rohith: The final headcount is still not confirmed. We're waiting to hear back.
+Kavya: Cool, so Karthik, can you submit the budget proposal to the department by Thursday evening?
+Karthik: Sure, I'll submit the budget proposal to the department by Thursday evening.
+Rohith: So yeah, what should we do about the event date?
+Priya: Maybe we should go with event date we discussed earlier.
+Kavya: I think we should reconsider it, actually.
+Rohith: Okay, let's finalize the event date then — that's settled.
+Priya: Right, Someone needs to collect the membership fees, it can't wait too long.
+Karthik: (interrupting) Wait, sorry, before that—
+Kavya: Yeah, true, we'll figure out who.
+Manoj: Alright, what should we do about the ticket price?
+Kavya: Maybe we should go with ticket price we discussed earlier.
+Rohith: I think we should reconsider it, actually.
+Manoj: Okay, let's finalize the ticket price then — that's settled.
+Rohith: Umm, Priya, can you reconcile last month's expenses before next Monday?
+Priya: Sure, I'll reconcile last month's expenses before next Monday.
+Priya: Actually, sorry, I meant before the weekend, not what I said earlier.
+Manoj: Just circling back — about reconcile last month's expenses, are we still on track?
+Rohith: Yeah, on it, will update the group soon.
+Priya: Alright, switching gears for a second — anything else before we wrap up?
+Priya: Nah, I think that covers it for today.
+Rohith: Cool, thanks everyone, meeting adjourned.

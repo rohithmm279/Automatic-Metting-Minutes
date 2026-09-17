@@ -1,0 +1,25 @@
+[Meeting: Club Project Progress | Attendees: Riya, Lakshmi, Vikram, Sanjay, Divya]
+Riya: Cool, so let's get started, today we're talking about club project progress.
+Sanjay: Umm, any update on the guest's travel plans?
+Riya: The guest's travel plans is still not confirmed. We're waiting to hear back.
+Sanjay: So yeah, what should we do about the vendor to go with?
+Vikram: Maybe we should go with vendor to go with we discussed earlier.
+Divya: I think we should reconsider it, actually.
+Sanjay: Okay, let's finalize the vendor to go with then — that's settled.
+Lakshmi: So yeah, any update on the budget approval?
+Vikram: The budget approval is still not confirmed. We're waiting to hear back.
+Lakshmi: Umm, Divya, can you look into it — we need to finish the data collection module?
+Divya: I'll finish the data collection module sometime next week.
+Sanjay: Right, what should we do about the team composition?
+Divya: Maybe we should go with team composition we discussed earlier.
+Vikram: I think we should reconsider it, actually.
+Sanjay: Okay, let's finalize the team composition then — that's settled.
+Lakshmi: Alright, Vikram, can you look into it — we need to write the project report draft?
+Vikram: I'll write the project report draft whenever possible.
+Divya: Okay so Lakshmi, can you prepare the presentation slides before next Monday?
+Lakshmi: Sure, I'll prepare the presentation slides before next Monday.
+Riya: Just circling back — about finish the data collection module, are we still on track?
+Lakshmi: Yeah, on it, will update the group soon.
+Divya: Alright, switching gears for a second — anything else before we wrap up?
+Divya: Nah, I think that covers it for today.
+Riya: Cool, thanks everyone, meeting adjourned.

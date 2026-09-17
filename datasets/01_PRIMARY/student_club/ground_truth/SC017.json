@@ -1,0 +1,49 @@
+{
+  "meeting_id": "SC017",
+  "category": "technical_club",
+  "summary": "The club discussed upcoming hackathon, covering 3 action item(s), 2 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "upcoming hackathon",
+    "Arrange laptops for the coding session",
+    "Draft the api documentation"
+  ],
+  "action_items": [
+    {
+      "task": "Draft the api documentation",
+      "owner": "Rahul",
+      "deadline": "Not specified",
+      "evidence": "Rahul will draft the API documentation.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Arrange laptops for the coding session",
+      "owner": "Arjun",
+      "deadline": "Not specified",
+      "evidence": "Arjun will arrange laptops for the coding session.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Fix the club website bug",
+      "owner": "Aditya",
+      "deadline": "before it gets too late",
+      "evidence": "I'll fix the club website bug before it gets too late.",
+      "confidence": "medium"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the vendor to go with.",
+      "evidence": "Okay, let's finalize the vendor to go with then — that's settled."
+    },
+    {
+      "decision": "Finalized the event date.",
+      "evidence": "Okay, let's finalize the event date then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The sponsorship confirmation remains unresolved.",
+      "evidence": "The sponsorship confirmation is still not confirmed."
+    }
+  ]
+}

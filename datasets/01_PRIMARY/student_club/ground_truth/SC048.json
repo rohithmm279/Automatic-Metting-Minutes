@@ -1,0 +1,53 @@
+{
+  "meeting_id": "SC048",
+  "category": "budget_finance",
+  "summary": "The club discussed club budget review, covering 3 action item(s), 2 decision(s), and 2 open issue(s).",
+  "key_topics": [
+    "Submit the budget proposal to the department",
+    "Collect the membership fees",
+    "club budget review"
+  ],
+  "action_items": [
+    {
+      "task": "Submit the budget proposal to the department",
+      "owner": "Karthik",
+      "deadline": "Thursday evening",
+      "evidence": "Karthik, can you submit the budget proposal to the department by Thursday evening?",
+      "confidence": "high"
+    },
+    {
+      "task": "Collect the membership fees",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to collect the membership fees, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Reconcile last month's expenses",
+      "owner": "Priya",
+      "deadline": "next Monday",
+      "evidence": "Priya, can you reconcile last month's expenses before next Monday?",
+      "confidence": "high"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the event date.",
+      "evidence": "Okay, let's finalize the event date then — that's settled."
+    },
+    {
+      "decision": "Finalized the ticket price.",
+      "evidence": "Okay, let's finalize the ticket price then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The sponsorship confirmation remains unresolved.",
+      "evidence": "The sponsorship confirmation is still not confirmed."
+    },
+    {
+      "issue": "The final headcount remains unresolved.",
+      "evidence": "The final headcount is still not confirmed."
+    }
+  ]
+}

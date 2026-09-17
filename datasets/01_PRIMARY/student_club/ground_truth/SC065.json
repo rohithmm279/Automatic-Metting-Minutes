@@ -1,0 +1,56 @@
+{
+  "meeting_id": "SC065",
+  "category": "mixed",
+  "summary": "The club discussed general club coordination, covering 4 action item(s), 2 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "Draft the monthly newsletter",
+    "Plan the orientation session",
+    "general club coordination"
+  ],
+  "action_items": [
+    {
+      "task": "Draft the monthly newsletter",
+      "owner": "Rohith",
+      "deadline": "soon",
+      "evidence": "I'll draft the monthly newsletter soon.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Plan the orientation session",
+      "owner": "Karthik",
+      "deadline": "in a few days",
+      "evidence": "I'll plan the orientation session in a few days.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Update the club notice board",
+      "owner": "Divya",
+      "deadline": "in a few days",
+      "evidence": "I'll update the club notice board in a few days.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Organize the feedback survey",
+      "owner": "Arjun",
+      "deadline": "the 25th",
+      "evidence": "Arjun, can you organize the feedback survey by the 25th?",
+      "confidence": "high"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the vendor to go with.",
+      "evidence": "Okay, let's finalize the vendor to go with then — that's settled."
+    },
+    {
+      "decision": "Finalized the ticket price.",
+      "evidence": "Okay, let's finalize the ticket price then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The guest's travel plans remains unresolved.",
+      "evidence": "The guest's travel plans is still not confirmed."
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+[Meeting: Upcoming Hackathon | Attendees: Sanjay, Kavya, Suresh, Karthik]
+Sanjay: Okay so let's get started, today we're talking about upcoming hackathon.
+Karthik: Cool, so Sanjay, can you set up the Discord server for the club before the weekend?
+Suresh: (jumping in) Actually, can I add something—
+Sanjay: Sure, I'll set up the Discord server for the club before the weekend.
+Karthik: So yeah, Sanjay, can you look into it — we need to fix the club website bug?
+Kavya: (jumping in) Actually, can I add something—
+Sanjay: I'll fix the club website bug before it gets too late.
+Sanjay: So yeah, any update on the sponsorship confirmation?
+Kavya: The sponsorship confirmation is still not confirmed. We're waiting to hear back.
+Suresh: Cool, so what should we do about the final theme?
+Sanjay: Maybe we should go with final theme we discussed earlier.
+Kavya: I think we should reconsider it, actually.
+Suresh: Okay, let's finalize the final theme then — that's settled.
+Kavya: Right, Karthik, can you look into it — we need to test the hackathon judging portal?
+Karthik: I'll test the hackathon judging portal in a few days.
+Karthik: Umm, any update on the guest's travel plans?
+Kavya: The guest's travel plans is still not confirmed. We're waiting to hear back.
+Kavya: Just circling back — about set up the discord server for the club, are we still on track?
+Karthik: Yeah, on it, will update the group soon.
+Kavya: Alright, switching gears for a second — anything else before we wrap up?
+Karthik: Nah, I think that covers it for today.
+Sanjay: Cool, thanks everyone, meeting adjourned.

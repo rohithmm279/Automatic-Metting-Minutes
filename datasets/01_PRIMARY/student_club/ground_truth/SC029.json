@@ -1,0 +1,56 @@
+{
+  "meeting_id": "SC029",
+  "category": "cultural_club",
+  "summary": "The club discussed cultural night rehearsals, covering 4 action item(s), 2 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "Coordinate with the music band",
+    "Shortlist performers for auditions",
+    "cultural night rehearsals"
+  ],
+  "action_items": [
+    {
+      "task": "Shortlist performers for auditions",
+      "owner": "Naveen",
+      "deadline": "Not specified",
+      "evidence": "Naveen will shortlist performers for auditions.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Coordinate with the music band",
+      "owner": "Kavya",
+      "deadline": "the 25th",
+      "evidence": "Kavya, can you coordinate with the music band by the 25th?",
+      "confidence": "high"
+    },
+    {
+      "task": "Design the cultural fest poster",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to design the cultural fest poster, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Finalize the dance performance lineup",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to finalize the dance performance lineup, it can't wait too long.",
+      "confidence": "low"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the ticket price.",
+      "evidence": "Okay, let's finalize the ticket price then — that's settled."
+    },
+    {
+      "decision": "Finalized the ticket price.",
+      "evidence": "Okay, let's finalize the ticket price then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The guest's travel plans remains unresolved.",
+      "evidence": "The guest's travel plans is still not confirmed."
+    }
+  ]
+}

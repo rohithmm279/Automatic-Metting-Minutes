@@ -1,0 +1,1565 @@
+{
+  "per_meeting": [
+    {
+      "meeting_id": "SC012",
+      "parse_ok": true,
+      "pydantic_ok": true,
+      "pydantic_error": null,
+      "elapsed_s": 10.52,
+      "has_summary": true,
+      "n_pred_tasks": 3,
+      "n_gt_tasks": 4,
+      "n_pred_decs": 2,
+      "n_gt_decs": 2,
+      "n_pred_issues": 2,
+      "n_gt_issues": 1,
+      "lex_ai_f1": 0.8571,
+      "sem_ai_p": 1.0,
+      "sem_ai_r": 0.75,
+      "sem_ai_f1": 0.8571,
+      "lex_dec_f1": 1.0,
+      "sem_dec_p": 1.0,
+      "sem_dec_r": 1.0,
+      "sem_dec_f1": 1.0,
+      "lex_iss_f1": 0.0,
+      "sem_iss_p": 0.5,
+      "sem_iss_r": 1.0,
+      "sem_iss_f1": 0.6667,
+      "v1_sem_iss_f1": 0.0,
+      "delta_sem_iss_f1": 0.6667,
+      "v1_sem_ai_f1": 0.5714,
+      "delta_sem_ai_f1": 0.2857,
+      "v1_sem_dec_f1": 1.0,
+      "delta_sem_dec_f1": 0.0,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "hallucination_count": 0,
+      "v1_pred_issues": [
+        "Guest's travel plans",
+        "Budget approval",
+        "Laptop arrangements",
+        "Workshop slides preparation"
+      ],
+      "v2_pred_issues": [
+        "Final headcount confirmation",
+        "Who will test the hackathon judging portal"
+      ],
+      "v1_pred_decs": [
+        "Finalize the venue",
+        "Finalize the event date"
+      ],
+      "v2_pred_decs": [
+        "Finalize the venue",
+        "Finalize the event date"
+      ],
+      "v1_pred_tasks": [
+        "Arrange laptops for the coding session",
+        "Prepare the GitHub repository",
+        "Prepare the workshop slides"
+      ],
+      "v2_pred_tasks": [
+        "Arrange laptops for the coding session",
+        "Set up the GitHub repository",
+        "Prepare the workshop slides"
+      ],
+      "gt_issues": [
+        "The final headcount remains unresolved."
+      ],
+      "gt_decs": [
+        "Finalized the venue.",
+        "Finalized the event date."
+      ],
+      "gt_tasks": [
+        "Arrange laptops for the coding session",
+        "Test the hackathon judging portal",
+        "Set up the github repository",
+        "Prepare the workshop slides"
+      ],
+      "raw_output": "{\n  \"summary\": \"The meeting discussed the upcoming hackathon. Aditya arranged laptops for the coding session by the end of the week. The venue and event date were finalized. Rahul will set up the GitHub repository by Thursday evening. Someone needs to prepare the workshop slides, and Naveen will update the group on the progress.\",\n  \"action_items\": [\n    {\n      \"task\": \"Arrange laptops for the coding session\",\n      \"owner\": \"Aditya\",\n      \"deadline\": null,\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Set up the GitHub repository\",\n      \"owner\": null,\n      \"deadline\": \"Thursday evening\",\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Prepare the workshop slides\",\n      \"owner\": null,\n      \"deadline\": null,\n      \"status\": \"pending\"\n    }\n  ],\n  \"decisions\": [\n    \"Finalize the venue\",\n    \"Finalize the event date\"\n  ],\n  \"unresolved_issues\": [\n    \"Final headcount confirmation\",\n    \"Who will test the hackathon judging portal\"\n  ]\n}",
+      "parsed_output": {
+        "summary": "The meeting discussed the upcoming hackathon. Aditya arranged laptops for the coding session by the end of the week. The venue and event date were finalized. Rahul will set up the GitHub repository by Thursday evening. Someone needs to prepare the workshop slides, and Naveen will update the group on the progress.",
+        "action_items": [
+          {
+            "task": "Arrange laptops for the coding session",
+            "owner": "Aditya",
+            "deadline": null,
+            "status": "pending"
+          },
+          {
+            "task": "Set up the GitHub repository",
+            "owner": null,
+            "deadline": "Thursday evening",
+            "status": "pending"
+          },
+          {
+            "task": "Prepare the workshop slides",
+            "owner": null,
+            "deadline": null,
+            "status": "pending"
+          }
+        ],
+        "decisions": [
+          "Finalize the venue",
+          "Finalize the event date"
+        ],
+        "unresolved_issues": [
+          "Final headcount confirmation",
+          "Who will test the hackathon judging portal"
+        ]
+      }
+    },
+    {
+      "meeting_id": "SC016",
+      "parse_ok": true,
+      "pydantic_ok": true,
+      "pydantic_error": null,
+      "elapsed_s": 7.6,
+      "has_summary": true,
+      "n_pred_tasks": 3,
+      "n_gt_tasks": 3,
+      "n_pred_decs": 1,
+      "n_gt_decs": 2,
+      "n_pred_issues": 1,
+      "n_gt_issues": 1,
+      "lex_ai_f1": 1.0,
+      "sem_ai_p": 1.0,
+      "sem_ai_r": 1.0,
+      "sem_ai_f1": 1.0,
+      "lex_dec_f1": 0.0,
+      "sem_dec_p": 0.0,
+      "sem_dec_r": 0.0,
+      "sem_dec_f1": 0.0,
+      "lex_iss_f1": 0.0,
+      "sem_iss_p": 0.0,
+      "sem_iss_r": 0.0,
+      "sem_iss_f1": 0.0,
+      "v1_sem_iss_f1": 0.0,
+      "delta_sem_iss_f1": 0.0,
+      "v1_sem_ai_f1": 0.8,
+      "delta_sem_ai_f1": 0.2,
+      "v1_sem_dec_f1": 0.6667,
+      "delta_sem_dec_f1": -0.6667,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "hallucination_count": 0,
+      "v1_pred_issues": [
+        "Guest's travel plans",
+        "Budget approval"
+      ],
+      "v2_pred_issues": [
+        "<Vendor to go with still awaiting approval>"
+      ],
+      "v1_pred_decs": [
+        "Finalize the event date",
+        "Finalize the vendor to go with",
+        "Set up the GitHub repository by the weekend",
+        "Arrange laptops for the coding session by Wednesday"
+      ],
+      "v2_pred_decs": [
+        "<Confirmed agreement or decision>"
+      ],
+      "v1_pred_tasks": [
+        "Set up the GitHub repository",
+        "Arrange laptops for the coding session"
+      ],
+      "v2_pred_tasks": [
+        "Set up the Discord server for the club",
+        "Arrange laptops for the coding session",
+        "Set up the GitHub repository"
+      ],
+      "gt_issues": [
+        "The equipment availability remains unresolved."
+      ],
+      "gt_decs": [
+        "Finalized the event date.",
+        "Finalized the vendor to go with."
+      ],
+      "gt_tasks": [
+        "Set up the discord server for the club",
+        "Arrange laptops for the coding session",
+        "Set up the github repository"
+      ],
+      "raw_output": "{\n  \"summary\": \"The meeting discussed the event date, equipment availability, Discord server setup, laptop arrangement, and GitHub repository setup for the upcoming hackathon. The event date was finalized, the Discord server setup was planned for before next Monday, laptops were arranged for a few days, and the GitHub repository setup was planned for the weekend. The vendor to go with was also finalized.\",\n  \"action_items\": [\n    {\n      \"task\": \"Set up the Discord server for the club\",\n      \"owner\": \"Aditya\",\n      \"deadline\": null,\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Arrange laptops for the coding session\",\n      \"owner\": \"Aditya\",\n      \"deadline\": \"Wednesday\",\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Set up the GitHub repository\",\n      \"owner\": \"Lakshmi\",\n      \"deadline\": \"the weekend\",\n      \"status\": \"pending\"\n    }\n  ],\n  \"decisions\": [\n    \"<Confirmed agreement or decision>\"\n  ],\n  \"unresolved_issues\": [\n    \"<Vendor to go with still awaiting approval>\"\n  ]\n}",
+      "parsed_output": {
+        "summary": "The meeting discussed the event date, equipment availability, Discord server setup, laptop arrangement, and GitHub repository setup for the upcoming hackathon. The event date was finalized, the Discord server setup was planned for before next Monday, laptops were arranged for a few days, and the GitHub repository setup was planned for the weekend. The vendor to go with was also finalized.",
+        "action_items": [
+          {
+            "task": "Set up the Discord server for the club",
+            "owner": "Aditya",
+            "deadline": null,
+            "status": "pending"
+          },
+          {
+            "task": "Arrange laptops for the coding session",
+            "owner": "Aditya",
+            "deadline": "Wednesday",
+            "status": "pending"
+          },
+          {
+            "task": "Set up the GitHub repository",
+            "owner": "Lakshmi",
+            "deadline": "the weekend",
+            "status": "pending"
+          }
+        ],
+        "decisions": [
+          "<Confirmed agreement or decision>"
+        ],
+        "unresolved_issues": [
+          "<Vendor to go with still awaiting approval>"
+        ]
+      }
+    },
+    {
+      "meeting_id": "SC018",
+      "parse_ok": true,
+      "pydantic_ok": true,
+      "pydantic_error": null,
+      "elapsed_s": 8.11,
+      "has_summary": true,
+      "n_pred_tasks": 4,
+      "n_gt_tasks": 4,
+      "n_pred_decs": 0,
+      "n_gt_decs": 1,
+      "n_pred_issues": 1,
+      "n_gt_issues": 1,
+      "lex_ai_f1": 1.0,
+      "sem_ai_p": 1.0,
+      "sem_ai_r": 1.0,
+      "sem_ai_f1": 1.0,
+      "lex_dec_f1": 0.0,
+      "sem_dec_p": 0.0,
+      "sem_dec_r": 0.0,
+      "sem_dec_f1": 0.0,
+      "lex_iss_f1": 0.0,
+      "sem_iss_p": 1.0,
+      "sem_iss_r": 1.0,
+      "sem_iss_f1": 1.0,
+      "v1_sem_iss_f1": 0.0,
+      "delta_sem_iss_f1": 1.0,
+      "v1_sem_ai_f1": 1.0,
+      "delta_sem_ai_f1": 0.0,
+      "v1_sem_dec_f1": 0.0,
+      "delta_sem_dec_f1": 0.0,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "hallucination_count": 0,
+      "v1_pred_issues": [
+        "Guest's travel plans",
+        "Budget approval"
+      ],
+      "v2_pred_issues": [
+        "Printing order is still not confirmed"
+      ],
+      "v1_pred_decs": [
+        "Finalize the event date"
+      ],
+      "v2_pred_decs": [],
+      "v1_pred_tasks": [
+        "Prepare the workshop slides",
+        "Arrange laptops for the coding session by Thursday evening",
+        "Set up the Discord server for the club",
+        "Fix the club website bug by end of this week"
+      ],
+      "v2_pred_tasks": [
+        "Prepare the workshop slides",
+        "Arrange laptops for the coding session by Thursday evening",
+        "Set up the Discord server for the club",
+        "Fix the club website bug by end of this week"
+      ],
+      "gt_issues": [
+        "The printing order remains unresolved."
+      ],
+      "gt_decs": [
+        "Finalized the schedule change."
+      ],
+      "gt_tasks": [
+        "Prepare the workshop slides",
+        "Arrange laptops for the coding session",
+        "Set up the discord server for the club",
+        "Fix the club website bug"
+      ],
+      "raw_output": "{\n  \"summary\": \"The meeting discussed the upcoming hackathon schedule change and logistics. Karthik prepared the workshop slides, arranged laptops for the coding session by Thursday evening, and set up the Discord server for the club. Kavya fixed the club website bug by the end of the week. The printing order is still pending.\",\n  \"action_items\": [\n    {\n      \"task\": \"Prepare the workshop slides\",\n      \"owner\": \"Karthik\",\n      \"deadline\": null,\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Arrange laptops for the coding session by Thursday evening\",\n      \"owner\": \"Karthik\",\n      \"deadline\": null,\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Set up the Discord server for the club\",\n      \"owner\": \"Rohith\",\n      \"deadline\": null,\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Fix the club website bug by end of this week\",\n      \"owner\": \"Kavya\",\n      \"deadline\": null,\n      \"status\": \"pending\"\n    }\n  ],\n  \"decisions\": [],\n  \"unresolved_issues\": [\n    \"Printing order is still not confirmed\"\n  ]\n}",
+      "parsed_output": {
+        "summary": "The meeting discussed the upcoming hackathon schedule change and logistics. Karthik prepared the workshop slides, arranged laptops for the coding session by Thursday evening, and set up the Discord server for the club. Kavya fixed the club website bug by the end of the week. The printing order is still pending.",
+        "action_items": [
+          {
+            "task": "Prepare the workshop slides",
+            "owner": "Karthik",
+            "deadline": null,
+            "status": "pending"
+          },
+          {
+            "task": "Arrange laptops for the coding session by Thursday evening",
+            "owner": "Karthik",
+            "deadline": null,
+            "status": "pending"
+          },
+          {
+            "task": "Set up the Discord server for the club",
+            "owner": "Rohith",
+            "deadline": null,
+            "status": "pending"
+          },
+          {
+            "task": "Fix the club website bug by end of this week",
+            "owner": "Kavya",
+            "deadline": null,
+            "status": "pending"
+          }
+        ],
+        "decisions": [],
+        "unresolved_issues": [
+          "Printing order is still not confirmed"
+        ]
+      }
+    },
+    {
+      "meeting_id": "SC025",
+      "parse_ok": true,
+      "pydantic_ok": true,
+      "pydantic_error": null,
+      "elapsed_s": 7.29,
+      "has_summary": true,
+      "n_pred_tasks": 3,
+      "n_gt_tasks": 3,
+      "n_pred_decs": 0,
+      "n_gt_decs": 2,
+      "n_pred_issues": 2,
+      "n_gt_issues": 2,
+      "lex_ai_f1": 1.0,
+      "sem_ai_p": 1.0,
+      "sem_ai_r": 1.0,
+      "sem_ai_f1": 1.0,
+      "lex_dec_f1": 0.0,
+      "sem_dec_p": 0.0,
+      "sem_dec_r": 0.0,
+      "sem_dec_f1": 0.0,
+      "lex_iss_f1": 0.0,
+      "sem_iss_p": 0.5,
+      "sem_iss_r": 0.5,
+      "sem_iss_f1": 0.5,
+      "v1_sem_iss_f1": 1.0,
+      "delta_sem_iss_f1": -0.5,
+      "v1_sem_ai_f1": 1.0,
+      "delta_sem_ai_f1": 0.0,
+      "v1_sem_dec_f1": 0.0,
+      "delta_sem_dec_f1": 0.0,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "hallucination_count": 0,
+      "v1_pred_issues": [
+        "Sponsorship confirmation",
+        "Equipment availability"
+      ],
+      "v2_pred_issues": [
+        "Equipment availability",
+        "Coordination with the music band"
+      ],
+      "v1_pred_decs": [],
+      "v2_pred_decs": [],
+      "v1_pred_tasks": [
+        "Arrange costumes for the play before the weekend",
+        "Book the rehearsal hall before next Monday",
+        "Coordinate with the music band"
+      ],
+      "v2_pred_tasks": [
+        "Arrange costumes for the play before the weekend",
+        "Book the rehearsal hall before next Monday",
+        "Coordinate with the music band sometime next week"
+      ],
+      "gt_issues": [
+        "The sponsorship confirmation remains unresolved.",
+        "The equipment availability remains unresolved."
+      ],
+      "gt_decs": [
+        "Finalized the team composition.",
+        "Finalized the venue."
+      ],
+      "gt_tasks": [
+        "Arrange costumes for the play",
+        "Book the rehearsal hall",
+        "Coordinate with the music band"
+      ],
+      "raw_output": "{\n  \"summary\": \"The meeting discussed team composition, venue, and sponsorship for the cultural night rehearsals. The team composition and venue were finalized, and Pooja was tasked with arranging costumes before the weekend. Sanjay was tasked with booking the rehearsal hall before next Monday. The equipment availability and coordination with the music band were pending updates.\",\n  \"action_items\": [\n    {\n      \"task\": \"Arrange costumes for the play before the weekend\",\n      \"owner\": \"Pooja\",\n      \"deadline\": null,\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Book the rehearsal hall before next Monday\",\n      \"owner\": null,\n      \"deadline\": \"before next Monday\",\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Coordinate with the music band sometime next week\",\n      \"owner\": null,\n      \"deadline\": null,\n      \"status\": \"pending\"\n    }\n  ],\n  \"decisions\": [],\n  \"unresolved_issues\": [\n    \"Equipment availability\",\n    \"Coordination with the music band\"\n  ]\n}",
+      "parsed_output": {
+        "summary": "The meeting discussed team composition, venue, and sponsorship for the cultural night rehearsals. The team composition and venue were finalized, and Pooja was tasked with arranging costumes before the weekend. Sanjay was tasked with booking the rehearsal hall before next Monday. The equipment availability and coordination with the music band were pending updates.",
+        "action_items": [
+          {
+            "task": "Arrange costumes for the play before the weekend",
+            "owner": "Pooja",
+            "deadline": null,
+            "status": "pending"
+          },
+          {
+            "task": "Book the rehearsal hall before next Monday",
+            "owner": null,
+            "deadline": "before next Monday",
+            "status": "pending"
+          },
+          {
+            "task": "Coordinate with the music band sometime next week",
+            "owner": null,
+            "deadline": null,
+            "status": "pending"
+          }
+        ],
+        "decisions": [],
+        "unresolved_issues": [
+          "Equipment availability",
+          "Coordination with the music band"
+        ]
+      }
+    },
+    {
+      "meeting_id": "SC030",
+      "parse_ok": true,
+      "pydantic_ok": true,
+      "pydantic_error": null,
+      "elapsed_s": 9.6,
+      "has_summary": true,
+      "n_pred_tasks": 4,
+      "n_gt_tasks": 4,
+      "n_pred_decs": 6,
+      "n_gt_decs": 2,
+      "n_pred_issues": 0,
+      "n_gt_issues": 1,
+      "lex_ai_f1": 1.0,
+      "sem_ai_p": 1.0,
+      "sem_ai_r": 1.0,
+      "sem_ai_f1": 1.0,
+      "lex_dec_f1": 0.5,
+      "sem_dec_p": 0.3333,
+      "sem_dec_r": 1.0,
+      "sem_dec_f1": 0.5,
+      "lex_iss_f1": 0.0,
+      "sem_iss_p": 0.0,
+      "sem_iss_r": 0.0,
+      "sem_iss_f1": 0.0,
+      "v1_sem_iss_f1": 0.0,
+      "delta_sem_iss_f1": 0.0,
+      "v1_sem_ai_f1": 1.0,
+      "delta_sem_ai_f1": 0.0,
+      "v1_sem_dec_f1": 0.0,
+      "delta_sem_dec_f1": 0.5,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "hallucination_count": 0,
+      "v1_pred_issues": [
+        "Guest's travel plans",
+        "Budget approval"
+      ],
+      "v2_pred_issues": [],
+      "v1_pred_decs": [],
+      "v2_pred_decs": [
+        "Finalize the venue",
+        "Finalize the schedule change",
+        "Book the rehearsal hall",
+        "Shortlist performers for auditions by the weekend",
+        "Finalize the dance performance lineup before the weekend",
+        "Arrange costumes for the play in a few days"
+      ],
+      "v1_pred_tasks": [
+        "Book the rehearsal hall",
+        "Shortlist performers for auditions by the weekend",
+        "Finalize the dance performance lineup before the weekend",
+        "Arrange costumes for the play in a few days"
+      ],
+      "v2_pred_tasks": [
+        "Book the rehearsal hall",
+        "Shortlist performers for auditions by the weekend",
+        "Finalize the dance performance lineup before the weekend",
+        "Arrange costumes for the play in a few days"
+      ],
+      "gt_issues": [
+        "The sponsorship confirmation remains unresolved."
+      ],
+      "gt_decs": [
+        "Finalized the venue.",
+        "Finalized the schedule change."
+      ],
+      "gt_tasks": [
+        "Book the rehearsal hall",
+        "Shortlist performers for auditions",
+        "Finalize the dance performance lineup",
+        "Arrange costumes for the play"
+      ],
+      "raw_output": "{\n  \"summary\": \"The meeting discussed venue and schedule changes for the cultural night rehearsals. The venue and schedule changes were finalized. Ananya was tasked with booking the rehearsal hall, and Pooja was tasked with shortlisting performers for auditions by the weekend. Suresh was tasked with finalizing the dance performance lineup before the weekend, and arranging costumes for the play in a few days. The meeting adjourned.\",\n  \"action_items\": [\n    {\n      \"task\": \"Book the rehearsal hall\",\n      \"owner\": \"Ananya\",\n      \"deadline\": null,\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Shortlist performers for auditions by the weekend\",\n      \"owner\": \"Pooja\",\n      \"deadline\": \"the weekend\",\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Finalize the dance performance lineup before the weekend\",\n      \"owner\": \"Suresh\",\n      \"deadline\": \"the weekend\",\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Arrange costumes for the play in a few days\",\n      \"owner\": \"Suresh\",\n      \"deadline\": null,\n      \"status\": \"pending\"\n    }\n  ],\n  \"decisions\": [\n    \"Finalize the venue\",\n    \"Finalize the schedule change\",\n    \"Book the rehearsal hall\",\n    \"Shortlist performers for auditions by the weekend\",\n    \"Finalize the dance performance lineup before the weekend\",\n    \"Arrange costumes for the play in a few days\"\n  ],\n  \"unresolved_issues\": []\n}",
+      "parsed_output": {
+        "summary": "The meeting discussed venue and schedule changes for the cultural night rehearsals. The venue and schedule changes were finalized. Ananya was tasked with booking the rehearsal hall, and Pooja was tasked with shortlisting performers for auditions by the weekend. Suresh was tasked with finalizing the dance performance lineup before the weekend, and arranging costumes for the play in a few days. The meeting adjourned.",
+        "action_items": [
+          {
+            "task": "Book the rehearsal hall",
+            "owner": "Ananya",
+            "deadline": null,
+            "status": "pending"
+          },
+          {
+            "task": "Shortlist performers for auditions by the weekend",
+            "owner": "Pooja",
+            "deadline": "the weekend",
+            "status": "pending"
+          },
+          {
+            "task": "Finalize the dance performance lineup before the weekend",
+            "owner": "Suresh",
+            "deadline": "the weekend",
+            "status": "pending"
+          },
+          {
+            "task": "Arrange costumes for the play in a few days",
+            "owner": "Suresh",
+            "deadline": null,
+            "status": "pending"
+          }
+        ],
+        "decisions": [
+          "Finalize the venue",
+          "Finalize the schedule change",
+          "Book the rehearsal hall",
+          "Shortlist performers for auditions by the weekend",
+          "Finalize the dance performance lineup before the weekend",
+          "Arrange costumes for the play in a few days"
+        ],
+        "unresolved_issues": []
+      }
+    },
+    {
+      "meeting_id": "SC033",
+      "parse_ok": true,
+      "pydantic_ok": true,
+      "pydantic_error": null,
+      "elapsed_s": 8.82,
+      "has_summary": true,
+      "n_pred_tasks": 4,
+      "n_gt_tasks": 4,
+      "n_pred_decs": 5,
+      "n_gt_decs": 2,
+      "n_pred_issues": 3,
+      "n_gt_issues": 2,
+      "lex_ai_f1": 1.0,
+      "sem_ai_p": 1.0,
+      "sem_ai_r": 1.0,
+      "sem_ai_f1": 1.0,
+      "lex_dec_f1": 0.5714,
+      "sem_dec_p": 0.4,
+      "sem_dec_r": 1.0,
+      "sem_dec_f1": 0.5714,
+      "lex_iss_f1": 0.0,
+      "sem_iss_p": 0.6667,
+      "sem_iss_r": 1.0,
+      "sem_iss_f1": 0.8,
+      "v1_sem_iss_f1": 0.0,
+      "delta_sem_iss_f1": 0.8,
+      "v1_sem_ai_f1": 1.0,
+      "delta_sem_ai_f1": 0.0,
+      "v1_sem_dec_f1": 1.0,
+      "delta_sem_dec_f1": -0.4286,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "hallucination_count": 0,
+      "v1_pred_issues": [
+        "Guest's travel plans",
+        "Budget approval"
+      ],
+      "v2_pred_issues": [
+        "Final headcount confirmation",
+        "Equipment availability confirmation",
+        "Data collection module progress update"
+      ],
+      "v1_pred_decs": [
+        "Finalize the ticket price",
+        "Finalize the schedule change"
+      ],
+      "v2_pred_decs": [
+        "Finalize the ticket price",
+        "Finalize the schedule change",
+        "Rohith will finish the data collection module",
+        "Rohith will prepare the presentation slides",
+        "Rohith will write the project report draft"
+      ],
+      "v1_pred_tasks": [
+        "Fix the pending bugs in the demo",
+        "Prepare the presentation slides",
+        "Write the project report draft",
+        "Finish the data collection module"
+      ],
+      "v2_pred_tasks": [
+        "Fix the pending bugs in the demo",
+        "Prepare the presentation slides",
+        "Write the project report draft",
+        "Finish the data collection module"
+      ],
+      "gt_issues": [
+        "The final headcount remains unresolved.",
+        "The equipment availability remains unresolved."
+      ],
+      "gt_decs": [
+        "Finalized the ticket price.",
+        "Finalized the schedule change."
+      ],
+      "gt_tasks": [
+        "Fix the pending bugs in the demo",
+        "Finish the data collection module",
+        "Prepare the presentation slides",
+        "Write the project report draft"
+      ],
+      "raw_output": "{\n  \"summary\": \"The meeting discussed club project progress. Sneha fixed pending bugs in the demo before next Monday. The ticket price and schedule change were finalized. Rohith will finish the data collection module, prepare the presentation slides, and write the project report draft. Divya will update the group on the data collection module progress.\",\n  \"action_items\": [\n    {\n      \"task\": \"Fix the pending bugs in the demo\",\n      \"owner\": \"Sneha\",\n      \"deadline\": null,\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Prepare the presentation slides\",\n      \"owner\": \"Rohith\",\n      \"deadline\": null,\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Write the project report draft\",\n      \"owner\": \"Karthik\",\n      \"deadline\": null,\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Finish the data collection module\",\n      \"owner\": \"Rohith\",\n      \"deadline\": null,\n      \"status\": \"pending\"\n    }\n  ],\n  \"decisions\": [\n    [\"Finalize the ticket price\"],\n    [\"Finalize the schedule change\"],\n    [\"Rohith will finish the data collection module\"],\n    [\"Rohith will prepare the presentation slides\"],\n    [\"Rohith will write the project report draft\"]\n  ],\n  \"unresolved_issues\": [\n    [\"Final headcount confirmation\"],\n    [\"Equipment availability confirmation\"],\n    [\"Data collection module progress update\"]\n  ]\n}",
+      "parsed_output": {
+        "summary": "The meeting discussed club project progress. Sneha fixed pending bugs in the demo before next Monday. The ticket price and schedule change were finalized. Rohith will finish the data collection module, prepare the presentation slides, and write the project report draft. Divya will update the group on the data collection module progress.",
+        "action_items": [
+          {
+            "task": "Fix the pending bugs in the demo",
+            "owner": "Sneha",
+            "deadline": null,
+            "status": "pending"
+          },
+          {
+            "task": "Prepare the presentation slides",
+            "owner": "Rohith",
+            "deadline": null,
+            "status": "pending"
+          },
+          {
+            "task": "Write the project report draft",
+            "owner": "Karthik",
+            "deadline": null,
+            "status": "pending"
+          },
+          {
+            "task": "Finish the data collection module",
+            "owner": "Rohith",
+            "deadline": null,
+            "status": "pending"
+          }
+        ],
+        "decisions": [
+          [
+            "Finalize the ticket price"
+          ],
+          [
+            "Finalize the schedule change"
+          ],
+          [
+            "Rohith will finish the data collection module"
+          ],
+          [
+            "Rohith will prepare the presentation slides"
+          ],
+          [
+            "Rohith will write the project report draft"
+          ]
+        ],
+        "unresolved_issues": [
+          [
+            "Final headcount confirmation"
+          ],
+          [
+            "Equipment availability confirmation"
+          ],
+          [
+            "Data collection module progress update"
+          ]
+        ]
+      }
+    },
+    {
+      "meeting_id": "SC037",
+      "parse_ok": true,
+      "pydantic_ok": true,
+      "pydantic_error": null,
+      "elapsed_s": 5.77,
+      "has_summary": true,
+      "n_pred_tasks": 1,
+      "n_gt_tasks": 3,
+      "n_pred_decs": 2,
+      "n_gt_decs": 2,
+      "n_pred_issues": 2,
+      "n_gt_issues": 1,
+      "lex_ai_f1": 0.5,
+      "sem_ai_p": 1.0,
+      "sem_ai_r": 0.3333,
+      "sem_ai_f1": 0.5,
+      "lex_dec_f1": 1.0,
+      "sem_dec_p": 1.0,
+      "sem_dec_r": 1.0,
+      "sem_dec_f1": 1.0,
+      "lex_iss_f1": 0.0,
+      "sem_iss_p": 0.5,
+      "sem_iss_r": 1.0,
+      "sem_iss_f1": 0.6667,
+      "v1_sem_iss_f1": 0.0,
+      "delta_sem_iss_f1": 0.6667,
+      "v1_sem_ai_f1": 0.5,
+      "delta_sem_ai_f1": 0.0,
+      "v1_sem_dec_f1": 1.0,
+      "delta_sem_dec_f1": 0.0,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "hallucination_count": 0,
+      "v1_pred_issues": [
+        "Write the project report draft"
+      ],
+      "v2_pred_issues": [
+        "Printing order confirmation",
+        "Who will complete the literature review"
+      ],
+      "v1_pred_decs": [
+        "Finalize the event date",
+        "Finalize the team composition"
+      ],
+      "v2_pred_decs": [
+        "Finalize the event date",
+        "Finalize the team composition"
+      ],
+      "v1_pred_tasks": [
+        "Complete the literature review"
+      ],
+      "v2_pred_tasks": [
+        "Complete the literature review"
+      ],
+      "gt_issues": [
+        "The printing order remains unresolved."
+      ],
+      "gt_decs": [
+        "Finalized the event date.",
+        "Finalized the team composition."
+      ],
+      "gt_tasks": [
+        "Write the project report draft",
+        "Test the prototype",
+        "Complete the literature review"
+      ],
+      "raw_output": "{\n  \"summary\": \"The meeting discussed club project progress. The printing order is pending confirmation. Aditya will write the project report draft in a few days. Someone needs to test the prototype, and the event date and team composition are finalized. Someone needs to complete the literature review, and the group will update on the project report draft.\",\n  \"action_items\": [\n    {\n      \"task\": \"Complete the literature review\",\n      \"owner\": null,\n      \"deadline\": null,\n      \"status\": \"pending\"\n    }\n  ],\n  \"decisions\": [\n    [\"Finalize the event date\"],\n    [\"Finalize the team composition\"]\n  ],\n  \"unresolved_issues\": [\n    [\"Printing order confirmation\"],\n    [\"Who will complete the literature review\"]\n  ]\n}",
+      "parsed_output": {
+        "summary": "The meeting discussed club project progress. The printing order is pending confirmation. Aditya will write the project report draft in a few days. Someone needs to test the prototype, and the event date and team composition are finalized. Someone needs to complete the literature review, and the group will update on the project report draft.",
+        "action_items": [
+          {
+            "task": "Complete the literature review",
+            "owner": null,
+            "deadline": null,
+            "status": "pending"
+          }
+        ],
+        "decisions": [
+          [
+            "Finalize the event date"
+          ],
+          [
+            "Finalize the team composition"
+          ]
+        ],
+        "unresolved_issues": [
+          [
+            "Printing order confirmation"
+          ],
+          [
+            "Who will complete the literature review"
+          ]
+        ]
+      }
+    },
+    {
+      "meeting_id": "SC043",
+      "parse_ok": true,
+      "pydantic_ok": true,
+      "pydantic_error": null,
+      "elapsed_s": 10.03,
+      "has_summary": true,
+      "n_pred_tasks": 7,
+      "n_gt_tasks": 4,
+      "n_pred_decs": 1,
+      "n_gt_decs": 2,
+      "n_pred_issues": 1,
+      "n_gt_issues": 2,
+      "lex_ai_f1": 0.7273,
+      "sem_ai_p": 0.5714,
+      "sem_ai_r": 1.0,
+      "sem_ai_f1": 0.7273,
+      "lex_dec_f1": 0.0,
+      "sem_dec_p": 0.0,
+      "sem_dec_r": 0.0,
+      "sem_dec_f1": 0.0,
+      "lex_iss_f1": 0.0,
+      "sem_iss_p": 0.0,
+      "sem_iss_r": 0.0,
+      "sem_iss_f1": 0.0,
+      "v1_sem_iss_f1": 0.0,
+      "delta_sem_iss_f1": 0.0,
+      "v1_sem_ai_f1": 0.6667,
+      "delta_sem_ai_f1": 0.0606,
+      "v1_sem_dec_f1": 1.0,
+      "delta_sem_dec_f1": -1.0,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "hallucination_count": 0,
+      "v1_pred_issues": [
+        "Guest's travel plans",
+        "Budget approval"
+      ],
+      "v2_pred_issues": [
+        "<Topic or item awaiting resolution>"
+      ],
+      "v1_pred_decs": [
+        "Finalize the venue",
+        "Finalize the ticket price"
+      ],
+      "v2_pred_decs": [
+        "<Confirmed agreement or decision>"
+      ],
+      "v1_pred_tasks": [
+        "Shortlist candidates for the technical round",
+        "Prepare interview questions before the weekend",
+        "Finalize the venue",
+        "Finalize the ticket price",
+        "Schedule interview slots before it gets too late"
+      ],
+      "v2_pred_tasks": [
+        "Shortlist candidates for the technical round",
+        "Send the recruitment announcement",
+        "Prepare interview questions",
+        "Finalize the venue",
+        "Schedule interview slots",
+        "Finalize the ticket price",
+        "Shortlist candidates for the technical round"
+      ],
+      "gt_issues": [
+        "The sponsorship confirmation remains unresolved.",
+        "The sponsorship confirmation remains unresolved."
+      ],
+      "gt_decs": [
+        "Finalized the venue.",
+        "Finalized the ticket price."
+      ],
+      "gt_tasks": [
+        "Shortlist candidates for the technical round",
+        "Send the recruitment announcement",
+        "Prepare interview questions",
+        "Schedule interview slots"
+      ],
+      "raw_output": "{\n  \"summary\": \"The meeting discussed the new member recruitment drive. Priya assigned someone to shortlist candidates for the technical round, and someone to send the recruitment announcement. Divya prepared interview questions before the weekend, and Sanjay finalized the venue. Priya scheduled interview slots and finalized the ticket price. Karthik and Divya confirmed the shortlist candidates for the technical round.\",\n  \"action_items\": [\n    {\n      \"task\": \"Shortlist candidates for the technical round\",\n      \"owner\": null,\n      \"deadline\": null,\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Send the recruitment announcement\",\n      \"owner\": null,\n      \"deadline\": null,\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Prepare interview questions\",\n      \"owner\": \"Divya\",\n      \"deadline\": null,\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Finalize the venue\",\n      \"owner\": \"Sanjay\",\n      \"deadline\": null,\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Schedule interview slots\",\n      \"owner\": \"Priya\",\n      \"deadline\": null,\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Finalize the ticket price\",\n      \"owner\": \"Pooja\",\n      \"deadline\": null,\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Shortlist candidates for the technical round\",\n      \"owner\": null,\n      \"deadline\": null,\n      \"status\": \"pending\"\n    }\n  ],\n  \"decisions\": [\n    \"<Confirmed agreement or decision>\"\n  ],\n  \"unresolved_issues\": [\n    \"<Topic or item awaiting resolution>\"\n  ]\n}",
+      "parsed_output": {
+        "summary": "The meeting discussed the new member recruitment drive. Priya assigned someone to shortlist candidates for the technical round, and someone to send the recruitment announcement. Divya prepared interview questions before the weekend, and Sanjay finalized the venue. Priya scheduled interview slots and finalized the ticket price. Karthik and Divya confirmed the shortlist candidates for the technical round.",
+        "action_items": [
+          {
+            "task": "Shortlist candidates for the technical round",
+            "owner": null,
+            "deadline": null,
+            "status": "pending"
+          },
+          {
+            "task": "Send the recruitment announcement",
+            "owner": null,
+            "deadline": null,
+            "status": "pending"
+          },
+          {
+            "task": "Prepare interview questions",
+            "owner": "Divya",
+            "deadline": null,
+            "status": "pending"
+          },
+          {
+            "task": "Finalize the venue",
+            "owner": "Sanjay",
+            "deadline": null,
+            "status": "pending"
+          },
+          {
+            "task": "Schedule interview slots",
+            "owner": "Priya",
+            "deadline": null,
+            "status": "pending"
+          },
+          {
+            "task": "Finalize the ticket price",
+            "owner": "Pooja",
+            "deadline": null,
+            "status": "pending"
+          },
+          {
+            "task": "Shortlist candidates for the technical round",
+            "owner": null,
+            "deadline": null,
+            "status": "pending"
+          }
+        ],
+        "decisions": [
+          "<Confirmed agreement or decision>"
+        ],
+        "unresolved_issues": [
+          "<Topic or item awaiting resolution>"
+        ]
+      }
+    },
+    {
+      "meeting_id": "SC049",
+      "parse_ok": true,
+      "pydantic_ok": true,
+      "pydantic_error": null,
+      "elapsed_s": 5.96,
+      "has_summary": true,
+      "n_pred_tasks": 1,
+      "n_gt_tasks": 3,
+      "n_pred_decs": 1,
+      "n_gt_decs": 1,
+      "n_pred_issues": 2,
+      "n_gt_issues": 2,
+      "lex_ai_f1": 0.0,
+      "sem_ai_p": 0.0,
+      "sem_ai_r": 0.0,
+      "sem_ai_f1": 0.0,
+      "lex_dec_f1": 0.0,
+      "sem_dec_p": 0.0,
+      "sem_dec_r": 0.0,
+      "sem_dec_f1": 0.0,
+      "lex_iss_f1": 0.0,
+      "sem_iss_p": 0.5,
+      "sem_iss_r": 0.5,
+      "sem_iss_f1": 0.5,
+      "v1_sem_iss_f1": 0.6667,
+      "delta_sem_iss_f1": -0.1667,
+      "v1_sem_ai_f1": 0.0,
+      "delta_sem_ai_f1": 0.0,
+      "v1_sem_dec_f1": 1.0,
+      "delta_sem_dec_f1": -1.0,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "hallucination_count": 0,
+      "v1_pred_issues": [
+        "Equipment availability"
+      ],
+      "v2_pred_issues": [
+        "Equipment availability",
+        "Submit the budget proposal to the department"
+      ],
+      "v1_pred_decs": [
+        "Finalize the event date"
+      ],
+      "v2_pred_decs": [
+        "<Confirmed agreement or decision>"
+      ],
+      "v1_pred_tasks": [
+        "Finalize the event date"
+      ],
+      "v2_pred_tasks": [
+        "Finalize the event date"
+      ],
+      "gt_issues": [
+        "The sponsorship confirmation remains unresolved.",
+        "The equipment availability remains unresolved."
+      ],
+      "gt_decs": [
+        "Finalized the event date."
+      ],
+      "gt_tasks": [
+        "Reconcile last month's expenses",
+        "Get sponsorship quotations",
+        "Submit the budget proposal to the department"
+      ],
+      "raw_output": "{\n  \"summary\": \"The meeting discussed the club budget review. Kavya mentioned that sponsorship confirmation is pending. Arjun will reconcile last month's expenses. Manoj will get sponsorship quotations by the end of this week. Naveen will submit the budget proposal to the department by Wednesday. The event date will be finalized. Equipment availability is still pending. Manoj will update the group on the budget proposal status.\",\n  \"action_items\": [\n    {\n      \"task\": \"Finalize the event date\",\n      \"owner\": null,\n      \"deadline\": null,\n      \"status\": \"pending\"\n    }\n  ],\n  \"decisions\": [\n    \"<Confirmed agreement or decision>\"\n  ],\n  \"unresolved_issues\": [\n    \"Equipment availability\",\n    \"Submit the budget proposal to the department\"\n  ]\n}",
+      "parsed_output": {
+        "summary": "The meeting discussed the club budget review. Kavya mentioned that sponsorship confirmation is pending. Arjun will reconcile last month's expenses. Manoj will get sponsorship quotations by the end of this week. Naveen will submit the budget proposal to the department by Wednesday. The event date will be finalized. Equipment availability is still pending. Manoj will update the group on the budget proposal status.",
+        "action_items": [
+          {
+            "task": "Finalize the event date",
+            "owner": null,
+            "deadline": null,
+            "status": "pending"
+          }
+        ],
+        "decisions": [
+          "<Confirmed agreement or decision>"
+        ],
+        "unresolved_issues": [
+          "Equipment availability",
+          "Submit the budget proposal to the department"
+        ]
+      }
+    },
+    {
+      "meeting_id": "SC054",
+      "parse_ok": true,
+      "pydantic_ok": true,
+      "pydantic_error": null,
+      "elapsed_s": 8.59,
+      "has_summary": true,
+      "n_pred_tasks": 5,
+      "n_gt_tasks": 4,
+      "n_pred_decs": 1,
+      "n_gt_decs": 1,
+      "n_pred_issues": 1,
+      "n_gt_issues": 1,
+      "lex_ai_f1": 0.8889,
+      "sem_ai_p": 0.8,
+      "sem_ai_r": 1.0,
+      "sem_ai_f1": 0.8889,
+      "lex_dec_f1": 0.0,
+      "sem_dec_p": 0.0,
+      "sem_dec_r": 0.0,
+      "sem_dec_f1": 0.0,
+      "lex_iss_f1": 0.0,
+      "sem_iss_p": 0.0,
+      "sem_iss_r": 0.0,
+      "sem_iss_f1": 0.0,
+      "v1_sem_iss_f1": 0.0,
+      "delta_sem_iss_f1": 0.0,
+      "v1_sem_ai_f1": 0.8889,
+      "delta_sem_ai_f1": 0.0,
+      "v1_sem_dec_f1": 0.0,
+      "delta_sem_dec_f1": 0.0,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "hallucination_count": 0,
+      "v1_pred_issues": [
+        "Guest's travel plans",
+        "Budget approval"
+      ],
+      "v2_pred_issues": [
+        "<Topic or item awaiting resolution>"
+      ],
+      "v1_pred_decs": [
+        "Finalize the event date"
+      ],
+      "v2_pred_decs": [
+        "<Confirmed agreement or decision>"
+      ],
+      "v1_pred_tasks": [
+        "Arrange the projector and mic",
+        "Book the seminar hall",
+        "Send certificates to workshop attendees",
+        "Prepare workshop handouts",
+        "Finalize the venue"
+      ],
+      "v2_pred_tasks": [
+        "Arrange the projector and mic",
+        "Book the seminar hall",
+        "Send certificates to workshop attendees",
+        "Prepare the workshop handouts",
+        "Finalize the venue"
+      ],
+      "gt_issues": [
+        "The sponsorship confirmation remains unresolved."
+      ],
+      "gt_decs": [
+        "Finalized the venue."
+      ],
+      "gt_tasks": [
+        "Arrange the projector and mic",
+        "Book the seminar hall",
+        "Send certificates to workshop attendees",
+        "Prepare the workshop handouts"
+      ],
+      "raw_output": "{\n  \"summary\": \"The meeting discussed guest workshop planning. Naveen arranged the projector and mic, Arjun booked the seminar hall by the 25th, Meera sent certificates to workshop attendees, and Arjun prepared the workshop handouts before the weekend. The venue was decided to be the one discussed earlier. The sponsorship confirmation is pending.\",\n  \"action_items\": [\n    {\n      \"task\": \"Arrange the projector and mic\",\n      \"owner\": \"Meera\",\n      \"deadline\": null,\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Book the seminar hall\",\n      \"owner\": \"Arjun\",\n      \"deadline\": \"25th\",\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Send certificates to workshop attendees\",\n      \"owner\": \"Meera\",\n      \"deadline\": null,\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Prepare the workshop handouts\",\n      \"owner\": \"Arjun\",\n      \"deadline\": \"before the weekend\",\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Finalize the venue\",\n      \"owner\": \"Arjun\",\n      \"deadline\": null,\n      \"status\": \"pending\"\n    }\n  ],\n  \"decisions\": [\n    \"<Confirmed agreement or decision>\"\n  ],\n  \"unresolved_issues\": [\n    \"<Topic or item awaiting resolution>\"\n  ]\n}",
+      "parsed_output": {
+        "summary": "The meeting discussed guest workshop planning. Naveen arranged the projector and mic, Arjun booked the seminar hall by the 25th, Meera sent certificates to workshop attendees, and Arjun prepared the workshop handouts before the weekend. The venue was decided to be the one discussed earlier. The sponsorship confirmation is pending.",
+        "action_items": [
+          {
+            "task": "Arrange the projector and mic",
+            "owner": "Meera",
+            "deadline": null,
+            "status": "pending"
+          },
+          {
+            "task": "Book the seminar hall",
+            "owner": "Arjun",
+            "deadline": "25th",
+            "status": "pending"
+          },
+          {
+            "task": "Send certificates to workshop attendees",
+            "owner": "Meera",
+            "deadline": null,
+            "status": "pending"
+          },
+          {
+            "task": "Prepare the workshop handouts",
+            "owner": "Arjun",
+            "deadline": "before the weekend",
+            "status": "pending"
+          },
+          {
+            "task": "Finalize the venue",
+            "owner": "Arjun",
+            "deadline": null,
+            "status": "pending"
+          }
+        ],
+        "decisions": [
+          "<Confirmed agreement or decision>"
+        ],
+        "unresolved_issues": [
+          "<Topic or item awaiting resolution>"
+        ]
+      }
+    },
+    {
+      "meeting_id": "SC056",
+      "parse_ok": true,
+      "pydantic_ok": true,
+      "pydantic_error": null,
+      "elapsed_s": 7.26,
+      "has_summary": true,
+      "n_pred_tasks": 3,
+      "n_gt_tasks": 3,
+      "n_pred_decs": 2,
+      "n_gt_decs": 2,
+      "n_pred_issues": 0,
+      "n_gt_issues": 1,
+      "lex_ai_f1": 1.0,
+      "sem_ai_p": 1.0,
+      "sem_ai_r": 1.0,
+      "sem_ai_f1": 1.0,
+      "lex_dec_f1": 1.0,
+      "sem_dec_p": 1.0,
+      "sem_dec_r": 1.0,
+      "sem_dec_f1": 1.0,
+      "lex_iss_f1": 0.0,
+      "sem_iss_p": 0.0,
+      "sem_iss_r": 0.0,
+      "sem_iss_f1": 0.0,
+      "v1_sem_iss_f1": 0.0,
+      "delta_sem_iss_f1": 0.0,
+      "v1_sem_ai_f1": 1.0,
+      "delta_sem_ai_f1": 0.0,
+      "v1_sem_dec_f1": 1.0,
+      "delta_sem_dec_f1": 0.0,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "hallucination_count": 0,
+      "v1_pred_issues": [
+        "Guest's travel plans",
+        "Budget approval"
+      ],
+      "v2_pred_issues": [],
+      "v1_pred_decs": [
+        "Finalize the final theme",
+        "Finalize the ticket price"
+      ],
+      "v2_pred_decs": [
+        "Finalize the final theme",
+        "Finalize the ticket price"
+      ],
+      "v1_pred_tasks": [
+        "Arrange practice sessions before the contest by the 25th",
+        "Book transport for the away competition before the weekend",
+        "Prepare the competition rulebook by Wednesday"
+      ],
+      "v2_pred_tasks": [
+        "Arrange practice sessions before the contest by the 25th",
+        "Book transport for the away competition before the weekend",
+        "Prepare the competition rulebook by Wednesday"
+      ],
+      "gt_issues": [
+        "The equipment availability remains unresolved."
+      ],
+      "gt_decs": [
+        "Finalized the final theme.",
+        "Finalized the ticket price."
+      ],
+      "gt_tasks": [
+        "Arrange practice sessions before the contest",
+        "Book transport for the away competition",
+        "Prepare the competition rulebook"
+      ],
+      "raw_output": "{\n  \"summary\": \"The meeting discussed the inter-college competition prep. The final theme and ticket price were finalized. Karthik arranged practice sessions by the 25th, and Vikram booked transport by Wednesday. Lakshmi prepared the competition rulebook by Wednesday. The group agreed to update the group on practice sessions.\",\n  \"action_items\": [\n    {\n      \"task\": \"Arrange practice sessions before the contest by the 25th\",\n      \"owner\": \"Karthik\",\n      \"deadline\": null,\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Book transport for the away competition before the weekend\",\n      \"owner\": \"Vikram\",\n      \"deadline\": \"Wednesday\",\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Prepare the competition rulebook by Wednesday\",\n      \"owner\": \"Lakshmi\",\n      \"deadline\": \"Wednesday\",\n      \"status\": \"pending\"\n    }\n  ],\n  \"decisions\": [\n    \"Finalize the final theme\",\n    \"Finalize the ticket price\"\n  ],\n  \"unresolved_issues\": []\n}",
+      "parsed_output": {
+        "summary": "The meeting discussed the inter-college competition prep. The final theme and ticket price were finalized. Karthik arranged practice sessions by the 25th, and Vikram booked transport by Wednesday. Lakshmi prepared the competition rulebook by Wednesday. The group agreed to update the group on practice sessions.",
+        "action_items": [
+          {
+            "task": "Arrange practice sessions before the contest by the 25th",
+            "owner": "Karthik",
+            "deadline": null,
+            "status": "pending"
+          },
+          {
+            "task": "Book transport for the away competition before the weekend",
+            "owner": "Vikram",
+            "deadline": "Wednesday",
+            "status": "pending"
+          },
+          {
+            "task": "Prepare the competition rulebook by Wednesday",
+            "owner": "Lakshmi",
+            "deadline": "Wednesday",
+            "status": "pending"
+          }
+        ],
+        "decisions": [
+          "Finalize the final theme",
+          "Finalize the ticket price"
+        ],
+        "unresolved_issues": []
+      }
+    },
+    {
+      "meeting_id": "SC059",
+      "parse_ok": true,
+      "pydantic_ok": true,
+      "pydantic_error": null,
+      "elapsed_s": 7.08,
+      "has_summary": true,
+      "n_pred_tasks": 3,
+      "n_gt_tasks": 4,
+      "n_pred_decs": 1,
+      "n_gt_decs": 1,
+      "n_pred_issues": 2,
+      "n_gt_issues": 2,
+      "lex_ai_f1": 0.8571,
+      "sem_ai_p": 1.0,
+      "sem_ai_r": 0.75,
+      "sem_ai_f1": 0.8571,
+      "lex_dec_f1": 0.0,
+      "sem_dec_p": 1.0,
+      "sem_dec_r": 1.0,
+      "sem_dec_f1": 1.0,
+      "lex_iss_f1": 0.0,
+      "sem_iss_p": 0.5,
+      "sem_iss_r": 0.5,
+      "sem_iss_f1": 0.5,
+      "v1_sem_iss_f1": 0.4,
+      "delta_sem_iss_f1": 0.1,
+      "v1_sem_ai_f1": 0.6667,
+      "delta_sem_ai_f1": 0.1904,
+      "v1_sem_dec_f1": 0.0,
+      "delta_sem_dec_f1": 1.0,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "hallucination_count": 0,
+      "v1_pred_issues": [
+        "Sponsorship confirmation",
+        "Guest's travel plans",
+        "Team registration for the competition"
+      ],
+      "v2_pred_issues": [
+        "<Sponsorship confirmation>",
+        "<Team registration>"
+      ],
+      "v1_pred_decs": [
+        "Finalize the event date"
+      ],
+      "v2_pred_decs": [
+        "<Confirmed schedule change>"
+      ],
+      "v1_pred_tasks": [
+        "Book transport for the away competition before the weekend",
+        "Register the team for the competition before next Monday"
+      ],
+      "v2_pred_tasks": [
+        "Finalize the competition judges",
+        "Book transport for the away competition before the weekend",
+        "Register the team for the competition before next Monday"
+      ],
+      "gt_issues": [
+        "The printing order remains unresolved.",
+        "The sponsorship confirmation remains unresolved."
+      ],
+      "gt_decs": [
+        "Finalized the schedule change."
+      ],
+      "gt_tasks": [
+        "Arrange practice sessions before the contest",
+        "Book transport for the away competition",
+        "Finalize the competition judges",
+        "Register the team for the competition"
+      ],
+      "raw_output": "{\n  \"summary\": \"The meeting discussed the preparation for the inter-college competition. Meera arranged practice sessions, Arjun finalized the schedule change, Pooja booked transport, and Arjun will finalize the competition judges. The sponsorship confirmation and team registration are still pending.\",\n  \"action_items\": [\n    {\n      \"task\": \"Finalize the competition judges\",\n      \"owner\": \"Arjun\",\n      \"deadline\": null,\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Book transport for the away competition before the weekend\",\n      \"owner\": \"Pooja\",\n      \"deadline\": \"before the weekend\",\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Register the team for the competition before next Monday\",\n      \"owner\": null,\n      \"deadline\": \"before next Monday\",\n      \"status\": \"pending\"\n    }\n  ],\n  \"decisions\": [\n    \"<Confirmed schedule change>\"\n  ],\n  \"unresolved_issues\": [\n    \"<Sponsorship confirmation>\",\n    \"<Team registration>\"\n  ]\n}",
+      "parsed_output": {
+        "summary": "The meeting discussed the preparation for the inter-college competition. Meera arranged practice sessions, Arjun finalized the schedule change, Pooja booked transport, and Arjun will finalize the competition judges. The sponsorship confirmation and team registration are still pending.",
+        "action_items": [
+          {
+            "task": "Finalize the competition judges",
+            "owner": "Arjun",
+            "deadline": null,
+            "status": "pending"
+          },
+          {
+            "task": "Book transport for the away competition before the weekend",
+            "owner": "Pooja",
+            "deadline": "before the weekend",
+            "status": "pending"
+          },
+          {
+            "task": "Register the team for the competition before next Monday",
+            "owner": null,
+            "deadline": "before next Monday",
+            "status": "pending"
+          }
+        ],
+        "decisions": [
+          "<Confirmed schedule change>"
+        ],
+        "unresolved_issues": [
+          "<Sponsorship confirmation>",
+          "<Team registration>"
+        ]
+      }
+    },
+    {
+      "meeting_id": "SC060",
+      "parse_ok": true,
+      "pydantic_ok": true,
+      "pydantic_error": null,
+      "elapsed_s": 8.13,
+      "has_summary": true,
+      "n_pred_tasks": 4,
+      "n_gt_tasks": 3,
+      "n_pred_decs": 3,
+      "n_gt_decs": 2,
+      "n_pred_issues": 1,
+      "n_gt_issues": 1,
+      "lex_ai_f1": 0.5714,
+      "sem_ai_p": 0.5,
+      "sem_ai_r": 0.6667,
+      "sem_ai_f1": 0.5714,
+      "lex_dec_f1": 0.8,
+      "sem_dec_p": 0.6667,
+      "sem_dec_r": 1.0,
+      "sem_dec_f1": 0.8,
+      "lex_iss_f1": 0.0,
+      "sem_iss_p": 1.0,
+      "sem_iss_r": 1.0,
+      "sem_iss_f1": 1.0,
+      "v1_sem_iss_f1": 0.0,
+      "delta_sem_iss_f1": 1.0,
+      "v1_sem_ai_f1": 0.5714,
+      "delta_sem_ai_f1": 0.0,
+      "v1_sem_dec_f1": 0.8,
+      "delta_sem_dec_f1": 0.0,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "hallucination_count": 0,
+      "v1_pred_issues": [],
+      "v2_pred_issues": [
+        "Auditorium booking"
+      ],
+      "v1_pred_decs": [
+        "Finalize the venue",
+        "Finalize the team composition",
+        "Prepare the competition rulebook by Thursday evening"
+      ],
+      "v2_pred_decs": [
+        "Finalize the venue",
+        "Finalize the team composition",
+        "Prepare the competition rulebook by Thursday evening"
+      ],
+      "v1_pred_tasks": [
+        "Finalize the venue",
+        "Finalize the team composition",
+        "Arrange practice sessions",
+        "Prepare the competition rulebook"
+      ],
+      "v2_pred_tasks": [
+        "Finalize the venue",
+        "Finalize the team composition",
+        "Arrange practice sessions",
+        "Prepare the competition rulebook"
+      ],
+      "gt_issues": [
+        "The auditorium booking remains unresolved."
+      ],
+      "gt_decs": [
+        "Finalized the venue.",
+        "Finalized the team composition."
+      ],
+      "gt_tasks": [
+        "Book transport for the away competition",
+        "Arrange practice sessions before the contest",
+        "Prepare the competition rulebook"
+      ],
+      "raw_output": "{\n  \"summary\": \"The meeting discussed the preparation for the inter-college competition. It was decided to finalize the venue and team composition. Arjun was tasked with arranging practice sessions and preparing the competition rulebook by Thursday evening. The auditorium booking is still pending, and transport booking should be done before the weekend.\",\n  \"action_items\": [\n    {\n      \"task\": \"Finalize the venue\",\n      \"owner\": null,\n      \"deadline\": null,\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Finalize the team composition\",\n      \"owner\": null,\n      \"deadline\": null,\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Arrange practice sessions\",\n      \"owner\": \"Arjun\",\n      \"deadline\": null,\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Prepare the competition rulebook\",\n      \"owner\": \"Arjun\",\n      \"deadline\": \"Thursday evening\",\n      \"status\": \"pending\"\n    }\n  ],\n  \"decisions\": [\n    [\n      \"Finalize the venue\"\n    ],\n    [\n      \"Finalize the team composition\"\n    ],\n    [\n      \"Prepare the competition rulebook by Thursday evening\"\n    ]\n  ],\n  \"unresolved_issues\": [\n    [\n      \"Auditorium booking\"\n    ]\n  ]\n}",
+      "parsed_output": {
+        "summary": "The meeting discussed the preparation for the inter-college competition. It was decided to finalize the venue and team composition. Arjun was tasked with arranging practice sessions and preparing the competition rulebook by Thursday evening. The auditorium booking is still pending, and transport booking should be done before the weekend.",
+        "action_items": [
+          {
+            "task": "Finalize the venue",
+            "owner": null,
+            "deadline": null,
+            "status": "pending"
+          },
+          {
+            "task": "Finalize the team composition",
+            "owner": null,
+            "deadline": null,
+            "status": "pending"
+          },
+          {
+            "task": "Arrange practice sessions",
+            "owner": "Arjun",
+            "deadline": null,
+            "status": "pending"
+          },
+          {
+            "task": "Prepare the competition rulebook",
+            "owner": "Arjun",
+            "deadline": "Thursday evening",
+            "status": "pending"
+          }
+        ],
+        "decisions": [
+          [
+            "Finalize the venue"
+          ],
+          [
+            "Finalize the team composition"
+          ],
+          [
+            "Prepare the competition rulebook by Thursday evening"
+          ]
+        ],
+        "unresolved_issues": [
+          [
+            "Auditorium booking"
+          ]
+        ]
+      }
+    },
+    {
+      "meeting_id": "SC064",
+      "parse_ok": true,
+      "pydantic_ok": true,
+      "pydantic_error": null,
+      "elapsed_s": 8.46,
+      "has_summary": true,
+      "n_pred_tasks": 4,
+      "n_gt_tasks": 4,
+      "n_pred_decs": 2,
+      "n_gt_decs": 2,
+      "n_pred_issues": 6,
+      "n_gt_issues": 1,
+      "lex_ai_f1": 1.0,
+      "sem_ai_p": 1.0,
+      "sem_ai_r": 1.0,
+      "sem_ai_f1": 1.0,
+      "lex_dec_f1": 1.0,
+      "sem_dec_p": 1.0,
+      "sem_dec_r": 1.0,
+      "sem_dec_f1": 1.0,
+      "lex_iss_f1": 0.0,
+      "sem_iss_p": 0.1667,
+      "sem_iss_r": 1.0,
+      "sem_iss_f1": 0.2857,
+      "v1_sem_iss_f1": 0.0,
+      "delta_sem_iss_f1": 0.2857,
+      "v1_sem_ai_f1": 0.5,
+      "delta_sem_ai_f1": 0.5,
+      "v1_sem_dec_f1": 1.0,
+      "delta_sem_dec_f1": 0.0,
+      "hallucinated_owners": [],
+      "hallucinated_deadlines": [],
+      "hallucination_count": 0,
+      "v1_pred_issues": [
+        "Plan the orientation session",
+        "Coordinate the inter-club meeting"
+      ],
+      "v2_pred_issues": [
+        "Final headcount confirmation",
+        "Vendor to go with",
+        "Event date",
+        "Monthly newsletter draft",
+        "Orientation session planning",
+        "Feedback survey organization"
+      ],
+      "v1_pred_decs": [
+        "Finalize the vendor to go with",
+        "Finalize the event date"
+      ],
+      "v2_pred_decs": [
+        "Finalize the vendor to go with",
+        "Finalize the event date"
+      ],
+      "v1_pred_tasks": [
+        "Finalize the vendor to go with",
+        "Finalize the event date",
+        "Plan the orientation session",
+        "Coordinate the inter-club meeting"
+      ],
+      "v2_pred_tasks": [
+        "Draft the monthly newsletter",
+        "Organize the feedback survey",
+        "Plan the orientation session",
+        "Coordinate the inter-club meeting"
+      ],
+      "gt_issues": [
+        "The final headcount remains unresolved."
+      ],
+      "gt_decs": [
+        "Finalized the vendor to go with.",
+        "Finalized the event date."
+      ],
+      "gt_tasks": [
+        "Draft the monthly newsletter",
+        "Organize the feedback survey",
+        "Plan the orientation session",
+        "Coordinate the inter-club meeting"
+      ],
+      "raw_output": "{\n  \"summary\": \"The meeting discussed general club coordination. The final headcount is pending confirmation. The vendor to go with is undecided. The event date is pending finalization. The monthly newsletter draft is pending. The inter-club meeting coordination is pending. The orientation session planning is pending. The feedback survey organization is pending.\",\n  \"action_items\": [\n    {\n      \"task\": \"Draft the monthly newsletter\",\n      \"owner\": null,\n      \"deadline\": null,\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Organize the feedback survey\",\n      \"owner\": null,\n      \"deadline\": null,\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Plan the orientation session\",\n      \"owner\": null,\n      \"deadline\": null,\n      \"status\": \"pending\"\n    },\n    {\n      \"task\": \"Coordinate the inter-club meeting\",\n      \"owner\": null,\n      \"deadline\": null,\n      \"status\": \"pending\"\n    }\n  ],\n  \"decisions\": [\n    \"Finalize the vendor to go with\",\n    \"Finalize the event date\"\n  ],\n  \"unresolved_issues\": [\n    \"Final headcount confirmation\",\n    \"Vendor to go with\",\n    \"Event date\",\n    \"Monthly newsletter draft\",\n    \"Orientation session planning\",\n    \"Feedback survey organization\"\n  ]\n}",
+      "parsed_output": {
+        "summary": "The meeting discussed general club coordination. The final headcount is pending confirmation. The vendor to go with is undecided. The event date is pending finalization. The monthly newsletter draft is pending. The inter-club meeting coordination is pending. The orientation session planning is pending. The feedback survey organization is pending.",
+        "action_items": [
+          {
+            "task": "Draft the monthly newsletter",
+            "owner": null,
+            "deadline": null,
+            "status": "pending"
+          },
+          {
+            "task": "Organize the feedback survey",
+            "owner": null,
+            "deadline": null,
+            "status": "pending"
+          },
+          {
+            "task": "Plan the orientation session",
+            "owner": null,
+            "deadline": null,
+            "status": "pending"
+          },
+          {
+            "task": "Coordinate the inter-club meeting",
+            "owner": null,
+            "deadline": null,
+            "status": "pending"
+          }
+        ],
+        "decisions": [
+          "Finalize the vendor to go with",
+          "Finalize the event date"
+        ],
+        "unresolved_issues": [
+          "Final headcount confirmation",
+          "Vendor to go with",
+          "Event date",
+          "Monthly newsletter draft",
+          "Orientation session planning",
+          "Feedback survey organization"
+        ]
+      }
+    }
+  ],
+  "aggregate": {
+    "meetings_evaluated": 14,
+    "json_validity_rate": 1.0,
+    "pydantic_validity_rate": 1.0,
+    "issue_sem_macro_f1": {
+      "v1": 0.1476,
+      "v2": 0.4228,
+      "delta": 0.2752
+    },
+    "decision_sem_macro_f1": {
+      "v1": 0.6048,
+      "v2": 0.4908,
+      "delta": -0.114
+    },
+    "action_sem_macro_f1": {
+      "v1": 0.7261,
+      "v2": 0.8144,
+      "delta": 0.0883
+    },
+    "hallucinations": {
+      "total_owners": 0,
+      "total_deadlines": 0,
+      "rate": 0.0
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "meeting_id": "SC049",
+  "category": "budget_finance",
+  "summary": "The club discussed club budget review, covering 3 action item(s), 1 decision(s), and 2 open issue(s).",
+  "key_topics": [
+    "Get sponsorship quotations",
+    "Reconcile last month's expenses",
+    "club budget review"
+  ],
+  "action_items": [
+    {
+      "task": "Reconcile last month's expenses",
+      "owner": "Arjun",
+      "deadline": "Not specified",
+      "evidence": "Arjun will reconcile last month's expenses.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Get sponsorship quotations",
+      "owner": "Manoj",
+      "deadline": "end of this week",
+      "evidence": "Manoj, can you get sponsorship quotations by end of this week?",
+      "confidence": "high"
+    },
+    {
+      "task": "Submit the budget proposal to the department",
+      "owner": "Naveen",
+      "deadline": "Wednesday",
+      "evidence": "Naveen, can you submit the budget proposal to the department by Wednesday?",
+      "confidence": "high"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the event date.",
+      "evidence": "Okay, let's finalize the event date then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The sponsorship confirmation remains unresolved.",
+      "evidence": "The sponsorship confirmation is still not confirmed."
+    },
+    {
+      "issue": "The equipment availability remains unresolved.",
+      "evidence": "The equipment availability is still not confirmed."
+    }
+  ]
+}

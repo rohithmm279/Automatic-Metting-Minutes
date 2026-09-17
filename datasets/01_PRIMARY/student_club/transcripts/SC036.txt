@@ -1,0 +1,19 @@
+[Meeting: Club Project Progress | Attendees: Nisha, Kavya, Manoj, Naveen]
+Nisha: Okay so let's get started, today we're talking about club project progress.
+Nisha: Alright, Manoj, can you look into it — we need to prepare the presentation slides?
+Manoj: I'll prepare the presentation slides before it gets too late.
+Nisha: Right, what should we do about the ticket price?
+Kavya: Maybe we should go with ticket price we discussed earlier.
+Naveen: I think we should reconsider it, actually.
+Nisha: Okay, let's finalize the ticket price then — that's settled.
+Nisha: So yeah, Manoj, can you look into it — we need to test the prototype?
+Manoj: I'll test the prototype whenever possible.
+Nisha: So yeah, Someone needs to complete the literature review, it can't wait too long.
+Manoj: Yeah, true, we'll figure out who.
+Nisha: Okay so any update on the auditorium booking?
+Kavya: The auditorium booking is still not confirmed. We're waiting to hear back.
+Naveen: Just circling back — about test the prototype, are we still on track?
+Kavya: Yeah, on it, will update the group soon.
+Kavya: Alright, switching gears for a second — anything else before we wrap up?
+Naveen: Nah, I think that covers it for today.
+Nisha: Cool, thanks everyone, meeting adjourned.

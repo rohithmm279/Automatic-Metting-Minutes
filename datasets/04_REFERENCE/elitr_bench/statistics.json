@@ -1,0 +1,19 @@
+{
+  "dataset_name": "ELITR-Bench",
+  "number_of_meetings": 36,
+  "number_of_examples": 542,
+  "number_of_transcripts": 0,
+  "average_transcript_length_words": null,
+  "minimum_transcript_length_words": null,
+  "maximum_transcript_length_words": null,
+  "number_of_summaries": 0,
+  "number_of_questions": 542,
+  "number_of_action_annotations": 0,
+  "number_of_decision_annotations": 0,
+  "number_of_issue_annotations": 0,
+  "train_count": 20,
+  "validation_count": 0,
+  "test_count": 16,
+  "storage_size": "457.6KB",
+  "note": "Transcripts not included (see raw/elitr_bench and NOT_DOWNLOADED notes); questions/answers only."
+}

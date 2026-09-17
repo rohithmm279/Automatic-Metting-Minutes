@@ -1,0 +1,24 @@
+[Meeting: Upcoming Hackathon | Attendees: Nisha, Rahul, Arjun, Aditya]
+Nisha: Alright, let's get started, today we're talking about upcoming hackathon.
+Aditya: Cool, so Rahul, would you be able to draft the API documentation?
+Aditya: (cutting in) Hold on, one sec—
+Rahul: Rahul will draft the API documentation.
+Nisha: Umm, any update on the sponsorship confirmation?
+Rahul: The sponsorship confirmation is still not confirmed. We're waiting to hear back.
+Aditya: Umm, Arjun, would you be able to arrange laptops for the coding session?
+Arjun: Arjun will arrange laptops for the coding session.
+Nisha: So yeah, Aditya, can you look into it — we need to fix the club website bug?
+Aditya: I'll fix the club website bug before it gets too late.
+Arjun: Umm, what should we do about the vendor to go with?
+Nisha: Maybe we should go with vendor to go with we discussed earlier.
+Rahul: I think we should reconsider it, actually.
+Arjun: Okay, let's finalize the vendor to go with then — that's settled.
+Nisha: Umm, what should we do about the event date?
+Arjun: Maybe we should go with event date we discussed earlier.
+Rahul: I think we should reconsider it, actually.
+Nisha: Okay, let's finalize the event date then — that's settled.
+Arjun: Just circling back — about draft the api documentation, are we still on track?
+Rahul: Yeah, on it, will update the group soon.
+Rahul: Alright, switching gears for a second — anything else before we wrap up?
+Arjun: Nah, I think that covers it for today.
+Nisha: Cool, thanks everyone, meeting adjourned.

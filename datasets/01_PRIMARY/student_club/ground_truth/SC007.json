@@ -1,0 +1,49 @@
+{
+  "meeting_id": "SC007",
+  "category": "event_planning",
+  "summary": "The club discussed annual fest planning, covering 3 action item(s), 2 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "Organize the seating layout",
+    "Print the banners",
+    "annual fest planning"
+  ],
+  "action_items": [
+    {
+      "task": "Organize the seating layout",
+      "owner": "Karthik",
+      "deadline": "end of this week",
+      "evidence": "Karthik, can you organize the seating layout by end of this week?",
+      "confidence": "high"
+    },
+    {
+      "task": "Print the banners",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to print the banners, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Book the auditorium",
+      "owner": "Vikram",
+      "deadline": "soon",
+      "evidence": "I'll book the auditorium soon.",
+      "confidence": "medium"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the venue.",
+      "evidence": "Okay, let's finalize the venue then — that's settled."
+    },
+    {
+      "decision": "Finalized the schedule change.",
+      "evidence": "Okay, let's finalize the schedule change then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The guest's travel plans remains unresolved.",
+      "evidence": "The guest's travel plans is still not confirmed."
+    }
+  ]
+}

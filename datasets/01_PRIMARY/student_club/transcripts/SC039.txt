@@ -1,0 +1,21 @@
+[Meeting: Club Project Progress | Attendees: Suresh, Sneha, Lakshmi, Sanjay]
+Suresh: Okay so let's get started, today we're talking about club project progress.
+Sneha: Umm, any update on the budget approval?
+Lakshmi: The budget approval is still not confirmed. We're waiting to hear back.
+Sanjay: Cool, so Lakshmi, can you look into it — we need to write the project report draft?
+Lakshmi: I'll write the project report draft whenever possible.
+Suresh: So yeah, Lakshmi, can you look into it — we need to prepare the presentation slides?
+Lakshmi: I'll prepare the presentation slides whenever possible.
+Sneha: Alright, Lakshmi, can you fix the pending bugs in the demo by Wednesday?
+Sanjay: (cutting in) Hold on, one sec—
+Lakshmi: Sure, I'll fix the pending bugs in the demo by Wednesday.
+Lakshmi: Actually, sorry, I meant before next Monday, not what I said earlier.
+Sneha: Umm, what should we do about the ticket price?
+Sanjay: Maybe we should go with ticket price we discussed earlier.
+Lakshmi: I think we should reconsider it, actually.
+Sneha: Okay, let's finalize the ticket price then — that's settled.
+Sanjay: Just circling back — about prepare the presentation slides, are we still on track?
+Sanjay: Yeah, on it, will update the group soon.
+Sneha: Alright, switching gears for a second — anything else before we wrap up?
+Lakshmi: Nah, I think that covers it for today.
+Suresh: Cool, thanks everyone, meeting adjourned.

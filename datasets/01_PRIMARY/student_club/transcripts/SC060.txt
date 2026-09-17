@@ -1,0 +1,25 @@
+[Meeting: Inter-College Competition Prep | Attendees: Manoj, Kavya, Arjun, Suresh, Naveen]
+Manoj: Umm, let's get started, today we're talking about inter-college competition prep.
+Kavya: Cool, so Someone needs to book transport for the away competition, it can't wait too long.
+Suresh: (jumping in) Actually, can I add something—
+Kavya: Yeah, true, we'll figure out who.
+Naveen: Sorry, scratch that, it should be before the weekend.
+Suresh: Cool, so any update on the auditorium booking?
+Kavya: The auditorium booking is still not confirmed. We're waiting to hear back.
+Naveen: Umm, what should we do about the venue?
+Manoj: Maybe we should go with venue we discussed earlier.
+Suresh: I think we should reconsider it, actually.
+Naveen: Okay, let's finalize the venue then — that's settled.
+Arjun: So yeah, what should we do about the team composition?
+Naveen: Maybe we should go with team composition we discussed earlier.
+Kavya: I think we should reconsider it, actually.
+Arjun: Okay, let's finalize the team composition then — that's settled.
+Arjun: So yeah, Kavya, can you look into it — we need to arrange practice sessions before the contest?
+Kavya: I'll arrange practice sessions before the contest whenever possible.
+Manoj: Right, Arjun, can you prepare the competition rulebook by Thursday evening?
+Arjun: Sure, I'll prepare the competition rulebook by Thursday evening.
+Manoj: Just circling back — about prepare the competition rulebook, are we still on track?
+Suresh: Yeah, on it, will update the group soon.
+Manoj: Alright, switching gears for a second — anything else before we wrap up?
+Arjun: Nah, I think that covers it for today.
+Manoj: Cool, thanks everyone, meeting adjourned.

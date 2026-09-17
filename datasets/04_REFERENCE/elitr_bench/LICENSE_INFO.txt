@@ -1,0 +1,5 @@
+ELITR-Bench
+Code license: see raw/LICENSE-CODE.txt (copied verbatim from the
+official utter-project/ELITR-Bench GitHub repository).
+Data license: see raw/LICENSE-DATA.txt - Creative Commons Attribution
+4.0 International (CC BY 4.0).

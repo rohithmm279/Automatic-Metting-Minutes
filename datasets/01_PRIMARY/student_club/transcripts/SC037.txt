@@ -1,0 +1,24 @@
+[Meeting: Club Project Progress | Attendees: Pooja, Kavya, Manoj, Aditya, Ananya]
+Pooja: Cool, so let's get started, today we're talking about club project progress.
+Kavya: Okay so any update on the printing order?
+Pooja: The printing order is still not confirmed. We're waiting to hear back.
+Ananya: Right, Aditya, can you look into it — we need to write the project report draft?
+Aditya: I'll write the project report draft in a few days.
+Manoj: Cool, so Someone needs to test the prototype, it can't wait too long.
+Aditya: (jumping in) Actually, can I add something—
+Pooja: Yeah, true, we'll figure out who.
+Kavya: Okay so what should we do about the event date?
+Ananya: Maybe we should go with event date we discussed earlier.
+Pooja: I think we should reconsider it, actually.
+Kavya: Okay, let's finalize the event date then — that's settled.
+Pooja: Cool, so what should we do about the team composition?
+Aditya: Maybe we should go with team composition we discussed earlier.
+Manoj: I think we should reconsider it, actually.
+Pooja: Okay, let's finalize the team composition then — that's settled.
+Pooja: So yeah, Someone needs to complete the literature review, it can't wait too long.
+Kavya: Yeah, true, we'll figure out who.
+Kavya: Just circling back — about write the project report draft, are we still on track?
+Ananya: Yeah, on it, will update the group soon.
+Manoj: Alright, switching gears for a second — anything else before we wrap up?
+Kavya: Nah, I think that covers it for today.
+Pooja: Cool, thanks everyone, meeting adjourned.

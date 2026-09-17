@@ -1,0 +1,25 @@
+[Meeting: Guest Workshop Planning | Attendees: Naveen, Riya, Priya, Manoj, Divya]
+Naveen: Right, let's get started, today we're talking about guest workshop planning.
+Riya: Right, any update on the guest's travel plans?
+Naveen: The guest's travel plans is still not confirmed. We're waiting to hear back.
+Priya: Alright, Riya, can you arrange the projector and mic before next Monday?
+Riya: Sure, I'll arrange the projector and mic before next Monday.
+Priya: Okay so any update on the equipment availability?
+Naveen: The equipment availability is still not confirmed. We're waiting to hear back.
+Divya: Right, what should we do about the venue?
+Riya: Maybe we should go with venue we discussed earlier.
+Naveen: I think we should reconsider it, actually.
+Divya: Okay, let's finalize the venue then — that's settled.
+Priya: Right, Manoj, can you prepare the workshop handouts by Wednesday?
+Manoj: Sure, I'll prepare the workshop handouts by Wednesday.
+Manoj: Umm, what should we do about the venue?
+Divya: Maybe we should go with venue we discussed earlier.
+Priya: I think we should reconsider it, actually.
+Manoj: Okay, let's finalize the venue then — that's settled.
+Riya: So yeah, Divya, would you be able to invite the guest speaker?
+Divya: Divya will invite the guest speaker.
+Riya: Just circling back — about arrange the projector and mic, are we still on track?
+Naveen: Yeah, on it, will update the group soon.
+Divya: Alright, switching gears for a second — anything else before we wrap up?
+Manoj: Nah, I think that covers it for today.
+Naveen: Cool, thanks everyone, meeting adjourned.

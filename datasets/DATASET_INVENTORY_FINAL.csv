@@ -1,0 +1,10 @@
+dataset_name,category,current_path,notes
+Student Club Dataset,PRIMARY,01_PRIMARY/student_club,Main project dataset with transcripts, ground truth, metadata, and documentation
+QMSum,BENCHMARK,02_BENCHMARKS/qmsum,Query-based meeting summarization benchmark with official train/validation/test splits
+MeetingBank,BENCHMARK,02_BENCHMARKS/meetingbank,Long-meeting benchmark with train/validation/test JSON splits
+MISED,SUPPLEMENTARY,03_SUPPLEMENTARY/mised,Information-seeking meeting QA dataset with processed train/validation/test files
+AMI,BENCHMARK,04_REFERENCE/ami,Reference meeting corpus kept as a separate benchmark/reference corpus
+ELITR Bench,BENCHMARK,04_REFERENCE/elitr_bench,Reference long-context meeting/QA benchmark package
+ICSI,REFERENCE,04_REFERENCE/icsi,Separate reference meeting corpus retained as-is without merging
+Raw meeting annotations and reference datasets,REFERENCE,04_REFERENCE,Reference materials and annotation resources kept separate from primary and benchmark datasets
+Archive raw copies,ARCHIVE,99_ARCHIVE_NOTES,Historical raw and duplicate copies intentionally left unchanged

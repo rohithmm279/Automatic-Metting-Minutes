@@ -1,0 +1,56 @@
+{
+  "meeting_id": "SC012",
+  "category": "technical_club",
+  "summary": "The club discussed upcoming hackathon, covering 4 action item(s), 2 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "upcoming hackathon",
+    "Arrange laptops for the coding session",
+    "Test the hackathon judging portal"
+  ],
+  "action_items": [
+    {
+      "task": "Arrange laptops for the coding session",
+      "owner": "Aditya",
+      "deadline": "Not specified",
+      "evidence": "Aditya will arrange laptops for the coding session.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Test the hackathon judging portal",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to test the hackathon judging portal, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Set up the github repository",
+      "owner": "Rahul",
+      "deadline": "Not specified",
+      "evidence": "Rahul will set up the GitHub repository.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Prepare the workshop slides",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to prepare the workshop slides, it can't wait too long.",
+      "confidence": "low"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the venue.",
+      "evidence": "Okay, let's finalize the venue then — that's settled."
+    },
+    {
+      "decision": "Finalized the event date.",
+      "evidence": "Okay, let's finalize the event date then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The final headcount remains unresolved.",
+      "evidence": "The final headcount is still not confirmed."
+    }
+  ]
+}

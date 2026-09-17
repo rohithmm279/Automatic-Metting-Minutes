@@ -1,0 +1,45 @@
+{
+  "meeting_id": "SC036",
+  "category": "project_meetings",
+  "summary": "The club discussed club project progress, covering 3 action item(s), 1 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "club project progress",
+    "Test the prototype",
+    "Prepare the presentation slides"
+  ],
+  "action_items": [
+    {
+      "task": "Prepare the presentation slides",
+      "owner": "Manoj",
+      "deadline": "before it gets too late",
+      "evidence": "I'll prepare the presentation slides before it gets too late.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Test the prototype",
+      "owner": "Manoj",
+      "deadline": "whenever possible",
+      "evidence": "I'll test the prototype whenever possible.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Complete the literature review",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to complete the literature review, it can't wait too long.",
+      "confidence": "low"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the ticket price.",
+      "evidence": "Okay, let's finalize the ticket price then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The auditorium booking remains unresolved.",
+      "evidence": "The auditorium booking is still not confirmed."
+    }
+  ]
+}

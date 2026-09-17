@@ -1,0 +1,53 @@
+{
+  "meeting_id": "SC042",
+  "category": "recruitment",
+  "summary": "The club discussed new member recruitment drive, covering 3 action item(s), 2 decision(s), and 2 open issue(s).",
+  "key_topics": [
+    "Shortlist candidates for the technical round",
+    "Schedule interview slots",
+    "new member recruitment drive"
+  ],
+  "action_items": [
+    {
+      "task": "Shortlist candidates for the technical round",
+      "owner": "Divya",
+      "deadline": "whenever possible",
+      "evidence": "I'll shortlist candidates for the technical round whenever possible.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Schedule interview slots",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to schedule interview slots, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Screen the club application forms",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to screen the club application forms, it can't wait too long.",
+      "confidence": "low"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the final theme.",
+      "evidence": "Okay, let's finalize the final theme then — that's settled."
+    },
+    {
+      "decision": "Finalized the schedule change.",
+      "evidence": "Okay, let's finalize the schedule change then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The sponsorship confirmation remains unresolved.",
+      "evidence": "The sponsorship confirmation is still not confirmed."
+    },
+    {
+      "issue": "The budget approval remains unresolved.",
+      "evidence": "The budget approval is still not confirmed."
+    }
+  ]
+}

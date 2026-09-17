@@ -1,0 +1,23 @@
+[Meeting: Annual Fest Planning | Attendees: Karthik, Manoj, Aditya, Divya, Meera]
+Karthik: Umm, let's get started, today we're talking about annual fest planning.
+Divya: Okay so what should we do about the event date?
+Aditya: Maybe we should go with event date we discussed earlier.
+Karthik: I think we should reconsider it, actually.
+Divya: Okay, let's finalize the event date then — that's settled.
+Aditya: Cool, so Someone needs to coordinate with campus security, it can't wait too long.
+Divya: Yeah, true, we'll figure out who.
+Karthik: Right, Manoj, can you book the auditorium by Wednesday?
+Manoj: Sure, I'll book the auditorium by Wednesday.
+Divya: Umm, what should we do about the venue?
+Manoj: Maybe we should go with venue we discussed earlier.
+Karthik: I think we should reconsider it, actually.
+Divya: Okay, let's finalize the venue then — that's settled.
+Aditya: Cool, so Manoj, can you confirm the guest list by Friday?
+Manoj: Sure, I'll confirm the guest list by Friday.
+Divya: Alright, any update on the guest's travel plans?
+Manoj: The guest's travel plans is still not confirmed. We're waiting to hear back.
+Manoj: Just circling back — about coordinate with campus security, are we still on track?
+Divya: Yeah, on it, will update the group soon.
+Karthik: Alright, switching gears for a second — anything else before we wrap up?
+Manoj: Nah, I think that covers it for today.
+Karthik: Cool, thanks everyone, meeting adjourned.

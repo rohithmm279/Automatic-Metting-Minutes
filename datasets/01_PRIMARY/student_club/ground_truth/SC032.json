@@ -1,0 +1,52 @@
+{
+  "meeting_id": "SC032",
+  "category": "project_meetings",
+  "summary": "The club discussed club project progress, covering 4 action item(s), 1 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "Test the prototype",
+    "club project progress",
+    "Finish the data collection module"
+  ],
+  "action_items": [
+    {
+      "task": "Finish the data collection module",
+      "owner": "Kavya",
+      "deadline": "Not specified",
+      "evidence": "Kavya will finish the data collection module.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Test the prototype",
+      "owner": "Pooja",
+      "deadline": "Not specified",
+      "evidence": "Pooja will test the prototype.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Prepare the presentation slides",
+      "owner": "Ananya",
+      "deadline": "soon",
+      "evidence": "I'll prepare the presentation slides soon.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Write the project report draft",
+      "owner": "Pooja",
+      "deadline": "Not specified",
+      "evidence": "Pooja will write the project report draft.",
+      "confidence": "medium"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the team composition.",
+      "evidence": "Okay, let's finalize the team composition then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The equipment availability remains unresolved.",
+      "evidence": "The equipment availability is still not confirmed."
+    }
+  ]
+}

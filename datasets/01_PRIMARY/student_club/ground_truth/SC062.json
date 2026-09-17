@@ -1,0 +1,60 @@
+{
+  "meeting_id": "SC062",
+  "category": "mixed",
+  "summary": "The club discussed general club coordination, covering 4 action item(s), 2 decision(s), and 2 open issue(s).",
+  "key_topics": [
+    "Coordinate the inter-club meeting",
+    "Plan the orientation session",
+    "general club coordination"
+  ],
+  "action_items": [
+    {
+      "task": "Plan the orientation session",
+      "owner": "Sneha",
+      "deadline": "Friday",
+      "evidence": "Sneha, can you plan the orientation session by Friday?",
+      "confidence": "high"
+    },
+    {
+      "task": "Coordinate the inter-club meeting",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to coordinate the inter-club meeting, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Draft the monthly newsletter",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to draft the monthly newsletter, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Update the club notice board",
+      "owner": "Sneha",
+      "deadline": "Not specified",
+      "evidence": "Sneha will update the club notice board.",
+      "confidence": "medium"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the ticket price.",
+      "evidence": "Okay, let's finalize the ticket price then — that's settled."
+    },
+    {
+      "decision": "Finalized the event date.",
+      "evidence": "Okay, let's finalize the event date then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The guest's travel plans remains unresolved.",
+      "evidence": "The guest's travel plans is still not confirmed."
+    },
+    {
+      "issue": "The guest's travel plans remains unresolved.",
+      "evidence": "The guest's travel plans is still not confirmed."
+    }
+  ]
+}

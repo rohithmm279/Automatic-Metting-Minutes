@@ -1,0 +1,53 @@
+{
+  "meeting_id": "SC027",
+  "category": "cultural_club",
+  "summary": "The club discussed cultural night rehearsals, covering 3 action item(s), 2 decision(s), and 2 open issue(s).",
+  "key_topics": [
+    "Shortlist performers for auditions",
+    "Design the cultural fest poster",
+    "cultural night rehearsals"
+  ],
+  "action_items": [
+    {
+      "task": "Shortlist performers for auditions",
+      "owner": "Manoj",
+      "deadline": "Friday",
+      "evidence": "Manoj, can you shortlist performers for auditions by Friday?",
+      "confidence": "high"
+    },
+    {
+      "task": "Design the cultural fest poster",
+      "owner": "Manoj",
+      "deadline": "Not specified",
+      "evidence": "Manoj will design the cultural fest poster.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Book the rehearsal hall",
+      "owner": "Manoj",
+      "deadline": "Friday",
+      "evidence": "Manoj, can you book the rehearsal hall by Friday?",
+      "confidence": "high"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the team composition.",
+      "evidence": "Okay, let's finalize the team composition then — that's settled."
+    },
+    {
+      "decision": "Finalized the venue.",
+      "evidence": "Okay, let's finalize the venue then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The sponsorship confirmation remains unresolved.",
+      "evidence": "The sponsorship confirmation is still not confirmed."
+    },
+    {
+      "issue": "The auditorium booking remains unresolved.",
+      "evidence": "The auditorium booking is still not confirmed."
+    }
+  ]
+}

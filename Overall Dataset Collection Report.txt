@@ -1,0 +1,387 @@
+Diff Datasets for Diff Ai Agent work on my project. Report are given below.
+Meeting Transcript → Summary → Action Items → Decisions → Validation → Structured Minutes
+
+                    DATASETS
+                       │
+     ┌─────────────────┼──────────────────┐
+     │                 │                  │
+     ▼                 ▼                  ▼
+Meeting Dataset   Summary Dataset    Action Dataset
+     │                 │                  │
+     ▼                 ▼                  ▼
+Transcript       Summary Agent       Action Agent
+Processor
+     │                                    │
+     │                              ┌─────┼─────┐
+     │                              ▼     ▼     ▼
+     │                            Task  Owner Deadline
+     │
+     ▼
+Decision Dataset
+     │
+     ▼
+Decision Agent
+
+
+Student Club Dataset
+        │
+        ▼
+Final Testing & Evaluation
+
+
+
+
+                    YOUR DATASETS
+                         │
+        ┌────────────────┼────────────────┐
+        │                │                │
+        ▼                ▼                ▼
+
+ STUDENT CLUB       MEETINGBANK          QMSUM
+        │                │                │
+        ▼                ▼                ▼
+
+ Action Agent       Summary Agent    Context/Evidence
+ Owner Extraction                    Retrieval
+ Deadline Extraction
+ Decision Extraction
+ Issue Detection
+        │                                  │
+        └───────────────┬──────────────────┘
+                        ▼
+                 VALIDATION AGENT
+                        ▲
+                        │
+                      MISeD
+
+              AMI + ICSI
+                    │
+                    ▼
+        Multi-speaker Meeting Understanding
+                    │
+                    ▼
+           Preprocessing / Testing
+
+
+Dataset Collection and Description
+
+The project uses a combination of public benchmark datasets, meeting-dialogue datasets, question-answering datasets, and a project-specific student-club meeting dataset. These datasets were collected from official dataset repositories, GitHub repositories, research dataset platforms, and, for the final project evaluation dataset, generated specifically for this project.
+
+1. AMI Meeting Corpus
+
+Dataset name: AMI
+Dataset type: Meeting transcripts and annotations
+Source: AMI Meeting Corpus official website
+Collection location: University of Edinburgh Informatics / AMI Corpus website
+Source URL: https://groups.inf.ed.ac.uk/ami/download/
+License: Creative Commons attribution is indicated in the project inventory, but independent license verification has not yet been completed.
+Acquisition status: Not downloaded
+Raw size: 0 B
+Processed size: 0 B
+Number of meetings: 0 acquired
+Transcripts: Unknown because the dataset was not downloaded
+Summaries/actions/decisions/issues: Not locally verified
+
+Description
+
+The AMI dataset is a well-known meeting corpus designed for research on meeting understanding, dialogue processing, summarization, and information extraction. The source contains recorded meeting material together with transcript and annotation resources.
+
+For this project, AMI was considered because it is highly relevant to the task of converting meeting discussions into structured outputs such as summaries and action items.
+
+Collection status in this project
+
+The dataset was not acquired into the project environment. The source host was inaccessible from the sandbox because access was blocked with an HTTP 403 network restriction.
+
+Therefore, the report should state:
+
+AMI was identified as a relevant external benchmark dataset, but the complete dataset was not incorporated into the local experimental dataset because the official download host was inaccessible from the project environment.
+
+2. QMSum
+
+Dataset name: QMSum
+Dataset type: Meeting summarization and question-answering
+Source: Yale-LILY GitHub repository
+Collection location: Yale-LILY research repository on GitHub
+Source: https://github.com/Yale-LILY/QMSum
+License: MIT
+Acquisition status: Fully acquired
+Raw size: Approximately 120 MB
+Processed size: Approximately 2 MB
+Number of meetings: 232
+Number of examples: 1,810
+Transcript: Yes
+Summary: Not included as a direct dataset field in the project representation
+Actions: No
+Decisions: No
+Issues: No
+Evidence/relevant spans: Yes
+Official split: Train / validation / test
+
+Description
+
+QMSum is a meeting-focused question answering and summarization dataset. It is particularly useful for evaluating whether a system can understand long meeting conversations and retrieve or summarize information relevant to a particular query.
+
+Unlike a simple summarization dataset, QMSum emphasizes query-based understanding of long meeting transcripts. This makes it useful for studying how an AI system identifies specific information from lengthy discussions.
+
+Collection
+
+The dataset was downloaded from its official GitHub repository and processed locally for project use. The project retained the dataset's official train, validation, and test splits.
+
+Relevance to your project
+
+QMSum is useful for:
+
+meeting transcript understanding
+long-context processing
+information extraction
+evidence-grounded generation
+evaluation of meeting-related language models
+
+However, QMSum does not directly provide your full target structure of task + owner + deadline + decision + issue, so it is primarily useful as a meeting-understanding benchmark rather than a direct action-item dataset.
+
+3. MeetingBank
+
+Dataset name: MeetingBank
+Dataset type: Long meeting minutes
+Source: MeetingBank GitHub utilities and research dataset hosting
+Utilities repository: https://github.com/YebowenHu/MeetingBank-utils
+Dataset hosting: Hugging Face / Zenodo
+Acquisition status: Not acquired completely
+Raw size acquired: 232 KB
+Processed size: 0 B
+Meetings acquired: 0
+Full dataset: Not available locally
+
+Description
+
+MeetingBank is designed around long-form meeting content and meeting minutes, making it particularly relevant to automatic meeting-minutes generation.
+
+It is useful for studying the transformation:
+
+Long meeting transcript → concise structured meeting minutes
+
+This is very close to one of the core objectives of your project.
+
+Collection status
+
+Only the utility code repository was accessible and cloned. The actual MeetingBank data was not obtained because the relevant external dataset hosting services, including Hugging Face and Zenodo, were blocked by the project sandbox network policy.
+
+Therefore, the 232 KB reported for this dataset represents the downloaded utility/repository material, not the complete meeting dataset.
+
+Report wording
+
+MeetingBank was investigated as a benchmark for long-form meeting-minutes generation. The associated GitHub utility repository was acquired, but the actual dataset could not be incorporated because its external hosting sources were inaccessible from the project environment.
+
+4. ICSI Meeting Corpus
+
+Dataset name: ICSI
+Dataset type: Meeting transcripts and annotations
+Source: ICSI Meeting Corpus
+Collection location: University of Edinburgh / AMI-associated meeting corpus download infrastructure
+Source: https://groups.inf.ed.ac.uk/ami/icsi/download/
+Acquisition status: Not downloaded
+Raw size: 0 B
+Processed size: 0 B
+Meetings acquired: 0
+
+Description
+
+The ICSI Meeting Corpus is another important dataset for meeting transcription, conversational analysis, dialogue understanding, and meeting summarization research.
+
+It contains recorded meeting conversations and associated transcript/annotation information.
+
+Relevance to your project
+
+It can support research into:
+
+conversational meeting structure
+speaker interactions
+discussion analysis
+topic identification
+meeting summarization
+information extraction
+
+It is particularly useful as a complementary benchmark to AMI because both are widely used in meeting-understanding research.
+
+Collection status
+
+As with AMI, the official data host was inaccessible from the sandbox environment, returning an HTTP 403 restriction.
+
+Therefore, I would not list ICSI as a downloaded experimental dataset in your report.
+
+5. ELITR-Bench
+
+Dataset name: ELITR-Bench
+Dataset type: Long-context question-answering benchmark
+Source: ELITR-Bench GitHub repository
+Collection location: Research repository associated with the ELITR project
+Source: https://github.com/utter-project/ELITR-Bench
+License: CC BY 4.0 for the data
+Acquisition status: Partial
+Raw size: Approximately 180 KB
+Processed size: Approximately 180 KB
+Meetings: 36
+Questions: Approximately 120
+Official splits: Dev / Test2
+
+Description
+
+ELITR-Bench is a benchmark designed to evaluate long-context understanding over meeting-related data.
+
+The important aspect of this dataset is its focus on asking questions that require the model to locate and understand information across potentially long meeting conversations.
+
+Collection
+
+The project successfully acquired the question-answering component from the repository.
+
+However, the underlying meeting transcripts are hosted separately on LINDAT, and those transcript files could not be downloaded because the hosting service was inaccessible from the sandbox environment.
+
+Important limitation
+
+Your inventory states that the downloaded data included the QA component but not the underlying transcripts.
+
+Therefore, the report should distinguish between:
+
+ELITR-Bench QA resources acquired
+
+and
+
+original meeting transcripts not acquired
+
+Relevance to your project
+
+It is useful for evaluating:
+
+long-context reasoning
+information retrieval from meetings
+evidence-based answers
+meeting-content understanding
+6. MISeD
+
+Dataset name: MISeD
+Dataset type: Source-grounded dialogue dataset
+Source: Google Research Datasets GitHub repository
+Collection location: Google Research Datasets GitHub
+Source: https://github.com/google-research-datasets/MISeD
+License: Not explicitly stated in the repository and should be verified before redistribution
+Acquisition status: Acquired
+Raw size: Approximately 33 MB
+Processed size: Approximately 30 MB
+Unique meetings: Approximately 34
+Dialogs: 432
+Transcripts: Yes, through embedded transcript segments
+Official split: Train / validation / test
+
+Description
+
+MISeD is a source-grounded dialogue dataset designed around conversations linked to source material.
+
+For this project, an important characteristic is that the dialogues use meeting identifiers associated with AMI/ICSI-style meeting data.
+
+The project inventory specifically records a correction:
+
+The meeting IDs are based on AMI/ICSI formats, rather than QMSum as originally assumed.
+
+This distinction is important for your dataset documentation.
+
+Relevance to your project
+
+MISeD can help in studying:
+
+source-grounded response generation
+evidence-based dialogue
+contextual understanding
+linking generated outputs back to source content
+
+This is particularly valuable for your proposed validation/evidence layer, because your project should ideally generate meeting information that can be traced back to the original transcript.
+
+7. Student Club Meeting Evaluation Dataset
+
+Dataset name: Student Club Meeting Evaluation Dataset
+Dataset type: Domain-specific evaluation dataset
+Source: Created specifically for this project
+Collection method: Programmatically synthesized/generated from project-defined student-club meeting scenarios
+License: Project-original
+Acquisition status: Generated and fully available
+Raw size: Approximately 239 KB
+Processed size: Approximately 239 KB
+Number of meetings: 70
+Number of examples: 70
+Transcript: Yes
+Summary: Yes
+Action items: Yes
+Decisions: Yes
+Issues: Yes
+Evidence: Yes
+Evidence verification: 454/454 evidence strings verified as exact transcript substrings
+Splits: Train/Dev = 49, Validation = 10, Test = 11
+
+Description
+
+This is the most directly relevant dataset for your actual project objective.
+
+Unlike the general-purpose research datasets, this dataset was designed specifically around the requirements of a student-club meeting assistant.
+
+Each meeting example can contain information such as:
+
+meeting discussion
+summary
+action items
+responsible person
+deadlines
+decisions
+unresolved issues
+evidence from the transcript
+Data generation
+
+The dataset was deterministically synthesized using seed = 42.
+
+This is useful from a reproducibility perspective because the same generation procedure can produce the same dataset.
+
+Evidence validation
+
+One of the strongest technical aspects of this dataset is the evidence verification process.
+
+The project documentation records:
+
+454/454 evidence strings were programmatically verified as verbatim substrings of the transcript.
+
+This is very important for your project because it provides a mechanism to check whether an extracted action, decision, or issue is actually supported by the original conversation.
+
+Relevance
+
+This dataset directly supports your target pipeline:
+
+Student Club Meeting Transcript
+              ↓
+       Summary Generation
+              ↓
+       Action Extraction
+              ↓
+      Decision Extraction
+              ↓
+        Issue Detection
+              ↓
+       Evidence Validation
+              ↓
+      Structured Minutes
+Overall Dataset Classification
+
+For your report, I recommend grouping the datasets into three categories rather than presenting them as one undifferentiated list.
+
+Category	Datasets	Purpose
+Meeting understanding benchmarks	AMI, ICSI	Transcript and conversational meeting analysis
+Meeting summarization / long-context benchmarks	QMSum, MeetingBank, ELITR-Bench	Summarization, QA, long-context understanding
+Source-grounded / project-specific datasets	MISeD, Student Club Meeting Evaluation Dataset	Evidence grounding and domain-specific evaluation
+
+This gives your report a much stronger research structure.
+
+Dataset Acquisition Summary
+Dataset	Source location	Acquisition	Meetings / Examples	Main Use
+AMI	University of Edinburgh AMI website	Not acquired	0 locally	Meeting transcripts & annotations
+QMSum	Yale-LILY GitHub	Fully acquired	232 / 1,810	Meeting summarization & QA
+MeetingBank	GitHub utilities + Hugging Face/Zenodo	Partial / utilities only	0 locally	Long meeting minutes
+ICSI	ICSI/AMI download infrastructure	Not acquired	0 locally	Meeting transcripts & annotations
+ELITR-Bench	GitHub + LINDAT	Partial	36 / ~120	Long-context QA
+MISeD	Google Research Datasets GitHub	Acquired	~34 / 432 dialogs	Source-grounded dialogue
+Student Club Meeting Evaluation Dataset	Project-generated	Fully acquired/generated	70 / 70	Domain-specific evaluation

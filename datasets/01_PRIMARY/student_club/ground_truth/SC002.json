@@ -1,0 +1,52 @@
+{
+  "meeting_id": "SC002",
+  "category": "event_planning",
+  "summary": "The club discussed annual fest planning, covering 4 action item(s), 1 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "Organize the seating layout",
+    "annual fest planning",
+    "Book the auditorium"
+  ],
+  "action_items": [
+    {
+      "task": "Organize the seating layout",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to organize the seating layout, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Book the auditorium",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to book the auditorium, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Coordinate with campus security",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to coordinate with campus security, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Print the banners",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to print the banners, it can't wait too long.",
+      "confidence": "low"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the ticket price.",
+      "evidence": "Okay, let's finalize the ticket price then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The budget approval remains unresolved.",
+      "evidence": "The budget approval is still not confirmed."
+    }
+  ]
+}

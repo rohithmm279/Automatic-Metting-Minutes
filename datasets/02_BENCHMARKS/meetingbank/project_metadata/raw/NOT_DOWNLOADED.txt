@@ -1,0 +1,37 @@
+NOT DOWNLOADED IN THIS ENVIRONMENT (data itself)
+==================================================
+
+Dataset: MeetingBank
+Official sources tested:
+- https://huggingface.co/datasets/huuuyeah/meetingbank  -> HTTP 403 (blocked)
+- https://zenodo.org/record/7989108 (transcripts)         -> HTTP 403 (blocked)
+- Meeting videos on archive.org                            -> not attempted (video, out of scope anyway)
+
+Reason:
+Neither huggingface.co nor zenodo.org are on this sandbox's outbound network
+allowlist. Only github.com is reachable, so the MeetingBank-utils
+repository (scripts and documentation only, no dataset content) was cloned
+into datasets/raw/meetingbank/. It contains load_data.py, ResultsEval.py,
+and the utils/ folder, but NOT the transcripts, summaries, or metadata
+themselves.
+
+How to acquire the actual data yourself (outside this sandbox):
+1. pip install datasets
+2. Run:
+     from datasets import load_dataset
+     meetingbank = load_dataset("huuuyeah/meetingbank")
+3. Save each split (train/validation/test) to
+   datasets/raw/meetingbank/{split}.jsonl with fields: id, summary,
+   transcript (and any metadata included).
+4. Do NOT download the video archive (3,579+ hours) or the separate audio
+   HuggingFace dataset (huuuyeah/MeetingBank_Audio) — text only is needed.
+5. Once the raw JSONL files exist, write a short conversion script (mirror
+   the pattern in datasets/processed/qmsum/process_qmsum.py) to emit the
+   project's common JSON format into datasets/processed/meetingbank/.
+
+What IS present in datasets/raw/meetingbank/ right now:
+- MeetingBank-utils repo (scripts/README only, cloned from GitHub, which is
+  reachable) — useful for later evaluation but contains no dataset content.
+
+Status: NOT ACQUIRED (data) — blocked by sandbox network policy, not by
+dataset licensing or availability. Utility scripts only were acquired.

@@ -1,0 +1,56 @@
+{
+  "meeting_id": "SC058",
+  "category": "competitions",
+  "summary": "The club discussed inter-college competition prep, covering 4 action item(s), 2 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "Finalize the competition judges",
+    "Book transport for the away competition",
+    "inter-college competition prep"
+  ],
+  "action_items": [
+    {
+      "task": "Book transport for the away competition",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to book transport for the away competition, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Finalize the competition judges",
+      "owner": "Rohith",
+      "deadline": "Not specified",
+      "evidence": "Rohith will finalize the competition judges.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Arrange practice sessions before the contest",
+      "owner": "Rohith",
+      "deadline": "sometime next week",
+      "evidence": "I'll arrange practice sessions before the contest sometime next week.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Register the team for the competition",
+      "owner": "Aditya",
+      "deadline": "the weekend",
+      "evidence": "Aditya, can you register the team for the competition before the weekend?",
+      "confidence": "high"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the venue.",
+      "evidence": "Okay, let's finalize the venue then — that's settled."
+    },
+    {
+      "decision": "Finalized the ticket price.",
+      "evidence": "Okay, let's finalize the ticket price then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The final headcount remains unresolved.",
+      "evidence": "The final headcount is still not confirmed."
+    }
+  ]
+}

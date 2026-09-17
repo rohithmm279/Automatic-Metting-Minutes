@@ -1,0 +1,955 @@
+{
+  "split": "test2",
+  "meetings": [
+    {
+      "id": "meeting_en_test2_001",
+      "questions": [
+        {
+          "id": "1",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "What was the purpose of the meeting?",
+          "groundtruth-answer": "Preparation for a workshop or conference event on automatic text summarization."
+        },
+        {
+          "id": "2",
+          "question-type": "who",
+          "answer-position": "S",
+          "question": "Who attended it?",
+          "groundtruth-answer": "PERSON2, PERSON4 and PERSON5"
+        },
+        {
+          "id": "3",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who is investigating how to set the workshop website?",
+          "groundtruth-answer": "[PERSON5]"
+        },
+        {
+          "id": "4",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "Is the call for participation already written?",
+          "groundtruth-answer": "No, the call for participation has not been written yet."
+        },
+        {
+          "id": "5",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "What is the problem with the scientific committee?",
+          "groundtruth-answer": "Organizers do not have so many connections with experts in summarization."
+        },
+        {
+          "id": "6",
+          "question-type": "howmany",
+          "answer-position": "B",
+          "question": "How many people are currently in the program committee of the workshop?",
+          "groundtruth-answer": "It is mentioned that [PERSON4] brought 3 people in the program committee and that's all for the moment."
+        },
+        {
+          "id": "7",
+          "question-type": "howmany",
+          "answer-position": "M",
+          "question": "How many are actually needed?",
+          "groundtruth-answer": "20 people would be a good number for the program committee."
+        },
+        {
+          "id": "8",
+          "question-type": "who",
+          "answer-position": "M",
+          "question": "Who could help finding more experts for the workshop?",
+          "groundtruth-answer": "[PERSON6]"
+        },
+        {
+          "id": "9",
+          "question-type": "howmany",
+          "answer-position": "M",
+          "question": "How many invited speakers answered positively to the invitation?",
+          "groundtruth-answer": "None, all invited speakers declined so far."
+        },
+        {
+          "id": "10",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "Is the organization of this event well on track?",
+          "groundtruth-answer": "No, the organization is not well on track as there is no invited speakers yet, only 3 PC members, and organizers are not experts."
+        },
+        {
+          "id": "11",
+          "question-type": "who",
+          "answer-position": "S",
+          "question": "Which participant seems to be sick?",
+          "groundtruth-answer": "[PERSON2]"
+        },
+        {
+          "id": "12",
+          "question-type": "what",
+          "answer-position": "E",
+          "question": "Maybe it's a good idea to try to find a keynote speaker at [ORGANIZATION1] or [ORGANIZATION3], do you agree or not?",
+          "groundtruth-answer": "No, it is a bad idea because [ORGANIZATION1] and [ORGANIZATION3] are part of the organization of the workshop as well."
+        }
+      ]
+    },
+    {
+      "id": "meeting_en_test2_002",
+      "questions": [
+        {
+          "id": "1",
+          "question-type": "who",
+          "answer-position": "S",
+          "question": "Who attended this meeting?",
+          "groundtruth-answer": "PERSON1, PERSON3, PERSON7, PERSON12, PERSON15, PERSON16, PERSON18 and PERSON24"
+        },
+        {
+          "id": "2",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who will have a specific call to discuss multi-source experiments?",
+          "groundtruth-answer": "[PERSON15], [PERSON24], [PERSON12]"
+        },
+        {
+          "id": "3",
+          "question-type": "when",
+          "answer-position": "B",
+          "question": "When will this call happen?",
+          "groundtruth-answer": "Tomorrow at 3.30 pm"
+        },
+        {
+          "id": "4",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who is leaving the project?",
+          "groundtruth-answer": "[PERSON10]"
+        },
+        {
+          "id": "5",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "What will be the topic of the future call between [PERSON3] and [PERSON6]?",
+          "groundtruth-answer": "Profanity filtering integration in the system"
+        },
+        {
+          "id": "6",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "What is [PERSON1] responsible for?",
+          "groundtruth-answer": "Multi-accent English ASR (Automatic Speech Recognition)"
+        },
+        {
+          "id": "7",
+          "question-type": "who",
+          "answer-position": "S",
+          "question": "Who is leading the discussion?",
+          "groundtruth-answer": "[PERSON15]"
+        },
+        {
+          "id": "8",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "What is the main problem with the system pipeline?",
+          "groundtruth-answer": "The system pipeline is complicated and it relies on a specific individual to start it at the moment"
+        },
+        {
+          "id": "9",
+          "question-type": "who",
+          "answer-position": "M",
+          "question": "Who is experiencing disk space issues?",
+          "groundtruth-answer": "[PERSON16]"
+        },
+        {
+          "id": "10",
+          "question-type": "howmany",
+          "answer-position": "M",
+          "question": "How much space do they have on the Troja machine?",
+          "groundtruth-answer": "50 gigabytes of space"
+        },
+        {
+          "id": "11",
+          "question-type": "who",
+          "answer-position": "M",
+          "question": "Who is interested in applying to a PhD?",
+          "groundtruth-answer": "An Indian student known by [PERSON18]"
+        },
+        {
+          "id": "12",
+          "question-type": "when",
+          "answer-position": "M",
+          "question": "What is the application deadline for the PhD program?",
+          "groundtruth-answer": "End of the year"
+        },
+        {
+          "id": "13",
+          "question-type": "what",
+          "answer-position": "E",
+          "question": "What did [PERSON15] say [PERSON7] will take care of?",
+          "groundtruth-answer": "Storing and recording of the results from the evaluation"
+        },
+        {
+          "id": "14",
+          "question-type": "what",
+          "answer-position": "E",
+          "question": "What example was given to illustrate the fact that machine translation (MT) systems can utter toxic content?",
+          "groundtruth-answer": "It was mentioned that \"discussing\" was replaced by \"disgusting\" and the translated sentence became \"we are disgusted by the idea of including African languages in our project\" instead of \"we are discussing the idea of including African languages in our project.\""
+        },
+        {
+          "id": "15",
+          "question-type": "what",
+          "answer-position": "E",
+          "question": "What is tricky with profanity filtering?",
+          "groundtruth-answer": "One cannot simply filter out bad words (for instance replace \"disgusting\" by \"discussing\"); one needs to understand the context and differentiate between offensive and non-offensive use of certain words."
+        },
+        {
+          "id": "16",
+          "question-type": "when",
+          "answer-position": "E",
+          "question": "In what month does the discussion take place?",
+          "groundtruth-answer": "December"
+        }
+      ]
+    },
+    {
+      "id": "meeting_en_test2_003",
+      "questions": [
+        {
+          "id": "1",
+          "question-type": "who",
+          "answer-position": "S",
+          "question": "Who was at this meeting?",
+          "groundtruth-answer": "[PERSON4], [PERSON1], [PERSON9], [PERSON7]"
+        },
+        {
+          "id": "2",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "What was the main purpose of this meeting?",
+          "groundtruth-answer": "It was mainly de-identification procedure and [PROJECT3] submission."
+        },
+        {
+          "id": "3",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who is moving to Canada?",
+          "groundtruth-answer": "[PERSON7]"
+        },
+        {
+          "id": "4",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who needs a reference letter?",
+          "groundtruth-answer": "[PERSON7]"
+        },
+        {
+          "id": "5",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "Using the transcript, cite at least three places from which the participants speak in this meeting.",
+          "groundtruth-answer": "India, Iran, Czech Republic"
+        },
+        {
+          "id": "6",
+          "question-type": "when",
+          "answer-position": "S",
+          "question": "Using the transcript, tell me if this meeting took place before, during or after the COVID-19 crisis.",
+          "groundtruth-answer": "The meeting is taking place during the COVID-19 crisis, as one participant is wearing a face mask while they are in the corridor. The participants are also talking about a new variant of the virus that was out recently, and about the vaccine not being ready yet."
+        },
+        {
+          "id": "7",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "Did [PERSON4] try to dissuade [PERSON7] from working on weekends?",
+          "groundtruth-answer": "No, they didn't."
+        },
+        {
+          "id": "8",
+          "question-type": "who",
+          "answer-position": "M",
+          "question": "Who is in charge of the web page for the scientific committee?",
+          "groundtruth-answer": "[PERSON9]"
+        },
+        {
+          "id": "9",
+          "question-type": "who",
+          "answer-position": "M",
+          "question": "Who had to leave the meeting early?",
+          "groundtruth-answer": "[PERSON4] first and then [PERSON7] as well"
+        },
+        {
+          "id": "10",
+          "question-type": "when",
+          "answer-position": "M",
+          "question": "When should the data be ready?",
+          "groundtruth-answer": "Mid February"
+        },
+        {
+          "id": "11",
+          "question-type": "who",
+          "answer-position": "M",
+          "question": "Who left first, [PERSON4] or [PERSON7]?",
+          "groundtruth-answer": "[PERSON4]"
+        },
+        {
+          "id": "12",
+          "question-type": "when",
+          "answer-position": "E",
+          "question": "Based on the transcript, can you guess which season this meeting takes place in?",
+          "groundtruth-answer": "Winter, because one speaker said it is snowing"
+        },
+        {
+          "id": "13",
+          "question-type": "what",
+          "answer-position": "E",
+          "question": "What was the subject of the side conversation between [PERSON9] and [PERSON1] (that was outside the meeting topic)?",
+          "groundtruth-answer": "They talked about a new variant of COVID."
+        },
+        {
+          "id": "14",
+          "question-type": "who",
+          "answer-position": "E",
+          "question": "Try to guess from the transcript who has more experience between [PERSON9] and [PERSON1].",
+          "groundtruth-answer": "[PERSON9]"
+        },
+        {
+          "id": "15",
+          "question-type": "when",
+          "answer-position": "E",
+          "question": "When will [PERSON9] and [PERSON1] meet again?",
+          "groundtruth-answer": "Tomorrow"
+        },
+        {
+          "id": "16",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "What will be the main communication tools with the annotators?",
+          "groundtruth-answer": "E-mail or Google Docs will be used to send the files to the annotators."
+        }
+      ]
+    },
+    {
+      "id": "meeting_en_test2_004",
+      "questions": [
+        {
+          "id": "1",
+          "question-type": "who",
+          "answer-position": "S",
+          "question": "Who are the participants of the meeting?",
+          "groundtruth-answer": "[PERSON12], [PERSON13], [PERSON7], [PERSON5], [PERSON14]"
+        },
+        {
+          "id": "2",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who is very busy at the moment?",
+          "groundtruth-answer": "[PERSON13]"
+        },
+        {
+          "id": "3",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "What are the two main events discussed during this meeting?",
+          "groundtruth-answer": "[PROJECT6] and [PROJECT13] events"
+        },
+        {
+          "id": "4",
+          "question-type": "what",
+          "answer-position": "M",
+          "question": "In which language will be the [PROJECT13] event?",
+          "groundtruth-answer": "Czech"
+        },
+        {
+          "id": "5",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who is in charge of the demo paper submission?",
+          "groundtruth-answer": "[PERSON12]"
+        },
+        {
+          "id": "6",
+          "question-type": "what",
+          "answer-position": "M",
+          "question": "Suppose that I am [PERSON10] and I could not attend the meeting, tell me the two main things I should absolutely know about what was said during the meeting.",
+          "groundtruth-answer": "There was a mention of finding a replacement for your role, and [PERSON7] will be in touch with you regarding this matter."
+        },
+        {
+          "id": "7",
+          "question-type": "what",
+          "answer-position": "M",
+          "question": "Which dataset is used by [PERSON5] for building their model?",
+          "groundtruth-answer": "Common Voice"
+        },
+        {
+          "id": "8",
+          "question-type": "who",
+          "answer-position": "E",
+          "question": "Who will replace [PERSON10]?",
+          "groundtruth-answer": "[PERSON4]"
+        },
+        {
+          "id": "9",
+          "question-type": "what",
+          "answer-position": "E",
+          "question": "Which languages are covered by the spoken language identification system?",
+          "groundtruth-answer": "Czech, German, English"
+        },
+        {
+          "id": "10",
+          "question-type": "when",
+          "answer-position": "B",
+          "question": "What is the deadline for the demo paper submission?",
+          "groundtruth-answer": "January 15th (next Friday)"
+        },
+        {
+          "id": "11",
+          "question-type": "when",
+          "answer-position": "E",
+          "question": "When is the next meeting?",
+          "groundtruth-answer": "January 14th (next Thursday)"
+        },
+        {
+          "id": "12",
+          "question-type": "who",
+          "answer-position": "S",
+          "question": "Who is leading the conversation?",
+          "groundtruth-answer": "[PERSON12]"
+        },
+        {
+          "id": "13",
+          "question-type": "howmany",
+          "answer-position": "E",
+          "question": "What is the current delay of the language id system?",
+          "groundtruth-answer": "3 seconds"
+        },
+        {
+          "id": "14",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "I didn't understand this \"ladder climbing\" thing discussed during the meeting, can you explain it to me please?",
+          "groundtruth-answer": "It refers to the continuous evaluation and improvement process of speech-to-text (STT) systems; in the meeting, suggestion was to use tables to be made as simple HTML format as easiest solution, to present the results of the ladder climbing process for easier monitoring and comparison of system performance."
+        },
+        {
+          "id": "15",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "Which event has been postponed?",
+          "groundtruth-answer": "[PROJECT6]"
+        },
+        {
+          "id": "16",
+          "question-type": "when",
+          "answer-position": "B",
+          "question": "When will [PROJECT6] actually take place?",
+          "groundtruth-answer": "February 26th"
+        }
+      ]
+    },
+    {
+      "id": "meeting_en_test2_005",
+      "questions": [
+        {
+          "id": "1",
+          "question-type": "who",
+          "answer-position": "S",
+          "question": "Who are the participants?",
+          "groundtruth-answer": "[PERSON2], [PERSON3], [PERSON8]"
+        },
+        {
+          "id": "2",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "What was the main topic of the meeting?",
+          "groundtruth-answer": "Organizing a workshop or satellite event for one of these two venues: [ORGANIZATION2] and [ORGANIZATION11]"
+        },
+        {
+          "id": "3",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "What is the status of the submission to the [ORGANIZATION11] venue?",
+          "groundtruth-answer": "The special session proposal was declined but there is the option to apply for a satellite event."
+        },
+        {
+          "id": "4",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "What are the advantages of being a satellite event instead of a special session of [ORGANIZATION11]?",
+          "groundtruth-answer": "(a) More flexibility, freedom to choose events and accept research papers; (b) Fully fledged workshop with attributes of an conference; (c) Independent of [ORGANIZATION11]; (d) Very good visibility in the community."
+        },
+        {
+          "id": "5",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "What are the disadvantages?",
+          "groundtruth-answer": "(a) Requires an intensive and large workload; (b) [ORGANIZATION11] doesn't endorse the articles in the proceedings, only promotes the workshop on the website. This might discourage some participants; (c) Time period between proposal submission and final paper submission shortened from 5 to 3 months."
+        },
+        {
+          "id": "6",
+          "question-type": "when",
+          "answer-position": "M",
+          "question": "When is the deadline to submit a satellite workshop of [ORGANIZATION11]?",
+          "groundtruth-answer": "February 28, 2021"
+        },
+        {
+          "id": "7",
+          "question-type": "when",
+          "answer-position": "M",
+          "question": "When is the acceptance notification for accepted workshops?",
+          "groundtruth-answer": "March 15, 2021"
+        },
+        {
+          "id": "8",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "Now tell me about advantages of organising an event linked to [ORGANIZATION2].",
+          "groundtruth-answer": "(a) Great visibility in the science community; (b) Shared task submission possible; (c) Less work and more intense output; (d) Proceedings indexed in [ORGANIZATION3] Anthology"
+        },
+        {
+          "id": "9",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "Are there other venues to consider for the organized event?",
+          "groundtruth-answer": "Yes, for instance [ORGANIZATION6] or [ORGANIZATION8] or [ORGANIZATION13]"
+        },
+        {
+          "id": "10",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who is the project manager?",
+          "groundtruth-answer": "[PERSON7]"
+        },
+        {
+          "id": "11",
+          "question-type": "what",
+          "answer-position": "M",
+          "question": "What if the event proposal is accepted at both venues ([ORGANIZATION11] and [ORGANIZATION2])?",
+          "groundtruth-answer": "[PERSON3] proposes to have the event at both venues."
+        },
+        {
+          "id": "12",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "Why is the [ORGANIZATION13] workshop not the ideal venue for the meeting participants?",
+          "groundtruth-answer": "Because they are not working directly on speech."
+        },
+        {
+          "id": "13",
+          "question-type": "who",
+          "answer-position": "M",
+          "question": "Who had to pause the meeting for a few minutes?",
+          "groundtruth-answer": "[PERSON2]"
+        },
+        {
+          "id": "14",
+          "question-type": "what",
+          "answer-position": "M",
+          "question": "Why did [PERSON8] laugh around the middle of the meeting?",
+          "groundtruth-answer": "Because someone asked \"what do we do if both event submissions are accepted\" and [PERSON3] said \"we do both\" which means more work for everyone."
+        },
+        {
+          "id": "15",
+          "question-type": "howmany",
+          "answer-position": "M",
+          "question": "According to [PERSON3] is it a problem if there is only 2 or 3 submissions for the shared task?",
+          "groundtruth-answer": "No, some workshops in the past had only two or three submissions and were still part of the proceedings."
+        },
+        {
+          "id": "16",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "Suppose I'm [PERSON7] and I could not attend the meeting, tell me what people said about me (or related to me).",
+          "groundtruth-answer": "(a) [ORGANIZATION13] is not a good venue because, as you said earlier, we are not doing speech research; (b) some discussion points will have to be deferred to you and meeting participants might reach out with you later about them; (c) it was mentioned that you are the technical editor of a journal."
+        },
+        {
+          "id": "17",
+          "question-type": "when",
+          "answer-position": "E",
+          "question": "When is the next meeting planned?",
+          "groundtruth-answer": "It was not mentioned, so it is not known."
+        }
+      ]
+    },
+    {
+      "id": "meeting_en_test2_006",
+      "questions": [
+        {
+          "id": "1",
+          "question-type": "who",
+          "answer-position": "S",
+          "question": "Tell me the exact list of participants to this meeting.",
+          "groundtruth-answer": "[PERSON2], [PERSON7], [PERSON3], [PERSON11], [PERSON14], [PERSON8],[PERSON15], [PERSON4], [PERSON10]"
+        },
+        {
+          "id": "2",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "Which event is going to be an important testbed for the project and the demo?",
+          "groundtruth-answer": "[ORGANIZATION7] conference will be an important test event and it is necessary to get ready for it."
+        },
+        {
+          "id": "3",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who is working on paraphrasing?",
+          "groundtruth-answer": "[PERSON11]"
+        },
+        {
+          "id": "4",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "Which are the two main test sets?",
+          "groundtruth-answer": "[PROJECT5] test set and [PROJECT2] test set"
+        },
+        {
+          "id": "5",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "Which one is not finished yet?",
+          "groundtruth-answer": "[PROJECT2]"
+        },
+        {
+          "id": "6",
+          "question-type": "who",
+          "answer-position": "M",
+          "question": "Who should [PERSON14] contact?",
+          "groundtruth-answer": "[PERSON10]"
+        },
+        {
+          "id": "7",
+          "question-type": "what",
+          "answer-position": "M",
+          "question": "Why is a censorship component needed in the system?",
+          "groundtruth-answer": "To avoid having the system utter profanity during a demo"
+        },
+        {
+          "id": "8",
+          "question-type": "who",
+          "answer-position": "M",
+          "question": "Who will have a separate call about that?",
+          "groundtruth-answer": "[PERSON12], [PERSON14], [PERSON10] and [PERSON15]"
+        },
+        {
+          "id": "9",
+          "question-type": "what",
+          "answer-position": "M",
+          "question": "What is [PERSON4] focusing on now?",
+          "groundtruth-answer": "Multi-source machine translation"
+        },
+        {
+          "id": "10",
+          "question-type": "what",
+          "answer-position": "M",
+          "question": "Did they make any progress so far?",
+          "groundtruth-answer": "No, they didn't really progress."
+        },
+        {
+          "id": "11",
+          "question-type": "what",
+          "answer-position": "M",
+          "question": "Why are progresses slow?",
+          "groundtruth-answer": "Because of the cluster access issues"
+        },
+        {
+          "id": "12",
+          "question-type": "what",
+          "answer-position": "E",
+          "question": "What is the topic of [PERSON7] at the moment?",
+          "groundtruth-answer": "Data augmentation"
+        },
+        {
+          "id": "13",
+          "question-type": "who",
+          "answer-position": "S",
+          "question": "Who is leading the meeting?",
+          "groundtruth-answer": "[PERSON3]"
+        },
+        {
+          "id": "14",
+          "question-type": "who",
+          "answer-position": "E",
+          "question": "Who stayed at the end for a post-meeting conversation?",
+          "groundtruth-answer": "[PERSON7] and [PERSON15]"
+        },
+        {
+          "id": "15",
+          "question-type": "what",
+          "answer-position": "E",
+          "question": "What was the purpose of this post-meeting conversation?",
+          "groundtruth-answer": "[PERSON15] wanted to understand better [PERSON7]'s current work and had questions about it."
+        },
+        {
+          "id": "16",
+          "question-type": "when",
+          "answer-position": "B",
+          "question": "When is the [ORGANIZATION7] conference?",
+          "groundtruth-answer": "Early December"
+        }
+      ]
+    },
+    {
+      "id": "meeting_en_test2_007",
+      "questions": [
+        {
+          "id": "1",
+          "question-type": "who",
+          "answer-position": "S",
+          "question": "Tell me who attended the meeting.",
+          "groundtruth-answer": "[PERSON13], [PERSON3], [PERSON16], [PERSON8], [PERSON15], [PERSON6], [PERSON7], [PERSON2]"
+        },
+        {
+          "id": "2",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "Summarize what was said about system performance during the latest recording session assessment.",
+          "groundtruth-answer": "(a) The system performance is generally substandard; (b) the system is very slow with low recognition rate; (c) the slowness can be remedied by the operator being logged into one of the machines; (d) the reasons for low recognition need to be investigated further."
+        },
+        {
+          "id": "3",
+          "question-type": "when",
+          "answer-position": "B",
+          "question": "When was this latest assessment?",
+          "groundtruth-answer": "Yesterday"
+        },
+        {
+          "id": "4",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "How did [PERSON7] qualify the experience?",
+          "groundtruth-answer": "It was qualified as \"disastrous\"."
+        },
+        {
+          "id": "5",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who is in charge of debugging the system?",
+          "groundtruth-answer": "[PERSON16] and [PERSON3]"
+        },
+        {
+          "id": "6",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who added some files to the [PROJECT12] test set?",
+          "groundtruth-answer": "[PERSON3]"
+        },
+        {
+          "id": "7",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "I need information about [ORGANIZATION1]'s server, who do I have to ask?",
+          "groundtruth-answer": "[PERSON4]"
+        },
+        {
+          "id": "8",
+          "question-type": "when",
+          "answer-position": "B",
+          "question": "What is the deadline for [ORGANIZATION6] demo papers?",
+          "groundtruth-answer": "Tomorrow"
+        },
+        {
+          "id": "9",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "What about the reviews of the [PROJECT12] demo paper, are they good?",
+          "groundtruth-answer": "No, they are not good, it was said that the paper has little impact."
+        },
+        {
+          "id": "10",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "What is the problem with wearing face masks, as discussed in the meeting?",
+          "groundtruth-answer": "It degrades speech recognition performance."
+        },
+        {
+          "id": "11",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "What could be done to increase robustness?",
+          "groundtruth-answer": "Data augmentation: apply frequency filtering to speech training data (to simulate the impact of face masks on high frequencies)"
+        },
+        {
+          "id": "12",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who is writing a paper with [PERSON5]?",
+          "groundtruth-answer": "[PERSON15]"
+        },
+        {
+          "id": "13",
+          "question-type": "when",
+          "answer-position": "B",
+          "question": "What is the deadline for processing the English training data?",
+          "groundtruth-answer": "January 25"
+        },
+        {
+          "id": "14",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who is in charge of writing the code to test components' availability during live demos?",
+          "groundtruth-answer": "[PERSON7]"
+        },
+        {
+          "id": "15",
+          "question-type": "when",
+          "answer-position": "M",
+          "question": "When is the conference about [PROJECT13] during which the meeting participants are going to provide live subtitles?",
+          "groundtruth-answer": "January 25"
+        },
+        {
+          "id": "16",
+          "question-type": "who",
+          "answer-position": "S",
+          "question": "Who is leading the meeting?",
+          "groundtruth-answer": "[PERSON13]"
+        },
+        {
+          "id": "17",
+          "question-type": "what",
+          "answer-position": "M",
+          "question": "What is the main problem faced by [PERSON8] at the moment?",
+          "groundtruth-answer": "Not enough disk space"
+        },
+        {
+          "id": "18",
+          "question-type": "who",
+          "answer-position": "S",
+          "question": "Who stayed until the end to discuss alignment issues in German/English?",
+          "groundtruth-answer": "[PERSON13], [PERSON6] and [PERSON2]"
+        },
+        {
+          "id": "19",
+          "question-type": "who",
+          "answer-position": "S",
+          "question": "Who has a dentist appointment?",
+          "groundtruth-answer": "[PERSON6]"
+        },
+        {
+          "id": "20",
+          "question-type": "who",
+          "answer-position": "E",
+          "question": "Suppose I'm [PERSON6] and I do not remember who I should contact for profanity filtering. Can you tell me who it is?",
+          "groundtruth-answer": "[PERSON16] and [PERSON7]"
+        }
+      ]
+    },
+    {
+      "id": "meeting_en_test2_008",
+      "questions": [
+        {
+          "id": "1",
+          "question-type": "who",
+          "answer-position": "S",
+          "question": "Who was there in the meeting?",
+          "groundtruth-answer": "[PERSON10], [PERSON4], [PERSON9]"
+        },
+        {
+          "id": "2",
+          "question-type": "who",
+          "answer-position": "B",
+          "question": "Who is leaving to Canada?",
+          "groundtruth-answer": "[PERSON7]"
+        },
+        {
+          "id": "3",
+          "question-type": "who",
+          "answer-position": "S",
+          "question": "Who is leading the meeting?",
+          "groundtruth-answer": "[PERSON10]"
+        },
+        {
+          "id": "4",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "What kind of annotation was [PERSON7] in charge of?",
+          "groundtruth-answer": "Named entity (NE) annotation"
+        },
+        {
+          "id": "5",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "Why is named entity annotation needed in this particular project?",
+          "groundtruth-answer": "Because named entities will then be replaced by placeholders in order to de-identify (anonymize) the dataset."
+        },
+        {
+          "id": "6",
+          "question-type": "what",
+          "answer-position": "S",
+          "question": "Based on the transcript, is [PERSON4] a rookie or an experienced scientist?",
+          "groundtruth-answer": "A rookie (they do not know token/type differences and also need to be re-explained things several times before they understand)"
+        },
+        {
+          "id": "7",
+          "question-type": "what",
+          "answer-position": "B",
+          "question": "What kind of named entities [PERSON10] think they should focus more on for de-identification?",
+          "groundtruth-answer": "Individuals' names"
+        },
+        {
+          "id": "8",
+          "question-type": "who",
+          "answer-position": "M",
+          "question": "Who is going to reinforce the de-identification team?",
+          "groundtruth-answer": "[PERSON14]"
+        },
+        {
+          "id": "9",
+          "question-type": "what",
+          "answer-position": "M",
+          "question": "Do minutes need to be anonymized as well?",
+          "groundtruth-answer": "Yes, they should be anonymized as well."
+        },
+        {
+          "id": "10",
+          "question-type": "what",
+          "answer-position": "M",
+          "question": "What is the purpose of the new consent form?",
+          "groundtruth-answer": "Getting the permission to publish the data in the de-identified form"
+        },
+        {
+          "id": "11",
+          "question-type": "howmany",
+          "answer-position": "M",
+          "question": "How many of the participants signed the initial consent form so far?",
+          "groundtruth-answer": "Approximately 30% of the participants"
+        },
+        {
+          "id": "12",
+          "question-type": "what",
+          "answer-position": "M",
+          "question": "What should be provided to the participants in addition to the consent form, for completeness?",
+          "groundtruth-answer": "Access to the full meeting repository so that they can browse the meetings they participated in and tell the organizers if they want some data to be removed or further de-identified"
+        },
+        {
+          "id": "13",
+          "question-type": "howmany",
+          "answer-position": "E",
+          "question": "What is the targeted number of people for the scientific committee?",
+          "groundtruth-answer": "Approximately 15"
+        },
+        {
+          "id": "14",
+          "question-type": "what",
+          "answer-position": "E",
+          "question": "Why does [PERSON4] ask [PERSON10] to send a message to the Russian researchers on behalf of the scientific committee?",
+          "groundtruth-answer": "Because [PERSON10] is more senior and more internationally recognized so there is a better chance to get a positive answer."
+        },
+        {
+          "id": "15",
+          "question-type": "when",
+          "answer-position": "E",
+          "question": "When should de-identification be complete?",
+          "groundtruth-answer": "End of February"
+        },
+        {
+          "id": "16",
+          "question-type": "when",
+          "answer-position": "E",
+          "question": "When should the full dataset be ready?",
+          "groundtruth-answer": "End of March"
+        },
+        {
+          "id": "17",
+          "question-type": "what",
+          "answer-position": "M",
+          "question": "What would be the exact wording, proposed by [PERSON10], that would accompany the request for consent?",
+          "groundtruth-answer": "\"Based on our records you were a participant of this and this meeting. Maybe you were also present to other meeting and you were accidentally not listed. So feel free to browse any meetings you like.\""
+        }
+      ]
+    }
+  ]
+}

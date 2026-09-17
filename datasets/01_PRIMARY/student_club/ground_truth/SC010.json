@@ -1,0 +1,60 @@
+{
+  "meeting_id": "SC010",
+  "category": "event_planning",
+  "summary": "The club discussed annual fest planning, covering 4 action item(s), 2 decision(s), and 2 open issue(s).",
+  "key_topics": [
+    "Organize the seating layout",
+    "Finalize the event schedule",
+    "annual fest planning"
+  ],
+  "action_items": [
+    {
+      "task": "Organize the seating layout",
+      "owner": "Rahul",
+      "deadline": "end of this week",
+      "evidence": "Rahul, can you organize the seating layout by end of this week?",
+      "confidence": "high"
+    },
+    {
+      "task": "Finalize the event schedule",
+      "owner": "Rahul",
+      "deadline": "the 25th",
+      "evidence": "Rahul, can you finalize the event schedule by the 25th?",
+      "confidence": "high"
+    },
+    {
+      "task": "Print the banners",
+      "owner": "Divya",
+      "deadline": "Thursday evening",
+      "evidence": "Divya, can you print the banners by Thursday evening?",
+      "confidence": "high"
+    },
+    {
+      "task": "Arrange the sound system",
+      "owner": "Arjun",
+      "deadline": "the weekend",
+      "evidence": "Arjun, can you arrange the sound system before the weekend?",
+      "confidence": "high"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the schedule change.",
+      "evidence": "Okay, let's finalize the schedule change then — that's settled."
+    },
+    {
+      "decision": "Finalized the schedule change.",
+      "evidence": "Okay, let's finalize the schedule change then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The sponsorship confirmation remains unresolved.",
+      "evidence": "The sponsorship confirmation is still not confirmed."
+    },
+    {
+      "issue": "The printing order remains unresolved.",
+      "evidence": "The printing order is still not confirmed."
+    }
+  ]
+}

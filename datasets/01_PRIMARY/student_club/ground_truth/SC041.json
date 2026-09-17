@@ -1,0 +1,60 @@
+{
+  "meeting_id": "SC041",
+  "category": "recruitment",
+  "summary": "The club discussed new member recruitment drive, covering 4 action item(s), 2 decision(s), and 2 open issue(s).",
+  "key_topics": [
+    "new member recruitment drive",
+    "Send the recruitment announcement",
+    "Prepare interview questions"
+  ],
+  "action_items": [
+    {
+      "task": "Send the recruitment announcement",
+      "owner": "Ananya",
+      "deadline": "Not specified",
+      "evidence": "Ananya will send the recruitment announcement.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Prepare interview questions",
+      "owner": "Rohith",
+      "deadline": "Friday",
+      "evidence": "Rohith, can you prepare interview questions by Friday?",
+      "confidence": "high"
+    },
+    {
+      "task": "Shortlist candidates for the technical round",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to shortlist candidates for the technical round, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Screen the club application forms",
+      "owner": "Sanjay",
+      "deadline": "Not specified",
+      "evidence": "Sanjay will screen the club application forms.",
+      "confidence": "medium"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the vendor to go with.",
+      "evidence": "Okay, let's finalize the vendor to go with then — that's settled."
+    },
+    {
+      "decision": "Finalized the final theme.",
+      "evidence": "Okay, let's finalize the final theme then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The equipment availability remains unresolved.",
+      "evidence": "The equipment availability is still not confirmed."
+    },
+    {
+      "issue": "The budget approval remains unresolved.",
+      "evidence": "The budget approval is still not confirmed."
+    }
+  ]
+}

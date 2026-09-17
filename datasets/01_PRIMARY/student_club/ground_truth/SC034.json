@@ -1,0 +1,56 @@
+{
+  "meeting_id": "SC034",
+  "category": "project_meetings",
+  "summary": "The club discussed club project progress, covering 4 action item(s), 2 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "club project progress",
+    "Fix the pending bugs in the demo",
+    "Finish the data collection module"
+  ],
+  "action_items": [
+    {
+      "task": "Fix the pending bugs in the demo",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to fix the pending bugs in the demo, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Finish the data collection module",
+      "owner": "Meera",
+      "deadline": "Thursday evening",
+      "evidence": "Meera, can you finish the data collection module by Thursday evening?",
+      "confidence": "high"
+    },
+    {
+      "task": "Test the prototype",
+      "owner": "Meera",
+      "deadline": "Thursday evening",
+      "evidence": "Meera, can you test the prototype by Thursday evening?",
+      "confidence": "high"
+    },
+    {
+      "task": "Complete the literature review",
+      "owner": "Kavya",
+      "deadline": "next Monday",
+      "evidence": "Kavya, can you complete the literature review before next Monday?",
+      "confidence": "high"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the venue.",
+      "evidence": "Okay, let's finalize the venue then — that's settled."
+    },
+    {
+      "decision": "Finalized the schedule change.",
+      "evidence": "Okay, let's finalize the schedule change then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The budget approval remains unresolved.",
+      "evidence": "The budget approval is still not confirmed."
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "meeting_id": "SC037",
+  "category": "project_meetings",
+  "summary": "The club discussed club project progress, covering 3 action item(s), 2 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "club project progress",
+    "Write the project report draft",
+    "Test the prototype"
+  ],
+  "action_items": [
+    {
+      "task": "Write the project report draft",
+      "owner": "Aditya",
+      "deadline": "in a few days",
+      "evidence": "I'll write the project report draft in a few days.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Test the prototype",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to test the prototype, it can't wait too long.",
+      "confidence": "low"
+    },
+    {
+      "task": "Complete the literature review",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to complete the literature review, it can't wait too long.",
+      "confidence": "low"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the event date.",
+      "evidence": "Okay, let's finalize the event date then — that's settled."
+    },
+    {
+      "decision": "Finalized the team composition.",
+      "evidence": "Okay, let's finalize the team composition then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The printing order remains unresolved.",
+      "evidence": "The printing order is still not confirmed."
+    }
+  ]
+}

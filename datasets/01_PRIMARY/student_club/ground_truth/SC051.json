@@ -1,0 +1,49 @@
+{
+  "meeting_id": "SC051",
+  "category": "workshops_seminars",
+  "summary": "The club discussed guest workshop planning, covering 3 action item(s), 1 decision(s), and 2 open issue(s).",
+  "key_topics": [
+    "Prepare the workshop handouts",
+    "guest workshop planning",
+    "Invite the guest speaker"
+  ],
+  "action_items": [
+    {
+      "task": "Prepare the workshop handouts",
+      "owner": "Vikram",
+      "deadline": "Thursday evening",
+      "evidence": "Vikram, can you prepare the workshop handouts by Thursday evening?",
+      "confidence": "high"
+    },
+    {
+      "task": "Invite the guest speaker",
+      "owner": "Nisha",
+      "deadline": "whenever possible",
+      "evidence": "I'll invite the guest speaker whenever possible.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Arrange the projector and mic",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to arrange the projector and mic, it can't wait too long.",
+      "confidence": "low"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the event date.",
+      "evidence": "Okay, let's finalize the event date then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The guest's travel plans remains unresolved.",
+      "evidence": "The guest's travel plans is still not confirmed."
+    },
+    {
+      "issue": "The sponsorship confirmation remains unresolved.",
+      "evidence": "The sponsorship confirmation is still not confirmed."
+    }
+  ]
+}

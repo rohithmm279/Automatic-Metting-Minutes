@@ -1,0 +1,56 @@
+{
+  "meeting_id": "SC059",
+  "category": "competitions",
+  "summary": "The club discussed inter-college competition prep, covering 4 action item(s), 1 decision(s), and 2 open issue(s).",
+  "key_topics": [
+    "Book transport for the away competition",
+    "Arrange practice sessions before the contest",
+    "inter-college competition prep"
+  ],
+  "action_items": [
+    {
+      "task": "Arrange practice sessions before the contest",
+      "owner": "Meera",
+      "deadline": "Not specified",
+      "evidence": "Meera will arrange practice sessions before the contest.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Book transport for the away competition",
+      "owner": "Pooja",
+      "deadline": "the weekend",
+      "evidence": "Pooja, can you book transport for the away competition before the weekend?",
+      "confidence": "high"
+    },
+    {
+      "task": "Finalize the competition judges",
+      "owner": "Arjun",
+      "deadline": "Not specified",
+      "evidence": "Arjun will finalize the competition judges.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Register the team for the competition",
+      "owner": "Not specified",
+      "deadline": "Not specified",
+      "evidence": "Someone needs to register the team for the competition, it can't wait too long.",
+      "confidence": "low"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the schedule change.",
+      "evidence": "Okay, let's finalize the schedule change then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The printing order remains unresolved.",
+      "evidence": "The printing order is still not confirmed."
+    },
+    {
+      "issue": "The sponsorship confirmation remains unresolved.",
+      "evidence": "The sponsorship confirmation is still not confirmed."
+    }
+  ]
+}

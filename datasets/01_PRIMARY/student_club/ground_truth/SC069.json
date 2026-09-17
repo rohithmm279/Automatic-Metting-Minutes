@@ -1,0 +1,45 @@
+{
+  "meeting_id": "SC069",
+  "category": "mixed",
+  "summary": "The club discussed general club coordination, covering 3 action item(s), 1 decision(s), and 1 open issue(s).",
+  "key_topics": [
+    "Draft the monthly newsletter",
+    "Plan the orientation session",
+    "general club coordination"
+  ],
+  "action_items": [
+    {
+      "task": "Draft the monthly newsletter",
+      "owner": "Sneha",
+      "deadline": "Not specified",
+      "evidence": "Sneha will draft the monthly newsletter.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Plan the orientation session",
+      "owner": "Kavya",
+      "deadline": "Not specified",
+      "evidence": "Kavya will plan the orientation session.",
+      "confidence": "medium"
+    },
+    {
+      "task": "Organize the feedback survey",
+      "owner": "Kavya",
+      "deadline": "Not specified",
+      "evidence": "Kavya will organize the feedback survey.",
+      "confidence": "medium"
+    }
+  ],
+  "decisions": [
+    {
+      "decision": "Finalized the final theme.",
+      "evidence": "Okay, let's finalize the final theme then — that's settled."
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "issue": "The guest's travel plans remains unresolved.",
+      "evidence": "The guest's travel plans is still not confirmed."
+    }
+  ]
+}
