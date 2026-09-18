@@ -321,15 +321,49 @@ class TestAgenticPipeline(unittest.TestCase):
         self.assertTrue(is_rl, "is_rate_limited must be True when a 429 error triggers fallback")
         self.assertIsInstance(analysis, MeetingAnalysis)
 
-    def test_13_orchestrator_inter_agent_delay_configured(self):
-        """Test 13: AgentOrchestrator has _INTER_AGENT_DELAY_S > 0 (pacing constant present)."""
-        self.assertGreater(
-            AgentOrchestrator._INTER_AGENT_DELAY_S,
-            0,
-            "Inter-agent delay must be positive to pace Gemini calls.",
-        )
+    def test_14_single_gemini_call_workflow(self):
+        """Test 14: Default AgentOrchestrator invokes GeminiAnalyzer.generate_json exactly ONCE per meeting."""
+        mock_analyzer = MagicMock(spec=GeminiAnalyzer)
+        mock_analyzer.is_configured = True
+        mock_analyzer.model_name = "gemini-3.5-flash-lite"
+        mock_analyzer._build_prompt = GeminiAnalyzer._build_prompt
+        mock_analyzer.generate_json.return_value = {
+            "summary": "The Robotics Club met to plan the hackathon for November 15th. Jordan is tasked with finalizing the sponsorship proposal.",
+            "action_items": [
+                {
+                    "task": "Finalize sponsorship proposal",
+                    "owner": "Jordan",
+                    "deadline": "Friday",
+                    "status": "pending",
+                    "confidence": 1.0,
+                    "evidence": "Jordan: I will finalize the sponsorship proposal by Friday.",
+                }
+            ],
+            "decisions": ["Host the hackathon on November 15th"],
+            "unresolved_issues": ["Guest speaker confirmation"],
+        }
+
+        # Use default agent instances connected to mock_analyzer
+        orchestrator = AgentOrchestrator(gemini_analyzer=mock_analyzer)
+
+        analysis, source, is_rl = orchestrator.process_transcript(self.sample_transcript)
+
+        # Verify exactly ONE Gemini API call
+        self.assertEqual(mock_analyzer.generate_json.call_count, 1)
+        self.assertEqual(source, "AGENTIC_GEMINI")
+        self.assertFalse(is_rl)
+        self.assertEqual(analysis.summary, "The Robotics Club met to plan the hackathon for November 15th. Jordan is tasked with finalizing the sponsorship proposal.")
+        self.assertEqual(len(analysis.action_items), 1)
+        self.assertEqual(analysis.action_items[0].owner, "Jordan")
+        self.assertEqual(analysis.action_items[0].deadline, "Friday")
+        self.assertEqual(analysis.action_items[0].evidence, "Jordan: I will finalize the sponsorship proposal by Friday.")
+        self.assertEqual(len(analysis.decisions), 1)
+        self.assertEqual(len(analysis.unresolved_issues), 1)
+        self.assertIsNotNone(analysis.validation)
+        self.assertTrue(analysis.validation.all_grounded)
 
 
 if __name__ == "__main__":
     unittest.main()
+
 

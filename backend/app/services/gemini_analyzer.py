@@ -1,4 +1,4 @@
-"""Gemini-backed meeting analysis with Pydantic response validation."""
+"""Gemini-backed meeting analysis with Pydantic response validation and key management."""
 
 import json
 import logging
@@ -7,8 +7,10 @@ import random
 import re
 import time
 from pathlib import Path
+from typing import Optional
 
 from app.schemas.meeting_schema import MeetingAnalysis
+from app.services.gemini_key_manager import GeminiKeyManager
 
 logger = logging.getLogger(__name__)
 
@@ -32,23 +34,29 @@ class GeminiAnalysisError(Exception):
     def redact_message(message: str) -> str:
         """Redact likely credentials and cap the safe diagnostic message length."""
         redacted = re.sub(
-            r"(?i)([?&](?:api[_-]?key|key|token|authorization)=)[^&\s]+",
+            r"(?i)([?&](?:api[_-]?key|key|token|authorization)=)[^&\s,;]+",
             r"\1[REDACTED]",
             message,
         )
         redacted = re.sub(
-            r"(?i)\b(api[_ -]?key|token|authorization|bearer)\b\s*([:=])\s*[^\s,;]+",
+            r"(?i)\b(authorization|bearer)\s*[:=]?\s*(?:bearer\s+)?[^\s,;]+",
+            r"\1: [REDACTED]",
+            redacted,
+        )
+        redacted = re.sub(
+            r"(?i)\b(api[_ -]?key|key|token|secret)\b\s*([:=])\s*[^\s,;]+",
             r"\1\2[REDACTED]",
             redacted,
         )
-        redacted = re.sub(r"\bAIza[A-Za-z0-9_-]{20,}\b", "[REDACTED]", redacted)
+        redacted = re.sub(r"\bAIza[A-Za-z0-9_-]{10,}\b", "[REDACTED]", redacted)
+        redacted = re.sub(r"\bAQ\.[A-Za-z0-9_-]{10,}\b", "[REDACTED]", redacted)
         return redacted[:500] or "No diagnostic message was provided."
 
 
 class GeminiAnalyzer:
     """Analyze cleaned transcripts with Gemini and validate the JSON response."""
 
-    _MODEL_NAME = "gemini-3.6-flash"
+    _DEFAULT_MODEL = "gemini-3.5-flash-lite"
 
     # Backoff configuration
     _BASE_DELAY_S: float = 2.0       # base wait seconds for first retry
@@ -56,106 +64,135 @@ class GeminiAnalyzer:
     _JITTER_RANGE: float = 1.5       # add ±jitter_range seconds of random noise
     _INTER_CALL_PACE_S: float = 1.0  # minimum gap between consecutive calls (pacing)
 
-    def __init__(self) -> None:
-        """Load the Gemini API key from the project's environment configuration."""
-        try:
-            from dotenv import load_dotenv
-
-            project_root = Path(__file__).resolve().parents[2]
-            load_dotenv(dotenv_path=project_root / ".env")
-            self._api_key = os.getenv("GEMINI_API_KEY")
-        except ImportError as error:
-            raise GeminiAnalysisError("python-dotenv is not installed.", error) from error
+    def __init__(
+        self,
+        key_manager: Optional[GeminiKeyManager] = None,
+        model_name: Optional[str] = None,
+    ) -> None:
+        """Initialize the analyzer with GeminiKeyManager and configurable model."""
+        self._key_manager = key_manager or GeminiKeyManager()
+        self._model_name = model_name or self._key_manager.model or self._DEFAULT_MODEL
 
     @property
     def is_configured(self) -> bool:
-        """Return whether a non-empty Gemini API key was detected, without exposing it."""
-        return bool(self._api_key)
+        """Return whether a usable Gemini API key was detected, without exposing it."""
+        return self._key_manager.is_configured
 
     @property
     def model_name(self) -> str:
         """Return the configured model name for safe diagnostics."""
-        return self._MODEL_NAME
+        return self._model_name
+
+    @property
+    def key_manager(self) -> GeminiKeyManager:
+        """Return the associated key manager."""
+        return self._key_manager
 
     # ------------------------------------------------------------------
     # Public API
     # ------------------------------------------------------------------
 
     def generate_json(self, prompt: str, max_retries: int = 6) -> dict | list:
-        """Execute a JSON-configured prompt with exponential backoff + jitter for transient errors.
+        """Execute a JSON-configured prompt with exponential backoff + jitter for transient errors
+        and failover from primary to backup key on 429 quota exhaustion.
 
-        Handles 429 / RESOURCE_EXHAUSTED responses by:
-          1. Reading the ``Retry-After`` header when available.
-          2. Falling back to exponential backoff with random jitter.
-          3. Capping the maximum wait at ``_MAX_DELAY_S`` seconds.
-          4. Enforcing a minimum ``_INTER_CALL_PACE_S`` gap between calls.
+        Key failover rules:
+          1. In auto mode, use primary key first.
+          2. When primary key encounters 429 / RESOURCE_EXHAUSTED / quota limits, fail over
+             to the backup key for the same request.
+          3. Do not switch keys on successful requests (each new request starts with primary).
+          4. Transient 503 / UNAVAILABLE errors trigger backoff + retry on the active key.
         """
-        if not self._api_key:
+        if not self.is_configured:
             raise GeminiAnalysisError("Gemini API key is not configured.")
+
+        key_candidates = self._key_manager.get_key_candidates()
+        if not key_candidates:
+            raise GeminiAnalysisError("No valid Gemini API key available for the current mode.")
 
         try:
             from google import genai
             from google.genai import types
 
-            client = genai.Client(api_key=self._api_key)
             config = types.GenerateContentConfig(
                 response_mime_type="application/json",
                 temperature=0.0,
             )
 
             last_err: Exception | None = None
-            for attempt in range(1, max_retries + 1):
-                try:
-                    logger.debug(
-                        "Gemini request attempt %d/%d (model=%s).",
-                        attempt,
-                        max_retries,
-                        self._MODEL_NAME,
-                    )
-                    response = client.models.generate_content(
-                        model=self._MODEL_NAME,
-                        contents=prompt,
-                        config=config,
-                    )
-                    if response and response.text:
-                        raw = response.text.strip()
-                        if raw.startswith("```"):
-                            raw = raw.split("\n", 1)[1]
-                            if raw.endswith("```"):
-                                raw = raw.rsplit("```", 1)[0]
-                            raw = raw.strip()
-                        result = json.loads(raw)
-                        # Successful — pace the next call
-                        time.sleep(self._INTER_CALL_PACE_S)
-                        return result
-                    raise GeminiAnalysisError("Gemini returned an empty response.")
 
-                except Exception as error:
-                    last_err = error
-                    msg = str(error)
-                    is_rate_limit = any(
-                        t in msg for t in ("429", "RESOURCE_EXHAUSTED", "quota", "rate limit")
-                    )
-                    is_transient = is_rate_limit or any(
-                        t in msg for t in ("503", "UNAVAILABLE", "timeout", "connection")
-                    )
+            for key_idx, (key_label, api_key) in enumerate(key_candidates):
+                has_subsequent_key = (key_idx + 1) < len(key_candidates)
+                client = genai.Client(api_key=api_key)
 
-                    if is_transient and attempt < max_retries:
-                        wait = self._compute_wait(attempt, error, is_rate_limit)
-                        logger.warning(
-                            "Gemini transient error (attempt %d/%d, rate_limit=%s): %s. "
-                            "Retrying in %.1fs...",
+                for attempt in range(1, max_retries + 1):
+                    try:
+                        logger.debug(
+                            "Gemini request attempt %d/%d (model=%s, key=%s).",
                             attempt,
                             max_retries,
-                            is_rate_limit,
-                            GeminiAnalysisError.redact_message(msg[:200]),
-                            wait,
+                            self._model_name,
+                            key_label,
                         )
-                        time.sleep(wait)
-                    else:
-                        raise error
+                        response = client.models.generate_content(
+                            model=self._model_name,
+                            contents=prompt,
+                            config=config,
+                        )
+                        if response and response.text:
+                            raw = response.text.strip()
+                            if raw.startswith("```"):
+                                raw = raw.split("\n", 1)[1]
+                                if raw.endswith("```"):
+                                    raw = raw.rsplit("```", 1)[0]
+                                raw = raw.strip()
+                            result = json.loads(raw)
+                            # Successful — pace the next call
+                            time.sleep(self._INTER_CALL_PACE_S)
+                            return result
+                        raise GeminiAnalysisError("Gemini returned an empty response.")
 
-            raise last_err or GeminiAnalysisError("Max retries exceeded.")
+                    except Exception as error:
+                        last_err = error
+                        msg = str(error)
+                        is_rate_limit = any(
+                            t in msg for t in ("429", "RESOURCE_EXHAUSTED", "quota", "rate limit")
+                        )
+                        is_transient = is_rate_limit or any(
+                            t in msg for t in ("503", "UNAVAILABLE", "timeout", "connection")
+                        )
+
+                        # Primary key hit 429 quota exhaustion -> failover to backup key
+                        if is_rate_limit and has_subsequent_key:
+                            next_key_label = key_candidates[key_idx + 1][0]
+                            logger.warning(
+                                "Gemini key '%s' encountered quota limit (429 / RESOURCE_EXHAUSTED). "
+                                "Failing over to '%s' key for current request...",
+                                key_label,
+                                next_key_label,
+                            )
+                            break
+
+                        if is_transient and attempt < max_retries:
+                            wait = self._compute_wait(attempt, error, is_rate_limit)
+                            logger.warning(
+                                "Gemini transient error on '%s' key (attempt %d/%d, rate_limit=%s): %s. "
+                                "Retrying in %.1fs...",
+                                key_label,
+                                attempt,
+                                max_retries,
+                                is_rate_limit,
+                                GeminiAnalysisError.redact_message(msg[:200]),
+                                wait,
+                            )
+                            time.sleep(wait)
+                        else:
+                            if not has_subsequent_key:
+                                raise error
+                            else:
+                                raise error
+
+            raise last_err or GeminiAnalysisError("Max retries exceeded or all keys exhausted.")
 
         except GeminiAnalysisError:
             raise
@@ -190,7 +227,6 @@ class GeminiAnalyzer:
         Uses ``Retry-After`` when the error object carries that information,
         otherwise uses exponential backoff with ±jitter.
         """
-        # Try to extract Retry-After from the error message (e.g. "retry_delay { seconds: 30 }")
         retry_after = self._extract_retry_after(str(error))
         if retry_after is not None:
             jitter = random.uniform(0, self._JITTER_RANGE)
@@ -207,11 +243,6 @@ class GeminiAnalyzer:
     @staticmethod
     def _extract_retry_after(error_msg: str) -> float | None:
         """Parse Retry-After seconds from a Gemini error message string."""
-        # Pattern: 'retry_delay { seconds: 30 }' or 'retry_delay { seconds 30 }'
-        # Pattern: 'retryDelay: 60' (camelCase, no 'seconds' word)
-        # Pattern: 'Retry-After: 45'
-        # Pattern: '"retry_after": 30'
-        # Pattern: 'wait 30 s'
         patterns = [
             r"retry[_-]?delay\s*\{?\s*seconds[:\s]+(\d+)",  # proto: retry_delay { seconds: 30 }
             r"retry[_-]?delay[:\s]+(\d+)",                  # retryDelay: 60
@@ -225,56 +256,65 @@ class GeminiAnalyzer:
                 return float(match.group(1))
         return None
 
-
     @staticmethod
     def _build_prompt(transcript: str) -> str:
-        """Create a strict, schema-focused prompt without changing transcript text."""
-        return f"""Analyze the following meeting transcript.
+        """Create a strict, comprehensive single-call prompt without changing transcript text."""
+        return f"""You are an expert AI meeting analyst for student club and organizational meetings.
+Analyze the following meeting transcript and produce a complete, factual analysis in a single response.
 
-Return strict JSON only. Do not use Markdown, code fences, commentary, or fields
+Return STRICT JSON only. Do not use Markdown, code fences, commentary, or fields
 other than summary, action_items, decisions, and unresolved_issues.
 
-Use this exact shape:
+Use this exact JSON shape:
 {{
-  "summary": "concise meeting summary",
+  "summary": "concise 3-5 sentence meeting summary covering purpose, key decisions, planned tasks, and open items",
   "action_items": [
     {{
-      "task": "specific task",
-      "owner": "person name or null",
-      "deadline": "deadline or null",
+      "task": "Clean normalized task description without deadline words",
+      "owner": "Person Name or Not specified",
+      "deadline": "Explicit deadline string or Not specified",
       "status": "pending",
-      "confidence": 0.0
+      "confidence": 1.0,
+      "evidence": "Short verbatim quote or dialogue snippet from transcript"
     }}
   ],
-  "decisions": ["decision"],
-  "unresolved_issues": ["unresolved issue"]
+  "decisions": [
+    "Explicit confirmed decision"
+  ],
+  "unresolved_issues": [
+    "Open issue or pending question"
+  ]
 }}
 
-Rules:
-- Action items are commitments, requests, assignments, or required next steps
-  expressed in natural language. Normalize each task to the actual action; do
-  not copy filler, speaker labels, or unrelated discussion.
-- Set owner only when a person is explicitly named or clearly self-assigned by
-  an identified speaker. Otherwise use null. Set deadline only when the
-  transcript explicitly gives one (for example "by Wednesday", "before Monday",
-  "on Friday", "tomorrow", or "next week"); otherwise use null.
-- Keep action-item status "pending" unless the transcript explicitly says that
-  specific task is completed.
-- Include decisions only where the group actually reached an outcome, including
-  wording such as agreed to, decided to, approved, confirmed, finalized,
-  settled on, chose, selected, will proceed with, let's go with, final choice
-  is, committee accepted, or everyone agreed. Do not turn proposals, questions,
-  or preferences into decisions.
-- Include unresolved issues only when they remain open: still pending, not
-  decided, undecided, unresolved, waiting for approval, needs further
-  discussion, needs confirmation, not finalized, or open question. Do not list
-  a matter as unresolved when the transcript establishes that it was resolved.
-- The summary must cover the main discussion topic and prioritize material
-  decisions, action items, and unresolved issues. Do not summarize only an
-  action item when meaningful decisions or unresolved issues are present.
-- Use a numeric confidence from 0.0 to 1.0 when possible; otherwise use null.
-- Use empty arrays when no items exist.
-- Preserve factual meaning; do not invent owners, deadlines, decisions, or issues.
+STRICT RULES & GROUNDING:
+1. SUMMARY:
+   - Provide a factual, concise 3-5 sentence meeting summary.
+   - Cover primary meeting purpose, major discussion topics, confirmed decisions, upcoming action commitments, and open issues.
+   - Action items must be described with planned/future phrasing (e.g. "Key upcoming tasks include...", "is tasked with", "will coordinate"), NOT as already completed past actions.
+
+2. ACTION ITEMS:
+   - Extract only explicit tasks, commitments, requests, or assignments.
+   - task: ONLY the core task action. Normalize the task to the actual action. NEVER include deadline/timeframe words (e.g., "by Friday", "before the weekend", "next week") inside the task field.
+   - owner: Set ONLY when a person is explicitly named or clearly self-assigned by an identified speaker. If not explicitly identifiable, use "Not specified" or null. NEVER invent an owner.
+   - deadline: Set ONLY when the transcript explicitly gives one (for example "by Wednesday", "before Monday", "on Friday", "tomorrow", "next week"). If not explicitly mentioned, use "Not specified" or null. NEVER invent a deadline.
+   - status: Use "pending" unless the transcript explicitly states that specific task is completed.
+   - confidence: Numeric confidence from 0.0 to 1.0 (default 1.0).
+   - evidence: A short verbatim quote or dialogue snippet from the transcript demonstrating this action item.
+   - FORBIDDEN: Do NOT include group decisions (such as agreeing on an event date or budget) as action items.
+
+3. DECISIONS:
+   - Include ONLY outcomes that were explicitly agreed upon, approved, confirmed, finalized, settled on, or decided by the group (e.g. agreed budget amount, chosen event date/theme, selected speaker).
+   - DO NOT treat mere suggestions, proposals, possibilities, open discussion, or preferences as decisions.
+   - DO NOT include individual action items as decisions.
+
+4. UNRESOLVED ISSUES:
+   - Include ONLY matters that remain open: still pending, not decided, undecided, unresolved, waiting for approval, needs further discussion, needs confirmation, not finalized, or open question.
+   - DO NOT list a matter as unresolved when the transcript establishes that it was resolved.
+
+5. GROUNDING:
+   - Preserve factual meaning; NEVER invent or assume owners, deadlines, decisions, evidence, or issues not present in the transcript.
+   - Use empty arrays [] when no items exist for a category.
 
 Transcript:
 {transcript}"""
+

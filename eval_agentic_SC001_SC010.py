@@ -172,17 +172,35 @@ def save_checkpoint(completed: list[str], results: list[dict]):
     CHECKPOINT_JSON.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
+import argparse
+
+def parse_args():
+    parser = argparse.ArgumentParser(description="Agentic AI Pipeline Benchmark (SC001-SC010)")
+    parser.add_argument(
+        "--fresh",
+        action="store_true",
+        help="Ignore existing checkpoint and start SC001-SC010 evaluation from scratch.",
+    )
+    return parser.parse_args()
+
+
 # ---------------------------------------------------------------------------
 # Main Evaluation Loop
 # ---------------------------------------------------------------------------
 def run_agentic_evaluation():
+    args = parse_args()
+
     print(f"\n{chr(61)*70}", flush=True)
     print("  AGENTIC AI PIPELINE BENCHMARK (SC001-SC010)", flush=True)
     print(f"{chr(61)*70}", flush=True)
 
-    completed_ids, results = load_checkpoint()
-    if completed_ids:
-        print(f"Resuming from checkpoint: {len(completed_ids)}/{len(MEETINGS)} completed.", flush=True)
+    if args.fresh:
+        print("FRESH RUN: ignoring existing checkpoint.", flush=True)
+        completed_ids, results = [], []
+    else:
+        completed_ids, results = load_checkpoint()
+        if completed_ids:
+            print(f"Resuming from checkpoint: {len(completed_ids)}/{len(MEETINGS)} completed.", flush=True)
 
     orchestrator = AgentOrchestrator()
 
