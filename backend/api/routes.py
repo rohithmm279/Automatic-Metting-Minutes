@@ -46,14 +46,18 @@ def _get_repo(request: Request) -> MeetingRepository:
 
 
 def _row_to_action_item(row: dict[str, Any]) -> ActionItemResponse:
+    owner_val = row.get("owner")
+    conf_val = float(row.get("confidence", 1.0)) if row.get("confidence") is not None else 1.0
     return ActionItemResponse(
         id=row["id"],
         meeting_id=row["meeting_id"],
         task=row["task"],
-        owner=row["owner"],
-        deadline=row["deadline"],
-        status=row["status"],
-        confidence=row["confidence"],
+        owner=owner_val,
+        assignee=owner_val,
+        deadline=row.get("deadline"),
+        status=row.get("status", "pending"),
+        confidence=conf_val,
+        confidence_score=conf_val,
         evidence=row.get("evidence"),
     )
 
@@ -131,6 +135,11 @@ def create_meeting(body: CreateMeetingRequest, request: Request) -> CreateMeetin
     return CreateMeetingResponse(
         meeting_id=saved["id"],
         summary=saved["summary"],
+        title=saved.get("title"),
+        meeting_date=saved.get("meeting_date"),
+        meeting_time=saved.get("meeting_time"),
+        start_time=saved.get("start_time"),
+        end_time=saved.get("end_time"),
         action_items=[_row_to_action_item(r) for r in saved["action_items"]],
         decisions=[_row_to_decision(r) for r in saved["decisions"]],
         unresolved_issues=[_row_to_issue(r) for r in saved["unresolved_issues"]],
@@ -156,6 +165,11 @@ def list_meetings(request: Request, limit: int = 50, offset: int = 0) -> list[Me
         MeetingListItem(
             id=r["id"],
             summary=r["summary"],
+            title=r.get("title"),
+            meeting_date=r.get("meeting_date"),
+            meeting_time=r.get("meeting_time"),
+            start_time=r.get("start_time"),
+            end_time=r.get("end_time"),
             created_at=r["created_at"],
             action_items_count=r["action_items_count"],
             decisions_count=r["decisions_count"],
@@ -188,6 +202,11 @@ def get_meeting(meeting_id: int, request: Request) -> MeetingDetailResponse:
         id=row["id"],
         transcript=row["transcript"],
         summary=row["summary"],
+        title=row.get("title"),
+        meeting_date=row.get("meeting_date"),
+        meeting_time=row.get("meeting_time"),
+        start_time=row.get("start_time"),
+        end_time=row.get("end_time"),
         created_at=row["created_at"],
         action_items=[_row_to_action_item(r) for r in row["action_items"]],
         decisions=[_row_to_decision(r) for r in row["decisions"]],

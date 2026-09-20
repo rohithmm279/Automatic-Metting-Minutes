@@ -16,18 +16,21 @@ class MeetingAnalyzer:
     _ACTION_PATTERNS = (
         r"\b(?:need|needs|needed|has) to\s+",
         r"\b(?:i|we|they|[A-Z][a-z]+)\s+(?:will|'ll|shall|plan to|are going to)\s+",
-        r"\b(?:can|could|would)\s+you\s+",
+        r"\b(?:can|could|would|please)\s+(?:you\s+)?",
         r"\b(?:assigned|assign)\s+(?:to\s+)?",
         r"\bresponsible for\s+",
         r"\btasked with\s+",
+        r"^\s*(?:(?:\d+[\.\)]|\*|-|•)\s+)?(?:[A-Z][a-z]+:\s*)?(?:update|finalize|draft|prepare|complete|create|implement|schedule|send|review|test|fix|build|write|submit|organize|coordinate|setup|set up|deploy)\b",
     )
     _DECISION_PATTERNS = (
         r"\b(?:agreed|decided|approved|confirmed|finalized|settled on|chose|chosen|selected)\b",
         r"\b(?:will|shall) proceed with\b",
-        r"\blet'?s go with\b",
+        r"\blet'?s (?:go with|make (?:.+ )?official|lock in|stick with)\b",
         r"\b(?:final choice|decision) is\b",
         r"\b(?:committee|everyone|team) accepted\b",
         r"\bthat'?s settled\b",
+        r"\b(?:completely fine|fine for v1|good to go|on track for code freeze)\b",
+        r"\b(?:scheduled for|set the launch date|locked in for|official launch)\b",
     )
     _UNRESOLVED_PATTERNS = (
         r"\bstill pending\b",
@@ -41,15 +44,15 @@ class MeetingAnalyzer:
         r"\bunclear\b",
     )
     _DEADLINE_PATTERN = re.compile(
-        r"\b(?:(?:by|before|on|due)\s+(?:the\s+)?(?:end of )?(?:next\s+)?"
+        r"\b(?:(?:by|before|on|due|for)\s+(?:the\s+)?(?:end of )?(?:next\s+)?"
         r"(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)|"
-        r"(?:by|before|on|due)\s+\d{1,2}(?:st|nd|rd|th)?(?:\s+of\s+\w+)?|"
-        r"(?:tomorrow|today|this\s+(?:week|month)|next\s+(?:week|month)|"
+        r"(?:by|before|on|due|for)\s+(?:[A-Za-z]+\s+\d{1,2}(?:st|nd|rd|th)?|\d{1,2}(?:st|nd|rd|th)?(?:\s+of\s+[A-Za-z]+)?)|"
+        r"(?:by\s+)?(?:eod\s+tomorrow|end of day tomorrow|eod|tomorrow|today|this\s+(?:week|month)|next\s+(?:week|month)|"
         r"sometime\s+next\s+week|before\s+the\s+weekend))\b",
         re.IGNORECASE,
     )
-    _SPEAKER_PATTERN = re.compile(r"^([A-Za-z][A-Za-z .'-]{0,49}):\s*(.*)$")
-    _NON_PERSON_LEADS = {"the", "we", "i", "our", "team", "committee", "everyone", "someone"}
+    _SPEAKER_PATTERN = re.compile(r"^(?:(?:\d+[\.\)]|\*|-|•)\s+)?([A-Za-z][A-Za-z .'-]{0,49}):\s*(.*)$")
+    _NON_PERSON_LEADS = {"the", "we", "i", "our", "team", "committee", "everyone", "someone", "action", "item", "task", "note"}
 
     def analyze(self, transcript: str) -> MeetingAnalysis:
         """Analyze a cleaned transcript and return the existing response shape."""
@@ -94,7 +97,10 @@ class MeetingAnalyzer:
         return match.group(1).strip() if match else None
 
     def _is_action_item(self, sentence: str) -> bool:
-        return self._matches_any(self._content(sentence), self._ACTION_PATTERNS) and not self._is_unresolved_issue(sentence)
+        content = self._content(sentence)
+        if re.search(r"^(?:log|assign|record|note\s+down|track)\s+(?:the\s+)?(?:action\s+items?|decisions?|meeting\s+minutes?|tasks?|items?)\b", content, re.I):
+            return False
+        return self._matches_any(content, self._ACTION_PATTERNS) and not self._is_unresolved_issue(sentence)
 
     def _is_decision(self, sentence: str) -> bool:
         return self._matches_any(self._content(sentence), self._DECISION_PATTERNS) and not self._is_unresolved_issue(sentence)
@@ -126,16 +132,23 @@ class MeetingAnalyzer:
     @classmethod
     def _extract_owner(cls, sentence: str) -> str | None:
         content, speaker = cls._content(sentence), cls._speaker(sentence)
-        addressed = re.match(r"(?:alright,?\s+)?([A-Z][a-z]+),\s*(?:can|could|would)\s+you\b", content, re.I)
-        if addressed:
+        if speaker and speaker.lower() not in cls._NON_PERSON_LEADS:
+            # If the sentence is an imperative task assigned in a list (e.g. "1. Marcus: Update the specs...")
+            # or if speaker commits via "I will..."
+            if re.search(r"\b(?:i(?:'ll| will)|i plan to|i am going to)\b", content, re.I):
+                return speaker
+            if re.match(r"^(?:update|finalize|draft|prepare|complete|create|implement|schedule|send|review|test|fix|build|write|submit|organize|coordinate|setup|set up|deploy)\b", content, re.I):
+                return speaker
+        addressed = re.match(r"(?:alright,?\s+)?([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?),\s*(?:can|could|would|please)\s+(?:you\s+)?\b", content, re.I)
+        if addressed and addressed.group(1).lower() not in cls._NON_PERSON_LEADS:
             return addressed.group(1)
-        assigned = re.search(r"\b(?:assigned|assign)\s+to\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\b", content)
-        if assigned:
+        assigned = re.search(r"\b(?:assigned|assign)\s+to\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\b", content, re.I)
+        if assigned and assigned.group(1).lower() not in cls._NON_PERSON_LEADS:
             return assigned.group(1)
-        named = re.match(r"([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\s+(?:will|has to|needs? to)\b", content)
+        named = re.match(r"([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\s+(?:will|has to|needs? to|is tasked with|is responsible for|should)\b", content, re.I)
         if named and named.group(1).lower() not in cls._NON_PERSON_LEADS:
             return named.group(1)
-        if speaker and re.search(r"\b(?:i(?:'ll| will)|i plan to|i am going to)\b", content, re.I):
+        if speaker and speaker.lower() not in cls._NON_PERSON_LEADS:
             return speaker
         return None
 

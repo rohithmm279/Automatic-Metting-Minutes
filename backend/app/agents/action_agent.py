@@ -80,17 +80,20 @@ class ActionAgent:
 
     @staticmethod
     def _build_prompt(transcript: str) -> str:
-        return f"""You are an expert Action Item Extraction Agent for student club meetings.
-Your job is to identify only explicit tasks, commitments, or assignments from the transcript.
+        return f"""You are an expert Action Item Extraction Agent for business, engineering, and student club meetings.
+Your job is to identify only explicit engineering/operational tasks, commitments, or assignments from the transcript.
 
 STRICT EXTRACTION RULES:
-1. Extract only tasks that are actually assigned, requested, or explicitly committed to.
-2. task: ONLY the core task action. Normalize the task to the actual action. NEVER include deadline/timeframe words (e.g., "by Friday", "before the weekend", "next week") inside the task field.
-3. owner: The explicit person named or self-assigning speaker. If the owner is not explicitly identifiable, output "Not specified" or null. NEVER invent an owner.
-4. deadline: The explicit deadline or timeframe mentioned (e.g., "by Friday", "next week", "before next meeting"). If not explicitly mentioned, output "Not specified" or null. NEVER invent a deadline.
-5. status: "pending" unless the transcript explicitly states it is completed.
-6. evidence: A short verbatim quote or dialogue snippet from the transcript demonstrating this action item.
-7. FORBIDDEN: Do NOT include group decisions (such as agreeing on an event date or budget) as action items.
+1. Extract only concrete engineering or operational tasks that are actually assigned, requested, or explicitly committed to.
+2. OWNER BINDING & SELF-COMMITMENT PRECEDENCE: Assign tasks to the person who explicitly self-commits ("I will do X", "I'll handle this", "My action item is X", "I can take that") or is directly requested ("Priya, can you..."). When tasks are listed with names (e.g. "1. Marcus: Update..."), extract that named person. NEVER assign tasks to the meeting host or Incident Commander simply because they summarized or requested the task at the end. If unassigned, output "Not specified" or null. NEVER invent an owner.
+3. NO META-TASKS: Do NOT extract meta-instructions or meeting administrative commands (e.g., "log the action items", "assign tasks to log", "note down the meeting minutes", "record these in Jira") as action items. Do NOT assign fake tasks to facilitators simply because they asked the team to record or log items.
+4. task: ONLY the core task action. Normalize the task to the actual action. NEVER include deadline/timeframe words (e.g., "by Friday", "before the weekend", "next week", "by EOD tomorrow", "today") inside the task field.
+5. deadline: ALL action item deadlines MUST be formatted strictly as ISO standard dates: YYYY-MM-DD (e.g., "2026-09-20", "2026-09-22", "2026-09-23", "2026-10-05").
+   - FORWARD RELATIVE DATE MATH RULE: When calculating relative weekdays ("by Wednesday", "by Tuesday", "this Friday", "tomorrow", "by EOD"), ALWAYS compute strictly forward from the Meeting Header Date. For example, for a meeting on Sunday Sep 20, 2026, "by Wednesday" is 2026-09-23 (Sep 20 + 3 days = Sep 23). NEVER output a deadline date that occurs BEFORE the meeting header date (e.g., NEVER output 2026-09-03 or 2026-09-14).
+   - NO INCIDENT / TIMELINE TIMESTAMPS AS DEADLINES: Incident event timestamps, alert firing times (e.g., "11:02 AM", "14:30 UTC"), log timestamps, and dialogue timestamps indicate when past events occurred, NOT task deadlines. If no explicit future calendar date is mentioned, output "Not specified" or null.
+6. status: "pending" unless the transcript explicitly states it is completed.
+7. evidence: A short verbatim quote or dialogue snippet from the transcript demonstrating this action item.
+8. FORBIDDEN: Do NOT include group decisions (such as agreeing on an event date or budget) as action items.
 
 Return STRICT JSON only in this format:
 {{
@@ -98,7 +101,7 @@ Return STRICT JSON only in this format:
     {{
       "task": "Clean task description",
       "owner": "Person Name or Not specified",
-      "deadline": "Deadline string or Not specified",
+      "deadline": "YYYY-MM-DD or Not specified",
       "status": "pending",
       "confidence": 1.0,
       "evidence": "Quote from transcript"

@@ -20,9 +20,11 @@ class ValidationInfo(BaseModel):
 class ActionItem(BaseModel):
     task: str
     owner: Optional[str] = None
+    assignee: Optional[str] = None
     deadline: Optional[str] = None
     status: str = "pending"
     confidence: Optional[float] = None
+    confidence_score: Optional[float] = None
     evidence: Optional[str] = None
     validation: Optional[ValidationInfo] = None
 
@@ -49,3 +51,9 @@ class MeetingAnalysis(BaseModel):
     unresolved_issues: list[str] = []
     detailed_decisions: Optional[list[DecisionItem]] = None
     validation: Optional[OverallValidation] = None
+    title: Optional[str] = None
+    meeting_date: Optional[str] = None
+    meeting_time: Optional[str] = None
+    start_time: Optional[str] = None
+    end_time: Optional[str] = None
+    created_at: Optional[str] = None

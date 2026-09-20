@@ -7,6 +7,8 @@ export default function Topbar({
   selectedClub,
   onSelectClub,
   onOpenSearch,
+  theme = 'dark',
+  onToggleTheme,
 }) {
   const getViewTitle = () => {
     switch (currentView) {
@@ -40,7 +42,7 @@ export default function Topbar({
           className="s5-btn s5-btn-secondary s5-btn-sm"
           onClick={onOpenSearch}
           style={{ color: 'var(--text-muted)', gap: '6px' }}
-          title="Search meetings, actions & decisions"
+          title="Search meetings, actions & decisions (⌘K)"
         >
           <Icon name="search" size={14} />
           <span style={{ fontSize: '0.8rem' }}>Search</span>
@@ -54,6 +56,18 @@ export default function Topbar({
           }}>
             ⌘K
           </kbd>
+        </button>
+
+        {/* Theme Toggle Button */}
+        <button
+          className="s5-btn s5-btn-secondary s5-btn-sm s5-theme-toggle-btn"
+          onClick={onToggleTheme}
+          title={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+          aria-label="Toggle light/dark theme"
+          id="btn-theme-toggle"
+        >
+          <Icon name={theme === 'light' ? 'moon' : 'sun'} size={14} />
+          <span style={{ fontSize: '0.8rem' }}>{theme === 'light' ? 'Dark' : 'Light'}</span>
         </button>
 
         {/* Club Context Switcher */}

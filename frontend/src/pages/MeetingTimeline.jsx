@@ -33,7 +33,11 @@ export default function MeetingTimeline({
   const filteredMeetings = meetings.filter((m) => {
     if (!searchQuery.trim()) return true;
     const q = searchQuery.toLowerCase();
-    return String(m.id).includes(q) || (m.summary && m.summary.toLowerCase().includes(q));
+    return (
+      String(m.id).includes(q) ||
+      (m.title && m.title.toLowerCase().includes(q)) ||
+      (m.summary && m.summary.toLowerCase().includes(q))
+    );
   });
 
   return (
@@ -132,18 +136,17 @@ export default function MeetingTimeline({
                 <div className="s5-card">
                   <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '16px', marginBottom: '8px' }}>
                     <div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px', flexWrap: 'wrap' }}>
                         <span style={{
-                          fontFamily: 'var(--font-mono)',
                           fontWeight: 700,
-                          fontSize: '0.85rem',
-                          color: 'var(--accent-primary)'
+                          fontSize: '1rem',
+                          color: 'var(--text-primary)'
                         }}>
-                          Meeting #{m.id}
+                          {m.title || `Meeting #${m.id}`}
                         </span>
                         <span style={{ color: 'var(--text-dim)' }}>•</span>
                         <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                          {m.created_at ? new Date(m.created_at).toLocaleString() : 'Recent'}
+                          {m.meeting_date || (m.created_at ? new Date(m.created_at).toLocaleDateString() : 'Recent')}
                         </span>
                       </div>
                       <p style={{ fontSize: '0.92rem', color: 'var(--text-primary)', lineHeight: 1.5 }}>

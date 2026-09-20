@@ -16,6 +16,8 @@ export default function AppShell({
   issues = [],
   onSelectMeeting,
   backendOnline = true,
+  theme = 'dark',
+  onToggleTheme,
 }) {
   const [selectedClub, setSelectedClub] = useState('Cultural Committee');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -45,6 +47,8 @@ export default function AppShell({
         issuesCount={issues.length}
         onOpenSystemSpecs={() => setIsSpecsOpen(true)}
         backendOnline={backendOnline}
+        theme={theme}
+        onToggleTheme={onToggleTheme}
       />
 
       {/* Main View Area */}
@@ -55,6 +59,8 @@ export default function AppShell({
           selectedClub={selectedClub}
           onSelectClub={setSelectedClub}
           onOpenSearch={() => setIsSearchOpen(true)}
+          theme={theme}
+          onToggleTheme={onToggleTheme}
         />
 
         <main className="s5-page-container">

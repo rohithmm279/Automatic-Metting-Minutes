@@ -10,6 +10,8 @@ export default function Sidebar({
   issuesCount = 0,
   onOpenSystemSpecs,
   backendOnline = true,
+  theme = 'dark',
+  onToggleTheme,
 }) {
   const navItems = [
     { id: 'overview', label: 'Overview', icon: 'overview', badge: null },

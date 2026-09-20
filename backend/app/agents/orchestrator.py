@@ -1,10 +1,7 @@
-"""Agent Orchestrator: Controls the workflow for meeting minutes and action items.
-
-Refactored to ONE Gemini API call per meeting:
-Transcript → Preprocessor → ONE Gemini Call (all fields) → Local Validation → Structured Output
-"""
-
+import datetime
+from datetime import timedelta
 import logging
+import re
 from typing import Optional
 
 from app.agents.summary_agent import SummaryAgent
@@ -22,6 +19,21 @@ from app.services.meeting_analyzer import MeetingAnalyzer
 from app.services.transcript_processor import TranscriptProcessor
 
 logger = logging.getLogger(__name__)
+
+MONTH_MAP = {
+    "january": 1, "jan": 1,
+    "february": 2, "feb": 2,
+    "march": 3, "mar": 3,
+    "april": 4, "apr": 4,
+    "may": 5,
+    "june": 6, "jun": 6,
+    "july": 7, "jul": 7,
+    "august": 8, "aug": 8,
+    "september": 9, "sep": 9, "sept": 9,
+    "october": 10, "oct": 10,
+    "november": 11, "nov": 11,
+    "december": 12, "dec": 12,
+}
 
 
 class AgentOrchestrator:
@@ -75,6 +87,11 @@ class AgentOrchestrator:
         if not cleaned_transcript:
             raise ValueError("Transcript must contain non-whitespace text.")
 
+        meeting_date = self._extract_meeting_date(cleaned_transcript)
+        extracted_title = self._extract_title(transcript)
+        extracted_date_str = self._extract_human_date(transcript)
+        extracted_time_str, extracted_start_time, extracted_end_time = self._extract_time(transcript)
+
         # Step 2: Single Gemini Call Pipeline
         try:
             if not self.gemini_analyzer.is_configured:
@@ -86,8 +103,6 @@ class AgentOrchestrator:
             )
 
             # Check if custom mocked agent subcomponents were injected (for unit test compatibility)
-            # If summary_agent, action_agent, or decision_agent were mocked specifically in tests,
-            # we respect them; otherwise we execute the unified single Gemini call.
             is_mocked_custom_agents = (
                 type(self.summary_agent) is not SummaryAgent
                 or type(self.action_agent) is not ActionAgent
@@ -137,6 +152,20 @@ class AgentOrchestrator:
                         conf = float(item.get("confidence", 1.0)) if item.get("confidence") is not None else 1.0
                         ev = str(item.get("evidence", "")).strip() or None
 
+                        # Filter out meta-tasks (e.g. "log action items", "assign tasks to log")
+                        if self._is_meta_task(task):
+                            continue
+
+                        # Enhanced entity and deadline resolution for list items, relative dates, and dialogue
+                        task, owner, deadline = self._resolve_owner_and_deadline(
+                            task=task,
+                            owner=owner,
+                            deadline=deadline,
+                            evidence=ev,
+                            transcript_clean=cleaned_transcript,
+                            meeting_date=meeting_date,
+                        )
+
                         action_items.append(
                             ActionItem(
                                 task=task,
@@ -174,7 +203,7 @@ class AgentOrchestrator:
                                 )
                             )
 
-                # Unresolved issues
+                # Unresolved issues & hallucination pruning
                 raw_issues = raw_data.get("unresolved_issues", [])
                 unresolved_issues = []
                 if isinstance(raw_issues, list):
@@ -187,6 +216,17 @@ class AgentOrchestrator:
                             continue
                         if iss_text:
                             unresolved_issues.append(iss_text)
+
+            # Strict mutual exclusivity: Filter out decisions that are action items assigned to individuals, tasks, or risk mitigations
+            decisions_flat, detailed_decisions = self._filter_action_items_from_decisions(
+                decisions_flat, detailed_decisions, action_items
+            )
+
+            # Filter dummy placeholder risks (e.g. "No issues identified") and prune hallucinated issues
+            unresolved_issues = self._filter_dummy_unresolved_issues(unresolved_issues)
+            unresolved_issues = self.validation_agent.filter_unresolved_issues(
+                unresolved_issues, cleaned_transcript.lower()
+            )
 
             # Step 2b: Validation Agent (runs locally on extracted data — NO API call)
             logger.debug("Running Validation Agent locally...")
@@ -213,6 +253,11 @@ class AgentOrchestrator:
                 unresolved_issues=unresolved_issues,
                 detailed_decisions=val_detailed_decs,
                 validation=overall_validation,
+                title=extracted_title,
+                meeting_date=extracted_date_str,
+                meeting_time=extracted_time_str,
+                start_time=extracted_start_time,
+                end_time=extracted_end_time,
             )
             logger.info("Single-call pipeline completed successfully (AGENTIC_GEMINI).")
             return analysis, "AGENTIC_GEMINI", False
@@ -263,6 +308,451 @@ class AgentOrchestrator:
                 decisions=val_decisions,
                 unresolved_issues=fallback_res.unresolved_issues,
                 validation=overall_val,
+                title=extracted_title,
+                meeting_date=extracted_date_str,
+                meeting_time=extracted_time_str,
+                start_time=extracted_start_time,
+                end_time=extracted_end_time,
             )
             return fallback_analysis, "RULE-BASED FALLBACK", is_rl
+
+    @staticmethod
+    def _is_meta_task(task: str) -> bool:
+        """Identify administrative meta-tasks that represent meeting logging rather than deliverables."""
+        t = task.strip().lower()
+        return bool(
+            re.search(
+                r"^(?:log|assign|record|note\s+down|track)\s+(?:the\s+)?(?:action\s+items?|decisions?|meeting\s+minutes?|tasks?|items?)\b",
+                t,
+            )
+            or re.search(
+                r"\b(?:log\s+and\s+assign|assign\s+the\s+task\s+to\s+log|track\s+(?:these\s+)?items\s+in\s+jira)\b",
+                t,
+            )
+        )
+
+    @staticmethod
+    def _extract_title(transcript: str) -> Optional[str]:
+        """Extract meeting title from transcript headers."""
+        if not transcript:
+            return None
+        lines = [line.strip() for line in transcript.splitlines() if line.strip()]
+        if not lines:
+            return None
+        header = "\n".join(lines[:10])
+        m_bracket = re.search(r'\[Meeting:\s*([^|\]]+?)(?:\s*\|[^\]]*)?\]', header, re.IGNORECASE)
+        if m_bracket:
+            return m_bracket.group(1).strip()
+        for line in lines[:6]:
+            clean_line = re.sub(r'^\s*[*#_~`]+\s*|\s*[*#_~`]+\s*$', '', line).strip()
+            m = re.match(r'^(?:Meeting|Subject|Topic|Title|Re)\s*[:\-]\s*(.+)$', clean_line, re.IGNORECASE)
+            if m:
+                raw = re.sub(r'^\s*[*#_~`]+\s*|\s*[*#_~`]+\s*$', '', m.group(1)).strip()
+                if not re.match(r'^[\d/\-]{5,}', raw) and len(raw) > 3:
+                    return raw
+        first_line = lines[0]
+        clean_first = re.sub(r'^\s*[*#_~`]+\s*|\s*[*#_~`]+\s*$', '', first_line).strip()
+        is_meta = bool(re.match(r'^(?:Date|Time|Attendees?|Present|Location|Schedule|Agenda)\s*[:\-]', clean_first, re.IGNORECASE))
+        is_speaker = bool(re.match(r'^[A-Z][a-zA-Z\s]{1,25}:', clean_first))
+        if not is_meta and not is_speaker and len(clean_first) > 3:
+            if first_line.startswith("**") or first_line.startswith("#") or first_line.startswith("__"):
+                return clean_first
+        return None
+
+    @staticmethod
+    def _extract_human_date(transcript: str) -> Optional[str]:
+        """Extract human-readable date string from transcript header."""
+        if not transcript:
+            return None
+        lines = transcript.splitlines()[:30]
+        hdr_re = re.compile(
+            r'\*{0,2}(?:Date(?:\s*/\s*Time|(?:\s*Time))?)\*{0,2}\s*[:\-]?\*{0,2}\s*(?:\w+,\s+)?'
+            r'((?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{1,2}(?:st|nd|rd|th)?\s*,?\s*\d{4}|\d{1,2}[/\-]\d{1,2}[/\-]\d{2,4}|\d{4}[/\-]\d{1,2}[/\-]\d{1,2})',
+            re.IGNORECASE,
+        )
+        for line in lines:
+            m = hdr_re.search(line)
+            if m:
+                return m.group(1).strip().rstrip(',')
+        return None
+
+    @staticmethod
+    def _extract_time(transcript: str) -> tuple[Optional[str], Optional[str], Optional[str]]:
+        """Extract time range or single time string, start_time, and end_time."""
+        if not transcript:
+            return None, None, None
+        lines = transcript.splitlines()[:30]
+        hdr_time_re = re.compile(r'\*{0,2}(?:Time|Date\s*(?:&|/)\s*Time|Schedule)\*{0,2}\s*[:\-]?\*{0,2}\s*(.+)$', re.IGNORECASE | re.MULTILINE)
+        time_rng_re = re.compile(r'\b(\d{1,2}(?::\d{2})?\s*(?:AM|PM|am|pm)?)\s*(?:-|–|—|to)\s*(\d{1,2}(?::\d{2})?\s*(?:AM|PM|am|pm))\b', re.IGNORECASE)
+        sgl_time_re = re.compile(r'\b(\d{1,2}:\d{2}\s*(?:AM|PM|am|pm)?|\d{1,2}\s*(?:AM|PM|am|pm))\b', re.IGNORECASE)
+        for line in lines:
+            m_hdr = hdr_time_re.search(line)
+            if m_hdr:
+                raw_time_hdr = m_hdr.group(1).strip()
+                m_rng = time_rng_re.search(raw_time_hdr)
+                if m_rng:
+                    st, et = m_rng.group(1).strip(), m_rng.group(2).strip()
+                    return f"{st} - {et}", st, et
+                m_sgl = sgl_time_re.search(raw_time_hdr)
+                if m_sgl:
+                    st = m_sgl.group(1).strip()
+                    return st, st, None
+        return None, None, None
+
+    @staticmethod
+    def _extract_meeting_date(transcript: str) -> Optional[datetime.date]:
+        """Extract calendar date from meeting headers."""
+        if not transcript:
+            return None
+
+        # Look for Date: YYYY-MM-DD
+        match_iso = re.search(r"(?i)\b(?:date|meeting\s+date)\s*[:|-]?\s*(\d{4})-(\d{1,2})-(\d{1,2})\b", transcript)
+        if match_iso:
+            try:
+                return datetime.date(int(match_iso.group(1)), int(match_iso.group(2)), int(match_iso.group(3)))
+            except ValueError:
+                pass
+
+        # Look for Date: Month DD, YYYY
+        match_text = re.search(
+            r"(?i)\b(?:date|meeting\s+date)\s*[:|-]?\s*([A-Za-z]+)\s+(\d{1,2})(?:st|nd|rd|th)?,?\s+(\d{4})\b",
+            transcript,
+        )
+        if match_text:
+            m_val = MONTH_MAP.get(match_text.group(1).lower())
+            if m_val:
+                try:
+                    return datetime.date(int(match_text.group(3)), m_val, int(match_text.group(2)))
+                except ValueError:
+                    pass
+
+        # Look for Date: DD Month YYYY
+        match_day_first = re.search(
+            r"(?i)\b(?:date|meeting\s+date)\s*[:|-]?\s*(\d{1,2})(?:st|nd|rd|th)?\s+([A-Za-z]+),?\s+(\d{4})\b",
+            transcript,
+        )
+        if match_day_first:
+            m_val = MONTH_MAP.get(match_day_first.group(2).lower())
+            if m_val:
+                try:
+                    return datetime.date(int(match_day_first.group(3)), m_val, int(match_day_first.group(1)))
+                except ValueError:
+                    pass
+
+        # Check the header (first 500 characters) for Month DD, YYYY
+        match_hdr = re.search(r"(?i)\b([A-Za-z]+)\s+(\d{1,2})(?:st|nd|rd|th)?,?\s+(\d{4})\b", transcript[:500])
+        if match_hdr:
+            m_val = MONTH_MAP.get(match_hdr.group(1).lower())
+            if m_val:
+                try:
+                    return datetime.date(int(match_hdr.group(3)), m_val, int(match_hdr.group(2)))
+                except ValueError:
+                    pass
+
+        return None
+
+    @staticmethod
+    def _format_iso_deadline(deadline: str, meeting_date: Optional[datetime.date]) -> str:
+        """Convert relative deadlines or textual dates into ISO YYYY-MM-DD.
+        
+        Strict Forward Relative Date Math:
+        When computing weekday deadlines, compute strictly forward from meeting_date.
+        Never output a date prior to meeting_date.
+        """
+        if not deadline or deadline in ("Not specified", "No deadline", "null", "None", ""):
+            return "Not specified"
+
+        dl = deadline.strip()
+        dl_lower = dl.lower()
+
+        # Reject standalone clock timestamps (e.g. 11:02 AM)
+        if re.fullmatch(r"\d{1,2}:\d{2}\s*(?:am|pm|utc|est|pst|gmt)?", dl_lower):
+            return "Not specified"
+
+        # If already formatted as ISO YYYY-MM-DD
+        if re.fullmatch(r"\d{4}-\d{2}-\d{2}", dl):
+            if meeting_date:
+                try:
+                    parsed_dt = datetime.date.fromisoformat(dl)
+                    if parsed_dt < meeting_date:
+                        # Reject past date generated by LLM (e.g. 2026-09-03 when meeting is 2026-09-20)
+                        pass
+                    else:
+                        return dl
+                except ValueError:
+                    pass
+            else:
+                return dl
+
+        # Explicit full date inside string e.g. "today, September 20, 2026 EOD" or "September 23, 2026"
+        match_full = re.search(r"(?i)\b([A-Za-z]+)\s+(\d{1,2})(?:st|nd|rd|th)?,?\s+(\d{4})\b", dl)
+        if match_full:
+            m_val = MONTH_MAP.get(match_full.group(1).lower())
+            if m_val:
+                try:
+                    candidate = datetime.date(int(match_full.group(3)), m_val, int(match_full.group(2)))
+                    if not meeting_date or candidate >= meeting_date:
+                        return candidate.isoformat()
+                except ValueError:
+                    pass
+
+        # Explicit month and day without year e.g. "September 23"
+        match_m_d = re.search(r"(?i)\b([A-Za-z]+)\s+(\d{1,2})(?:st|nd|rd|th)?\b", dl)
+        if match_m_d:
+            m_name = match_m_d.group(1).lower()
+            if m_name in MONTH_MAP:
+                m_val = MONTH_MAP[m_name]
+                yr = meeting_date.year if meeting_date else 2026
+                try:
+                    candidate = datetime.date(yr, m_val, int(match_m_d.group(2)))
+                    if not meeting_date or candidate >= meeting_date:
+                        return candidate.isoformat()
+                except ValueError:
+                    pass
+
+        # Relative resolution if meeting_date is known (Strict Forward Date Math)
+        if meeting_date:
+            if re.search(r"\b(?:today|eod)\b", dl_lower):
+                return meeting_date.isoformat()
+            if "tomorrow" in dl_lower:
+                return (meeting_date + timedelta(days=1)).isoformat()
+
+            weekdays = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+            for target_weekday, w_name in enumerate(weekdays):
+                if re.search(r"\b" + w_name + r"\b", dl_lower):
+                    current_weekday = meeting_date.weekday()
+                    days_ahead = (target_weekday - current_weekday) % 7
+                    if days_ahead == 0 and ("next" in dl_lower or dl_lower.startswith("next") or f"by {w_name}" in dl_lower or f"on {w_name}" in dl_lower):
+                        days_ahead = 7
+                    elif days_ahead == 0:
+                        days_ahead = 7
+                    target_date = meeting_date + timedelta(days=days_ahead)
+                    return target_date.isoformat()
+
+        return "Not specified" if re.fullmatch(r"\d{4}-\d{2}-\d{2}", dl) else dl
+
+    @classmethod
+    def _resolve_owner_and_deadline(
+        cls,
+        task: str,
+        owner: str,
+        deadline: str,
+        evidence: Optional[str],
+        transcript_clean: str,
+        meeting_date: Optional[datetime.date] = None,
+    ) -> tuple[str, str, str]:
+        """Normalize task, recover owner/deadline from evidence, and format ISO deadline."""
+        transcript_lower = transcript_clean.lower()
+        cleaned_task = task.strip()
+
+        # Check if task itself has a prefix like "1. Marcus: Update the specs..." or "Marcus: Update..."
+        match_task_lead = re.match(
+            r"^(?:(?:\d+[\.\)]|\*|-|•)\s+)?([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\s*[:\-–—]\s*(.*)$",
+            cleaned_task,
+        )
+        if match_task_lead:
+            cand_name = match_task_lead.group(1).strip()
+            rest_task = match_task_lead.group(2).strip()
+            if (
+                owner in ("Not specified", "Unassigned", "", None)
+                and cand_name.lower() not in {"the", "we", "i", "our", "team", "someone", "action", "item", "task", "note"}
+                and cand_name.lower() in transcript_lower
+            ):
+                owner = cand_name
+            if rest_task:
+                cleaned_task = rest_task
+
+        # Inspect evidence for speaker self-commitments or assignments
+        if evidence:
+            ev_str = evidence.strip()
+
+            # First priority: Speaker self-commitment (e.g. "Maya: ... I'll build it")
+            match_self = re.search(
+                r"(?:^|\n|(?:\d+[\.\)]|\*|-|•)\s*)([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\s*:\s*.*?\b(?:i(?:'ll| will)|i can|i'm going to|my action item is)\b",
+                ev_str,
+                re.I,
+            )
+            if match_self:
+                cand = match_self.group(1).strip()
+                if (
+                    cand.lower() not in {"the", "we", "i", "our", "team", "someone", "action", "item", "task", "note"}
+                    and cand.lower() in transcript_lower
+                ):
+                    owner = cand
+
+            # If owner still unassigned, check list item prefix in evidence
+            if owner in ("Not specified", "Unassigned", "", None):
+                match_ev_lead = re.search(
+                    r"(?:^|\n|(?:\d+[\.\)]|\*|-|•)\s*)([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\s*[:\-–—]\s*(.+)",
+                    ev_str,
+                )
+                if match_ev_lead:
+                    cand = match_ev_lead.group(1).strip()
+                    if (
+                        cand.lower() not in {"the", "we", "i", "our", "team", "someone", "action", "item", "task", "note"}
+                        and cand.lower() in transcript_lower
+                    ):
+                        owner = cand
+
+            # If owner still unassigned, check addressing
+            if owner in ("Not specified", "Unassigned", "", None):
+                match_addr = re.search(
+                    r"\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?),\s*(?:can|could|would|please)\s+(?:you\s+)?\b",
+                    ev_str,
+                    re.I,
+                )
+                if match_addr:
+                    cand = match_addr.group(1).strip()
+                    if (
+                        cand.lower() not in {"the", "we", "i", "our", "team", "someone"}
+                        and cand.lower() in transcript_lower
+                    ):
+                        owner = cand
+
+            # If owner still unassigned, check "assigned to [Name]"
+            if owner in ("Not specified", "Unassigned", "", None):
+                match_assign = re.search(
+                    r"\b(?:assigned|assign)\s+to\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\b",
+                    ev_str,
+                    re.I,
+                )
+                if match_assign:
+                    cand = match_assign.group(1).strip()
+                    if cand.lower() in transcript_lower:
+                        owner = cand
+
+        # Deadline safety: If deadline is a pure time-of-day timestamp (e.g. 11:02 AM) without future date context, normalize to Not specified
+        if deadline and deadline not in ("Not specified", "No deadline", "", None):
+            dl_str = deadline.strip()
+            if re.match(r"^\d{1,2}:\d{2}\s*(?:am|pm|utc|est|pst|gmt)?$", dl_str, re.I):
+                deadline = "Not specified"
+
+        # If deadline is unassigned or is an erroneous past date before meeting_date, inspect evidence for relative weekday/date
+        should_check_evidence = False
+        if deadline in ("Not specified", "No deadline", "", None):
+            should_check_evidence = True
+        elif meeting_date and re.fullmatch(r"\d{4}-\d{2}-\d{2}", deadline):
+            try:
+                if datetime.date.fromisoformat(deadline) < meeting_date:
+                    should_check_evidence = True
+            except ValueError:
+                should_check_evidence = True
+
+        if should_check_evidence and evidence:
+            dl_match = re.search(
+                r"\b(?:(?:by|before|on|due|for)\s+(?:the\s+)?(?:end of )?(?:next\s+)?"
+                r"(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)|"
+                r"(?:by|before|on|due|for)\s+(?:[A-Za-z]+\s+\d{1,2}(?:st|nd|rd|th)?|\d{1,2}(?:st|nd|rd|th)?(?:\s+of\s+[A-Za-z]+)?)|"
+                r"(?:by\s+)?(?:eod\s+tomorrow|end of day tomorrow|eod|tomorrow|today|this\s+(?:week|month)|next\s+(?:week|month)|"
+                r"sometime\s+next\s+week|before\s+the\s+weekend))\b",
+                evidence,
+                re.IGNORECASE,
+            )
+            if dl_match:
+                deadline = dl_match.group(0).strip()
+
+        # Format ISO deadline
+        deadline = cls._format_iso_deadline(deadline, meeting_date)
+
+        return cleaned_task, owner, deadline
+
+    @staticmethod
+    def _filter_action_items_from_decisions(
+        decisions_flat: list[str],
+        detailed_decisions: list[DecisionItem],
+        action_items: list[ActionItem],
+    ) -> tuple[list[str], list[DecisionItem]]:
+        """Filter out decision strings that describe individual tasks, deliverable handoffs, conditional action items, or risk mitigations."""
+        if not decisions_flat:
+            return decisions_flat, detailed_decisions
+
+        filtered_flat: list[str] = []
+        filtered_detailed: list[DecisionItem] = []
+
+        # Action verbs / imperative patterns indicating individual tasks, operational tasks, or risk mitigations
+        task_verb_pattern = re.compile(
+            r"^(?:hard\s+freeze|freeze|escalate|conduct|investigate|send|circulate|distribute|update|implement|build|deploy|create|set\s+up|prepare|follow\s+up|contact|schedule|notify|test|draft|review|audit|check|reach\s+out|share|deliver|document|organize)\b",
+            re.IGNORECASE,
+        )
+
+        # Risk mitigation / conditional action indicators
+        conditional_task_pattern = re.compile(
+            r"\b(?:if\s+(?:it\s+doesn't|it\s+does\s+not|sandbox|latency|issues|we\s+see|needed|necessary|required))\b|"
+            r"\b(?:by\s+(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday|tomorrow|eod))\b",
+            re.IGNORECASE,
+        )
+
+        for idx, dec in enumerate(decisions_flat):
+            dec_clean = dec.strip()
+            dec_lower = dec_clean.lower()
+            is_action_item = False
+
+            # 1. Named individual assignment pattern (e.g. "Priya Sharma to circulate...", "Arjun will escalate...")
+            if re.match(
+                r"^[A-Z][a-z]+(?:\s+[A-Z][a-z]+)?\s+(?:to|will|shall|must|should|is tasked with|needs to)\s+\w+",
+                dec_clean,
+            ):
+                is_action_item = True
+
+            # 2. Starts with task action verb (e.g. "Escalate billing provider...", "Hard freeze campaign creatives...")
+            if not is_action_item and task_verb_pattern.search(dec_clean):
+                is_action_item = True
+
+            # 3. Conditional risk mitigation task (e.g. "... by Wednesday if it doesn't stabilize")
+            if not is_action_item and conditional_task_pattern.search(dec_clean) and any(
+                v in dec_lower for v in ("escalate", "freeze", "investigate", "fix", "contact", "support lead", "provider", "sandbox")
+            ):
+                is_action_item = True
+
+            # 4. Check if decision describes deliverable handoffs / receptions (e.g. "Marketing will receive the final feature list...")
+            if not is_action_item and re.search(
+                r"\b(?:will\s+receive|to\s+receive|will\s+be\s+sent|will\s+send|will\s+circulate|will\s+share|will\s+distribute|will\s+deliver|will\s+escalate)\b",
+                dec_lower,
+            ):
+                for ai in action_items:
+                    ai_task_words = [w for w in re.findall(r"\b[A-Za-z]{4,}\b", ai.task.lower()) if w not in {"with", "that", "this", "from", "into"}]
+                    if ai_task_words:
+                        matched = sum(1 for w in ai_task_words if w in dec_lower)
+                        if matched >= 2 or (len(ai_task_words) == 1 and matched == 1):
+                            is_action_item = True
+                            break
+
+            # 5. Overlap with extracted action items
+            if not is_action_item and action_items:
+                dec_words = set(re.findall(r"\b[A-Za-z]{3,}\b", dec_lower))
+                for ai in action_items:
+                    ai_task_lower = ai.task.lower()
+                    task_words = set(re.findall(r"\b[A-Za-z]{3,}\b", ai_task_lower))
+                    if task_words and dec_words:
+                        overlap = len(task_words & dec_words) / len(task_words)
+                        if (overlap >= 0.40 and (ai_task_lower in dec_lower or dec_lower in ai_task_lower)) or overlap >= 0.60:
+                            is_action_item = True
+                            break
+                        shared = [w for w in (task_words & dec_words) if w not in {"the", "and", "for", "with", "this", "that", "from"}]
+                        if len(shared) >= 3:
+                            is_action_item = True
+                            break
+
+            if not is_action_item:
+                filtered_flat.append(dec)
+                if idx < len(detailed_decisions):
+                    filtered_detailed.append(detailed_decisions[idx])
+
+        return filtered_flat, filtered_detailed
+
+    @staticmethod
+    def _filter_dummy_unresolved_issues(issues: list[str]) -> list[str]:
+        """Filter out dummy/placeholder risk phrases like 'No issues identified'."""
+        filtered = []
+        for iss in issues:
+            iss_clean = iss.strip()
+            if not iss_clean:
+                continue
+            if re.search(
+                r"(?i)^(?:no\s+(?:active\s+|open\s+|explicit\s+|identified\s+|unresolved\s+)?(?:issues|risks|blockers|concerns)(?:\s+(?:identified|found|noted|reported|raised))?|none|n/a)\.?$",
+                iss_clean,
+            ):
+                continue
+            filtered.append(iss_clean)
+        return filtered
 

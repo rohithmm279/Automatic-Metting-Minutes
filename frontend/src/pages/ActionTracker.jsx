@@ -44,9 +44,11 @@ export default function ActionTracker({
   };
 
   const isNeedsReview = (a) => {
+    const owner = a.owner || a.assignee;
+    const rawConf = a.confidence ?? a.confidence_score ?? 1.0;
     return (
       a.status !== 'completed' &&
-      (!a.assignee || a.assignee === 'Unassigned' || !a.deadline || a.deadline === 'No deadline' || (a.confidence_score && a.confidence_score < 0.75))
+      (!owner || owner === 'Unassigned' || !a.deadline || a.deadline === 'No deadline' || (typeof rawConf === 'number' && rawConf < 0.75))
     );
   };
 

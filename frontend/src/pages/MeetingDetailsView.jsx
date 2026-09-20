@@ -19,6 +19,7 @@ export default function MeetingDetailsView({
   const [showTranscript, setShowTranscript] = useState(false);
   const [transcriptSearch, setTranscriptSearch] = useState('');
   const [copiedSummary, setCopiedSummary] = useState(false);
+  const [copiedAll, setCopiedAll] = useState(false);
   const [selectedEvidence, setSelectedEvidence] = useState(null);
   const [evidenceType, setEvidenceType] = useState('action');
 
@@ -88,6 +89,63 @@ export default function MeetingDetailsView({
     setTimeout(() => setCopiedSummary(false), 2000);
   };
 
+  const formattedMinutesText = () => {
+    if (!meeting) return '';
+    const dateStr = meeting.meeting_date || 'Date: Not specified in transcript';
+    const timeStr = meeting.meeting_time || (meeting.start_time ? `${meeting.start_time}${meeting.end_time ? ' - ' + meeting.end_time : ''}` : 'Time: Not specified in transcript');
+    const actionsStr = (meeting.action_items || []).map(
+      (a, i) => `${i + 1}. [${a.status ? a.status.toUpperCase() : 'PENDING'}] ${a.task} (Assignee: ${a.owner || 'Unassigned'}${a.deadline ? `, Due: ${a.deadline}` : ''})`
+    ).join('\n');
+    const decisionsStr = (meeting.decisions || []).map(
+      (d, i) => `${i + 1}. ${d.decision}`
+    ).join('\n');
+    const issuesStr = (meeting.unresolved_issues || []).map(
+      (iss, i) => `${i + 1}. ${iss.issue || iss.topic}`
+    ).join('\n');
+
+    return `# ${meeting.title || `Meeting #${meeting.id}`}
+Date: ${dateStr}
+Time: ${timeStr}
+Processed On: ${meeting.created_at ? new Date(meeting.created_at).toLocaleString() : 'N/A'}
+
+## Executive Summary
+${meeting.summary || 'No summary available.'}
+
+## Action Items (${(meeting.action_items || []).length})
+${actionsStr || 'No action items.'}
+
+## Key Decisions (${(meeting.decisions || []).length})
+${decisionsStr || 'No decisions recorded.'}
+
+## Open Issues & Risks (${(meeting.unresolved_issues || []).length})
+${issuesStr || 'No open issues.'}
+`;
+  };
+
+  const copyAll = () => {
+    const text = formattedMinutesText();
+    if (!text) return;
+    navigator.clipboard.writeText(text);
+    setCopiedAll(true);
+    setTimeout(() => setCopiedAll(false), 2000);
+  };
+
+  const downloadTxt = () => {
+    const text = formattedMinutesText();
+    if (!text) return;
+    const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `meeting_${meeting.id}_minutes.txt`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const handlePrintPdf = () => {
+    window.print();
+  };
+
   const downloadJson = () => {
     if (!meeting) return;
     const blob = new Blob([JSON.stringify(meeting, null, 2)], { type: 'application/json' });
@@ -148,9 +206,36 @@ export default function MeetingDetailsView({
                 <span>AI Validated</span>
               </span>
             </div>
-            <p className="meeting-meta-line">
-              Recorded on {meeting.created_at ? new Date(meeting.created_at).toLocaleString() : 'Recently'} • {actionItems.length} Actions • {decisions.length} Decisions • {issues.length} Risks
-            </p>
+            <div className="meeting-meta-line">
+              <span className="meeting-meta-pill date-pill">
+                <Icon name="calendar" size={13} />
+                <span>{meeting.meeting_date ? meeting.meeting_date : 'Date: Not in transcript'}</span>
+              </span>
+              <span className="meeting-meta-pill time-pill">
+                <Icon name="clock" size={13} />
+                <span>
+                  {meeting.meeting_time
+                    ? meeting.meeting_time
+                    : meeting.start_time
+                    ? `${meeting.start_time}${meeting.end_time ? ' - ' + meeting.end_time : ''}`
+                    : 'Time: Not in transcript'}
+                </span>
+              </span>
+              <span className="meeting-meta-sep">•</span>
+              <span>{actionItems.length} Actions</span>
+              <span className="meeting-meta-sep">•</span>
+              <span>{decisions.length} Decisions</span>
+              <span className="meeting-meta-sep">•</span>
+              <span>{issues.length} Open Issues</span>
+              {meeting.created_at && (
+                <>
+                  <span className="meeting-meta-sep">•</span>
+                  <span className="meeting-meta-subtle">
+                    Analyzed {new Date(meeting.created_at).toLocaleDateString()}
+                  </span>
+                </>
+              )}
+            </div>
           </div>
         </div>
 
@@ -158,20 +243,38 @@ export default function MeetingDetailsView({
           <button
             type="button"
             className="s5-btn s5-btn-secondary s5-btn-sm"
-            onClick={copySummary}
-            title="Copy summary"
+            onClick={copyAll}
+            title="Copy all meeting minutes as Markdown"
           >
             <Icon name="copy" size={14} />
-            <span>{copiedSummary ? 'Copied!' : 'Copy Summary'}</span>
+            <span>{copiedAll ? 'Minutes Copied!' : 'Copy All'}</span>
+          </button>
+          <button
+            type="button"
+            className="s5-btn s5-btn-secondary s5-btn-sm"
+            onClick={downloadTxt}
+            title="Export Plain Text Minutes"
+          >
+            <Icon name="file-text" size={14} />
+            <span>Export TXT</span>
           </button>
           <button
             type="button"
             className="s5-btn s5-btn-secondary s5-btn-sm"
             onClick={downloadJson}
-            title="Export JSON"
+            title="Export JSON Data"
           >
             <Icon name="file-text" size={14} />
             <span>Export JSON</span>
+          </button>
+          <button
+            type="button"
+            className="s5-btn s5-btn-secondary s5-btn-sm"
+            onClick={handlePrintPdf}
+            title="Print or Save as PDF"
+          >
+            <Icon name="printer" size={14} />
+            <span>Print / PDF</span>
           </button>
           <button
             type="button"
@@ -192,9 +295,24 @@ export default function MeetingDetailsView({
             <Icon name="sparkles" size={16} />
             <span>Executive Summary</span>
           </div>
-          <span className="summary-verified-pill">Grounding Verified ✓</span>
+          <span className="summary-ai-badge">AI-Generated</span>
         </div>
         <p className="summary-text-body">{meeting.summary}</p>
+        <div className="summary-card-footer">
+          <span className="summary-verified-pill">
+            <Icon name="shield-check" size={13} />
+            <span>Grounding Verified</span>
+          </span>
+          <button
+            type="button"
+            className="s5-btn s5-btn-secondary s5-btn-xs summary-copy-btn"
+            onClick={copySummary}
+            title="Copy summary text"
+          >
+            <Icon name="copy" size={13} />
+            <span>{copiedSummary ? 'Copied!' : 'Copy Summary'}</span>
+          </button>
+        </div>
       </div>
 
       {/* 3. Action Items Section (Interactive Cards) */}
@@ -255,16 +373,11 @@ export default function MeetingDetailsView({
                   </div>
                   <div className="decision-item-footer">
                     <span className="decision-status-badge">Locked & Confirmed</span>
-                    <button
-                      type="button"
-                      className="evidence-mini-link"
-                      onClick={() => {
-                        setSelectedEvidence(d);
-                        setEvidenceType('decision');
-                      }}
-                    >
-                      ✦ Grounding
-                    </button>
+                    {d.confidence != null && (
+                      <span className="decision-confidence-badge">
+                        {Math.round(d.confidence > 1 ? d.confidence : d.confidence * 100)}% Confidence
+                      </span>
+                    )}
                   </div>
                 </div>
               ))}
@@ -276,7 +389,7 @@ export default function MeetingDetailsView({
         <div className="s5-card issues-panel">
           <div className="s5-card-header">
             <h3 className="s5-card-title">
-              <Icon name="issues" size={18} style={{ color: 'var(--semantic-red)' }} />
+              <Icon name="issues" size={18} style={{ color: 'var(--semantic-amber)' }} />
               <span>Open Issues & Risks ({issues.length})</span>
             </h3>
           </div>
@@ -288,21 +401,23 @@ export default function MeetingDetailsView({
               {issues.map((iss) => (
                 <div key={iss.id} className="issue-item-box">
                   <div className="issue-item-header">
-                    <span className="issue-severity-badge severity-high">HIGH RISK</span>
+                    <span className="issue-open-badge">Open Issue</span>
                     <span className="issue-title-text">{iss.issue || iss.topic}</span>
                   </div>
                   <div className="issue-item-footer">
-                    <span className="issue-status-badge">Status: Blocking</span>
-                    <button
-                      type="button"
-                      className="evidence-mini-link"
-                      onClick={() => {
-                        setSelectedEvidence(iss);
-                        setEvidenceType('issue');
-                      }}
-                    >
-                      ✦ Grounding
-                    </button>
+                    <span className="issue-status-badge">Status: Unresolved</span>
+                    {iss.evidence && (
+                      <button
+                        type="button"
+                        className="evidence-mini-link"
+                        onClick={() => {
+                          setSelectedEvidence(iss);
+                          setEvidenceType('issue');
+                        }}
+                      >
+                        ✦ Grounding
+                      </button>
+                    )}
                   </div>
                 </div>
               ))}
@@ -377,3 +492,4 @@ export default function MeetingDetailsView({
     </div>
   );
 }
+

@@ -39,12 +39,15 @@ export default function Overview({
   };
 
   const overdueActions = actionItems.filter(isActionOverdueOrUrgent);
-  const lowGroundingItems = actionItems.filter(
-    (a) =>
+  const lowGroundingItems = actionItems.filter((a) => {
+    const owner = a.owner || a.assignee;
+    const rawConf = a.confidence ?? a.confidence_score ?? 1.0;
+    return (
       a.status !== 'completed' &&
       !completedTaskIds.has(a.id) &&
-      (!a.assignee || a.assignee === 'Unassigned' || !a.deadline || a.deadline === 'No deadline' || (a.confidence_score && a.confidence_score < 0.75))
-  );
+      (!owner || owner === 'Unassigned' || !a.deadline || a.deadline === 'No deadline' || (typeof rawConf === 'number' && rawConf < 0.75))
+    );
+  });
   const activeBlockers = issues.filter((i) => i.status !== 'resolved');
 
   // Interactive toggle for action item checkbox in Bento tile
@@ -195,7 +198,7 @@ export default function Overview({
                       Overdue: {overdueActions[0].task}
                     </div>
                     <div className="radar-item-sub">
-                      👤 {overdueActions[0].assignee || 'Unassigned'} • 📅 {overdueActions[0].deadline}
+                      👤 {overdueActions[0].owner || overdueActions[0].assignee || 'Unassigned'} • 📅 {overdueActions[0].deadline}
                     </div>
                   </div>
                 </div>
@@ -403,7 +406,7 @@ export default function Overview({
                     {m.title || `Meeting #${m.id} Intelligence`}
                   </span>
                   <span className="bento-meeting-date">
-                    {m.created_at ? new Date(m.created_at).toLocaleDateString([], { month: 'short', day: 'numeric' }) : 'Recent'}
+                    {m.meeting_date || (m.created_at ? new Date(m.created_at).toLocaleDateString([], { month: 'short', day: 'numeric' }) : 'Recent')}
                   </span>
                 </div>
 

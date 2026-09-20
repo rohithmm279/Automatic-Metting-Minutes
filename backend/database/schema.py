@@ -50,6 +50,13 @@ CREATE INDEX IF NOT EXISTS idx_unresolved_issues_meeting_id ON unresolved_issues
 _MIGRATIONS = [
     # v1.1: add evidence column to action_items for agentic pipeline output
     "ALTER TABLE action_items ADD COLUMN evidence TEXT;",
+    # v1.2: add title and meeting_date to meetings for proper display
+    "ALTER TABLE meetings ADD COLUMN title TEXT;",
+    "ALTER TABLE meetings ADD COLUMN meeting_date TEXT;",
+    # v1.3: add meeting_time, start_time, and end_time to meetings
+    "ALTER TABLE meetings ADD COLUMN meeting_time TEXT;",
+    "ALTER TABLE meetings ADD COLUMN start_time TEXT;",
+    "ALTER TABLE meetings ADD COLUMN end_time TEXT;",
 ]
 
 

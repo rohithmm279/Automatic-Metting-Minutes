@@ -18,18 +18,19 @@ export default function ActionItemCard({
   const {
     id,
     task,
-    assignee = 'Unassigned',
-    deadline = 'No deadline',
     status = 'pending',
-    confidence_score,
     is_inferred = false,
     meeting_id,
   } = item;
 
+  const assignee = item.owner || item.assignee || 'Unassigned';
+  const deadline = item.deadline || 'No deadline';
+  const rawConfidence = item.confidence ?? item.confidence_score ?? 1.0;
+
   // Compute confidence percentage (0-100)
-  const confidence = typeof confidence_score === 'number'
-    ? Math.round(confidence_score > 1 ? confidence_score : confidence_score * 100)
-    : 85;
+  const confidence = typeof rawConfidence === 'number'
+    ? Math.round(rawConfidence > 1 ? rawConfidence : rawConfidence * 100)
+    : 100;
 
   const isLowConfidence = confidence < 75 || is_inferred || assignee === 'Unassigned' || !deadline || deadline === 'No deadline';
 

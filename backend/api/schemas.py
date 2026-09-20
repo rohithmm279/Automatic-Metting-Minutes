@@ -64,10 +64,12 @@ class ActionItemResponse(BaseModel):
     id: int
     meeting_id: int
     task: str
-    owner: Optional[str]
-    deadline: Optional[str]
+    owner: Optional[str] = None
+    assignee: Optional[str] = None
+    deadline: Optional[str] = None
     status: str
     confidence: float
+    confidence_score: Optional[float] = None
     evidence: Optional[str] = None
 
 
@@ -95,6 +97,11 @@ class CreateMeetingResponse(BaseModel):
 
     meeting_id: int
     summary: str
+    title: Optional[str] = None
+    meeting_date: Optional[str] = None
+    meeting_time: Optional[str] = None
+    start_time: Optional[str] = None
+    end_time: Optional[str] = None
     action_items: list[ActionItemResponse]
     decisions: list[DecisionResponse]
     unresolved_issues: list[UnresolvedIssueResponse]
@@ -106,6 +113,11 @@ class MeetingListItem(BaseModel):
 
     id: int
     summary: str
+    title: Optional[str] = None
+    meeting_date: Optional[str] = None
+    meeting_time: Optional[str] = None
+    start_time: Optional[str] = None
+    end_time: Optional[str] = None
     created_at: str
     action_items_count: int
     decisions_count: int
@@ -118,6 +130,11 @@ class MeetingDetailResponse(BaseModel):
     id: int
     transcript: str
     summary: str
+    title: Optional[str] = None
+    meeting_date: Optional[str] = None
+    meeting_time: Optional[str] = None
+    start_time: Optional[str] = None
+    end_time: Optional[str] = None
     created_at: str
     action_items: list[ActionItemResponse]
     decisions: list[DecisionResponse]

@@ -85,15 +85,23 @@ class DecisionAgent:
 
     @staticmethod
     def _build_prompt(transcript: str) -> str:
-        return f"""You are an expert Decision Extraction Agent for student club meetings.
-Your task is to identify explicit, settled decisions and distinguish them from unresolved issues or general discussion.
+        return f"""You are an expert Decision Extraction Agent for business, engineering, and student club meetings.
+Your task is to identify explicit, settled decisions and distinguish them from action items, unresolved issues, or general discussion.
 
 STRICT DECISION RULES:
-1. Include ONLY outcomes that were explicitly agreed upon, approved, confirmed, finalized, or decided by the group (e.g., agreed budget amount, chosen event date/theme, selected speaker).
-2. DO NOT treat mere suggestions, proposals, possibilities, open discussion, or preferences as decisions.
-3. DO NOT include individual action items (like 'booking a venue' or 'contacting security') as decisions.
-4. UNRESOLVED ISSUES: Matters that were left open, undecided, awaiting approval, or flagged for future discussion.
-5. evidence: Provide a verbatim quote from the transcript confirming the decision.
+1. TAXONOMY: A Decision is an organizational agreement, policy, schedule target, vendor choice, scope cutoff, or architectural design choice confirmed by the group/leads (e.g., "Launch pricing experiment on September 29, 2026 (pending bugs/QA)", "Keep current paywall layout for the experiment", "Monitor conversion daily and decide on changes after seven days of data").
+2. DECISION DISCRIMINATOR & ZERO TASK/RISK OVERLAP:
+   - Ask: "Is this a structural policy/agreement, or is it an action item, conditional task, or risk mitigation?"
+   - NEVER classify individual tasks, operational actions, conditional action items, or risk mitigations as Key Decisions:
+     * "Escalate billing provider's sandbox stability issue..." is an Action Item (#5), NOT a Key Decision.
+     * "Hard freeze campaign creatives today..." is an operational risk mitigation strategy, NOT an independent Key Decision.
+   - If a person or team is assigned to execute or deliver it (e.g., "Priya Sharma will circulate...", "Dev will escalate..."), it belongs ONLY under Action Items.
+   - NEVER list an Action Item, individual assignment, or deliverable handoff under Decisions. Key Decisions describe structural policies, milestone dates, vendors, or designs.
+3. Include ALL confirmed strategic choices, launch date policies, milestone/freeze agreements, technical scope alignments, and spending policies explicitly agreed, approved, confirmed, finalized, or decided by the group/leads.
+4. REJECT PROPOSALS & SPECULATION: DO NOT treat mere suggestions, contested proposals, possibilities, open discussion, or preferences as decisions.
+5. OPEN ISSUES & RISKS (ZERO-RISK HANDLING): Matters that were left open, undecided, awaiting approval, or flagged as active risks in this meeting transcript.
+   - ZERO DATA CONTAMINATION & ZERO-RISK HANDLING: If no open issues or risks are present in this transcript, output an empty array []. NEVER generate a dummy risk item containing text like "No issues identified" or "No issues found". NEVER copy example text or invent risks/issues from other meetings.
+6. evidence: Provide a verbatim quote from the transcript confirming the decision.
 
 Return STRICT JSON only:
 {{
@@ -105,7 +113,7 @@ Return STRICT JSON only:
     }}
   ],
   "unresolved_issues": [
-    "Open issue or pending question"
+    "Open issue or pending risk"
   ]
 }}
 

@@ -19,6 +19,22 @@ export default function App() {
   const [issues, setIssues] = useState([]);
   const [loading, setLoading] = useState(true);
   const [backendOnline, setBackendOnline] = useState(true);
+  const [theme, setTheme] = useState(() => {
+    const saved = localStorage.getItem('s5_theme');
+    if (saved) return saved;
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  });
+
+  // Apply theme to document element and body
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    document.body.className = `theme-${theme}`;
+    localStorage.setItem('s5_theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+  };
 
   // Load all meetings and aggregate their child records for cross-meeting views
   const refreshAllData = useCallback(async () => {
@@ -123,6 +139,8 @@ export default function App() {
       issues={issues}
       onSelectMeeting={handleSelectMeeting}
       backendOnline={backendOnline}
+      theme={theme}
+      onToggleTheme={toggleTheme}
     >
       {/* 1. Overview Command Center */}
       {currentView === 'overview' && (

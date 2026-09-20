@@ -272,7 +272,7 @@ Use this exact JSON shape:
     {{
       "task": "Clean normalized task description without deadline words",
       "owner": "Person Name or Not specified",
-      "deadline": "Explicit deadline string or Not specified",
+      "deadline": "YYYY-MM-DD or Not specified",
       "status": "pending",
       "confidence": 1.0,
       "evidence": "Short verbatim quote or dialogue snippet from transcript"
@@ -291,33 +291,55 @@ STRICT RULES & GROUNDING:
    - Provide a factual, concise 3-5 sentence meeting summary synthesizing the concluded state and final consensus.
    - Cover primary meeting purpose, major discussion topics, confirmed decisions, upcoming action commitments, and open issues/risks.
    - Action items must be described with planned/future phrasing (e.g. "Key upcoming tasks include...", "is tasked with", "will coordinate"), NOT as already completed past actions.
-   - Ground all approvals and statements to the actual speakers. NEVER state that an external or absent team (e.g. Finance, Legal) approved something when the speaker merely mentioned needing or seeking their sign-off.
+   - Ground all approvals and statements strictly to the actual speakers. NEVER state that an external or absent team approved something when the speaker merely mentioned needing or seeking their sign-off.
    - Never describe an initial proposal as an agreed outcome if the transcript records subsequent pushback, debate, or postponement.
+   - ACCURATE ATTRIBUTION & SENDER/RECIPIENT DISTINCTION: When summarizing commitments, accurately state who will perform the task versus who receives the output (e.g., if Person A commits to circulate materials to Team B, state that Person A will circulate them to Team B, NEVER that Team B was tasked with providing or preparing the materials).
 
-2. ACTION ITEMS:
-   - Extract all explicit tasks, commitments, deliverables, assignments, or agreed prerequisite steps.
-   - task: ONLY the core task action. Normalize the task to the actual action. NEVER include deadline/timeframe words (e.g., "by Friday", "before the weekend", "next week", "by Sept 23", "post-launch") inside the task field.
-   - owner: Set whenever a person is named, assigned, or self-commits. When a speaker says "I will assign...", "I'll handle...", or "I'll take that", set that speaker as the owner (e.g., "Sarah Chen", "Mark Davis"). If unassigned, use "Not specified" or null. NEVER invent an owner.
-   - deadline: Set whenever the transcript states an explicit date, time, or relative timeframe (e.g., "September 23 at 5 PM", "Monday, Sept 21", "Friday, Sept 25", "first 3 days post-launch", "tomorrow"). If an assignee confirms or refines a deadline during dialogue (e.g. "ready by Friday"), capture the specific confirmed deadline. If none stated, use "Not specified" or null.
+
+2. ACTION ITEMS & OWNER BINDING:
+   - Extract all explicit engineering/operational tasks, commitments, deliverables, assignments, or agreed prerequisite steps.
+   - OWNER BINDING & SELF-COMMITMENT PRECEDENCE:
+     * Assign tasks to the person who explicitly self-commits ("I will do X", "I'll handle this", "My action item is X", "I can take that") or is directly requested ("Priya, can you circulate...").
+     * When tasks are listed with names (e.g. "1. Marcus: Update specs..."), extract that named person as the owner.
+     * NEVER assign tasks to the meeting host, facilitator, or Incident Commander simply because they summarized or requested the task at the end.
+     * If unassigned, use "Not specified" or null. NEVER invent an owner.
+   - NO META-TASKS: Do NOT extract meta-instructions or meeting administrative commands (e.g., "log the action items", "assign tasks to log", "note down the meeting minutes", "record these items in Jira") as action items.
+   - task: ONLY the core task action. Normalize the task to the actual action. NEVER include deadline/timeframe words (e.g., "by Friday", "before the weekend", "next week", "by Sept 23", "post-launch", "by EOD today", "today") inside the task field.
+
+3. DATE FORMATTING & FORWARD DATE COMPUTATION:
+   - ALL action item deadlines MUST be formatted strictly as ISO standard dates: YYYY-MM-DD (e.g., "2026-09-20", "2026-09-22", "2026-09-23", "2026-10-05").
+   - FORWARD RELATIVE DATE MATH RULE:
+     * When calculating relative weekdays ("by Wednesday", "by Tuesday", "this Friday", "tomorrow", "by EOD"), ALWAYS compute strictly forward from the Meeting Header Date.
+     * For example, if the meeting took place on Sunday, September 20, 2026:
+       - "today" or "today EOD" -> "2026-09-20"
+       - "tomorrow" -> "2026-09-21"
+       - "by Tuesday" -> "2026-09-22" (September 20 + 2 days = September 22)
+       - "by Wednesday" -> "2026-09-23" (September 20 + 3 days = September 23)
+       - "this Friday" -> "2026-09-25" (September 20 + 5 days = September 25)
+     * NEVER output a deadline date that occurs BEFORE the meeting header date (e.g., NEVER output 2026-09-03 or 2026-09-14 for a meeting held on September 20, 2026).
+   - NO INCIDENT / TIMELINE TIMESTAMPS AS DEADLINES: Incident event timestamps, alert firing times (e.g., "11:02 AM", "14:30 UTC"), log timestamps, and dialogue timestamps indicate when past events occurred, NOT task deadlines. NEVER treat past incident times as deadlines. If no explicit future calendar date exists, deadline MUST be "Not specified".
    - status: Use "pending" unless the transcript explicitly states that specific task is completed.
    - confidence: Numeric confidence from 0.0 to 1.0 (default 1.0).
    - evidence: A short verbatim quote or dialogue snippet from the transcript demonstrating this action item.
-   - FORBIDDEN: Do NOT include high-level group decisions or policies as action items.
 
-3. DECISIONS:
-   - Extract ALL strategic choices, launch date policies, contingency plans, spending freezes/approvals, and operational rules confirmed or agreed by the group/leads.
-   - Include conditional agreements and leadership sign-offs (e.g., "Keep target launch date as October 1, 2026, with contingency fallback to October 15 if load tests fail", "Pause $20k paid marketing campaign until engineering go/no-go", "Approve 20% early adopter discount code from product side").
-   - Look for decision markers: "Let's make a decision", "Approved", "Agreed", "We keep...", "We decided", "Smart move / hold off".
+4. KEY DECISIONS (STRICT TAXONOMY & DECISION DISCRIMINATOR):
+   - A DECISION is an organizational agreement, policy, schedule target, vendor choice, scope cutoff, or architectural design choice confirmed by the group (e.g., "Launch pricing experiment on September 29, 2026 (pending bugs/QA)", "Keep current paywall layout for the experiment", "Monitor conversion daily and decide on changes after seven days of data").
+   - DECISION DISCRIMINATOR & ZERO TASK/RISK OVERLAP:
+     * Ask: "Is this a structural policy/agreement, or is it an action item, conditional task, or risk mitigation?"
+     * NEVER classify individual tasks, operational actions, conditional action items, or risk mitigations as Key Decisions:
+       - "Escalate billing provider's sandbox stability issue..." is an Action Item (#5), NOT a Key Decision.
+       - "Hard freeze campaign creatives today..." is an operational risk mitigation strategy, NOT an independent Key Decision.
+     * If a person or team is assigned to execute or deliver it (e.g., "Priya Sharma will circulate...", "Dev will escalate..."), it belongs ONLY under Action Items.
+     * NEVER list an Action Item, conditional task, or deliverable handoff inside Key Decisions.
+   - Look for decision and consensus markers: "Let's make [X] official", "Approved", "Agreed", "We keep...", "We decided", "completely fine for v1", "good to go", "locked in".
    - REJECT CONTESTED PROPOSALS: If a proposal was contested, modified, or postponed, do NOT list it as a confirmed decision.
-   - DO NOT classify individual personal action items as decisions.
 
-4. UNRESOLVED ISSUES, RISKS & CONSTRAINTS:
-   - Include active technical and operational risks being monitored or mitigated (e.g. "Database login latency spikes during peak hours (3-5s delays for ~5% of users)", "Anticipated 30% increase in support ticket volume during major UI transition").
-   - Include pending external dependencies awaiting sign-off (e.g. "20% discount promotion requires pending sign-off from Finance").
-   - Include deferred decisions awaiting future evaluation or test results.
-   - Provide clear, descriptive phrasing with context rather than overly vague 1-word entries.
+5. OPEN ISSUES & RISKS (ZERO-RISK HANDLING):
+   - Include active technical and operational risks, unresolved blockers, or pending external sign-offs explicitly discussed in this transcript.
+   - ZERO DATA CONTAMINATION & ZERO-RISK HANDLING: If no active blockers or open risks exist in the transcript, return "unresolved_issues": [] (an empty array). NEVER generate a dummy risk item containing text like "No issues identified" or "No issues found". NEVER copy example text or invent risks/issues from other meetings.
+   - Provide clear, descriptive phrasing with context grounded in the transcript.
 
-5. GROUNDING:
+6. GROUNDING & SELF-CHECK:
    - Preserve factual meaning; NEVER invent or assume owners, deadlines, decisions, evidence, or issues not present in the transcript.
    - Use empty arrays [] when no items exist for a category.
 

@@ -27,7 +27,7 @@ export default function GlobalSearchModal({
   const q = query.trim().toLowerCase();
 
   const matchedMeetings = q
-    ? meetings.filter((m) => String(m.id).includes(q) || (m.summary && m.summary.toLowerCase().includes(q)))
+    ? meetings.filter((m) => String(m.id).includes(q) || (m.title && m.title.toLowerCase().includes(q)) || (m.summary && m.summary.toLowerCase().includes(q)))
     : [];
 
   const matchedActions = q
@@ -113,7 +113,7 @@ export default function GlobalSearchModal({
                         fontSize: '0.84rem',
                       }}
                     >
-                      <span style={{ color: 'var(--accent-primary)', fontWeight: 600 }}>#{m.id}</span> — {m.summary.slice(0, 90)}...
+                      <span style={{ color: 'var(--accent-primary)', fontWeight: 600 }}>{m.title || `#${m.id}`}</span> — {m.summary.slice(0, 90)}...
                     </div>
                   ))}
                 </div>

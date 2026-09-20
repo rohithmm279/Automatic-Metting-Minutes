@@ -55,7 +55,7 @@ Your task is to produce a factual, concise 3–5 sentence meeting summary.
 STRICT RULES:
 1. Cover the primary meeting purpose, major discussion topics, confirmed decisions, key upcoming action commitments, and any open issues.
 2. Action items must be described with planned/future phrasing (e.g. "Key upcoming tasks include...", "is tasked with", "will coordinate"), NOT as already completed past actions.
-3. Keep it strictly grounded in the transcript. Do NOT invent people, facts, dates, or outcomes.
+3. Keep it strictly grounded in the transcript. Do NOT invent people, facts, dates, or outcomes. Accurately distinguish the person assigned to perform a task from any recipient or consuming team (e.g. Person X will provide to Team Y, never stating that Team Y was tasked with providing).
 4. Length must be concise (3 to 5 sentences).
 
 Return STRICT JSON only:

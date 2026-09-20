@@ -30,6 +30,15 @@ class ValidationAgent:
         "open for debate",
     ]
 
+    # Disallowed meta-task phrases (administrative logging/recording overhead)
+    _META_TASK_PATTERNS = [
+        re.compile(r"^(?:log|assign|record|note\s+down|track)\s+(?:the\s+)?(?:action\s+items?|decisions?|meeting\s+minutes?|tasks?|items?)\b", re.I),
+        re.compile(r"\b(?:log\s+and\s+assign|assign\s+the\s+task\s+to\s+log|track\s+(?:these\s+)?items\s+in\s+jira)\b", re.I),
+    ]
+
+    # Pattern for standalone time-of-day timestamps without future context (e.g. 11:02 AM)
+    _INCIDENT_TIME_PATTERN = re.compile(r"^\d{1,2}:\d{2}\s*(?:am|pm|utc|est|pst|gmt)?$", re.I)
+
     def validate_all(
         self,
         transcript: str,
@@ -88,6 +97,12 @@ class ValidationAgent:
                     issues_found.append(f"Decision #{idx+1} '{dec_str}': {val_info.notes}")
                 validated_decisions.append(dec_str)
 
+        # 4. Unresolved issues validation
+        if unresolved_issues:
+            for idx, u_iss in enumerate(unresolved_issues):
+                if not self.validate_unresolved_issue(u_iss, transcript_lower):
+                    issues_found.append(f"Unresolved issue #{idx+1} '{u_iss}': Not grounded in transcript.")
+
         all_grounded = summary_grounded and action_items_valid and decisions_valid
 
         overall = OverallValidation(
@@ -125,6 +140,17 @@ class ValidationAgent:
             )
 
         task_clean = item.task.strip()
+        
+        # Check for disallowed meta-tasks (e.g. "log the action items", "assign task to log")
+        for pattern in self._META_TASK_PATTERNS:
+            if pattern.search(task_clean):
+                return ValidationInfo(
+                    is_valid=False,
+                    grounded=False,
+                    confidence=0.0,
+                    notes="Rejected meta-task: meeting administrative logging/recording instruction.",
+                )
+
         task_words = [w.lower() for w in re.findall(r"\b[A-Za-z]{3,}\b", task_clean)]
         grounded = True
         notes_list = []
@@ -149,11 +175,16 @@ class ValidationAgent:
         # Check deadline
         if item.deadline and item.deadline.strip() and item.deadline.lower() not in ("not specified", "null", "none", "no deadline"):
             deadline_clean = item.deadline.strip().lower()
-            # Extract key words from deadline to verify against transcript
-            dl_words = [w for w in re.findall(r"\b[A-Za-z0-9]{3,}\b", deadline_clean)]
-            if dl_words and not any(w in transcript_lower for w in dl_words):
-                grounded = False
-                notes_list.append(f"Deadline '{item.deadline}' is not mentioned in transcript.")
+            # If deadline is a bare timestamp without future date/preposition, reject as incident timestamp
+            if self._INCIDENT_TIME_PATTERN.match(deadline_clean) and not any(kw in deadline_clean for kw in ("by", "before", "due", "until", "tomorrow", "today", "next", "eod")):
+                item.deadline = "Not specified"
+                notes_list.append("Raw timestamp normalized to 'Not specified' as it does not specify a future deadline.")
+            else:
+                # Extract key words from deadline to verify against transcript
+                dl_words = [w for w in re.findall(r"\b[A-Za-z0-9]{3,}\b", deadline_clean)]
+                if dl_words and not any(w in transcript_lower for w in dl_words):
+                    grounded = False
+                    notes_list.append(f"Deadline '{item.deadline}' is not mentioned in transcript.")
         else:
             item.deadline = "Not specified"
 
@@ -175,6 +206,30 @@ class ValidationAgent:
             confidence=confidence,
             notes=notes,
         )
+
+    def validate_unresolved_issue(self, issue: str, transcript_lower: str) -> bool:
+        """Check if an unresolved issue is grounded in transcript words and not a dummy placeholder."""
+        if not issue or not issue.strip():
+            return False
+        
+        # Check for dummy/placeholder phrases like "No issues identified"
+        if re.search(
+            r"(?i)^(?:no\s+(?:active\s+|open\s+|explicit\s+|identified\s+|unresolved\s+)?(?:issues|risks|blockers|concerns)(?:\s+(?:identified|found|noted|reported|raised))?|none|n/a)\.?$",
+            issue.strip(),
+        ):
+            return False
+
+        words = [w.lower() for w in re.findall(r"\b[A-Za-z]{4,}\b", issue)]
+        if not words:
+            return True
+        matched = sum(1 for w in words if w in transcript_lower)
+        if len(words) <= 2:
+            return matched >= 1 and (matched / len(words)) >= 0.5
+        return (matched / len(words)) >= 0.50 and matched >= 2
+
+    def filter_unresolved_issues(self, issues: list[str], transcript_lower: str) -> list[str]:
+        """Prune ungrounded, dummy, or hallucinated issues that do not appear in transcript."""
+        return [iss for iss in issues if self.validate_unresolved_issue(iss, transcript_lower)]
 
     def validate_decision_item(self, item: DecisionItem, transcript_lower: str) -> ValidationInfo:
         """Validate DecisionItem against speculative phrasing and transcript grounding."""

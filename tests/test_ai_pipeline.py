@@ -151,6 +151,54 @@ class TestAIPipelineMocked(unittest.TestCase):
             self.orchestrator.analyze(self.sample_transcript)
         self.assertIn("references deadline", str(ctx.exception).lower())
 
+    def test_06b_iso_date_deadline_grounding(self):
+        """Test 6b: ISO formatted date (e.g. 2026-09-23) grounds against transcript containing month/day."""
+        transcript_with_date = (
+            "Alex: Welcome everyone.\n"
+            "Jordan: I will finalize the sponsorship deck by September 23rd.\n"
+            "Alex: Sounds good."
+        )
+        payload = {
+            "summary": "Meeting discussion on sponsorship.",
+            "action_items": [
+                {
+                    "task": "Finalize the sponsorship deck",
+                    "owner": "Jordan",
+                    "deadline": "2026-09-23",
+                    "status": "pending",
+                }
+            ],
+            "decisions": [],
+            "unresolved_issues": [],
+        }
+        self.mock_client.generate.return_value = json.dumps(payload)
+        result = self.orchestrator.analyze(transcript_with_date)
+        self.assertEqual(result.action_items[0].deadline, "2026-09-23")
+
+    def test_06c_relative_resolved_iso_deadline_grounding(self):
+        """Test 6c: ISO date (e.g. 2026-09-14) resolved from relative words (e.g. next Monday) is validated successfully."""
+        transcript_relative = (
+            "Alex: Welcome to the team sync.\n"
+            "Jordan: I will deploy the hotfix by next Monday.\n"
+            "Alex: Sounds good."
+        )
+        payload = {
+            "summary": "Meeting discussion on hotfix deployment.",
+            "action_items": [
+                {
+                    "task": "Deploy the hotfix",
+                    "owner": "Jordan",
+                    "deadline": "2026-09-14",
+                    "status": "pending",
+                }
+            ],
+            "decisions": [],
+            "unresolved_issues": [],
+        }
+        self.mock_client.generate.return_value = json.dumps(payload)
+        result = self.orchestrator.analyze(transcript_relative)
+        self.assertEqual(result.action_items[0].deadline, "2026-09-14")
+
     def test_07_duplicate_action_items(self):
         """Test 7: Handles multiple action items including duplicates without crashing."""
         payload = {
