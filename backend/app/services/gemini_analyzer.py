@@ -259,7 +259,7 @@ class GeminiAnalyzer:
     @staticmethod
     def _build_prompt(transcript: str) -> str:
         """Create a strict, comprehensive single-call prompt without changing transcript text."""
-        return f"""You are an expert AI meeting analyst for student club and organizational meetings.
+        return f"""You are an expert AI meeting analyst for organizational, business, and technical meetings.
 Analyze the following meeting transcript and produce a complete, factual analysis in a single response.
 
 Return STRICT JSON only. Do not use Markdown, code fences, commentary, or fields
@@ -279,37 +279,43 @@ Use this exact JSON shape:
     }}
   ],
   "decisions": [
-    "Explicit confirmed decision"
+    "Explicit confirmed decision or agreed policy"
   ],
   "unresolved_issues": [
-    "Open issue or pending question"
+    "Monitored risk, blocker, pending external sign-off, or deferred question"
   ]
 }}
 
 STRICT RULES & GROUNDING:
 1. SUMMARY:
-   - Provide a factual, concise 3-5 sentence meeting summary.
-   - Cover primary meeting purpose, major discussion topics, confirmed decisions, upcoming action commitments, and open issues.
+   - Provide a factual, concise 3-5 sentence meeting summary synthesizing the concluded state and final consensus.
+   - Cover primary meeting purpose, major discussion topics, confirmed decisions, upcoming action commitments, and open issues/risks.
    - Action items must be described with planned/future phrasing (e.g. "Key upcoming tasks include...", "is tasked with", "will coordinate"), NOT as already completed past actions.
+   - Ground all approvals and statements to the actual speakers. NEVER state that an external or absent team (e.g. Finance, Legal) approved something when the speaker merely mentioned needing or seeking their sign-off.
+   - Never describe an initial proposal as an agreed outcome if the transcript records subsequent pushback, debate, or postponement.
 
 2. ACTION ITEMS:
-   - Extract only explicit tasks, commitments, requests, or assignments.
-   - task: ONLY the core task action. Normalize the task to the actual action. NEVER include deadline/timeframe words (e.g., "by Friday", "before the weekend", "next week") inside the task field.
-   - owner: Set ONLY when a person is explicitly named or clearly self-assigned by an identified speaker. If not explicitly identifiable, use "Not specified" or null. NEVER invent an owner.
-   - deadline: Set ONLY when the transcript explicitly gives one (for example "by Wednesday", "before Monday", "on Friday", "tomorrow", "next week"). If not explicitly mentioned, use "Not specified" or null. NEVER invent a deadline.
+   - Extract all explicit tasks, commitments, deliverables, assignments, or agreed prerequisite steps.
+   - task: ONLY the core task action. Normalize the task to the actual action. NEVER include deadline/timeframe words (e.g., "by Friday", "before the weekend", "next week", "by Sept 23", "post-launch") inside the task field.
+   - owner: Set whenever a person is named, assigned, or self-commits. When a speaker says "I will assign...", "I'll handle...", or "I'll take that", set that speaker as the owner (e.g., "Sarah Chen", "Mark Davis"). If unassigned, use "Not specified" or null. NEVER invent an owner.
+   - deadline: Set whenever the transcript states an explicit date, time, or relative timeframe (e.g., "September 23 at 5 PM", "Monday, Sept 21", "Friday, Sept 25", "first 3 days post-launch", "tomorrow"). If an assignee confirms or refines a deadline during dialogue (e.g. "ready by Friday"), capture the specific confirmed deadline. If none stated, use "Not specified" or null.
    - status: Use "pending" unless the transcript explicitly states that specific task is completed.
    - confidence: Numeric confidence from 0.0 to 1.0 (default 1.0).
    - evidence: A short verbatim quote or dialogue snippet from the transcript demonstrating this action item.
-   - FORBIDDEN: Do NOT include group decisions (such as agreeing on an event date or budget) as action items.
+   - FORBIDDEN: Do NOT include high-level group decisions or policies as action items.
 
 3. DECISIONS:
-   - Include ONLY outcomes that were explicitly agreed upon, approved, confirmed, finalized, settled on, or decided by the group (e.g. agreed budget amount, chosen event date/theme, selected speaker).
-   - DO NOT treat mere suggestions, proposals, possibilities, open discussion, or preferences as decisions.
-   - DO NOT include individual action items as decisions.
+   - Extract ALL strategic choices, launch date policies, contingency plans, spending freezes/approvals, and operational rules confirmed or agreed by the group/leads.
+   - Include conditional agreements and leadership sign-offs (e.g., "Keep target launch date as October 1, 2026, with contingency fallback to October 15 if load tests fail", "Pause $20k paid marketing campaign until engineering go/no-go", "Approve 20% early adopter discount code from product side").
+   - Look for decision markers: "Let's make a decision", "Approved", "Agreed", "We keep...", "We decided", "Smart move / hold off".
+   - REJECT CONTESTED PROPOSALS: If a proposal was contested, modified, or postponed, do NOT list it as a confirmed decision.
+   - DO NOT classify individual personal action items as decisions.
 
-4. UNRESOLVED ISSUES:
-   - Include ONLY matters that remain open: still pending, not decided, undecided, unresolved, waiting for approval, needs further discussion, needs confirmation, not finalized, or open question.
-   - DO NOT list a matter as unresolved when the transcript establishes that it was resolved.
+4. UNRESOLVED ISSUES, RISKS & CONSTRAINTS:
+   - Include active technical and operational risks being monitored or mitigated (e.g. "Database login latency spikes during peak hours (3-5s delays for ~5% of users)", "Anticipated 30% increase in support ticket volume during major UI transition").
+   - Include pending external dependencies awaiting sign-off (e.g. "20% discount promotion requires pending sign-off from Finance").
+   - Include deferred decisions awaiting future evaluation or test results.
+   - Provide clear, descriptive phrasing with context rather than overly vague 1-word entries.
 
 5. GROUNDING:
    - Preserve factual meaning; NEVER invent or assume owners, deadlines, decisions, evidence, or issues not present in the transcript.
@@ -317,4 +323,5 @@ STRICT RULES & GROUNDING:
 
 Transcript:
 {transcript}"""
+
 

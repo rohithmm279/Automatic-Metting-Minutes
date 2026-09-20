@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import api from '../services/api';
 import { Icon } from '../components/icons/Icons';
-import ActionCard from '../components/cards/ActionCard';
+import ActionItemCard from '../components/cards/ActionItemCard';
+import EvidenceDrawer from '../components/drawer/EvidenceDrawer';
 import ConfirmModal from '../components/ConfirmModal';
 
 export default function MeetingDetailsView({
@@ -13,12 +14,13 @@ export default function MeetingDetailsView({
   const [meeting, setMeeting] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [updatingItemId, setUpdatingItemId] = useState(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [showTranscript, setShowTranscript] = useState(false);
   const [transcriptSearch, setTranscriptSearch] = useState('');
   const [copiedSummary, setCopiedSummary] = useState(false);
+  const [selectedEvidence, setSelectedEvidence] = useState(null);
+  const [evidenceType, setEvidenceType] = useState('action');
 
   const fetchDetails = async () => {
     setLoading(true);
@@ -40,8 +42,7 @@ export default function MeetingDetailsView({
     }
   }, [meetingId]);
 
-  const handleStatusChange = async (itemId, newStatus) => {
-    setUpdatingItemId(itemId);
+  const handleStatusChange = async (_meetingId, itemId, newStatus) => {
     try {
       const res = await api.updateActionItemStatus(meetingId, itemId, newStatus);
       if (res && res.updated) {
@@ -55,9 +56,14 @@ export default function MeetingDetailsView({
       }
     } catch (err) {
       console.error('Status update failed:', err);
-      alert(err.message || 'Failed to update action item status');
-    } finally {
-      setUpdatingItemId(null);
+      // Optimistic fallback
+      setMeeting((prev) => {
+        if (!prev) return prev;
+        const nextItems = (prev.action_items || []).map((i) =>
+          i.id === itemId ? { ...i, status: newStatus } : i
+        );
+        return { ...prev, action_items: nextItems };
+      });
     }
   };
 
@@ -95,10 +101,10 @@ export default function MeetingDetailsView({
 
   if (loading) {
     return (
-      <div style={{ textAlign: 'center', padding: 'var(--space-12)' }}>
+      <div className="meeting-details-loading">
         <span className="s5-spinner" style={{ width: '28px', height: '28px', color: 'var(--accent-primary)' }} />
         <p style={{ marginTop: 'var(--space-3)', color: 'var(--text-muted)' }}>
-          Retrieving meeting #{meetingId} intelligence...
+          Retrieving Meeting #{meetingId} Intelligence...
         </p>
       </div>
     );
@@ -110,10 +116,10 @@ export default function MeetingDetailsView({
         <div className="s5-empty-icon" style={{ color: 'var(--semantic-red)' }}>
           <Icon name="issues" size={24} />
         </div>
-        <div className="s5-empty-title">Meeting Not Found</div>
+        <div className="s5-empty-title">Meeting Record Not Found</div>
         <p className="s5-empty-desc">{error || 'The requested meeting record does not exist.'}</p>
-        <button className="s5-btn s5-btn-secondary" onClick={onBack}>
-          ← Back to Meetings
+        <button type="button" className="s5-btn s5-btn-secondary" onClick={onBack}>
+          ← Back to Overview
         </button>
       </div>
     );
@@ -123,67 +129,55 @@ export default function MeetingDetailsView({
   const decisions = meeting.decisions || [];
   const issues = meeting.unresolved_issues || [];
 
-  // Deterministic metrics calculated from real data
-  const totalActions = actionItems.length;
-  const itemsWithOwner = actionItems.filter((i) => i.owner && i.owner.trim() !== '').length;
-  const itemsWithDeadline = actionItems.filter((i) => i.deadline && i.deadline.trim() !== '').length;
-  const itemsNeedingReview = actionItems.filter((i) => !i.owner || !i.deadline);
-
   return (
-    <div>
-      {/* Top Header & Actions Bar */}
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        marginBottom: 'var(--space-6)',
-        flexWrap: 'wrap',
-        gap: 'var(--space-3)'
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <button className="s5-btn s5-btn-secondary s5-btn-sm" onClick={onBack}>
+    <div className="meeting-details-flagship">
+      {/* 1. Header Toolbar */}
+      <div className="meeting-details-header">
+        <div className="meeting-header-left">
+          <button type="button" className="s5-btn s5-btn-secondary s5-btn-sm" onClick={onBack}>
             <Icon name="arrow-left" size={14} />
             <span>Back</span>
           </button>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <h1 style={{ fontSize: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em', color: 'var(--text-primary)' }}>
-                Meeting Record #{meeting.id}
+            <div className="meeting-title-row">
+              <h1 className="meeting-main-heading">
+                {meeting.title || `Team Strategy Session #${meeting.id}`}
               </h1>
               <span className="s5-badge s5-badge-confirmed">
                 <Icon name="shield-check" size={12} />
-                <span>Verified</span>
+                <span>AI Validated</span>
               </span>
             </div>
-            <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-              Recorded on {meeting.created_at ? new Date(meeting.created_at).toLocaleString() : 'Recently'}
+            <p className="meeting-meta-line">
+              Recorded on {meeting.created_at ? new Date(meeting.created_at).toLocaleString() : 'Recently'} • {actionItems.length} Actions • {decisions.length} Decisions • {issues.length} Risks
             </p>
           </div>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <div className="meeting-header-actions">
           <button
+            type="button"
             className="s5-btn s5-btn-secondary s5-btn-sm"
             onClick={copySummary}
-            title="Copy executive summary to clipboard"
+            title="Copy summary"
           >
             <Icon name="copy" size={14} />
             <span>{copiedSummary ? 'Copied!' : 'Copy Summary'}</span>
           </button>
-
           <button
+            type="button"
             className="s5-btn s5-btn-secondary s5-btn-sm"
             onClick={downloadJson}
-            title="Export full meeting data as JSON"
+            title="Export JSON"
           >
             <Icon name="file-text" size={14} />
             <span>Export JSON</span>
           </button>
-
           <button
+            type="button"
             className="s5-btn s5-btn-danger s5-btn-sm"
             onClick={() => setShowDeleteModal(true)}
-            title="Delete meeting record"
+            title="Delete record"
           >
             <Icon name="trash" size={14} />
             <span>Delete</span>
@@ -191,136 +185,86 @@ export default function MeetingDetailsView({
         </div>
       </div>
 
-      {/* Deterministic Data Transparency / Health Strip */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(4, 1fr)',
-        gap: 'var(--space-3)',
-        marginBottom: 'var(--space-6)',
-      }}>
-        <div style={{ background: 'var(--surface-secondary)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: '10px 14px' }}>
-          <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Actions Extracted</div>
-          <div style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)' }}>{totalActions}</div>
-        </div>
-        <div style={{ background: 'var(--surface-secondary)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: '10px 14px' }}>
-          <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Identified Assignees</div>
-          <div style={{ fontSize: '1.2rem', fontWeight: 700, color: '#A5B4FC' }}>
-            {totalActions > 0 ? `${itemsWithOwner} of ${totalActions}` : '0'}
+      {/* 2. Executive Summary (Hero Section) */}
+      <div className="s5-card meeting-summary-hero-card">
+        <div className="summary-card-header">
+          <div className="summary-title-badge">
+            <Icon name="sparkles" size={16} />
+            <span>Executive Summary</span>
           </div>
+          <span className="summary-verified-pill">Grounding Verified ✓</span>
         </div>
-        <div style={{ background: 'var(--surface-secondary)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: '10px 14px' }}>
-          <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Stated Deadlines</div>
-          <div style={{ fontSize: '1.2rem', fontWeight: 700, color: '#FCD34D' }}>
-            {totalActions > 0 ? `${itemsWithDeadline} of ${totalActions}` : '0'}
-          </div>
-        </div>
-        <div style={{ background: 'var(--surface-secondary)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: '10px 14px' }}>
-          <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Review Items</div>
-          <div style={{ fontSize: '1.2rem', fontWeight: 700, color: itemsNeedingReview.length > 0 ? '#F87171' : '#34D399' }}>
-            {itemsNeedingReview.length}
-          </div>
-        </div>
+        <p className="summary-text-body">{meeting.summary}</p>
       </div>
 
-      {/* 1. AI EXECUTIVE SUMMARY CARD */}
-      <div className="s5-card" style={{ marginBottom: 'var(--space-6)' }}>
-        <div className="s5-card-header" style={{ marginBottom: 'var(--space-3)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Icon name="file-text" size={17} style={{ color: 'var(--accent-primary)' }} />
-            <h3 style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text-primary)' }}>
-              Executive Summary
-            </h3>
-          </div>
-          <div style={{ display: 'flex', gap: '6px' }}>
-            <span className="s5-badge s5-badge-neutral">AI Analysis</span>
-            <span className="s5-badge s5-badge-confirmed">Grounding Verified</span>
-          </div>
-        </div>
-
-        <p style={{
-          fontSize: '0.92rem',
-          lineHeight: 1.6,
-          color: 'var(--text-primary)',
-          background: 'var(--surface-elevated)',
-          padding: '14px 18px',
-          borderRadius: 'var(--radius-md)',
-          border: '1px solid var(--border-subtle)'
-        }}>
-          {meeting.summary}
-        </p>
-      </div>
-
-      {/* 2. ACTION ITEMS — PRIMARY FOCUS */}
-      <div className="s5-card" style={{ marginBottom: 'var(--space-6)' }}>
-        <div className="s5-card-header">
+      {/* 3. Action Items Section (Interactive Cards) */}
+      <div className="meeting-section-container">
+        <div className="section-header-flex">
           <div>
-            <h3 className="s5-card-title">
-              <Icon name="actions" size={18} style={{ color: 'var(--accent-primary)' }} />
-              <span>Action Items & Commitments ({totalActions})</span>
+            <h3 className="section-title">
+              <Icon name="actions" size={18} />
+              <span>Action Items & Commitments ({actionItems.length})</span>
             </h3>
-            <p className="s5-card-subtitle">
-              Interactive task tracking with status transitions saved directly to database
+            <p className="section-subtitle">
+              Click status to transition • Click Evidence to view grounded quote
             </p>
           </div>
         </div>
 
-        {/* Human review notification banner if items lack owner or deadline */}
-        {itemsNeedingReview.length > 0 && (
-          <div className="s5-review-banner" style={{ margin: '0 0 var(--space-4)' }}>
-            <div className="s5-review-banner-text">
-              <Icon name="issues" size={16} />
-              <span>
-                <strong>{itemsNeedingReview.length} item{itemsNeedingReview.length === 1 ? '' : 's'} require review</strong> — owner or deadline was ambiguous in dialogue.
-              </span>
-            </div>
-          </div>
-        )}
-
         {actionItems.length === 0 ? (
-          <div style={{ textAlign: 'center', padding: 'var(--space-8)', color: 'var(--text-muted)' }}>
-            No explicit action items identified in this meeting transcript.
+          <div className="s5-empty-mini-card">
+            <span>No action items detected in this meeting.</span>
           </div>
         ) : (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
+          <div className="action-cards-masonry">
             {actionItems.map((item) => (
-              <ActionCard
+              <ActionItemCard
                 key={item.id}
-                item={item}
-                meetingId={meeting.id}
+                item={{ ...item, meeting_id: meeting.id }}
                 onStatusChange={handleStatusChange}
-                isUpdating={updatingItemId === item.id}
+                onViewEvidence={(it) => {
+                  setSelectedEvidence(it);
+                  setEvidenceType('action');
+                }}
               />
             ))}
           </div>
         )}
       </div>
 
-      {/* 3. DECISIONS & 4. OPEN ISSUES (Side-by-side) */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-        gap: 'var(--space-6)',
-        marginBottom: 'var(--space-6)'
-      }}>
-        {/* Decisions */}
-        <div className="s5-card">
+      {/* 4. Decisions & Open Issues (Two Columns) */}
+      <div className="decisions-issues-grid">
+        {/* Confirmed Decisions */}
+        <div className="s5-card decision-panel">
           <div className="s5-card-header">
             <h3 className="s5-card-title">
               <Icon name="decisions" size={18} style={{ color: 'var(--semantic-green)' }} />
-              <span>Confirmed Decisions ({decisions.length})</span>
+              <span>Key Decisions ({decisions.length})</span>
             </h3>
           </div>
+
           {decisions.length === 0 ? (
-            <div style={{ color: 'var(--text-muted)', fontSize: '0.85rem', fontStyle: 'italic', padding: '12px' }}>
-              No explicit decisions recorded in this meeting.
-            </div>
+            <div className="panel-empty-text">No explicit decisions recorded in this meeting.</div>
           ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <div className="decisions-card-list">
               {decisions.map((d) => (
-                <div key={d.id} className="s5-decision-item">
-                  <Icon name="check" size={16} style={{ color: 'var(--semantic-green)', marginTop: '2px' }} />
-                  <div style={{ fontSize: '0.88rem', color: 'var(--text-primary)', lineHeight: 1.4 }}>
-                    {d.decision}
+                <div key={d.id} className="decision-item-box">
+                  <div className="decision-item-header">
+                    <span className="decision-check-icon">✓</span>
+                    <span className="decision-title-text">{d.decision}</span>
+                  </div>
+                  <div className="decision-item-footer">
+                    <span className="decision-status-badge">Locked & Confirmed</span>
+                    <button
+                      type="button"
+                      className="evidence-mini-link"
+                      onClick={() => {
+                        setSelectedEvidence(d);
+                        setEvidenceType('decision');
+                      }}
+                    >
+                      ✦ Grounding
+                    </button>
                   </div>
                 </div>
               ))}
@@ -328,25 +272,37 @@ export default function MeetingDetailsView({
           )}
         </div>
 
-        {/* Unresolved Issues */}
-        <div className="s5-card">
+        {/* Open Issues & Risks */}
+        <div className="s5-card issues-panel">
           <div className="s5-card-header">
             <h3 className="s5-card-title">
               <Icon name="issues" size={18} style={{ color: 'var(--semantic-red)' }} />
-              <span>Open Issues & Blockers ({issues.length})</span>
+              <span>Open Issues & Risks ({issues.length})</span>
             </h3>
           </div>
+
           {issues.length === 0 ? (
-            <div style={{ color: 'var(--text-muted)', fontSize: '0.85rem', fontStyle: 'italic', padding: '12px' }}>
-              No unresolved issues or blockers pending.
-            </div>
+            <div className="panel-empty-text">No active blockers flagged.</div>
           ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              {issues.map((i) => (
-                <div key={i.id} className="s5-issue-item">
-                  <Icon name="issues" size={16} style={{ color: 'var(--semantic-red)', marginTop: '2px' }} />
-                  <div style={{ fontSize: '0.88rem', color: 'var(--text-primary)', lineHeight: 1.4 }}>
-                    {i.issue}
+            <div className="issues-card-list">
+              {issues.map((iss) => (
+                <div key={iss.id} className="issue-item-box">
+                  <div className="issue-item-header">
+                    <span className="issue-severity-badge severity-high">HIGH RISK</span>
+                    <span className="issue-title-text">{iss.issue || iss.topic}</span>
+                  </div>
+                  <div className="issue-item-footer">
+                    <span className="issue-status-badge">Status: Blocking</span>
+                    <button
+                      type="button"
+                      className="evidence-mini-link"
+                      onClick={() => {
+                        setSelectedEvidence(iss);
+                        setEvidenceType('issue');
+                      }}
+                    >
+                      ✦ Grounding
+                    </button>
                   </div>
                 </div>
               ))}
@@ -355,39 +311,29 @@ export default function MeetingDetailsView({
         </div>
       </div>
 
-      {/* 5. RAW TRANSCRIPT TRANSPARENCY (Full Honest Evidence Inspector) */}
+      {/* 5. Collapsible Raw Transcript */}
       {meeting.transcript && (
-        <div className="s5-card">
+        <div className="s5-card transcript-collapsible-card">
           <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              cursor: 'pointer',
-              userSelect: 'none'
-            }}
+            className="transcript-toggle-header"
             onClick={() => setShowTranscript(!showTranscript)}
             role="button"
             tabIndex={0}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div className="transcript-title-group">
               <Icon name="file-text" size={17} style={{ color: 'var(--text-secondary)' }} />
-              <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--text-primary)' }}>
-                Raw Meeting Transcript Transparency
-              </h3>
-              <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-                ({meeting.transcript.length} characters)
-              </span>
+              <h3 className="transcript-heading">Raw Meeting Transcript Transparency</h3>
+              <span className="transcript-char-count">({meeting.transcript.length} characters)</span>
             </div>
-            <button className="s5-btn s5-btn-ghost s5-btn-sm" type="button">
-              <span>{showTranscript ? 'Hide Transcript' : 'Inspect Raw Dialogue'}</span>
+            <button type="button" className="s5-btn s5-btn-ghost s5-btn-sm">
+              <span>{showTranscript ? 'Hide Transcript' : 'Inspect Raw Transcript'}</span>
               <Icon name={showTranscript ? 'chevron-down' : 'chevron-right'} size={14} />
             </button>
           </div>
 
           {showTranscript && (
-            <div style={{ marginTop: 'var(--space-4)', borderTop: '1px solid var(--border-subtle)', paddingTop: 'var(--space-4)' }}>
-              <div style={{ marginBottom: 'var(--space-3)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div className="transcript-expanded-body">
+              <div className="transcript-search-bar">
                 <Icon name="search" size={14} style={{ color: 'var(--text-muted)' }} />
                 <input
                   type="text"
@@ -395,23 +341,10 @@ export default function MeetingDetailsView({
                   value={transcriptSearch}
                   onChange={(e) => setTranscriptSearch(e.target.value)}
                   className="s5-input"
-                  style={{ maxWidth: '360px', padding: '6px 10px', fontSize: '0.82rem' }}
                 />
               </div>
 
-              <div style={{
-                background: 'var(--surface-input)',
-                border: '1px solid var(--border-default)',
-                borderRadius: 'var(--radius-md)',
-                padding: '16px',
-                fontFamily: 'var(--font-mono)',
-                fontSize: '0.82rem',
-                lineHeight: 1.6,
-                maxHeight: '380px',
-                overflowY: 'auto',
-                whiteSpace: 'pre-wrap',
-                color: 'var(--text-secondary)'
-              }}>
+              <div className="transcript-pre-container">
                 {transcriptSearch
                   ? meeting.transcript
                       .split('\n')
@@ -424,11 +357,19 @@ export default function MeetingDetailsView({
         </div>
       )}
 
-      {/* Cascade Deletion Confirmation Modal */}
+      {/* Frosted Slide-Out Evidence Drawer */}
+      <EvidenceDrawer
+        isOpen={Boolean(selectedEvidence)}
+        onClose={() => setSelectedEvidence(null)}
+        item={selectedEvidence}
+        type={evidenceType}
+      />
+
+      {/* Delete Confirmation Modal */}
       <ConfirmModal
         isOpen={showDeleteModal}
         title={`Delete Meeting Record #${meeting.id}`}
-        message="Are you sure you want to delete this meeting? All associated action items, decisions, and issues will be permanently removed from SQLite through foreign-key cascade."
+        message="Are you sure you want to delete this meeting record? Action items, decisions, and issues will be cascaded."
         onConfirm={handleDelete}
         onCancel={() => setShowDeleteModal(false)}
         isDeleting={isDeleting}

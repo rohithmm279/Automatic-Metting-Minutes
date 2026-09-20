@@ -3,6 +3,7 @@ import Sidebar from './Sidebar';
 import Topbar from './Topbar';
 import GlobalSearchModal from '../modals/GlobalSearchModal';
 import SystemSpecsModal from '../modals/SystemSpecsModal';
+import GlobalAIAssistant from '../assistant/GlobalAIAssistant';
 
 export default function AppShell({
   children,
@@ -61,6 +62,15 @@ export default function AppShell({
         </main>
       </div>
 
+      {/* Global AI Assistant Floating Widget */}
+      <GlobalAIAssistant
+        meetings={meetings}
+        actionItems={actionItems}
+        decisions={decisions}
+        issues={issues}
+        onSelectMeeting={onSelectMeeting}
+      />
+
       {/* Global Search Modal */}
       <GlobalSearchModal
         isOpen={isSearchOpen}
@@ -80,3 +90,4 @@ export default function AppShell({
     </div>
   );
 }
+

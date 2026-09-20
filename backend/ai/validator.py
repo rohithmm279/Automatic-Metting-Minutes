@@ -1,5 +1,6 @@
 """Deterministic validator for meeting intelligence outputs."""
 
+import re
 from backend.models.meeting import MeetingOutput, ActionItem, Decision, UnresolvedIssue
 
 ALLOWED_STATUSES = {"pending", "in_progress", "completed", "cancelled"}
@@ -59,15 +60,21 @@ class MeetingValidator:
                         f"Action item at index {idx} references owner '{item.owner}' which is not in the transcript."
                     )
 
-            # Check deadline against transcript
+            # Check deadline against transcript (token grounding to support multi-turn composite deadlines)
             if item.deadline is not None:
                 cleaned_deadline = item.deadline.strip()
-                if not cleaned_deadline:
+                if not cleaned_deadline or cleaned_deadline.lower() in ("not specified", "null", "none", "no deadline"):
                     item.deadline = None
                 elif cleaned_deadline.lower() not in transcript_lower:
-                    raise MeetingValidationError(
-                        f"Action item at index {idx} references deadline '{item.deadline}' which is not in the transcript."
-                    )
+                    # Verify that the significant words in the deadline are grounded in the transcript
+                    dl_tokens = [
+                        w for w in re.findall(r"\b[A-Za-z0-9]+\b", cleaned_deadline.lower())
+                        if w not in {"of", "by", "the", "at", "on", "in", "and", "or", "to", "for"}
+                    ]
+                    if dl_tokens and not all(token in transcript_lower for token in dl_tokens):
+                        raise MeetingValidationError(
+                            f"Action item at index {idx} references deadline '{item.deadline}' which is not in the transcript."
+                        )
 
         # 3. Decisions validation
         for idx, dec in enumerate(output.decisions):

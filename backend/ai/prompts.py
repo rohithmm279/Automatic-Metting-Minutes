@@ -2,91 +2,255 @@
 
 
 def build_meeting_analysis_prompt(transcript: str) -> str:
-    """Build the 10-rule meeting-analysis prompt optimized for Qwen 2.5 3B."""
-    return f"""Analyze the meeting transcript below strictly according to the following 10 rules.
+    """Build the meeting-analysis prompt optimized for Qwen 2.5 3B."""
 
-### 10 RULES:
+    return f"""Analyze the meeting transcript below strictly according to the following rules.
+
+### RULES:
 
 1. SUMMARY
-- Produce a concise 3–5 sentence meeting summary.
-- Preserve original meaning and tense: Action items are planned/pending tasks, NOT completed actions. Do not use past-tense verbs (never say "booked", "set up", or "coordinated") to describe pending tasks. Use planned/future phrasing (e.g. "Key upcoming tasks include...", "is tasked with", "will coordinate").
-- Accurately mention the meeting purpose, upcoming action commitments, the agreed decision, and open issues.
+- Produce a concise 3–5 sentence meeting summary synthesizing the concluded state and final consensus.
+- Preserve original meaning and tense.
+- Action items are planned/pending tasks, NOT completed actions.
+- Do not use past-tense verbs to describe pending tasks.
+- Accurately mention the meeting purpose, important upcoming commitments, confirmed decisions, and open issues/risks.
+- Ground all approvals and statements strictly to the actual speakers. Never state that an external or absent team (e.g. Finance, Legal) approved something when the speaker merely mentioned needing or seeking their sign-off.
 - Do not invent facts, people, dates, deadlines, or outcomes.
 
 2. ACTION ITEMS
-Extract only tasks that are actually assigned or explicitly committed to.
-Every action item object must contain exactly these 4 keys: "task", "owner", "deadline", "status".
-- task: ONLY the core task action. Time and deadline words (e.g., "before the weekend", "sometime next week", "by Friday") are STRICTLY FORBIDDEN inside the task field.
-  * Correct: "Book the auditorium"
-  * Correct: "Set up the registration desk"
-  * Correct: "Coordinate with campus security"
-- owner: The person explicitly assigned or committing to the task. If a speaker agrees with "I'll..." or "I will..." (e.g. Meera: "I'll set up...", owner is "Meera"), use that speaker's name. If unassigned, use null.
-- deadline: The explicit timeframe or date stated for the task (e.g., "before the weekend", "sometime next week", "Friday"). If none stated, use null.
-- status: Always "pending" unless the transcript clearly says it is completed.
-- Never invent an owner or deadline.
-- Do not convert general discussion into an action item.
-- FORBIDDEN: Do NOT include group decisions (such as finalizing or choosing the event date) in action items.
+Extract every concrete task, deliverable, assignment, or agreed prerequisite step that is explicitly assigned or committed to by a speaker.
+
+An action item requires:
+- a concrete task or deliverable
+- an explicit person responsible OR an explicit speaker commitment (e.g. "I will assign two PMs..." -> Owner is the speaker; "If Alex provides release notes by Sept 24..." -> Task: "Provide feature release notes", Owner: "Alex", Deadline: "Sept 24")
+- an expectation that the task will be performed
+
+Examples:
+- "I will send the report."
+- "I'll check with HR."
+- "Please own the messaging pillars."
+- "Can you finalize the budget?"
+
+A speaker may make multiple commitments in one turn.
+Extract EACH independent commitment separately.
+
+A host/facilitator can also be an action-item owner.
+
+Do NOT extract general guidance or ongoing responsibilities unless they
+contain a concrete deliverable.
+
+Normally exclude:
+- "Keep us posted."
+- "Flag risks early."
+- "Stay aligned."
+- "Monitor this."
+- "Keep an eye on this."
+- "Be aware of the risk."
+
+Every action item MUST contain exactly these 4 keys:
+"task", "owner", "deadline", "status".
+
+task:
+- Include ONLY the core task.
+- Do NOT include deadline/time expressions in the task.
+- Example:
+  "Draft the messaging pillars by September 25"
+  becomes:
+  "Draft the messaging pillars"
+
+owner:
+- Use the explicitly assigned person.
+- If the speaker says "I will..." or "I'll...", that speaker is the owner.
+- If responsibility is genuinely unassigned, use null.
+- Never infer ownership merely because someone discussed the topic.
+
+deadline:
+- Use ONLY an explicit deadline or relative timeframe for that specific task (e.g. "Sept 23", "first 3 days post-launch", "by Friday").
+- If no explicit deadline exists, use null.
+- Never invent "ASAP", "Ongoing", "Soon", etc.
+
+status:
+- Always "pending" unless the transcript explicitly says the task
+  has already been completed.
 
 3. DECISIONS
-Include only things that were explicitly:
-- agreed
-- approved
-- confirmed
-- finalized
-- decided
-Format: A flat array of strings (e.g., ["Finalize the event date"]).
-Do NOT classify individual action items (like coordinating security or booking a room) as decisions.
-Do NOT classify unresolved matters as decisions.
+A decision is a settled choice, agreement, approval, confirmation,
+policy, direction, selected option, or contingent release plan.
 
-4. UNRESOLVED ISSUES
+Examples:
+- "Let's lock the campaign theme."
+- "Everyone agreed to use October 15 as the central moment."
+- "Keep target launch date as October 1, 2026, with fallback to October 15 if load tests fail."
+- "Pause paid ad spend until engineering confirms readiness."
+- "Approved the 20% discount code for early adopters from product side."
+
+Include ALL decisions, strategic choices, spending freezes, and policies explicitly agreed, approved, confirmed, finalized, or decided by the group or meeting lead.
+Look for markers: "Let's make a decision", "Approved", "Agreed", "We keep...", "Smart move / hold off".
+
+REJECT PROPOSALS: If a proposal was contested, modified, or postponed, do NOT classify it as a confirmed decision.
+
+4. ACTIONS ARE NOT DECISIONS
+If a person is assigned or commits to performing work, classify it as
+an ACTION ITEM, not a DECISION.
+
+5. UNRESOLVED ISSUES, RISKS & CONSTRAINTS
 Include matters that remain:
-- pending
-- undecided
-- awaiting approval
-- unresolved
+- pending or undecided
+- awaiting approval or external sign-off (e.g. "20% discount requires sign-off from Finance")
+- active technical or operational risks being monitored/mitigated (e.g. "Database latency spikes during peak hours (3-5s delays for ~5% of users)", "Anticipated 30% increase in support ticket volume")
+- unresolved, unconfirmed, or blocked
+
+Do NOT classify action items as unresolved issues.
+Do NOT classify confirmed decisions as unresolved issues.
 - unconfirmed
-Format: A flat array of strings (e.g., ["Guest's travel plans", "Budget approval"]).
+- blocked
+- dependent on another event
+
 Do NOT classify action items as unresolved issues.
 Do NOT classify confirmed decisions as unresolved issues.
 
-5. DISTINGUISH THE THREE (STRICT MUTUAL EXCLUSIVITY)
-Use this rule:
-ACTION = something someone must do (e.g., "Book the auditorium", "Set up the registration desk", "Coordinate with campus security").
-DECISION = something the group agreed/approved/confirmed/settled (e.g., "Finalize the event date").
-UNRESOLVED ISSUE = something that is still pending/not settled (e.g., "Guest's travel plans", "Budget approval").
-Never list an item under more than one category.
+6. STRICT MUTUAL EXCLUSIVITY
+Each extracted item must belong to ONE category only:
 
-6. EVIDENCE
-When possible, base each extracted item directly on transcript wording.
-Do not infer missing information.
+ACTION ITEM:
+Something someone must do.
 
-7. DEADLINES
-Keep deadlines separate from task text.
-Example 1:
-"Bob will prepare the deployment scripts by Friday."
+DECISION:
+Something the group has settled or agreed.
+
+UNRESOLVED ISSUE:
+Something that remains unresolved or pending.
+
+Never put the same semantic item into multiple categories.
+
+7. CONDITIONAL DATES
+A date used as a condition or threshold is NOT automatically the
+deadline of an action item.
+
+Example:
+"If CRM attribution is not ready by September 30, we'll use UTM tracking."
+
+Correct interpretation:
+- Risk/threshold date = September 30.
+- Fallback = UTM-only tracking.
+- The date is NOT automatically the deadline for:
+  "Follow up with CRM."
+
+Do not convert conditional dates into task deadlines unless the
+transcript explicitly states that the task itself must be completed
+by that date.
+
+8. MULTIPLE COMMITMENTS
+Extract every independent commitment from a speaker's turn.
+
+Example:
+"I'll finalize the media plan. I'll also chase the CRM team."
+
 Correct:
-task: "Prepare the deployment scripts"
-owner: "Bob"
-deadline: "Friday"
-status: "pending"
+Action 1:
+  task = "Finalize the media plan"
 
-Example 2:
-"Meera: I'll set up the registration desk sometime next week."
+Action 2:
+  task = "Chase the CRM team"
+
+Do NOT stop after extracting the first commitment.
+
+9. FOLLOW-UP MEETINGS
+A scheduled future meeting is normally a FOLLOW-UP EVENT, not a
+strategic decision and not an action item.
+
+Example:
+"Let's reconvene next Thursday to review the draft."
+
+Do NOT create:
+action = "Review the draft"
+
+Do NOT create:
+decision = "Review the draft"
+
+The meeting itself may be mentioned in the summary, but there is no
+separate event field in the required JSON schema.
+
+10. EVIDENCE
+Base every extracted item directly on transcript evidence.
+
+Do not infer:
+- missing owners
+- missing deadlines
+- implied approvals
+- implied task completion
+- causal relationships between risks and actions
+
+If the transcript does not explicitly support an attribute, use null.
+
+11. DEADLINE SEPARATION
+Always keep deadline information separate from task text.
+
+Example:
+Transcript:
+"Rahul will send the beta summary by September 23."
+
 Correct:
-task: "Set up the registration desk"
-owner: "Meera"
-deadline: "sometime next week"
-status: "pending"
+task = "Send the beta summary"
+owner = "Rahul Mehta"
+deadline = "September 23"
 
-8. OWNERS
-Never assign ownership merely because a person discussed a topic.
-Only assign an owner when the transcript explicitly indicates responsibility (speaker commitment or direct assignment).
+Incorrect:
+task = "Send the beta summary by September 23"
 
-9. TENSE
-Preserve whether something is planned, pending, or completed.
-Do not change "will prepare" into "prepared".
+12. OWNER RESOLUTION
+Resolve first-person commitments using the speaker identity.
 
-10. OUTPUT
+Example:
+Rahul Mehta:
+"I'll send the beta summary by September 23."
+
+Correct:
+owner = "Rahul Mehta"
+
+Do not use null when the speaker's identity is clearly known.
+
+13. NO HALLUCINATED ACTIONS
+Do not create an action merely because:
+- something was discussed
+- something was recommended
+- something was agreed
+- a risk exists
+- a future meeting was scheduled
+- a person was mentioned
+
+There must be an actual commitment or assignment.
+
+14. RISK/MITIGATION RELATIONSHIPS
+Do not automatically treat a nearby action as the mitigation for a risk.
+
+Example:
+Risk:
+"Beta feedback may change positioning."
+
+Action:
+"Rahul will send beta insights."
+
+Do NOT automatically state that Rahul's action eliminates or mitigates
+the risk unless the transcript explicitly establishes that relationship.
+
+15. FINAL SELF-CHECK
+Before returning JSON, verify:
+
+- Every action is a real concrete commitment.
+- No confirmed decision appears as an action.
+- No action appears as a decision.
+- No follow-up meeting is incorrectly converted into an action.
+- Every owner is supported by the transcript.
+- Every deadline is explicitly supported.
+- Conditional/threshold dates are not incorrectly used as task deadlines.
+- Multiple commitments from one speaker are all extracted.
+- No invented facts are present.
+- Task text contains no deadline words.
+- Each semantic item appears in only one category.
+
+### OUTPUT
+
 Return ONLY valid JSON in exactly this structure:
 
 {{
@@ -103,7 +267,8 @@ Return ONLY valid JSON in exactly this structure:
   "unresolved_issues": []
 }}
 
-No markdown formatting (do NOT use ``` or ```json).
+No markdown formatting.
+Do NOT use ``` or ```json.
 No explanations outside the JSON.
 No extra fields.
 

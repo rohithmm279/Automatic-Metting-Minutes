@@ -1,107 +1,170 @@
 import React, { useState } from 'react';
 import { Icon } from '../components/icons/Icons';
+import EvidenceDrawer from '../components/drawer/EvidenceDrawer';
 
 export default function IssuesView({ issues = [], onSelectMeeting }) {
   const [search, setSearch] = useState('');
+  const [selectedSeverity, setSelectedSeverity] = useState('all');
+  const [resolvedIds, setResolvedIds] = useState(new Set());
+  const [selectedEvidence, setSelectedEvidence] = useState(null);
+
+  // Assign deterministic severity based on keywords if not provided
+  const getSeverity = (text) => {
+    const lower = (text || '').toLowerCase();
+    if (lower.includes('security') || lower.includes('budget') || lower.includes('gateway') || lower.includes('cancel') || lower.includes('emergency') || lower.includes('critical')) {
+      return 'critical';
+    }
+    if (lower.includes('approval') || lower.includes('speaker') || lower.includes('auditorium') || lower.includes('venue') || lower.includes('permit') || lower.includes('booking')) {
+      return 'high';
+    }
+    if (lower.includes('quote') || lower.includes('pricing') || lower.includes('catering') || lower.includes('wifi') || lower.includes('vendor')) {
+      return 'medium';
+    }
+    return 'low';
+  };
+
+  const handleToggleResolve = (id) => {
+    setResolvedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
 
   const filtered = issues.filter((i) => {
+    const severity = getSeverity(i.issue);
+    if (selectedSeverity !== 'all' && severity !== selectedSeverity) return false;
+
     if (!search.trim()) return true;
     const q = search.toLowerCase();
     return (i.issue && i.issue.toLowerCase().includes(q)) || String(i.meeting_id).includes(q);
   });
 
+  const criticalCount = issues.filter((i) => getSeverity(i.issue) === 'critical').length;
+  const highCount = issues.filter((i) => getSeverity(i.issue) === 'high').length;
+  const mediumCount = issues.filter((i) => getSeverity(i.issue) === 'medium').length;
+
   return (
-    <div>
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        marginBottom: 'var(--space-6)',
-        flexWrap: 'wrap',
-        gap: 'var(--space-4)'
-      }}>
+    <div className="issues-view-page">
+      {/* 1. Header */}
+      <div className="issues-header-flex">
         <div>
-          <h1 style={{ fontSize: '1.75rem', fontWeight: 700, letterSpacing: '-0.02em', color: 'var(--text-primary)' }}>
-            Open Issues & Unresolved Blockers
-          </h1>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', marginTop: '2px' }}>
-            Items that remain undecided, blocked, or awaiting administrative confirmation ({issues.length} active issues)
+          <h1 className="issues-main-title">Open Issues & Risk Register</h1>
+          <p className="issues-subtitle">
+            Active organizational blockers, missing approvals, and risk dependencies ({issues.length} active blockers)
           </p>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: '260px' }}>
+        <div className="issues-search-box">
           <Icon name="search" size={15} style={{ color: 'var(--text-muted)' }} />
           <input
             type="text"
             className="s5-input"
-            placeholder="Search open blockers or meeting ID..."
+            placeholder="Search open blockers..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            style={{ padding: '7px 12px', fontSize: '0.82rem' }}
           />
         </div>
       </div>
 
+      {/* 2. Severity Filter Tabs */}
+      <div className="s5-card issues-toolbar-card">
+        <div className="issues-tabs-list">
+          {[
+            { id: 'all', label: `All (${issues.length})` },
+            { id: 'critical', label: `🔴 Critical (${criticalCount})` },
+            { id: 'high', label: `🟠 High (${highCount})` },
+            { id: 'medium', label: `🟡 Medium (${mediumCount})` },
+          ].map((tab) => (
+            <button
+              key={tab.id}
+              type="button"
+              className={`s5-btn s5-btn-sm ${selectedSeverity === tab.id ? 's5-btn-primary' : 's5-btn-secondary'}`}
+              onClick={() => setSelectedSeverity(tab.id)}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* 3. List */}
       {filtered.length === 0 ? (
         <div className="s5-empty-state">
           <div className="s5-empty-icon" style={{ color: 'var(--semantic-green)' }}>
             <Icon name="check-circle" size={24} />
           </div>
           <div className="s5-empty-title">
-            {search ? 'No matching issues found' : 'Zero Open Blockers'}
+            {search ? 'No matching blockers' : 'Zero Open Blockers'}
           </div>
           <p className="s5-empty-desc">
             {search
               ? `No unresolved blocker matches "${search}".`
-              : 'All discussed topics have either been resolved into actions or ratified into decisions.'}
+              : 'All discussed risks have either been resolved or ratified into decisions.'}
           </p>
         </div>
       ) : (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
-          {filtered.map((item) => (
-            <div key={item.id} className="s5-card" style={{ padding: '16px 20px', borderLeft: '3px solid var(--semantic-red)' }}>
-              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '16px' }}>
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                  <div style={{
-                    width: '24px',
-                    height: '24px',
-                    borderRadius: '50%',
-                    background: 'var(--semantic-red-bg)',
-                    border: '1px solid var(--semantic-red-border)',
-                    color: '#F87171',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginTop: '2px',
-                    flexShrink: 0
-                  }}>
-                    <Icon name="issues" size={13} />
-                  </div>
-                  <div>
-                    <div style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--text-primary)', lineHeight: 1.45 }}>
-                      {item.issue}
-                    </div>
-                    <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <span>Raised in</span>
+        <div className="issues-stack">
+          {filtered.map((item) => {
+            const severity = getSeverity(item.issue);
+            const isResolved = resolvedIds.has(item.id);
+
+            return (
+              <div
+                key={item.id}
+                className={`s5-card issue-risk-card severity-card-${severity} ${isResolved ? 'issue-resolved' : ''}`}
+              >
+                <div className="issue-card-main">
+                  <div className="issue-card-top-row">
+                    <span className={`issue-severity-pill severity-${severity}`}>
+                      {severity.toUpperCase()} RISK
+                    </span>
+                    <span className="issue-meeting-tag">
+                      Raised in{' '}
                       <button
-                        className="s5-btn s5-btn-ghost s5-btn-sm"
+                        type="button"
+                        className="issue-meeting-link"
                         onClick={() => onSelectMeeting(item.meeting_id)}
-                        style={{ padding: '0 4px', color: 'var(--accent-primary)', fontFamily: 'var(--font-mono)' }}
                       >
                         Meeting #{item.meeting_id} →
                       </button>
-                    </div>
+                    </span>
                   </div>
+
+                  <h3 className="issue-title-heading">{item.issue}</h3>
                 </div>
 
-                <span className="s5-badge s5-badge-overdue" style={{ flexShrink: 0 }}>
-                  Awaiting Resolution
-                </span>
+                <div className="issue-card-actions-row">
+                  <button
+                    type="button"
+                    className="issue-evidence-btn"
+                    onClick={() => setSelectedEvidence(item)}
+                  >
+                    ✦ Grounding Quote
+                  </button>
+
+                  <button
+                    type="button"
+                    className={`issue-resolve-btn ${isResolved ? 'resolved' : ''}`}
+                    onClick={() => handleToggleResolve(item.id)}
+                  >
+                    {isResolved ? '✓ Resolved' : 'Mark as Resolved'}
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
+
+      {/* Grounding Inspector Drawer */}
+      <EvidenceDrawer
+        isOpen={Boolean(selectedEvidence)}
+        onClose={() => setSelectedEvidence(null)}
+        item={selectedEvidence}
+        type="issue"
+      />
     </div>
   );
 }
