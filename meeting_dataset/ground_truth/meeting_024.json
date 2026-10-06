@@ -1,0 +1,54 @@
+{
+  "summary": "Brainstorm with 7 attendees. 5 decision(s): Stay with Java for the backend; Keep the existing logo; Keep the weekly meeting in the evening. 5 open issue(s): Choice between round robin and knockout for the contest format undecided, pending Ravi's input on Tuesday; Training start on the 12th tentative, pending lab access; Registration opening on Monday tentative, pending form approval. 5 pending and 0 completed action item(s), 1 without an owner.",
+  "action_items": [
+    {
+      "task": "Design the poster",
+      "owner": "Priya",
+      "deadline": "by end of day",
+      "deadline_iso": "2026-10-08",
+      "status": "pending"
+    },
+    {
+      "task": "Label the sample transcripts",
+      "owner": null,
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Renew the domain",
+      "owner": "Swetha",
+      "deadline": "before the demo",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Upload the code to the repository",
+      "owner": "Imran",
+      "deadline": "by next Friday",
+      "deadline_iso": "2026-10-16",
+      "status": "pending"
+    },
+    {
+      "task": "Compile the final report",
+      "owner": "Deepak",
+      "deadline": "by Wednesday",
+      "deadline_iso": "2026-10-14",
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Stay with Java for the backend",
+    "Keep the existing logo",
+    "Keep the weekly meeting in the evening",
+    "Keep the workshop at two hours",
+    "Close registration on the original date"
+  ],
+  "unresolved_issues": [
+    "Choice between round robin and knockout for the contest format undecided, pending Ravi's input on Tuesday",
+    "Training start on the 12th tentative, pending lab access",
+    "Registration opening on Monday tentative, pending form approval",
+    "Choice between Saturday and Sunday for the hackathon date undecided, pending Prof. Anand's input on Wednesday",
+    "Choice between a hybrid format and a fully offline format for the event format undecided, pending Dr. Lakshmi's input on Tuesday"
+  ]
+}

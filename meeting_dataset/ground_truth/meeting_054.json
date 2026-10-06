@@ -1,0 +1,41 @@
+{
+  "summary": "Brainstorm with 7 attendees. 8 decision(s): Go digital only, no printed brochures; Use the shared drive for all documents; Freeze the feature list. 3 open issue(s): Choice between Seminar Hall A and the auditorium for the venue undecided, pending Ravi's input on Monday; Choice between Postgres and MongoDB for the database undecided, pending Dr. Lakshmi's input on Tuesday; Budget is not yet approved. 3 pending and 0 completed action item(s), 0 without an owner.",
+  "action_items": [
+    {
+      "task": "Print the certificates",
+      "owner": "Pooja",
+      "deadline": "when the hall is confirmed",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Draft the press note",
+      "owner": "Imran",
+      "deadline": "after the review",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Test the prototype",
+      "owner": "Pooja",
+      "deadline": "next month",
+      "deadline_iso": "2026-12-01/2026-12-31",
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Go digital only, no printed brochures",
+    "Use the shared drive for all documents",
+    "Freeze the feature list",
+    "Use the dark theme for the poster",
+    "Hold demo day in the lab",
+    "Give certificates to all participants",
+    "No catering",
+    "Use Postgres for the database"
+  ],
+  "unresolved_issues": [
+    "Choice between Seminar Hall A and the auditorium for the venue undecided, pending Ravi's input on Monday",
+    "Choice between Postgres and MongoDB for the database undecided, pending Dr. Lakshmi's input on Tuesday",
+    "Budget is not yet approved"
+  ]
+}

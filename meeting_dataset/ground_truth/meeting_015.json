@@ -1,0 +1,76 @@
+{
+  "summary": "Sprint planning with 6 attendees. 9 decision(s): Hold demo day in the lab; Freeze the feature list; Record all sessions. 2 open issue(s): Helpdesk coverage for day two undecided; Choice between a hybrid format and a fully offline format for the event format undecided, pending Ravi's input on Wednesday. 7 pending and 1 completed action item(s), 1 without an owner.",
+  "action_items": [
+    {
+      "task": "Write the API documentation",
+      "owner": null,
+      "deadline": "by end of day",
+      "deadline_iso": "2026-11-18",
+      "status": "pending"
+    },
+    {
+      "task": "Label the sample transcripts",
+      "owner": "Anjali",
+      "deadline": "by Friday",
+      "deadline_iso": "2026-11-20",
+      "status": "pending"
+    },
+    {
+      "task": "Compile the final report",
+      "owner": "Aarav",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Fix the login bug",
+      "owner": "Lena",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Deploy the staging build",
+      "owner": "Lena",
+      "deadline": "once the budget is approved",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Update the README",
+      "owner": "Arun",
+      "deadline": "by Monday",
+      "deadline_iso": "2026-11-23",
+      "status": "pending"
+    },
+    {
+      "task": "Prepare the demo script",
+      "owner": "Pooja",
+      "deadline": "by the end of the month",
+      "deadline_iso": "2026-11-30",
+      "status": "pending"
+    },
+    {
+      "task": "Test the prototype",
+      "owner": "Aarav",
+      "deadline": "by Thursday",
+      "deadline_iso": "2026-11-19",
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Hold demo day in the lab",
+    "Freeze the feature list",
+    "Record all sessions",
+    "Limit each pitch to five minutes",
+    "Name the event Code Sprint",
+    "Use Postgres for the database",
+    "Close registration on the original date",
+    "Print brochures in black and white",
+    "Hold the event on Friday"
+  ],
+  "unresolved_issues": [
+    "Helpdesk coverage for day two undecided",
+    "Choice between a hybrid format and a fully offline format for the event format undecided, pending Ravi's input on Wednesday"
+  ]
+}

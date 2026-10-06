@@ -1,0 +1,83 @@
+# meeting_003 | style: project_review | date: 2026-12-01 (Tuesday) | attendees: Tom, Anjali, Deepak, Nisha, Arun, Aarav, Divya
+Tom: Let's start the project review and go through where we stand.
+Deepak: Can everyone see my screen?
+Anjali: Okay, moving on.
+Anjali: Parking arrangements for guests are still open.
+Tom: Let's park it for now.
+Anjali: Yeah, I agree with that.
+Anjali: Should we pick Saturday or Sunday for the hackathon date?
+Deepak: I lean Saturday, but let's confirm with Ravi first.
+Anjali: So, Ravi is out till Monday, so we decide then.
+Aarav: Fair enough.
+Deepak: The Wi-Fi here is terrible again.
+Arun: So, I'll print the brochures.
+Arun: Actually no, forget it, we're going digital only.
+Anjali: Okay, then we skip it.
+Divya: Aarav, can you label the sample transcripts?
+Aarav: Yes, will do.
+Aarav: Sorry, I was on mute.
+Anjali: Right, that makes sense.
+Aarav: Wait, can I--
+Divya: Go ahead.
+Aarav: Never mind, it can wait.
+Arun: Nobody knows who is judging the final round.
+Divya: Let's park it for now.
+Aarav: Did anyone watch the match last night?
+Deepak: Let's keep the discussion focused.
+Aarav: Wait, can I--
+Deepak: Go ahead.
+Aarav: Never mind, it can wait.
+Deepak: Who's going to benchmark the model by end of day?
+Tom: Let's see who has time.
+Aarav: The latest numbers look better than last week.
+Anjali: Okay, next point.
+Nisha: I can clean the training dataset.
+Nisha: It's so hot in this room today.
+Divya: Let me pull up the notes.
+Divya: Should we pick Seminar Hall A or the auditorium for the venue?
+Arun: I lean Seminar Hall A, but let's confirm with Dr. Lakshmi first.
+Divya: Dr. Lakshmi is out till Friday, so we decide then.
+Tom: Divya is going to renew the domain by Wednesday.
+Divya: So, yes, that's right.
+Arun: Hmm, interesting.
+Anjali: Wait, can I--
+Tom: Um, go ahead.
+Anjali: Never mind, it can wait.
+Deepak: I'll compile the final report next month --
+Nisha: Actually, this weekend, I just checked the calendar.
+Deepak: Okay, this weekend.
+Anjali: I'll leave the details for the report.
+Arun: We still need to fix the login bug by Thursday, but nobody has picked it up.
+Tom: Yeah, that's true.
+Aarav: Um, the Wi-Fi here is terrible again.
+Deepak: Who's going to check the audio setup by Wednesday?
+Aarav: Let's see who has time.
+Anjali: Yeah, I agree with that.
+Deepak: Should we pick Whisper or a cloud speech API for speech-to-text?
+Tom: I lean Whisper, but let's confirm with Mr. Selvam first.
+Deepak: Mr. Selvam is out till Friday, so we decide then.
+Tom: Right, that makes sense.
+Divya: Let me pull up the notes.
+Deepak: Wait, can I--
+Nisha: Go ahead.
+Deepak: Never mind, it can wait.
+Tom: Anjali, you set up the Slack channel in two days.
+Anjali: Nisha knows that part better, honestly.
+Tom: Fair enough. Nisha, you take it.
+Nisha: Okay.
+Tom: Fair enough.
+Divya: Okay, moving on.
+Nisha: Wait, can I--
+Tom: Go ahead.
+Nisha: Never mind, it can wait.
+Tom: We could set up the registration page if we had more people, but we don't.
+Nisha: True, let's leave it.
+Aarav: Let's limit each pitch to five minutes.
+Tom: Fine by me.
+Nisha: I'll leave the details for the report.
+Deepak: Did anyone watch the match last night?
+Aarav: Arun, could you test the mobile layout by Thursday?
+Arun: Yes, no problem.
+Deepak: We don't know how many people will actually turn up.
+Aarav: We'll revisit it.
+Tom: Okay, that covers the review.

@@ -1,0 +1,47 @@
+{
+  "summary": "Club event planning with 4 attendees. 2 decision(s): Hold the event on Friday; Name the event Code Sprint. 1 open issue(s): Training start on the 12th tentative, pending lab access. 5 pending and 0 completed action item(s), 1 without an owner.",
+  "action_items": [
+    {
+      "task": "Submit the permission letter",
+      "owner": "Naveen",
+      "deadline": "by Thursday",
+      "deadline_iso": "2026-11-05",
+      "status": "pending"
+    },
+    {
+      "task": "Verify the attendance sheet",
+      "owner": null,
+      "deadline": "today",
+      "deadline_iso": "2026-11-02",
+      "status": "pending"
+    },
+    {
+      "task": "Send the agenda",
+      "owner": "Swetha",
+      "deadline": "by Thursday",
+      "deadline_iso": "2026-11-05",
+      "status": "pending"
+    },
+    {
+      "task": "Collect the volunteer list",
+      "owner": "Nisha",
+      "deadline": "tomorrow",
+      "deadline_iso": "2026-11-03",
+      "status": "pending"
+    },
+    {
+      "task": "Update the budget sheet",
+      "owner": "Nisha",
+      "deadline": "by the end of the month",
+      "deadline_iso": "2026-11-30",
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Hold the event on Friday",
+    "Name the event Code Sprint"
+  ],
+  "unresolved_issues": [
+    "Training start on the 12th tentative, pending lab access"
+  ]
+}

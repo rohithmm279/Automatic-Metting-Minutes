@@ -1,0 +1,57 @@
+{
+  "summary": "Retrospective with 5 attendees. 3 decision(s): Use Postgres for the database; Give certificates to all participants; Use the shared drive for all documents. 3 open issue(s): Budget is not yet approved; Lab access letter still unsigned; Training start on the 12th tentative, pending lab access. 5 pending and 1 completed action item(s), 1 without an owner.",
+  "action_items": [
+    {
+      "task": "Email the faculty coordinator",
+      "owner": "Dev",
+      "deadline": "in two days",
+      "deadline_iso": "2026-09-27",
+      "status": "pending"
+    },
+    {
+      "task": "Migrate the database",
+      "owner": "Swetha",
+      "deadline": "yesterday",
+      "deadline_iso": "2026-09-24",
+      "status": "completed"
+    },
+    {
+      "task": "Set up the CI pipeline",
+      "owner": "Priya",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Collect the registration forms",
+      "owner": "Swetha",
+      "deadline": "by Monday",
+      "deadline_iso": "2026-09-28",
+      "status": "pending"
+    },
+    {
+      "task": "Check the audio setup",
+      "owner": "Dev",
+      "deadline": "by Monday",
+      "deadline_iso": "2026-09-28",
+      "status": "pending"
+    },
+    {
+      "task": "Test the mobile layout",
+      "owner": null,
+      "deadline": "by Wednesday",
+      "deadline_iso": "2026-09-30",
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Use Postgres for the database",
+    "Give certificates to all participants",
+    "Use the shared drive for all documents"
+  ],
+  "unresolved_issues": [
+    "Budget is not yet approved",
+    "Lab access letter still unsigned",
+    "Training start on the 12th tentative, pending lab access"
+  ]
+}

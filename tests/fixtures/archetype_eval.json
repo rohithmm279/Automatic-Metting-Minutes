@@ -1,0 +1,52 @@
+[
+  {
+    "id": "corporate_sync_01",
+    "archetype": "corporate_sync",
+    "transcript": "Date: September 22, 2026\nMaya: We approved the Q4 launch for October 18.\nJordan: I will send the launch checklist by September 25.\nMaya: Legal approval for the privacy copy is still pending.",
+    "ground_truth": {
+      "action_items": [{"task": "Send the launch checklist", "owner": "Jordan", "deadline": "2026-09-25"}],
+      "decisions": ["Approved the Q4 launch for October 18"],
+      "unresolved_issues": ["Legal approval for the privacy copy is pending"]
+    }
+  },
+  {
+    "id": "student_casual_01",
+    "archetype": "student_casual",
+    "transcript": "Date: September 22, 2026\nRiya: Maybe we can use the courtyard, but we should check with the coordinator first.\nDev: I can draft the poster by Friday.\nRiya: The event format is settled: a morning workshop and afternoon demos.",
+    "ground_truth": {
+      "action_items": [{"task": "Draft the poster", "owner": "Dev", "deadline": "2026-09-25"}],
+      "decisions": ["Use a morning workshop and afternoon demos as the event format"],
+      "unresolved_issues": ["Courtyard venue requires coordinator confirmation"]
+    }
+  },
+  {
+    "id": "technical_design_01",
+    "archetype": "technical_design",
+    "transcript": "Date: September 22, 2026\nArun: We will use PostgreSQL for the event service.\nPriya: I will document the migration steps by September 29.\nArun: We still need load-test results before production approval.",
+    "ground_truth": {
+      "action_items": [{"task": "Document the migration steps", "owner": "Priya", "deadline": "2026-09-29"}],
+      "decisions": ["Use PostgreSQL for the event service"],
+      "unresolved_issues": ["Load-test results are needed before production approval"]
+    }
+  },
+  {
+    "id": "sales_01",
+    "archetype": "sales",
+    "transcript": "Date: September 22, 2026\nElena: We agreed to offer the annual plan at $1,200.\nMarcus: I will email the revised quote tomorrow.\nElena: The customer has not confirmed the procurement timeline.",
+    "ground_truth": {
+      "action_items": [{"task": "Email the revised quote", "owner": "Marcus", "deadline": "2026-09-23"}],
+      "decisions": ["Offer the annual plan at $1,200"],
+      "unresolved_issues": ["Customer procurement timeline is unconfirmed"]
+    }
+  },
+  {
+    "id": "approval_dependent_01",
+    "archetype": "student_casual",
+    "transcript": "Date: September 22, 2026\nNikhil: Tentatively hold October 7, pending faculty approval.\nSara: I will contact the faculty coordinator tomorrow.\nNikhil: We agreed on a one-day event with talks and project presentations.",
+    "ground_truth": {
+      "action_items": [{"task": "Contact the faculty coordinator", "owner": "Sara", "deadline": "2026-09-23"}],
+      "decisions": ["Hold a one-day event with talks and project presentations"],
+      "unresolved_issues": ["October 7 event date is pending faculty approval"]
+    }
+  }
+]

@@ -2,6 +2,7 @@
 
 import json
 import logging
+import re
 from typing import Optional
 
 from app.schemas.meeting_schema import DecisionItem
@@ -48,11 +49,11 @@ class DecisionAgent:
 
         for d in raw_decisions:
             if isinstance(d, dict):
-                dec_text = str(d.get("decision", "")).strip()
+                dec_text = re.sub(r"^decision\s*[-:–—]\s*", "", str(d.get("decision", "")).strip(), flags=re.IGNORECASE)
                 conf = float(d.get("confidence", 1.0)) if d.get("confidence") is not None else 1.0
                 evidence = str(d.get("evidence", "")).strip() or None
             elif isinstance(d, str):
-                dec_text = d.strip()
+                dec_text = re.sub(r"^decision\s*[-:–—]\s*", "", d.strip(), flags=re.IGNORECASE)
                 conf = 1.0
                 evidence = None
             else:
@@ -99,9 +100,12 @@ STRICT DECISION RULES:
    - NEVER list an Action Item, individual assignment, or deliverable handoff under Decisions. Key Decisions describe structural policies, milestone dates, vendors, or designs.
 3. Include ALL confirmed strategic choices, launch date policies, milestone/freeze agreements, technical scope alignments, and spending policies explicitly agreed, approved, confirmed, finalized, or decided by the group/leads.
 4. REJECT PROPOSALS & SPECULATION: DO NOT treat mere suggestions, contested proposals, possibilities, open discussion, or preferences as decisions.
-5. OPEN ISSUES & RISKS (ZERO-RISK HANDLING): Matters that were left open, undecided, awaiting approval, or flagged as active risks in this meeting transcript.
+    - DEFERRALS ARE NOT DECISIONS: Statements such as "we have not finalized the date", "let's decide based on the poll", "we'll confirm later", "tentatively Friday", or "not decided yet" are unresolved issues/pending inputs, NEVER Key Decisions.
+5. OPEN ISSUES & RISKS (ZERO-RISK HANDLING & ROUTINE MONITORING RULE): Matters that were left open, undecided, awaiting approval, or flagged as active risks in this meeting transcript.
+   - ROUTINE MONITORING VS. RISK: General statements like "Let's monitor the logs", "Keep an eye on metrics", or routine operational checks are ongoing operational follow-ups, NOT Open Issues or Risks. Only log explicit blockers, unresolved bugs, or threats to timelines as Open Issues/Risks.
    - ZERO DATA CONTAMINATION & ZERO-RISK HANDLING: If no open issues or risks are present in this transcript, output an empty array []. NEVER generate a dummy risk item containing text like "No issues identified" or "No issues found". NEVER copy example text or invent risks/issues from other meetings.
-6. evidence: Provide a verbatim quote from the transcript confirming the decision.
+6. FORMAT: If a source item begins with an operational label such as "Decision –" or "Decision:", remove that label from the returned decision string. Return the decision as clean prose.
+7. evidence: Provide a verbatim quote from the transcript confirming the decision.
 
 Return STRICT JSON only:
 {{

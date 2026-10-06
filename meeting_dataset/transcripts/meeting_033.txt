@@ -1,0 +1,63 @@
+# meeting_033 | style: project_review | date: 2026-10-20 (Tuesday) | attendees: Priya, Dev, Harini, Manoj, Lena, Faizal, Anjali
+Priya: Let's start the project review and go through where we stand.
+Anjali: Let me pull up the notes.
+Faizal: Priya, can you check the audio setup by end of day?
+Priya: Sure, I'll do that.
+Faizal: The latest numbers look better than last week.
+Manoj: Did anyone migrate the database?
+Harini: I did, yesterday.
+Anjali: Wait, can I--
+Faizal: So, go ahead.
+Anjali: Never mind, it can wait.
+Harini: Maybe we should cut the workshop to one hour.
+Manoj: No, let's keep the full two hours.
+Harini: Okay, fair.
+Dev: Quick update: I've fixed the login bug.
+Dev: Anjali is going to write the unit tests by Thursday.
+Anjali: Right, that's me.
+Anjali: It's so hot in this room today.
+Anjali: Wait, can I--
+Faizal: Go ahead.
+Anjali: Never mind, it can wait.
+Anjali: How do we handle late registrations? No idea yet.
+Harini: Yeah, that's a worry.
+Lena: I'll label the sample transcripts by Monday.
+Manoj: So, sorry, make it today, the review is before that.
+Lena: Right, today then.
+Anjali: Did anyone watch the match last night?
+Priya: Okay, next point.
+Faizal: Dev will benchmark the model by Thursday, right?
+Dev: Right, that's me.
+Manoj: I'll leave the details for the report.
+Lena: I'll create the souvenir kits.
+Lena: Actually no, forget it, we don't have the funds.
+Manoj: Okay, then we skip it.
+Faizal: Wait, can I--
+Priya: Go ahead.
+Faizal: Never mind, it can wait.
+Dev: If I get time, I might renew the domain.
+Harini: Okay, no pressure.
+Lena: Okay, moving on.
+Harini: Manoj, can you prepare the slides by Thursday?
+Manoj: No problem.
+Harini: We could upload the code to the repository if we had more people, but we don't.
+Dev: True, let's leave it.
+Anjali: Fair enough.
+Dev: Hmm, interesting.
+Anjali: Did anyone test the prototype?
+Faizal: I've already tested the prototype.
+Anjali: Right, that makes sense.
+Manoj: I'd like Priya to clean the training dataset by end of day.
+Priya: Okay, noted.
+Anjali: Yeah, so can everyone see my screen?
+Harini: Quick update: I've prepared the demo script.
+Priya: Let's keep the discussion focused.
+Faizal: Did anyone set up the registration page?
+Anjali: I did, yesterday.
+Manoj: The Wi-Fi here is terrible again.
+Manoj: Let's hold the kickoff meeting on the 15th.
+Harini: Fine by me.
+Lena: Sorry, I was on mute.
+Anjali: So, I'd like Faizal to set up the Slack channel by tomorrow.
+Faizal: Okay, noted.
+Priya: Okay, that covers the review.

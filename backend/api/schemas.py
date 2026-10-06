@@ -106,6 +106,10 @@ class CreateMeetingResponse(BaseModel):
     decisions: list[DecisionResponse]
     unresolved_issues: list[UnresolvedIssueResponse]
     created_at: str
+    model_name: Optional[str] = None
+    pipeline_name: Optional[str] = None
+    prompt_version: Optional[str] = None
+    fallback_used: bool = False
 
 
 class MeetingListItem(BaseModel):
@@ -122,6 +126,10 @@ class MeetingListItem(BaseModel):
     action_items_count: int
     decisions_count: int
     unresolved_issues_count: int
+    model_name: Optional[str] = None
+    pipeline_name: Optional[str] = None
+    prompt_version: Optional[str] = None
+    fallback_used: bool = False
 
 
 class MeetingDetailResponse(BaseModel):
@@ -139,6 +147,10 @@ class MeetingDetailResponse(BaseModel):
     action_items: list[ActionItemResponse]
     decisions: list[DecisionResponse]
     unresolved_issues: list[UnresolvedIssueResponse]
+    model_name: Optional[str] = None
+    pipeline_name: Optional[str] = None
+    prompt_version: Optional[str] = None
+    fallback_used: bool = False
 
 
 class UpdateActionItemStatusResponse(BaseModel):

@@ -57,3 +57,7 @@ class MeetingAnalysis(BaseModel):
     start_time: Optional[str] = None
     end_time: Optional[str] = None
     created_at: Optional[str] = None
+    model_name: Optional[str] = None
+    pipeline_name: Optional[str] = None
+    prompt_version: Optional[str] = None
+    fallback_used: bool = False

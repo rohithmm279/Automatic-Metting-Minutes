@@ -1,0 +1,86 @@
+{
+  "summary": "Club event planning with 6 attendees. 6 decision(s): Hold demo day in the lab; Print brochures in black and white; No T-shirts this time. 1 open issue(s): API key request still pending with the admin office. 8 pending and 2 completed action item(s), 2 without an owner.",
+  "action_items": [
+    {
+      "task": "Arrange the transport",
+      "owner": "Karthik",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Set up the registration page",
+      "owner": "Karthik",
+      "deadline": "once the budget is approved",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Collect the team photos",
+      "owner": null,
+      "deadline": "when the hall is confirmed",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Arrange the projector",
+      "owner": "Faizal",
+      "deadline": "by Tuesday",
+      "deadline_iso": "2026-12-08",
+      "status": "pending"
+    },
+    {
+      "task": "Schedule the mock interview",
+      "owner": null,
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Update the budget sheet",
+      "owner": "Divya",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Reserve the cafeteria tables",
+      "owner": "Divya",
+      "deadline": "this weekend",
+      "deadline_iso": "2026-12-05/2026-12-06",
+      "status": "pending"
+    },
+    {
+      "task": "Publish the event announcement",
+      "owner": "Karthik",
+      "deadline": "by Thursday",
+      "deadline_iso": "2026-12-03",
+      "status": "pending"
+    },
+    {
+      "task": "Confirm the guest speaker",
+      "owner": "Naveen",
+      "deadline": "in two days",
+      "deadline_iso": "2026-12-04",
+      "status": "pending"
+    },
+    {
+      "task": "Draft the press note",
+      "owner": "Faizal",
+      "deadline": "before the demo",
+      "deadline_iso": null,
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Hold demo day in the lab",
+    "Print brochures in black and white",
+    "No T-shirts this time",
+    "Skip the photo booth",
+    "Drop the souvenir kits",
+    "Close registration on the original date"
+  ],
+  "unresolved_issues": [
+    "API key request still pending with the admin office"
+  ]
+}

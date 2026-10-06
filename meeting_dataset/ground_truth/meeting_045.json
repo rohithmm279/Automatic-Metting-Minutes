@@ -1,0 +1,99 @@
+{
+  "summary": "Sprint planning with 5 attendees. 4 decision(s): Use Postgres for the database; Freeze the feature list; Name the event Code Sprint. 2 open issue(s): Dataset licence unclear; Lab access letter still unsigned. 10 pending and 2 completed action item(s), 2 without an owner.",
+  "action_items": [
+    {
+      "task": "Set up the registration page",
+      "owner": "Nisha",
+      "deadline": "by Monday",
+      "deadline_iso": "2026-09-28",
+      "status": "pending"
+    },
+    {
+      "task": "Set up the Slack channel",
+      "owner": "Dev",
+      "deadline": "by end of day",
+      "deadline_iso": "2026-09-24",
+      "status": "pending"
+    },
+    {
+      "task": "Migrate the database",
+      "owner": "Arun",
+      "deadline": "when the hall is confirmed",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Test the prototype",
+      "owner": "Arun",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Upload the code to the repository",
+      "owner": "Nisha",
+      "deadline": "yesterday",
+      "deadline_iso": "2026-09-23",
+      "status": "completed"
+    },
+    {
+      "task": "Clean the training dataset",
+      "owner": "Harini",
+      "deadline": "by Friday",
+      "deadline_iso": "2026-09-25",
+      "status": "pending"
+    },
+    {
+      "task": "Organise the shared drive",
+      "owner": "Karthik",
+      "deadline": "by Tuesday",
+      "deadline_iso": "2026-09-29",
+      "status": "pending"
+    },
+    {
+      "task": "Share the meeting notes",
+      "owner": "Karthik",
+      "deadline": "tomorrow",
+      "deadline_iso": "2026-09-25",
+      "status": "pending"
+    },
+    {
+      "task": "Fix the login bug",
+      "owner": null,
+      "deadline": "by Friday",
+      "deadline_iso": "2026-09-25",
+      "status": "pending"
+    },
+    {
+      "task": "Benchmark the model",
+      "owner": "Karthik",
+      "deadline": "yesterday",
+      "deadline_iso": "2026-09-23",
+      "status": "completed"
+    },
+    {
+      "task": "Update the README",
+      "owner": null,
+      "deadline": "by Monday",
+      "deadline_iso": "2026-09-28",
+      "status": "pending"
+    },
+    {
+      "task": "Prepare the demo script",
+      "owner": "Harini",
+      "deadline": "after the review",
+      "deadline_iso": null,
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Use Postgres for the database",
+    "Freeze the feature list",
+    "Name the event Code Sprint",
+    "Hold the kickoff meeting on the 15th"
+  ],
+  "unresolved_issues": [
+    "Dataset licence unclear",
+    "Lab access letter still unsigned"
+  ]
+}

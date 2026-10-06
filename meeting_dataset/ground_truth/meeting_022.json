@@ -1,0 +1,41 @@
+{
+  "summary": "Club event planning with 3 attendees. 1 decision(s): Give certificates to all participants. 3 open issue(s): Sponsor has not replied; Judges for the final round not identified; Lab access letter still unsigned. 3 pending and 1 completed action item(s), 1 without an owner.",
+  "action_items": [
+    {
+      "task": "Review the pull request",
+      "owner": "Imran",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Set up the registration page",
+      "owner": null,
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Compile the final report",
+      "owner": "Naveen",
+      "deadline": "by Wednesday",
+      "deadline_iso": "2026-12-16",
+      "status": "pending"
+    },
+    {
+      "task": "Set up the Slack channel",
+      "owner": "Naveen",
+      "deadline": "by Wednesday",
+      "deadline_iso": "2026-12-16",
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Give certificates to all participants"
+  ],
+  "unresolved_issues": [
+    "Sponsor has not replied",
+    "Judges for the final round not identified",
+    "Lab access letter still unsigned"
+  ]
+}

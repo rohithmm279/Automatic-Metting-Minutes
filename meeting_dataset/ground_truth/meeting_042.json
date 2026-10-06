@@ -1,0 +1,82 @@
+{
+  "summary": "Club event planning with 7 attendees. 8 decision(s): Print brochures in black and white; Name the event Code Sprint; Keep the workshop at two hours. 2 open issue(s): Finals date (Saturday) tentative, pending hall availability; Choice between a hybrid format and a fully offline format for the event format undecided, pending Prof. Anand's input on Monday. 9 pending and 0 completed action item(s), 0 without an owner.",
+  "action_items": [
+    {
+      "task": "Confirm the guest speaker",
+      "owner": "Imran",
+      "deadline": "by the end of the month",
+      "deadline_iso": "2026-10-31",
+      "status": "pending"
+    },
+    {
+      "task": "Submit the permission letter",
+      "owner": "Imran",
+      "deadline": "by Friday",
+      "deadline_iso": "2026-10-16",
+      "status": "pending"
+    },
+    {
+      "task": "Reserve the cafeteria tables",
+      "owner": "Kavya",
+      "deadline": "by Wednesday",
+      "deadline_iso": "2026-10-14",
+      "status": "pending"
+    },
+    {
+      "task": "Design the poster",
+      "owner": "Karthik",
+      "deadline": "this weekend",
+      "deadline_iso": "2026-10-17/2026-10-18",
+      "status": "pending"
+    },
+    {
+      "task": "Create the invitation card",
+      "owner": "Kavya",
+      "deadline": "after the review",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Send the agenda",
+      "owner": "Harini",
+      "deadline": "before the demo",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Prepare the judging rubric",
+      "owner": "Arun",
+      "deadline": "before the demo",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Book the seminar hall",
+      "owner": "Imran",
+      "deadline": "by next Friday",
+      "deadline_iso": "2026-10-23",
+      "status": "pending"
+    },
+    {
+      "task": "Arrange the transport",
+      "owner": "Lena",
+      "deadline": "before the demo",
+      "deadline_iso": null,
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Print brochures in black and white",
+    "Name the event Code Sprint",
+    "Keep the workshop at two hours",
+    "Use Google Forms for registration",
+    "No catering",
+    "Skip the photo booth",
+    "Use the hall's built-in sound system",
+    "Meet every Wednesday"
+  ],
+  "unresolved_issues": [
+    "Finals date (Saturday) tentative, pending hall availability",
+    "Choice between a hybrid format and a fully offline format for the event format undecided, pending Prof. Anand's input on Monday"
+  ]
+}

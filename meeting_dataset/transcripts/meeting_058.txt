@@ -1,0 +1,38 @@
+# meeting_058 | style: retrospective | date: 2026-09-28 (Monday) | attendees: Dev, Faizal, Kavya, Lena
+Dev: Let's start the retro, what went well and what didn't?
+Lena: Sorry, I was on mute.
+Faizal: The API key request is still stuck with the admin office.
+Kavya: Let's park it for now.
+Faizal: Um, let me pull up the notes.
+Faizal: That went better than I expected.
+Kavya: Wait, can I--
+Lena: Go ahead.
+Kavya: Never mind, it can wait.
+Lena: I'll review the pull request tomorrow --
+Dev: Actually, next week, I just checked the calendar.
+Lena: Okay, next week.
+Kavya: Yeah, I agree with that.
+Kavya: I'll write the unit tests by Tuesday.
+Lena: Sorry, make it tomorrow, the lab is closed till then.
+Kavya: Right, tomorrow then.
+Kavya: Hmm, interesting.
+Dev: I think we all felt that.
+Kavya: Faizal, can you follow up with the vendor after the review?
+Faizal: I'm swamped this week, sorry.
+Lena: I'll take it.
+Dev: The Wi-Fi here is terrible again.
+Lena: Someone needs to send the agenda by Friday.
+Kavya: I'm not free for that, sorry.
+Lena: Can everyone see my screen?
+Faizal: Let's limit each pitch to five minutes.
+Kavya: Fine by me.
+Faizal: Wait, can I--
+Dev: Go ahead.
+Faizal: Never mind, it can wait.
+Lena: If I get time, I might test the mobile layout.
+Kavya: Okay, no pressure.
+Lena: Wait, can I--
+Kavya: Go ahead.
+Lena: Yeah, so never mind, it can wait.
+Lena: Quick update: I've labelled the sample transcripts.
+Dev: Thanks for the honest feedback.

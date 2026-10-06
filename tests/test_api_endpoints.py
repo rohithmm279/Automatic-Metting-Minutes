@@ -192,6 +192,19 @@ class TestAPIEndpoints(unittest.TestCase):
         resp_missing = self.client.post("/meetings", json={})
         self.assertEqual(resp_missing.status_code, 422)
 
+    def test_09b_unrelated_transcript_is_a_client_error(self):
+        """Unrelated text is rejected as invalid input rather than an AI outage."""
+        self.mock_orchestrator.analyze.side_effect = ValueError(
+            "Input does not look like a meeting transcript. Include at least two speaker turns."
+        )
+        response = self.client.post(
+            "/meetings", json={"transcript": "A recipe for pancakes with blueberries and honey."}
+        )
+        self.assertEqual(response.status_code, 400)
+        self.assertIn("does not look like a meeting transcript", response.json()["detail"])
+        self.mock_orchestrator.analyze.side_effect = None
+        self.mock_orchestrator.analyze.return_value = self.sample_output
+
     def test_10_patch_validation_and_errors(self):
         """Test PATCH errors: invalid status, non-existent item, non-existent meeting."""
         # Create a meeting

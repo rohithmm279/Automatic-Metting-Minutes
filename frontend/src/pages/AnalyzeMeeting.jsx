@@ -123,6 +123,10 @@ export default function AnalyzeMeeting({ onMeetingCreated, onCancel }) {
   const [detectedDate, setDetectedDate] = useState("");
   const [detectedTime, setDetectedTime] = useState("");
   const fileInputRef = useRef(null);
+  const errorMessage = error && typeof error === "object" ? error.message : error;
+  const errorTitle = error && typeof error === "object" && error.status === 400
+    ? "Transcript needs attention"
+    : "Analysis could not be completed";
 
   const handleAnalyzeClick = (e) => {
     if (e) e.preventDefault();
@@ -169,7 +173,10 @@ export default function AnalyzeMeeting({ onMeetingCreated, onCancel }) {
       }
     } catch (err) {
       console.error("Analysis error:", err);
-      setError(err.message || "We could not analyze this meeting. Ensure the backend server and Ollama are active.");
+      setError({
+        message: err.message || "We could not analyze this meeting. Ensure the backend server and Ollama are active.",
+        status: err.status,
+      });
       setIsProcessing(false);
     }
   };
@@ -233,8 +240,8 @@ export default function AnalyzeMeeting({ onMeetingCreated, onCancel }) {
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
             <Icon name="issues" size={18} style={{ color: "var(--semantic-red)" }} />
             <div>
-              <div style={{ fontWeight: 600, color: "#FCA5A5", fontSize: "0.88rem" }}>Analysis could not be completed</div>
-              <div style={{ fontSize: "0.8rem", color: "var(--text-secondary)", marginTop: "2px" }}>{error}</div>
+              <div style={{ fontWeight: 600, color: "#FCA5A5", fontSize: "0.88rem" }}>{errorTitle}</div>
+              <div style={{ fontSize: "0.8rem", color: "var(--text-secondary)", marginTop: "2px" }}>{errorMessage}</div>
             </div>
           </div>
           <button className="s5-btn s5-btn-secondary s5-btn-sm" onClick={() => setError(null)}>Dismiss</button>

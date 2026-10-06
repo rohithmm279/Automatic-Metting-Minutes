@@ -1,0 +1,40 @@
+# meeting_017 | style: faculty_advisor | date: 2026-11-27 (Friday) | attendees: Vikram, Pooja, Naveen, Karthik, Nisha
+Vikram: Good afternoon, shall we begin with the progress update?
+Pooja: We should keep the department's guidelines in mind.
+Karthik: Fair enough.
+Naveen: Did anyone create the social media schedule?
+Vikram: I've already created the social media schedule.
+Vikram: Yeah, so right, that makes sense.
+Naveen: Nisha, can you contact the sponsors?
+Nisha: Yes, I can do that by Thursday.
+Naveen: Should we pick a hybrid format or a fully offline format for the event format?
+Nisha: I lean a hybrid format, but let's confirm with Prof. Anand first.
+Naveen: Prof. Anand is out till Monday, so we decide then.
+Nisha: Fine. I'll write the unit tests today, either way.
+Naveen: Okay, moving on.
+Nisha: Let's tentatively start the training sessions on the 12th, but only if the lab access is sorted.
+Naveen: Right, we'll confirm once we know.
+Karthik: Parking arrangements for guests are still open.
+Nisha: We'll revisit it.
+Karthik: Did anyone set up the registration page?
+Vikram: I've already set up the registration page.
+Karthik: Can everyone see my screen?
+Nisha: Okay, next point.
+Nisha: Nobody knows who is judging the final round.
+Naveen: We'll revisit it.
+Karthik: So, we still need to review the pull request tomorrow, but nobody has picked it up.
+Vikram: Let's see who has time.
+Karthik: That's a fair point.
+Pooja: Let's tentatively open registration on Monday, but only if the form is approved.
+Naveen: Right, we'll confirm once we know.
+Naveen: Sorry, I was on mute.
+Vikram: The Wi-Fi here is terrible again.
+Vikram: Let's run demo day in the lab.
+Karthik: Um, agreed.
+Pooja: Let me pull up the notes.
+Karthik: Pooja, could you write the API documentation next week?
+Pooja: Yes, no problem.
+Nisha: It's so hot in this room today.
+Pooja: The dataset licence is unclear.
+Naveen: Yeah, that's a worry.
+Vikram: Thank you all, that will be all for today.

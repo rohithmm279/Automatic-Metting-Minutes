@@ -1,0 +1,109 @@
+{
+  "summary": "Daily standup with 5 attendees. 0 decision(s): none. 3 open issue(s): Model accuracy still below target; Guest parking arrangements still open; Dataset licence unclear. 7 pending and 7 completed action item(s), 1 without an owner.",
+  "action_items": [
+    {
+      "task": "Upload the code to the repository",
+      "owner": "Aarav",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Set up the registration page",
+      "owner": "Dev",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Set up the Slack channel",
+      "owner": "Pooja",
+      "deadline": "by Thursday",
+      "deadline_iso": "2026-09-17",
+      "status": "pending"
+    },
+    {
+      "task": "Test the prototype",
+      "owner": "Manoj",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Check the audio setup",
+      "owner": null,
+      "deadline": "by Monday",
+      "deadline_iso": "2026-09-21",
+      "status": "pending"
+    },
+    {
+      "task": "Benchmark the model",
+      "owner": "Vikram",
+      "deadline": "by the end of the month",
+      "deadline_iso": "2026-09-30",
+      "status": "pending"
+    },
+    {
+      "task": "Send the agenda",
+      "owner": "Pooja",
+      "deadline": "by next Friday",
+      "deadline_iso": "2026-09-25",
+      "status": "pending"
+    },
+    {
+      "task": "Set up the CI pipeline",
+      "owner": "Vikram",
+      "deadline": "by Thursday",
+      "deadline_iso": "2026-09-17",
+      "status": "pending"
+    },
+    {
+      "task": "Prepare the demo script",
+      "owner": "Pooja",
+      "deadline": "in three days",
+      "deadline_iso": "2026-09-19",
+      "status": "pending"
+    },
+    {
+      "task": "Renew the domain",
+      "owner": "Pooja",
+      "deadline": "by the end of the month",
+      "deadline_iso": "2026-09-30",
+      "status": "pending"
+    },
+    {
+      "task": "Write the unit tests",
+      "owner": "Dev",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Organise the shared drive",
+      "owner": "Manoj",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Migrate the database",
+      "owner": "Manoj",
+      "deadline": "yesterday",
+      "deadline_iso": "2026-09-15",
+      "status": "completed"
+    },
+    {
+      "task": "Fix the login bug",
+      "owner": "Manoj",
+      "deadline": "yesterday",
+      "deadline_iso": "2026-09-15",
+      "status": "completed"
+    }
+  ],
+  "decisions": [],
+  "unresolved_issues": [
+    "Model accuracy still below target",
+    "Guest parking arrangements still open",
+    "Dataset licence unclear"
+  ]
+}

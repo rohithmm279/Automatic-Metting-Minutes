@@ -1,0 +1,43 @@
+# meeting_002 | style: club_planning | date: 2026-10-27 (Tuesday) | attendees: Meena, Imran, Swetha, Aarav
+Meena: Alright everyone, let's plan the upcoming event.
+Meena: Did anyone watch the match last night?
+Imran: Let's tentatively open registration on Monday, but only if the form is approved.
+Swetha: Right, we'll confirm once we know.
+Aarav: Imran, can you send the agenda by Friday?
+Imran: Sure, I'll do that.
+Imran: Maybe we should print the brochures in colour.
+Aarav: No, let's keep them black and white.
+Imran: Okay, fair.
+Meena: Okay, moving on.
+Imran: Let's record all the sessions.
+Swetha: Fine by me.
+Imran: The Wi-Fi here is terrible again.
+Swetha: Meena, can you confirm the guest speaker?
+Meena: Yes, I can do that by Wednesday.
+Swetha: Can everyone see my screen?
+Aarav: I'll order the T-shirts.
+Aarav: Actually no, forget it, the budget is tight.
+Meena: Okay, then we skip it.
+Imran: Okay, next point.
+Meena: Imran, you create the feedback form after the review.
+Imran: Swetha knows that part better, honestly.
+Meena: Fair enough. Swetha, you take it.
+Swetha: Okay.
+Imran: I'll prepare the judging rubric tomorrow.
+Meena: Sorry, make it by next Friday, the review is before that.
+Imran: Right, by next Friday then.
+Swetha: Right, that makes sense.
+Aarav: Wait, can I--
+Imran: Go ahead.
+Aarav: Never mind, it can wait.
+Aarav: Someone needs to design the poster next month.
+Meena: Let's see who has time.
+Swetha: Maybe we should use a paid hosting plan.
+Imran: No, let's stay on the free tier.
+Swetha: So, okay, fair.
+Swetha: Hmm, interesting.
+Swetha: Okay, final call. We use Postgres for the database.
+Meena: Agreed.
+Swetha: Nobody knows who is judging the final round.
+Aarav: Let's park it for now.
+Meena: Okay, let's wrap up here.

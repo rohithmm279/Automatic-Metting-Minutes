@@ -1,0 +1,52 @@
+{
+  "summary": "Event operations with 4 attendees. 6 decision(s): Keep the weekly meeting in the evening; Go digital only, no printed brochures; Skip the photo booth. 2 open issue(s): Choice between Saturday and Sunday for the hackathon date undecided, pending Prof. Anand's input on Monday; Choice between Seminar Hall A and the auditorium for the venue undecided, pending Mr. Selvam's input on Monday. 3 pending and 2 completed action item(s), 0 without an owner.",
+  "action_items": [
+    {
+      "task": "Design the poster",
+      "owner": "Imran",
+      "deadline": "yesterday",
+      "deadline_iso": "2026-11-10",
+      "status": "completed"
+    },
+    {
+      "task": "Email the faculty coordinator",
+      "owner": "Naveen",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Test the prototype",
+      "owner": "Aarav",
+      "deadline": "next week",
+      "deadline_iso": "2026-11-16/2026-11-22",
+      "status": "pending"
+    },
+    {
+      "task": "Arrange the transport",
+      "owner": "Naveen",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Confirm the guest speaker",
+      "owner": "Divya",
+      "deadline": "before the demo",
+      "deadline_iso": null,
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Keep the weekly meeting in the evening",
+    "Go digital only, no printed brochures",
+    "Skip the photo booth",
+    "Keep the workshop at two hours",
+    "Stay on the free hosting tier",
+    "No catering"
+  ],
+  "unresolved_issues": [
+    "Choice between Saturday and Sunday for the hackathon date undecided, pending Prof. Anand's input on Monday",
+    "Choice between Seminar Hall A and the auditorium for the venue undecided, pending Mr. Selvam's input on Monday"
+  ]
+}

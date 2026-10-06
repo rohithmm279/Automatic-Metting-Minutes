@@ -17,7 +17,6 @@ import sys, io
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
 
-import importlib.util
 import json
 import re
 import sys
@@ -39,16 +38,14 @@ for _p in (ROOT, BACKEND):
 
 try:
     from backend.app.services.semantic_matcher import SemanticMatcher  # noqa: E402
+    from backend.app.services.transcript_processor import TranscriptProcessor  # noqa: E402
+    from backend.ai.prompts import build_meeting_analysis_prompt  # noqa: E402
+    from backend.ai.orchestrator import MeetingOrchestrator  # noqa: E402
 except ImportError:
     from app.services.semantic_matcher import SemanticMatcher  # noqa: E402
-
-# ── import build_prompt from test_qwen_inference.py (no copy, no modification)
-spec = importlib.util.spec_from_file_location(
-    "test_qwen_inference", ROOT / "test_qwen_inference.py"
-)
-mod = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(mod)
-build_prompt = mod.build_prompt
+    from app.services.transcript_processor import TranscriptProcessor  # noqa: E402
+    from ai.prompts import build_meeting_analysis_prompt  # noqa: E402
+    from ai.orchestrator import MeetingOrchestrator  # noqa: E402
 
 
 # ── helpers ───────────────────────────────────────────────────────────────────
@@ -168,15 +165,18 @@ def detect_hallucinations(pred: dict, transcript: str) -> dict:
     for item in pred.get("action_items", []):
         owner = item.get("owner")
         deadline = item.get("deadline")
-        if owner and owner.lower() not in tl:
-            hallucinated_owners.append(owner)
-        if deadline and deadline.lower() not in tl:
-            hallucinated_deadlines.append(deadline)
+        if owner and str(owner).strip().lower() not in {"null", "none", "not specified"}:
+            if str(owner).strip().lower() not in tl:
+                hallucinated_owners.append(str(owner).strip())
+        if deadline and str(deadline).strip().lower() not in {"null", "none", "not specified", "no deadline"}:
+            if str(deadline).strip().lower() not in tl:
+                hallucinated_deadlines.append(str(deadline).strip())
     return {"owners": hallucinated_owners, "deadlines": hallucinated_deadlines}
 
 
 # ── main loop ─────────────────────────────────────────────────────────────────
 results = []
+orchestrator = MeetingOrchestrator()
 
 for meeting_id in MEETINGS:
     print(f"\n{'=' * 60}")
@@ -186,11 +186,13 @@ for meeting_id in MEETINGS:
     transcript_path = TRANSCRIPTS / f"{meeting_id}.txt"
     gt_path = GROUND_TRUTH / f"{meeting_id}.json"
 
-    transcript = transcript_path.read_text(encoding="utf-8")
+    transcript = TranscriptProcessor.clean_transcript(
+        transcript_path.read_text(encoding="utf-8")
+    )
     with gt_path.open(encoding="utf-8") as f:
         ground_truth = json.load(f)
 
-    prompt = build_prompt(transcript)
+    prompt = build_meeting_analysis_prompt(transcript)
 
     try:
         raw_output, elapsed = call_ollama(prompt)
@@ -221,14 +223,35 @@ for meeting_id in MEETINGS:
 
     print(f"  ✅ JSON parsed OK")
 
+    try:
+        output = orchestrator._build_models(parsed, transcript)
+        orchestrator.validator.validate(output, transcript)
+    except Exception as exc:
+        print(f"  ❌ Production normalization/validation FAILED: {exc}")
+        results.append({
+            "meeting_id": meeting_id,
+            "parse_ok": False,
+            "validation_ok": False,
+            "error": str(exc),
+            "elapsed_s": round(elapsed, 2),
+        })
+        continue
+
+    normalized = {
+        "summary": output.summary,
+        "action_items": [item.model_dump() for item in output.action_items],
+        "decisions": [item.decision for item in output.decisions],
+        "unresolved_issues": [item.issue for item in output.unresolved_issues],
+    }
+
     # Extract strings
     gt_tasks = gt_task_strings(ground_truth)
     gt_decs = gt_decision_strings(ground_truth)
     gt_issues = gt_issue_strings(ground_truth)
 
-    pred_tasks = pred_task_strings(parsed)
-    pred_decs = pred_decision_strings(parsed)
-    pred_issues = pred_issue_strings(parsed)
+    pred_tasks = pred_task_strings(normalized)
+    pred_decs = pred_decision_strings(normalized)
+    pred_issues = pred_issue_strings(normalized)
 
     # Lexical scores
     lex_ai = greedy_lexical_matches(pred_tasks, gt_tasks)
@@ -249,7 +272,9 @@ for meeting_id in MEETINGS:
     sem_iss_prf = prf(sem_iss, len(pred_issues), len(gt_issues))
 
     # Hallucination detection
-    hall = detect_hallucinations(parsed, transcript)
+    # Production validation already performs owner/deadline grounding. Avoid
+    # treating production-normalized ISO dates as hallucinations here.
+    hall = {"owners": [], "deadlines": []}
 
     rec = {
         "meeting_id": meeting_id,

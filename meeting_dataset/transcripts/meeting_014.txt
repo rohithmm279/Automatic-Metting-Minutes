@@ -1,0 +1,45 @@
+# meeting_014 | style: brainstorm | date: 2026-11-17 (Tuesday) | attendees: Imran, Manoj, Harini, Tom, Lena
+Imran: Okay, open floor, throw out any ideas you have.
+Manoj: That's a wild idea, I love it.
+Harini: Okay, next point.
+Tom: Let's tentatively open registration on Monday, but only if the form is approved.
+Harini: Right, we'll confirm once we know.
+Manoj: Wait, can I--
+Harini: Go ahead.
+Manoj: Never mind, it can wait.
+Manoj: I'll compile the final report --
+Lena: Sorry, I lost the call for a second.
+Manoj: So, sorry, as I was saying, after the review.
+Lena: Noted.
+Harini: We haven't figured out how to handle the audio echo in the hall.
+Manoj: Yeah, that's a worry.
+Harini: Interesting angle, keep going.
+Harini: Someone needs to print the certificates before the demo.
+Imran: Yeah, that's true.
+Tom: Um, let me pull up the notes.
+Lena: Let's record all the sessions.
+Harini: Works for me.
+Tom: Someone needs to verify the attendance sheet.
+Manoj: Not me, I'm swamped this week.
+Imran: Who's going to update the README by Friday?
+Manoj: Yeah, that's true.
+Imran: Okay, moving on.
+Lena: Can everyone see my screen?
+Tom: I'll share the meeting notes before the demo.
+Imran: Good.
+Manoj: Maybe we should cut the workshop to one hour.
+Lena: No, let's keep the full two hours.
+Manoj: Okay, fair.
+Harini: Maybe we should add a third round to the contest.
+Imran: No, let's keep it to two rounds.
+Harini: Okay, fair.
+Tom: Sorry, I was on mute.
+Harini: Maybe we should switch to Python for the backend.
+Manoj: No, let's stick with Java.
+Harini: Um, okay, fair.
+Manoj: Yeah, I agree with that.
+Imran: Let's not filter ourselves yet.
+Manoj: I'll set up the CI pipeline --
+Imran: Sorry to cut in, my mic was muted for a moment.
+Manoj: Sorry, as I was saying, next week.
+Imran: Good ideas today, thanks everyone.

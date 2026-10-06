@@ -1,0 +1,30 @@
+# meeting_010 | style: client_call | date: 2026-09-23 (Wednesday) | attendees: Riya, Kavya, Imran, Anjali
+Riya: Thanks for joining the call, let's go through the open items.
+Anjali: Hmm, interesting.
+Kavya: Wait, can I--
+Anjali: Go ahead.
+Kavya: Never mind, it can wait.
+Riya: The model accuracy is still stuck below the target.
+Anjali: Yeah, that's a worry.
+Riya: That's helpful context.
+Anjali: Okay, final call. We freeze the feature list today.
+Riya: Works for me.
+Kavya: Um, fair enough.
+Kavya: Let's tentatively open registration on Monday, but only if the form is approved.
+Imran: Right, we'll confirm once we know.
+Kavya: Okay, next point.
+Imran: Can everyone see my screen?
+Anjali: Imran is going to collect the volunteer list by end of day.
+Imran: Yes, that's right.
+Kavya: Let's meet every Wednesday.
+Imran: Fine by me.
+Anjali: Let me pull up the notes.
+Anjali: I'll print the brochures.
+Anjali: Actually no, forget it, we're going digital only.
+Kavya: Okay, then we skip it.
+Kavya: Sorry, I was on mute.
+Kavya: If I get time, I might test the mobile layout.
+Anjali: Yeah, so okay, no pressure.
+Riya: Let's tentatively hold the finals on Saturday, but only if the hall is free.
+Imran: Right, we'll confirm once we know.
+Riya: Thanks for your time, everyone.

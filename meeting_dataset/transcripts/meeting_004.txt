@@ -1,0 +1,28 @@
+# meeting_004 | style: brainstorm | date: 2026-11-03 (Tuesday) | attendees: Meena, Dev, Manoj, Swetha
+Meena: Okay, open floor, throw out any ideas you have.
+Swetha: Okay, next point.
+Dev: Hmm, interesting.
+Swetha: Let's tentatively hold the finals on Saturday, but only if the hall is free.
+Dev: Right, we'll confirm once we know.
+Meena: Let's tentatively open registration on Monday, but only if the form is approved.
+Manoj: Right, we'll confirm once we know.
+Dev: That's a wild idea, I love it.
+Swetha: We could review the pull request if we had more people, but we don't.
+Manoj: True, let's leave it.
+Swetha: Did anyone watch the match last night?
+Swetha: Maybe we should extend registration by a week.
+Manoj: No, let's close registration on the original date.
+Swetha: Okay, fair.
+Manoj: We still need to record the demo video by Wednesday, but nobody has picked it up.
+Swetha: So, not me, I'm swamped this week.
+Dev: So, let's not filter ourselves yet.
+Swetha: If I get time, I might publish the event announcement.
+Manoj: Okay, no pressure.
+Manoj: Okay, moving on.
+Manoj: Right, that makes sense.
+Meena: Let's tentatively start the training sessions on the 12th, but only if the lab access is sorted.
+Dev: Right, we'll confirm once we know.
+Swetha: I'll follow up with the vendor tomorrow --
+Dev: Actually, by Friday, I just checked the calendar.
+Swetha: Okay, by Friday.
+Meena: Alright, let's stop here for today.

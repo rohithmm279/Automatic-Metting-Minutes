@@ -1,13 +1,16 @@
 """Orchestrator for end-to-end meeting analysis pipeline."""
 
 import json
+import os
 import re
 from datetime import date, timedelta
 from typing import Any
 from backend.ai.ollama_client import OllamaClient
-from backend.ai.prompts import build_meeting_analysis_prompt
+from backend.ai.evidence_repair import repair_output
+from backend.ai.prompts import build_intent_tagging_prompt, build_meeting_analysis_prompt
 from backend.ai.validator import MeetingValidator
 from backend.app.services.transcript_processor import TranscriptProcessor
+from backend.app.services.transcript_quality import validate_meeting_transcript
 from backend.models.meeting import ActionItem, Decision, UnresolvedIssue, MeetingOutput
 
 
@@ -31,6 +34,38 @@ _JOINT_OWNER_RE = re.compile(
     r'^([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\s+(?:and|&|,)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)',
     re.IGNORECASE,
 )
+
+_PROMPT_EXAMPLE_PHRASES = {
+    "guest's travel plans",
+    "budget approval",
+    "finalize the event date",
+}
+
+_STATUS_ALIASES = {
+    "todo": "pending",
+    "to_do": "pending",
+    "open": "pending",
+    "not_started": "pending",
+    "planned": "pending",
+    "assigned": "pending",
+    "confirmed": "pending",
+    "active": "in_progress",
+    "in progress": "in_progress",
+    "done": "completed",
+    "finished": "completed",
+    "resolved": "completed",
+    "closed": "completed",
+    "settled": "completed",
+}
+
+_ISO_DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+_ISO_DATETIME_RE = re.compile(r"^\d{4}-\d{2}-\d{2}(?:[T ]\d{2}:\d{2}(?::\d{2})?)$")
+
+
+def _is_prompt_example_leak(text: str, transcript_lower: str) -> bool:
+    """Reject a known prompt example when the transcript does not support it."""
+    normalized = re.sub(r"['’]", "'", text.strip().lower())
+    return normalized in _PROMPT_EXAMPLE_PHRASES and normalized not in transcript_lower
 
 
 def _normalize_owner(raw: str) -> str | None:
@@ -63,6 +98,9 @@ def _resolve_deadline_to_iso(deadline_str: str, meeting_date: date) -> str:
     Falls back to the original string when the expression is not recognizable.
     """
     dl = deadline_str.strip().lower()
+    datetime_match = re.fullmatch(r"(\d{4}-\d{2}-\d{2})[t ]\d{2}:\d{2}(?::\d{2})?", dl)
+    if datetime_match:
+        return datetime_match.group(1)
     # Normalize separators: "mid-November" → "mid november"
     dl = re.sub(r'\b(mid|early|end)-(\w)', r'\1 \2', dl)
     ref = meeting_date
@@ -203,9 +241,17 @@ def _extract_date_from_transcript(transcript: str) -> date | None:
     """
     for line in transcript.splitlines()[:30]:  # only check first 30 lines (header area)
         m = _HEADER_DATE_RE.search(line)
-        if not m:
-            continue
-        raw = m.group(1).strip().rstrip(',')
+        if m:
+            raw = m.group(1).strip().rstrip(',')
+        else:
+            m_day_first_header = re.search(
+                r'(?i)\bdate(?:\s*/\s*time|\s*time)?\s*[:\-]\s*'
+                r'(\d{1,2}(?:st|nd|rd|th)?\s+[A-Za-z]+\s+\d{4})\b',
+                line,
+            )
+            if not m_day_first_header:
+                continue
+            raw = m_day_first_header.group(1).strip().rstrip(',')
 
 
         # ISO: YYYY-MM-DD or YYYY/MM/DD
@@ -237,6 +283,18 @@ def _extract_date_from_transcript(transcript: str) -> date | None:
             if mon_num:
                 try:
                     return date(int(m_named.group(3)), mon_num, int(m_named.group(2)))
+                except ValueError:
+                    continue
+
+        # Day-first named month: "22 September 2026"
+        m_day_first = re.match(
+            r'^(\d{1,2})(?:st|nd|rd|th)?\s+(\w+)\s+(\d{4})$', raw, re.IGNORECASE
+        )
+        if m_day_first:
+            mon_num = _MONTH_NAME_MAP.get(m_day_first.group(2).lower())
+            if mon_num:
+                try:
+                    return date(int(m_day_first.group(3)), mon_num, int(m_day_first.group(1)))
                 except ValueError:
                     continue
 
@@ -379,27 +437,76 @@ class MeetingOrchestrator:
         validator: MeetingValidator | None = None,
         temperature: float = 0.0,
         repository: Any | None = None,
+        two_pass: bool = False,
+        evidence_repair: bool = False,
     ):
         self.client = client or OllamaClient()
         self.validator = validator or MeetingValidator()
         self.temperature = temperature
         self.repository = repository
+        self.two_pass = two_pass
+        self.evidence_repair = evidence_repair
+        self.last_archetype = "other"
+
+    def _classify_intents(self, transcript: str) -> str:
+        """Run pass one and return validated, compact intent evidence for pass two."""
+        raw_output = self.client.generate(
+            prompt=build_intent_tagging_prompt(transcript),
+            temperature=self.temperature,
+        )
+        parsed = self._parse_json(raw_output)
+        archetype = parsed.get("meeting_archetype", "other")
+        allowed_archetypes = {"corporate_sync", "student_casual", "technical_design", "sales", "other"}
+        if archetype not in allowed_archetypes:
+            archetype = "other"
+        self.last_archetype = archetype
+
+        tags = parsed.get("utterance_tags", [])
+        if not isinstance(tags, list):
+            raise MeetingParseError("Field 'utterance_tags' must be a list.")
+
+        allowed_intents = {"proposal", "final_decision", "assigned_task", "unresolved_issue", "context"}
+        clean_tags = []
+        for tag in tags:
+            if not isinstance(tag, dict) or tag.get("intent") not in allowed_intents:
+                continue
+            text = str(tag.get("text", "")).strip()
+            if not text:
+                continue
+            clean_tags.append({
+                "speaker": tag.get("speaker"),
+                "text": text,
+                "intent": tag["intent"],
+            })
+
+        return json.dumps(
+            {"meeting_archetype": archetype, "utterance_tags": clean_tags},
+            ensure_ascii=True,
+        )
 
     def _parse_json(self, raw_output: str) -> dict[str, Any]:
         """Strip optional markdown formatting and parse raw JSON."""
-        cleaned = raw_output.strip()
+        cleaned = (raw_output or "").strip()
         if cleaned.startswith("```"):
-            cleaned = cleaned.split("\n", 1)[1]
-            if cleaned.endswith("```"):
-                cleaned = cleaned.rsplit("```", 1)[0]
-            cleaned = cleaned.strip()
+            cleaned = re.sub(r"^```(?:json)?\s*", "", cleaned, count=1, flags=re.IGNORECASE)
+            cleaned = re.sub(r"\s*```$", "", cleaned, count=1).strip()
 
         try:
             parsed = json.loads(cleaned)
         except json.JSONDecodeError as err:
-            raise MeetingParseError(
-                f"Model response is not valid JSON: {err}. Preview: {raw_output[:200]}"
-            ) from err
+            # Small local models occasionally add one sentence before the JSON.
+            # Decode from the first object boundary while preserving strict object validation.
+            start = cleaned.find("{")
+            if start < 0:
+                raise MeetingParseError(
+                    f"Model response is not valid JSON: {err}. Preview: {raw_output[:200]}"
+                ) from err
+            try:
+                parsed, _ = json.JSONDecoder().raw_decode(cleaned[start:])
+            except json.JSONDecodeError:
+                raise MeetingParseError(
+                    f"Model response is not valid JSON: {err}. Preview: {raw_output[:200]}"
+                ) from err
 
         if not isinstance(parsed, dict):
             raise MeetingParseError(
@@ -454,12 +561,15 @@ class MeetingOrchestrator:
                 continue
             task = str(item.get("task", "")).strip()
             owner = _normalize_owner(str(item.get("owner") or ""))
+            if owner and transcript_lower and owner.lower() not in transcript_lower:
+                owner = None
             deadline = item.get("deadline")
             if deadline is not None:
                 deadline = str(deadline).strip() or None
                 if deadline and deadline.lower() in ("null", "none", "not specified", "no deadline"):
                     deadline = None
             status = str(item.get("status", "pending")).strip() or "pending"
+            status = _STATUS_ALIASES.get(status.lower(), status)
 
             # Check if task itself has a prefix like "1. Marcus: Update the specs..." or "Marcus: Update..."
             match_task_lead = re.match(
@@ -532,7 +642,14 @@ class MeetingOrchestrator:
                             deadline = best_owner_time
 
                     # If still missing owner or deadline, perform general turn search
-                    if owner is None or deadline is None:
+                    is_model_date = bool(
+                        deadline
+                        and (
+                            _ISO_DATETIME_RE.fullmatch(deadline)
+                            or (meeting_date is not None and _ISO_DATE_RE.fullmatch(deadline))
+                        )
+                    )
+                    if owner is None or deadline is None or is_model_date:
                         best_score = 0
                         best_turn_time = None
                         best_spk = None
@@ -560,7 +677,7 @@ class MeetingOrchestrator:
 
                         if owner is None and best_spk and best_spk.lower() in transcript_lower:
                             owner = best_spk
-                        if deadline is None and best_turn_time:
+                        if best_turn_time and (deadline is None or is_model_date):
                             deadline = best_turn_time
 
             # Resolve relative deadline to ISO date if meeting_date is provided
@@ -585,7 +702,8 @@ class MeetingOrchestrator:
 
         for dec in raw_decisions:
             dec_text = _flatten_string_or_list(dec)
-            if dec_text:
+            dec_text = re.sub(r"^decision\s*[-:–—]\s*", "", dec_text, flags=re.IGNORECASE).strip()
+            if dec_text and not _is_prompt_example_leak(dec_text, transcript_lower):
                 decisions.append(Decision(decision=dec_text, confidence=1.0))
 
         # Unresolved issues
@@ -596,7 +714,7 @@ class MeetingOrchestrator:
 
         for issue in raw_issues:
             issue_text = _flatten_string_or_list(issue)
-            if issue_text:
+            if issue_text and not _is_prompt_example_leak(issue_text, transcript_lower):
                 unresolved_issues.append(UnresolvedIssue(issue=issue_text, confidence=1.0))
 
         return MeetingOutput(
@@ -620,8 +738,7 @@ class MeetingOrchestrator:
                 deadline expressions ("tomorrow", "next Monday", "mid-November", etc.)
                 are resolved to absolute ISO-8601 date strings (YYYY-MM-DD).
         """
-        if not transcript or not transcript.strip():
-            raise ValueError("Transcript must not be empty or whitespace only.")
+        cleaned_transcript = validate_meeting_transcript(transcript)
 
         # 1. Extract title, human-readable date, and time from transcript header before preprocessing
         extracted_title = _extract_title_from_transcript(transcript)
@@ -633,12 +750,19 @@ class MeetingOrchestrator:
             meeting_date = _extract_date_from_transcript(transcript)
 
         # 3. Preprocess transcript using existing TranscriptProcessor
-        cleaned_transcript = TranscriptProcessor.clean_transcript(transcript)
-        if not cleaned_transcript or not cleaned_transcript.strip():
-            raise ValueError("Transcript must not be empty or whitespace only after preprocessing.")
+        cleaned_transcript = TranscriptProcessor.clean_transcript(cleaned_transcript)
 
-        # 4. Build prompt using the benchmark rules
-        prompt = build_meeting_analysis_prompt(cleaned_transcript)
+        # 4. Optionally classify intent before applying the full extraction prompt.
+        intent_context = None
+        if self.two_pass:
+            try:
+                intent_context = self._classify_intents(cleaned_transcript)
+            except (MeetingParseError, ValueError, TypeError, json.JSONDecodeError):
+                # Pass one is a guardrail, not a hard dependency. Keep the proven
+                # one-pass extraction path available when a small model misbehaves.
+                self.last_archetype = "other"
+                intent_context = None
+        prompt = build_meeting_analysis_prompt(cleaned_transcript, intent_context=intent_context)
 
         # 5. Call local Ollama model
         raw_output = self.client.generate(prompt=prompt, temperature=self.temperature)
@@ -648,6 +772,14 @@ class MeetingOrchestrator:
 
         # 7. Convert to Pydantic models with transcript context and meeting date
         meeting_output = self._build_models(parsed_data, cleaned_transcript, meeting_date)
+        if self.evidence_repair:
+            meeting_output = repair_output(
+                meeting_output,
+                cleaned_transcript,
+                meeting_date=meeting_date,
+                resolve_deadline=_resolve_deadline_to_iso,
+            )
+        meeting_output = self._sanitize_categories(meeting_output, cleaned_transcript)
 
         # 8. Deterministic validation
         validated_output = self.validator.validate(meeting_output, cleaned_transcript)
@@ -658,8 +790,47 @@ class MeetingOrchestrator:
         validated_output.meeting_time = extracted_time_str
         validated_output.start_time = extracted_start_time
         validated_output.end_time = extracted_end_time
+        validated_output.model_name = getattr(self.client, "model", "qwen2.5:3b")
+        validated_output.pipeline_name = "qwen_application"
+        validated_output.prompt_version = "backend.ai.prompts.v3-two-pass" if self.two_pass else "backend.ai.prompts.v2"
+        validated_output.fallback_used = False
 
         return validated_output
+
+    @staticmethod
+    def _sanitize_categories(output: MeetingOutput, transcript: str) -> MeetingOutput:
+        """Remove common cross-category false positives using transcript evidence."""
+        action_like = re.compile(
+            r"^(?:someone|anyone|[A-Z][A-Za-z'-]+)\s+(?:needs?|should|must|will|shall|can|could|would)\b|"
+            r"\b(?:prepare|send|book|arrange|organize|schedule|test|draft|invite|set up|fix|confirm|update|coordinate)\b.*\b(?:by|before|tomorrow|today|next week|this week)\b",
+            re.IGNORECASE,
+        )
+        output.decisions = [
+            decision for decision in output.decisions
+            if not action_like.search(decision.decision.strip())
+        ]
+
+        unresolved_cues = re.compile(
+            r"\b(?:still|not confirmed|not finalized|unresolved|undecided|pending|waiting for|needs? approval|needs? discussion|unclear)\b",
+            re.IGNORECASE,
+        )
+        transcript_lines = transcript.splitlines()
+        grounded_issues: list[UnresolvedIssue] = []
+        for issue in output.unresolved_issues:
+            issue_words = {word.lower() for word in re.findall(r"\b[A-Za-z]{4,}\b", issue.issue)}
+            has_topic_evidence = any(
+                len(issue_words & {word.lower() for word in re.findall(r"\b[A-Za-z]{4,}\b", line)}) >= min(2, len(issue_words))
+                for line in transcript_lines
+            )
+            has_unresolved_evidence = any(
+                unresolved_cues.search(line)
+                and len(issue_words & {word.lower() for word in re.findall(r"\b[A-Za-z]{4,}\b", line)}) >= min(2, len(issue_words))
+                for line in transcript_lines
+            )
+            if not has_topic_evidence or has_unresolved_evidence:
+                grounded_issues.append(issue)
+        output.unresolved_issues = grounded_issues
+        return output
 
     def analyze_and_save(
         self, transcript: str, repository: Any | None = None

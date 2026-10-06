@@ -1,0 +1,78 @@
+# meeting_024 | style: brainstorm | date: 2026-10-08 (Thursday) | attendees: Priya, Imran, Pooja, Deepak, Swetha, Nisha, Karthik
+Priya: Okay, open floor, throw out any ideas you have.
+Priya: Interesting angle, keep going.
+Nisha: Maybe we should switch to Python for the backend.
+Priya: No, let's stick with Java.
+Nisha: Okay, fair.
+Deepak: Can everyone see my screen?
+Karthik: If I get time, I might contact the sponsors.
+Priya: Okay, no pressure.
+Pooja: Okay, moving on.
+Imran: Wait, can I--
+Deepak: Go ahead.
+Imran: Never mind, it can wait.
+Deepak: Should we pick round robin or knockout for the contest format?
+Priya: I lean round robin, but let's confirm with Ravi first.
+Deepak: Ravi is out till Tuesday, so we decide then.
+Priya: Fine. I'll design the poster by end of day, either way.
+Pooja: Yeah, so hmm, interesting.
+Deepak: Let's not filter ourselves yet.
+Nisha: We still need to label the sample transcripts, but nobody has picked it up.
+Karthik: Not me, I'm swamped this week.
+Karthik: Wait, can I--
+Imran: Go ahead.
+Karthik: Never mind, it can wait.
+Pooja: Maybe we should redo the logo from scratch.
+Imran: No, let's keep the existing logo.
+Pooja: Okay, fair.
+Deepak: So, yeah, I agree with that.
+Swetha: Let's tentatively start the training sessions on the 12th, but only if the lab access is sorted.
+Karthik: Right, we'll confirm once we know.
+Swetha: Let me pull up the notes.
+Nisha: The Wi-Fi here is terrible again.
+Karthik: Um, maybe we should move the weekly meeting to mornings.
+Pooja: No, let's keep the evening slot.
+Karthik: Okay, fair.
+Swetha: Fair enough.
+Deepak: Let's tentatively open registration on Monday, but only if the form is approved.
+Swetha: Right, we'll confirm once we know.
+Imran: Sorry, I was on mute.
+Swetha: Okay, next point.
+Imran: Should we pick Saturday or Sunday for the hackathon date?
+Swetha: I lean Saturday, but let's confirm with Prof. Anand first.
+Imran: Prof. Anand is out till Wednesday, so we decide then.
+Swetha: So, fine. I'll renew the domain before the demo, either way.
+Imran: Did anyone watch the match last night?
+Imran: Should we pick a hybrid format or a fully offline format for the event format?
+Karthik: I lean a hybrid format, but let's confirm with Dr. Lakshmi first.
+Imran: Dr. Lakshmi is out till Tuesday, so we decide then.
+Imran: It's so hot in this room today.
+Imran: I'll upload the code to the repository by next Friday.
+Priya: That's a wild idea, I love it.
+Imran: Maybe we should cut the workshop to one hour.
+Nisha: No, let's keep the full two hours.
+Imran: Okay, fair.
+Priya: Right, that makes sense.
+Imran: We could set up the CI pipeline if we had more people, but we don't.
+Swetha: So, true, let's leave it.
+Pooja: Yeah, I agree with that.
+Swetha: Wait, can I--
+Imran: Go ahead.
+Swetha: Never mind, it can wait.
+Swetha: Maybe we should extend registration by a week.
+Pooja: No, let's close registration on the original date.
+Swetha: Okay, fair.
+Karthik: Right, that makes sense.
+Priya: We could organise the shared drive if we had more people, but we don't.
+Nisha: True, let's leave it.
+Priya: Swetha, can you compile the final report by Wednesday?
+Swetha: I'm swamped this week, sorry.
+Deepak: I'll take it.
+Priya: Let me pull up the notes.
+Karthik: If I get time, I might update the README.
+Deepak: Okay, no pressure.
+Nisha: Did anyone watch the match last night?
+Deepak: It's so hot in this room today.
+Karthik: If I get time, I might prepare the judging rubric.
+Swetha: Okay, no pressure.
+Priya: Alright, let's stop here for today.

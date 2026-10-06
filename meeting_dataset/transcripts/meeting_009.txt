@@ -1,0 +1,69 @@
+# meeting_009 | style: event_ops | date: 2026-10-19 (Monday) | attendees: Tom, Deepak, Karthik, Swetha, Arun, Lena
+Tom: Okay, event day is close, let's walk through the logistics.
+Deepak: Sorry, I was on mute.
+Karthik: Swetha, can you send the agenda?
+Swetha: Sure, I'll do that.
+Karthik: It's so hot in this room today.
+Deepak: Swetha, can you print the certificates?
+Swetha: Yes, I can do that by Tuesday.
+Swetha: Did anyone watch the match last night?
+Tom: Let me pull up the notes.
+Karthik: Quick update: I've confirmed the guest speaker.
+Karthik: Logistics always get messy.
+Karthik: I'll create the souvenir kits.
+Karthik: Actually no, forget it, we don't have the funds.
+Deepak: Okay, then we skip it.
+Karthik: Let's double check everything.
+Deepak: Okay, moving on.
+Deepak: If I get time, I might email the faculty coordinator.
+Tom: Okay, no pressure.
+Deepak: So, hmm, interesting.
+Lena: Yeah, I agree with that.
+Deepak: We still need to design the poster next month, but nobody has picked it up.
+Arun: I'm not free for that, sorry.
+Deepak: Swetha, can you contact the sponsors by tomorrow?
+Swetha: Sure, I'll do that.
+Tom: The Wi-Fi here is terrible again.
+Swetha: Deepak, you collect the team photos.
+Deepak: Tom knows that part better, honestly.
+Swetha: Fair enough. Tom, you take it.
+Tom: Okay.
+Tom: Remember last year's chaos?
+Tom: Right, that makes sense.
+Arun: Maybe we should add a third round to the contest.
+Swetha: So, no, let's keep it to two rounds.
+Arun: Okay, fair.
+Deepak: Okay, next point.
+Tom: Fair enough.
+Swetha: Lena, you write the API documentation.
+Lena: Karthik knows that part better, honestly.
+Swetha: Fair enough. Karthik, you take it.
+Karthik: Okay.
+Karthik: Can everyone see my screen?
+Lena: Did anyone prepare the slides?
+Arun: I've already prepared the slides.
+Swetha: Wait, can I--
+Lena: So, go ahead.
+Swetha: Never mind, it can wait.
+Swetha: I'll arrange the projector next week.
+Tom: Okay, next point.
+Lena: Sorry, I was on mute.
+Karthik: Did anyone clean the training dataset?
+Tom: I did, yesterday.
+Tom: It's so hot in this room today.
+Arun: The API key request is still stuck with the admin office.
+Tom: Yeah, that's a worry.
+Arun: Can everyone see my screen?
+Lena: So, okay, final call. We run demo day in the lab.
+Swetha: Fine by me.
+Swetha: Did anyone watch the match last night?
+Swetha: Let's tentatively hold the finals on Saturday, but only if the hall is free.
+Lena: Right, we'll confirm once we know.
+Tom: Let's double check everything.
+Tom: Lena, can you arrange the transport by tomorrow?
+Lena: Yes, will do.
+Tom: Hmm, interesting.
+Arun: I'll hire the sound system.
+Arun: Actually no, forget it, the hall already has one.
+Swetha: Okay, then we skip it.
+Tom: Thanks team, let's make it a good one.

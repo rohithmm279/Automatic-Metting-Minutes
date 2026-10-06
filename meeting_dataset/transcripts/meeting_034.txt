@@ -1,0 +1,23 @@
+# meeting_034 | style: brainstorm | date: 2026-11-05 (Thursday) | attendees: Naveen, Harini, Arun, Imran
+Naveen: Okay, open floor, throw out any ideas you have.
+Arun: Who's going to write the unit tests by Monday?
+Imran: Not me, I'm swamped this week.
+Arun: Interesting angle, keep going.
+Harini: I'll benchmark the model in two days.
+Harini: We still don't have confirmation from the venue.
+Imran: Yeah, that's a worry.
+Arun: The Wi-Fi here is terrible again.
+Imran: Harini will update the budget sheet by Wednesday, right?
+Harini: Yes, that's right.
+Harini: If I get time, I might fix the login bug.
+Naveen: Okay, no pressure.
+Harini: Did anyone watch the match last night?
+Naveen: We could write the API documentation if we had more people, but we don't.
+Arun: True, let's leave it.
+Naveen: Sorry, I was on mute.
+Arun: Let's not filter ourselves yet.
+Imran: Someone needs to check the audio setup by end of day.
+Naveen: Let's see who has time.
+Arun: Let's tentatively hold the finals on Saturday, but only if the hall is free.
+Imran: Right, we'll confirm once we know.
+Naveen: Good ideas today, thanks everyone.

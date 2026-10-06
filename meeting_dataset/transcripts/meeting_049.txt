@@ -1,0 +1,31 @@
+# meeting_049 | style: event_ops | date: 2026-10-15 (Thursday) | attendees: Vikram, Naveen, Faizal, Meena
+Vikram: Okay, event day is close, let's walk through the logistics.
+Naveen: It's so hot in this room today.
+Meena: Who covers the helpdesk on day two? That's still open.
+Vikram: Yeah, that's a worry.
+Naveen: Right, that makes sense.
+Meena: Logistics always get messy.
+Meena: Let's tentatively start the training sessions on the 12th, but only if the lab access is sorted.
+Naveen: Right, we'll confirm once we know.
+Faizal: Yeah, I agree with that.
+Faizal: Did anyone schedule the mock interview?
+Meena: I've already scheduled the mock interview.
+Naveen: Okay, moving on.
+Meena: Naveen, you design the poster.
+Naveen: Faizal knows that part better, honestly.
+Meena: Fair enough. Faizal, you take it.
+Faizal: Okay.
+Vikram: Okay, final call. We limit each pitch to five minutes.
+Meena: Fine by me.
+Faizal: Yeah, so fair enough.
+Vikram: So, did anyone watch the match last night?
+Faizal: Okay, final call. We use Postgres for the database.
+Meena: Works for me.
+Vikram: I'll share the meeting notes tomorrow.
+Naveen: So, sorry, make it by Friday, everyone is busy until then.
+Vikram: Right, by Friday then.
+Faizal: Hmm, interesting.
+Vikram: I'll collect the volunteer list by Monday --
+Meena: Actually, today, I just checked the calendar.
+Vikram: Okay, today.
+Vikram: Alright, that's the logistics.

@@ -1,0 +1,53 @@
+# meeting_053 | style: project_review | date: 2026-12-07 (Monday) | attendees: Nisha, Meena, Imran, Deepak, Swetha
+Nisha: Let's start the project review and go through where we stand.
+Nisha: Fair enough.
+Imran: I can test the prototype by Tuesday.
+Nisha: Yeah, I agree with that.
+Meena: Wait, can I--
+Swetha: Go ahead.
+Meena: Never mind, it can wait.
+Imran: Who covers the helpdesk on day two? That's still open.
+Swetha: Let's park it for now.
+Nisha: Okay, next point.
+Imran: Hmm, interesting.
+Imran: Parking arrangements for guests are still open.
+Nisha: Let's park it for now.
+Meena: Did anyone watch the match last night?
+Nisha: Right, that makes sense.
+Imran: The dataset licence is unclear.
+Meena: Let's park it for now.
+Imran: Okay, moving on.
+Swetha: Wait, can I--
+Deepak: Go ahead.
+Swetha: Never mind, it can wait.
+Meena: Should we pick Postgres or MongoDB for the database?
+Nisha: I lean Postgres, but let's confirm with Ravi first.
+Meena: Ravi is out till Thursday, so we decide then.
+Nisha: Fine. I'll fix the login bug by Friday, either way.
+Deepak: I'll leave the details for the report.
+Deepak: Yeah, so it's so hot in this room today.
+Meena: Let me benchmark the model.
+Nisha: Noted.
+Nisha: I'll upload the code to the repository by the end of the month.
+Nisha: The latest numbers look better than last week.
+Nisha: Can everyone see my screen?
+Meena: The sponsor hasn't replied to our email.
+Imran: We'll revisit it.
+Nisha: Sorry, I was on mute.
+Deepak: Let's tentatively hold the finals on Saturday, but only if the hall is free.
+Swetha: Right, we'll confirm once we know.
+Swetha: Let's keep the discussion focused.
+Deepak: So, let me check the audio setup by Tuesday.
+Imran: Noted.
+Swetha: The Wi-Fi here is terrible again.
+Deepak: Let me pull up the notes.
+Imran: We could set up the Slack channel if we had more people, but we don't.
+Meena: True, let's leave it.
+Meena: Yeah, I agree with that.
+Deepak: Let me pull up the notes.
+Deepak: Wait, can I--
+Nisha: Go ahead.
+Deepak: Never mind, it can wait.
+Deepak: Did anyone organise the shared drive?
+Meena: I've already organised the shared drive.
+Nisha: Okay, that covers the review.

@@ -1,0 +1,48 @@
+# meeting_038 | style: retrospective | date: 2026-09-25 (Friday) | attendees: Swetha, Priya, Pooja, Tom, Dev
+Swetha: Let's start the retro, what went well and what didn't?
+Pooja: The Wi-Fi here is terrible again.
+Dev: Let's be honest about it.
+Swetha: Priya, you email the faculty coordinator in two days.
+Priya: Dev knows that part better, honestly.
+Swetha: Fair enough. Dev, you take it.
+Dev: Okay.
+Swetha: Sorry, I was on mute.
+Dev: Did anyone migrate the database?
+Swetha: I did, yesterday.
+Pooja: Can everyone see my screen?
+Priya: Hmm, interesting.
+Swetha: Let's use Postgres for the database.
+Dev: Works for me.
+Tom: Okay, next point.
+Pooja: The budget is still not approved.
+Priya: We'll revisit it.
+Dev: Wait, can I--
+Swetha: Go ahead.
+Dev: Never mind, it can wait.
+Pooja: Okay, final call. We give certificates to all participants.
+Swetha: Agreed.
+Tom: Let me pull up the notes.
+Swetha: Wait, can I--
+Tom: Go ahead.
+Swetha: Never mind, it can wait.
+Swetha: I'd like Priya to set up the CI pipeline.
+Priya: Okay, noted.
+Priya: Okay, moving on.
+Pooja: Swetha, could you collect the registration forms by Monday?
+Swetha: Yes, no problem.
+Pooja: That went better than I expected.
+Dev: The lab access letter still has no signature.
+Swetha: Yeah, that's a worry.
+Dev: Yeah, so let's use the shared drive for all documents.
+Swetha: So, fine by me.
+Pooja: Fair enough.
+Dev: I'll check the audio setup --
+Priya: Sorry to cut in, my mic was muted for a moment.
+Dev: Sorry, as I was saying, by Monday.
+Priya: So, great, thanks.
+Priya: I think we all felt that.
+Dev: We still need to test the mobile layout by Wednesday, but nobody has picked it up.
+Tom: Not me, I'm swamped this week.
+Pooja: Let's tentatively start the training sessions on the 12th, but only if the lab access is sorted.
+Dev: Right, we'll confirm once we know.
+Swetha: Good retro, everyone.

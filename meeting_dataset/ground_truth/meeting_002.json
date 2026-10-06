@@ -1,0 +1,51 @@
+{
+  "summary": "Club event planning with 4 attendees. 5 decision(s): Print brochures in black and white; Record all sessions; No T-shirts this time. 2 open issue(s): Registration opening on Monday tentative, pending form approval; Judges for the final round not identified. 5 pending and 0 completed action item(s), 1 without an owner.",
+  "action_items": [
+    {
+      "task": "Send the agenda",
+      "owner": "Imran",
+      "deadline": "by Friday",
+      "deadline_iso": "2026-10-30",
+      "status": "pending"
+    },
+    {
+      "task": "Confirm the guest speaker",
+      "owner": "Meena",
+      "deadline": "by Wednesday",
+      "deadline_iso": "2026-10-28",
+      "status": "pending"
+    },
+    {
+      "task": "Create the feedback form",
+      "owner": "Swetha",
+      "deadline": "after the review",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Prepare the judging rubric",
+      "owner": "Imran",
+      "deadline": "by next Friday",
+      "deadline_iso": "2026-11-06",
+      "status": "pending"
+    },
+    {
+      "task": "Design the poster",
+      "owner": null,
+      "deadline": "next month",
+      "deadline_iso": "2026-11-01/2026-11-30",
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Print brochures in black and white",
+    "Record all sessions",
+    "No T-shirts this time",
+    "Stay on the free hosting tier",
+    "Use Postgres for the database"
+  ],
+  "unresolved_issues": [
+    "Registration opening on Monday tentative, pending form approval",
+    "Judges for the final round not identified"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "summary": "Faculty advisor meeting with 5 attendees. 2 decision(s): Go digital only, no printed brochures; Use the hall's built-in sound system. 3 open issue(s): Registration opening on Monday tentative, pending form approval; Venue confirmation not received; Sponsor has not replied. 5 pending and 0 completed action item(s), 1 without an owner.",
+  "action_items": [
+    {
+      "task": "Check the audio setup",
+      "owner": "Divya",
+      "deadline": "by the end of the month",
+      "deadline_iso": "2026-09-30",
+      "status": "pending"
+    },
+    {
+      "task": "Set up the Slack channel",
+      "owner": null,
+      "deadline": "this weekend",
+      "deadline_iso": "2026-09-12/2026-09-13",
+      "status": "pending"
+    },
+    {
+      "task": "Clean the training dataset",
+      "owner": "Deepak",
+      "deadline": "by Friday",
+      "deadline_iso": "2026-09-11",
+      "status": "pending"
+    },
+    {
+      "task": "Prepare the judging rubric",
+      "owner": "Vikram",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Submit the permission letter",
+      "owner": "Deepak",
+      "deadline": "today",
+      "deadline_iso": "2026-09-09",
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Go digital only, no printed brochures",
+    "Use the hall's built-in sound system"
+  ],
+  "unresolved_issues": [
+    "Registration opening on Monday tentative, pending form approval",
+    "Venue confirmation not received",
+    "Sponsor has not replied"
+  ]
+}

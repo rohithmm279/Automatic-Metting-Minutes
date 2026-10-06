@@ -1,0 +1,55 @@
+# meeting_021 | style: standup | date: 2026-09-16 (Wednesday) | attendees: Dev, Aarav, Pooja, Manoj, Vikram
+Dev: Okay, quick standup, let's go around the room.
+Vikram: Did anyone upload the code to the repository?
+Aarav: I've already uploaded the code to the repository.
+Vikram: Right, that makes sense.
+Dev: Quick update: I've set up the registration page.
+Aarav: Let me pull up the notes.
+Manoj: Same here, just continuing the ongoing work.
+Pooja: So, I'll set up the Slack channel by Thursday.
+Vikram: Fair enough.
+Manoj: Quick update: I've tested the prototype.
+Aarav: Someone needs to check the audio setup by Monday.
+Pooja: Let's see who has time.
+Dev: The Wi-Fi here is terrible again.
+Dev: Aarav, you benchmark the model by the end of the month.
+Aarav: Vikram knows that part better, honestly.
+Dev: Fair enough. Vikram, you take it.
+Vikram: Okay.
+Pooja: I'll send the agenda by next Friday.
+Dev: Okay.
+Vikram: Let me set up the CI pipeline by Thursday.
+Pooja: Okay.
+Aarav: The model accuracy is still stuck below the target.
+Pooja: We'll revisit it.
+Dev: We could record the demo video if we had more people, but we don't.
+Manoj: True, let's leave it.
+Aarav: Hmm, interesting.
+Dev: Parking arrangements for guests are still open.
+Manoj: Um, yeah, that's a worry.
+Vikram: Wait, can I--
+Dev: Go ahead.
+Vikram: Never mind, it can wait.
+Vikram: I'd like Pooja to prepare the demo script in three days.
+Pooja: Okay, noted.
+Dev: Did anyone watch the match last night?
+Manoj: Pooja, can you renew the domain?
+Pooja: Yes, I can do that by the end of the month.
+Dev: Can everyone see my screen?
+Vikram: The dataset licence is unclear.
+Manoj: Yeah, that's a worry.
+Aarav: Sorry, I was on mute.
+Vikram: Nothing else from my side.
+Aarav: Did anyone write the unit tests?
+Dev: I've already written the unit tests.
+Aarav: Yeah, I agree with that.
+Pooja: Did anyone organise the shared drive?
+Manoj: I've already organised the shared drive.
+Dev: Um, alright, who's next?
+Manoj: Okay, next point.
+Aarav: Did anyone migrate the database?
+Manoj: I did, yesterday.
+Vikram: Okay, moving on.
+Aarav: Did anyone fix the login bug?
+Manoj: Um, I did, yesterday.
+Dev: Okay, see you all tomorrow.

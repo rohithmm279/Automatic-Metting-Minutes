@@ -1,0 +1,78 @@
+# meeting_030 | style: client_call | date: 2026-10-07 (Wednesday) | attendees: Priya, Swetha, Naveen, Karthik, Kavya
+Priya: Thanks for joining the call, let's go through the open items.
+Karthik: Understood, thanks for clarifying.
+Naveen: Sorry, I was on mute.
+Karthik: I'd like Swetha to collect the team photos by Friday.
+Swetha: Okay, noted.
+Priya: I can share the meeting notes by Tuesday.
+Swetha: Alright.
+Priya: We still need to deploy the staging build before the demo, but nobody has picked it up.
+Swetha: Yeah, that's true.
+Swetha: It's so hot in this room today.
+Swetha: Wait, can I--
+Naveen: Go ahead.
+Swetha: Never mind, it can wait.
+Kavya: Let's tentatively start the training sessions on the 12th, but only if the lab access is sorted.
+Naveen: Right, we'll confirm once we know.
+Naveen: Let's tentatively hold the finals on Saturday, but only if the hall is free.
+Swetha: Right, we'll confirm once we know.
+Priya: Wait, can I--
+Kavya: Go ahead.
+Priya: Never mind, it can wait.
+Priya: Maybe we should use a paid hosting plan.
+Kavya: No, let's stay on the free tier.
+Priya: Okay, fair.
+Priya: Let me pull up the notes.
+Priya: The Wi-Fi here is terrible again.
+Priya: I'll prepare the slides by tomorrow.
+Naveen: Sorry, make it by Tuesday, everyone is busy until then.
+Priya: Right, by Tuesday then.
+Kavya: Fair enough.
+Naveen: Let's freeze the feature list today.
+Kavya: Sounds good.
+Karthik: Can everyone see my screen?
+Kavya: Okay, next point.
+Karthik: Maybe we should extend registration by a week.
+Kavya: No, let's close registration on the original date.
+Karthik: Okay, fair.
+Kavya: Wait, can I--
+Priya: Go ahead.
+Kavya: Never mind, it can wait.
+Priya: I'll follow up with the vendor by Thursday --
+Kavya: Actually, next month, I just checked the calendar.
+Priya: Okay, next month.
+Karthik: Yeah, I agree with that.
+Swetha: Okay, final call. We use Postgres for the database.
+Naveen: Fine by me.
+Priya: Okay, moving on.
+Naveen: Wait, can I--
+Karthik: Go ahead.
+Naveen: Never mind, it can wait.
+Swetha: Maybe we should change the venue to the auditorium.
+Naveen: No, let's keep the current venue.
+Swetha: Okay, fair.
+Swetha: That's helpful context.
+Naveen: We could write the unit tests if we had more people, but we don't.
+Karthik: True, let's leave it.
+Naveen: Okay, final call. We use Google Forms for registration.
+Karthik: Works for me.
+Naveen: Did anyone watch the match last night?
+Swetha: Right, that makes sense.
+Kavya: Let's tentatively open registration on Monday, but only if the form is approved.
+Priya: Right, we'll confirm once we know.
+Swetha: Let me note that down.
+Swetha: Maybe we should move the event to Saturday.
+Priya: No, let's stay with Friday.
+Swetha: Okay, fair.
+Kavya: Hmm, interesting.
+Karthik: I'll book the catering.
+Karthik: Actually no, forget it, the budget is tight.
+Naveen: Okay, then we skip it.
+Naveen: Yeah, I agree with that.
+Priya: Wait, can I--
+Swetha: Go ahead.
+Priya: Never mind, it can wait.
+Priya: I'll write the API documentation next week --
+Kavya: Actually, tomorrow, I just checked the calendar.
+Priya: Okay, tomorrow.
+Priya: Great, we'll talk again soon.

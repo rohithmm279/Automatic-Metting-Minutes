@@ -1,0 +1,69 @@
+# meeting_057 | style: faculty_advisor | date: 2026-10-30 (Friday) | attendees: Arun, Meena, Karthik, Naveen, Divya
+Arun: Good afternoon, shall we begin with the progress update?
+Naveen: That's a fair point.
+Karthik: Right, that makes sense.
+Divya: How do we handle late registrations? No idea yet.
+Karthik: We'll revisit it.
+Naveen: Can everyone see my screen?
+Arun: Wait, can I--
+Divya: Go ahead.
+Arun: Never mind, it can wait.
+Divya: Should we pick Whisper or a cloud speech API for speech-to-text?
+Karthik: I lean Whisper, but let's confirm with Ravi first.
+Divya: Ravi is out till Tuesday, so we decide then.
+Karthik: Fine. I'll review the pull request by Wednesday, either way.
+Karthik: Let's tentatively hold the finals on Saturday, but only if the hall is free.
+Divya: Right, we'll confirm once we know.
+Divya: Fair enough.
+Karthik: The model accuracy is still stuck below the target.
+Arun: Let's park it for now.
+Arun: Sorry, I was on mute.
+Karthik: Did anyone watch the match last night?
+Divya: Meena will write the API documentation by Thursday, right?
+Meena: Right, that's me.
+Meena: We should keep the department's guidelines in mind.
+Arun: The sponsor hasn't replied to our email.
+Meena: Yeah, that's a worry.
+Arun: Yeah, I agree with that.
+Naveen: Should we pick Saturday or Sunday for the hackathon date?
+Meena: I lean Saturday, but let's confirm with Ms. Geetha first.
+Naveen: Ms. Geetha is out till Tuesday, so we decide then.
+Arun: Divya will publish the event announcement, right?
+Divya: Right, that's me.
+Divya: So, it's so hot in this room today.
+Arun: Okay, moving on.
+Karthik: Let me verify the attendance sheet when the hall is confirmed.
+Arun: Should we pick a hybrid format or a fully offline format for the event format?
+Naveen: I lean a hybrid format, but let's confirm with Ravi first.
+Arun: Ravi is out till Wednesday, so we decide then.
+Naveen: Fine. I'll design the poster tomorrow, either way.
+Naveen: So, let me pull up the notes.
+Arun: So, hmm, interesting.
+Meena: Divya, can you compile the final report by Monday?
+Divya: Yes, will do.
+Meena: Okay, next point.
+Naveen: Let's tentatively open registration on Monday, but only if the form is approved.
+Meena: Right, we'll confirm once we know.
+Divya: The Wi-Fi here is terrible again.
+Naveen: Please continue.
+Divya: Okay, final call. We limit each pitch to five minutes.
+Arun: Works for me.
+Naveen: It's so hot in this room today.
+Arun: Should we pick round robin or knockout for the contest format?
+Divya: I lean round robin, but let's confirm with Prof. Anand first.
+Arun: Prof. Anand is out till Monday, so we decide then.
+Divya: Fine. I'll update the budget sheet, either way.
+Karthik: Parking arrangements for guests are still open.
+Arun: We'll revisit it.
+Meena: Can everyone see my screen?
+Divya: Should we pick Flutter or React Native for the mobile app?
+Naveen: I lean Flutter, but let's confirm with Prof. Anand first.
+Divya: Prof. Anand is out till Wednesday, so we decide then.
+Naveen: Fine. I'll collect the registration forms, either way.
+Naveen: Sorry, I was on mute.
+Meena: Let's tentatively start the training sessions on the 12th, but only if the lab access is sorted.
+Naveen: Right, we'll confirm once we know.
+Karthik: The Wi-Fi here is terrible again.
+Karthik: Nobody knows who is judging the final round.
+Arun: Let's park it for now.
+Arun: Thank you all, that will be all for today.

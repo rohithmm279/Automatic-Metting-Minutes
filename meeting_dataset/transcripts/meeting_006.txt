@@ -1,0 +1,67 @@
+# meeting_006 | style: hackathon_sync | date: 2026-12-04 (Friday) | attendees: Harini, Aarav, Vikram, Karthik, Riya
+Harini: Team, quick sync before the hackathon, let's be fast.
+Riya: We're running out of time.
+Vikram: Wait, can I--
+Harini: Go ahead.
+Vikram: Never mind, it can wait.
+Vikram: Let's tentatively start the training sessions on the 12th, but only if the lab access is sorted.
+Harini: Right, we'll confirm once we know.
+Vikram: Okay, moving on.
+Vikram: Karthik is going to test the mobile layout in two days.
+Karthik: Right, that's me.
+Riya: The Wi-Fi here is terrible again.
+Karthik: Okay, final call. We meet every Wednesday.
+Aarav: Agreed.
+Harini: Should we pick Postgres or MongoDB for the database?
+Riya: I lean Postgres, but let's confirm with Prof. Anand first.
+Harini: Prof. Anand is out till Friday, so we decide then.
+Aarav: I'd like Karthik to label the sample transcripts after the review.
+Karthik: Okay, noted.
+Riya: Yeah, I agree with that.
+Riya: We could create the social media schedule if we had more people, but we don't.
+Harini: True, let's leave it.
+Riya: Let me pull up the notes.
+Vikram: Hmm, interesting.
+Aarav: Riya, can you book the seminar hall?
+Riya: Yes, I can do that before the demo.
+Aarav: Did anyone watch the match last night?
+Vikram: The demo needs to be rock solid.
+Aarav: Should we pick round robin or knockout for the contest format?
+Karthik: I lean round robin, but let's confirm with Prof. Anand first.
+Aarav: Prof. Anand is out till Friday, so we decide then.
+Aarav: It's so hot in this room today.
+Aarav: Sorry, I was on mute.
+Vikram: We could set up the registration page if we had more people, but we don't.
+Riya: True, let's leave it.
+Vikram: I'd like Karthik to write the unit tests after the review.
+Karthik: Okay, noted.
+Harini: Can everyone see my screen?
+Karthik: So, okay, next point.
+Aarav: We still need to submit the permission letter once the budget is approved, but nobody has picked it up.
+Karthik: Yeah, that's true.
+Harini: Coffee run anyone?
+Vikram: Who's going to create the feedback form by end of day?
+Karthik: Yeah, so not me, I'm swamped this week.
+Riya: Right, that makes sense.
+Harini: Fair enough.
+Aarav: Let's tentatively open registration on Monday, but only if the form is approved.
+Riya: Right, we'll confirm once we know.
+Vikram: Sorry, I was on mute.
+Aarav: I can check the audio setup by Thursday.
+Harini: Great, thanks.
+Harini: It's so hot in this room today.
+Aarav: Um, let's freeze the feature list today.
+Riya: Agreed.
+Harini: Let me pull up the notes.
+Karthik: Did anyone watch the match last night?
+Riya: If I get time, I might share the meeting notes.
+Harini: Um, okay, no pressure.
+Harini: Who's going to record the demo video by end of day?
+Karthik: Not me, I'm swamped this week.
+Aarav: Yeah, I agree with that.
+Aarav: Wait, can I--
+Harini: Go ahead.
+Aarav: Never mind, it can wait.
+Riya: Karthik is going to write the API documentation today.
+Karthik: Right, that's me.
+Harini: Good sync, let's go.

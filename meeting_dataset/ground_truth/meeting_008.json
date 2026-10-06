@@ -1,0 +1,44 @@
+{
+  "summary": "Retrospective with 5 attendees. 4 decision(s): Keep the contest to two rounds; Hold demo day in the lab; Keep the workshop at two hours. 3 open issue(s): Budget is not yet approved; API key request still pending with the admin office; Guest parking arrangements still open. 2 pending and 2 completed action item(s), 2 without an owner.",
+  "action_items": [
+    {
+      "task": "Design the poster",
+      "owner": null,
+      "deadline": "once the budget is approved",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Write the API documentation",
+      "owner": "Lena",
+      "deadline": "yesterday",
+      "deadline_iso": "2026-11-11",
+      "status": "completed"
+    },
+    {
+      "task": "Label the sample transcripts",
+      "owner": null,
+      "deadline": "in three days",
+      "deadline_iso": "2026-11-15",
+      "status": "pending"
+    },
+    {
+      "task": "Test the mobile layout",
+      "owner": "Deepak",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    }
+  ],
+  "decisions": [
+    "Keep the contest to two rounds",
+    "Hold demo day in the lab",
+    "Keep the workshop at two hours",
+    "Keep the weekly meeting in the evening"
+  ],
+  "unresolved_issues": [
+    "Budget is not yet approved",
+    "API key request still pending with the admin office",
+    "Guest parking arrangements still open"
+  ]
+}

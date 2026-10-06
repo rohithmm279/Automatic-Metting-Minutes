@@ -1,0 +1,46 @@
+# meeting_008 | style: retrospective | date: 2026-11-12 (Thursday) | attendees: Anjali, Aarav, Lena, Riya, Deepak
+Anjali: Let's start the retro, what went well and what didn't?
+Deepak: Who's going to design the poster once the budget is approved?
+Aarav: Yeah, that's true.
+Anjali: Maybe we should add a third round to the contest.
+Lena: No, let's keep it to two rounds.
+Anjali: Okay, fair.
+Aarav: Yeah, I agree with that.
+Anjali: It's so hot in this room today.
+Aarav: The budget is still not approved.
+Deepak: We'll revisit it.
+Deepak: Okay, moving on.
+Anjali: Did anyone write the API documentation?
+Lena: I did, yesterday.
+Aarav: Right, that makes sense.
+Deepak: Can everyone see my screen?
+Lena: The API key request is still stuck with the admin office.
+Riya: Let's park it for now.
+Aarav: The Wi-Fi here is terrible again.
+Aarav: Someone needs to label the sample transcripts in three days.
+Riya: Let's see who has time.
+Anjali: That went better than I expected.
+Aarav: I think we all felt that.
+Riya: Um, okay, final call. We run demo day in the lab.
+Deepak: Agreed.
+Lena: Okay, next point.
+Lena: So, did anyone watch the match last night?
+Anjali: If I get time, I might reserve the cafeteria tables.
+Riya: Okay, no pressure.
+Aarav: So, fair enough.
+Anjali: Wait, can I--
+Riya: Go ahead.
+Anjali: Never mind, it can wait.
+Anjali: So, maybe we should cut the workshop to one hour.
+Riya: No, let's keep the full two hours.
+Anjali: Okay, fair.
+Deepak: Um, quick update: I've tested the mobile layout.
+Riya: Hmm, interesting.
+Lena: Parking arrangements for guests are still open.
+Aarav: Yeah, that's a worry.
+Deepak: Let me pull up the notes.
+Riya: Sorry, I was on mute.
+Deepak: Maybe we should move the weekly meeting to mornings.
+Lena: No, let's keep the evening slot.
+Deepak: Okay, fair.
+Anjali: Thanks for the honest feedback.

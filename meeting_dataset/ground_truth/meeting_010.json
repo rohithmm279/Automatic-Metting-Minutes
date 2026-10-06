@@ -1,0 +1,22 @@
+{
+  "summary": "Client call with 4 attendees. 3 decision(s): Freeze the feature list; Meet every Wednesday; Go digital only, no printed brochures. 3 open issue(s): Model accuracy still below target; Registration opening on Monday tentative, pending form approval; Finals date (Saturday) tentative, pending hall availability. 1 pending and 0 completed action item(s), 0 without an owner.",
+  "action_items": [
+    {
+      "task": "Collect the volunteer list",
+      "owner": "Imran",
+      "deadline": "by end of day",
+      "deadline_iso": "2026-09-23",
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Freeze the feature list",
+    "Meet every Wednesday",
+    "Go digital only, no printed brochures"
+  ],
+  "unresolved_issues": [
+    "Model accuracy still below target",
+    "Registration opening on Monday tentative, pending form approval",
+    "Finals date (Saturday) tentative, pending hall availability"
+  ]
+}

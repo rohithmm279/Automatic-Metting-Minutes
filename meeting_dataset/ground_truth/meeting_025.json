@@ -1,0 +1,40 @@
+{
+  "summary": "Sprint planning with 4 attendees. 2 decision(s): Go digital only, no printed brochures; Keep the existing logo. 1 open issue(s): Finals date (Saturday) tentative, pending hall availability. 4 pending and 0 completed action item(s), 0 without an owner.",
+  "action_items": [
+    {
+      "task": "Set up the Slack channel",
+      "owner": "Divya",
+      "deadline": "by Wednesday",
+      "deadline_iso": "2026-12-16",
+      "status": "pending"
+    },
+    {
+      "task": "Test the mobile layout",
+      "owner": "Manoj",
+      "deadline": "by the end of the month",
+      "deadline_iso": "2026-12-31",
+      "status": "pending"
+    },
+    {
+      "task": "Migrate the database",
+      "owner": "Lena",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Contact the sponsors",
+      "owner": "Manoj",
+      "deadline": "by Thursday",
+      "deadline_iso": "2026-12-17",
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Go digital only, no printed brochures",
+    "Keep the existing logo"
+  ],
+  "unresolved_issues": [
+    "Finals date (Saturday) tentative, pending hall availability"
+  ]
+}

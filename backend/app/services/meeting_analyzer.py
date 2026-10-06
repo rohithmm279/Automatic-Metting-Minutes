@@ -15,7 +15,7 @@ class MeetingAnalyzer:
 
     _ACTION_PATTERNS = (
         r"\b(?:need|needs|needed|has) to\s+",
-        r"\b(?:i|we|they|[A-Z][a-z]+)\s+(?:will|'ll|shall|plan to|are going to)\s+",
+        r"\b(?:i|we|they)\s+(?:will|shall|plan to|are going to)\s+|\b(?:i|we|they)['’]ll\s+|\b[A-Z][a-z]+\s+(?:will|shall|plan to|are going to)\s+",
         r"\b(?:can|could|would|please)\s+(?:you\s+)?",
         r"\b(?:assigned|assign)\s+(?:to\s+)?",
         r"\bresponsible for\s+",
@@ -29,6 +29,7 @@ class MeetingAnalyzer:
         r"\b(?:final choice|decision) is\b",
         r"\b(?:committee|everyone|team) accepted\b",
         r"\bthat'?s settled\b",
+        r"^\s*decision\s*[-:–—]\s*",
         r"\b(?:completely fine|fine for v1|good to go|on track for code freeze)\b",
         r"\b(?:scheduled for|set the launch date|locked in for|official launch)\b",
     )
@@ -98,6 +99,14 @@ class MeetingAnalyzer:
 
     def _is_action_item(self, sentence: str) -> bool:
         content = self._content(sentence)
+        if re.search(
+            r"\b(?:we['’]ll|we will)\s+figure out who\b|"
+            r"\bwill update the group\b|\bcan i add something\b|"
+            r"\b(?:are we|we are) still on track\b|\bwe['’]re on it\b",
+            content,
+            re.I,
+        ):
+            return False
         if re.search(r"^(?:log|assign|record|note\s+down|track)\s+(?:the\s+)?(?:action\s+items?|decisions?|meeting\s+minutes?|tasks?|items?)\b", content, re.I):
             return False
         return self._matches_any(content, self._ACTION_PATTERNS) and not self._is_unresolved_issue(sentence)
@@ -111,7 +120,7 @@ class MeetingAnalyzer:
     def _extract_actions(self, sentences: list[str]) -> list[ActionItem]:
         """Build deduplicated actions and attach only explicit nearby corrections."""
         actions: list[ActionItem] = []
-        for sentence in sentences:
+        for index, sentence in enumerate(sentences):
             if not self._is_action_item(sentence):
                 deadline, speaker = self._extract_deadline(sentence), self._speaker(sentence)
                 if deadline and actions and speaker and actions[-1].owner == speaker:
@@ -120,7 +129,12 @@ class MeetingAnalyzer:
             task = self._normalize_task(sentence)
             if not task:
                 continue
-            candidate = ActionItem(task=task, owner=self._extract_owner(sentence), deadline=self._extract_deadline(sentence), status="pending", confidence=0.7)
+            owner = self._extract_owner(sentence)
+            if owner is None and self._speaker(sentence) is None and index > 0:
+                previous_speaker = self._speaker(sentences[index - 1])
+                if previous_speaker and previous_speaker.lower() not in self._NON_PERSON_LEADS:
+                    owner = previous_speaker
+            candidate = ActionItem(task=task, owner=owner, deadline=self._extract_deadline(sentence), status="pending", confidence=0.7)
             existing = next((item for item in actions if self._same_task(item.task, task)), None)
             if existing is None:
                 actions.append(candidate)
@@ -135,7 +149,7 @@ class MeetingAnalyzer:
         if speaker and speaker.lower() not in cls._NON_PERSON_LEADS:
             # If the sentence is an imperative task assigned in a list (e.g. "1. Marcus: Update the specs...")
             # or if speaker commits via "I will..."
-            if re.search(r"\b(?:i(?:'ll| will)|i plan to|i am going to)\b", content, re.I):
+            if re.search(r"\b(?:i(?:['’]ll| will)|i plan to|i am going to)\b", content, re.I):
                 return speaker
             if re.match(r"^(?:update|finalize|draft|prepare|complete|create|implement|schedule|send|review|test|fix|build|write|submit|organize|coordinate|setup|set up|deploy)\b", content, re.I):
                 return speaker
@@ -160,13 +174,18 @@ class MeetingAnalyzer:
     def _normalize_task(self, sentence: str) -> str:
         text = self._content(sentence)
         text = re.sub(r"^(?:(?:alright|okay|so|yeah|well)[,\s]+)+", "", text, flags=re.I)
+        text = re.sub(r"^(?:cool|right|umm|actually|hold on|one sec)[,\s:—-]+", "", text, flags=re.I)
+        text = re.sub(r"^(?:sure|yes|yeah)[,\s:—-]+(?:i['’]ll|i will)\s+", "", text, flags=re.I)
+        text = re.sub(r",?\s+it can['’]t wait too long\.?$", "", text, flags=re.I)
+        text = re.sub(r"^(?:so\s+)?someone\s+needs?\s+to\s+", "", text, flags=re.I)
+        text = re.sub(r"^(?:so\s+)?[A-Z][a-z]+,\s+(?:would|could|can)\s+you\s+", "", text, flags=re.I)
         text = re.sub(r"^[A-Z][a-z]+,\s*(?:can|could|would)\s+you\s+", "", text, flags=re.I)
         text = re.sub(r"^(?:be\s+able\s+to\s+)", "", text, flags=re.I)
         nested_request = re.search(r"\b(?:we\s+)?need\s+to\s+(.+)$", text, re.I)
         if nested_request:
             text = nested_request.group(1)
         text = re.sub(r"^(?:someone\s+)?(?:needs?|need|has) to\s+", "", text, flags=re.I)
-        text = re.sub(r"^(?:i(?:'ll| will)|we(?:'ll| will)|they(?:'ll| will))\s+", "", text, flags=re.I)
+        text = re.sub(r"^(?:i(?:['’]ll| will)|we(?:['’]ll| will)|they(?:['’]ll| will))\s+", "", text, flags=re.I)
         text = re.sub(r"^[A-Z][a-z]+(?:\s+[A-Z][a-z]+)?\s+(?:will|has to|needs? to)\s+", "", text)
         text = re.sub(r"^(?:assigned to|responsible for|tasked with)\s+", "", text, flags=re.I)
         deadline = self._extract_deadline(sentence)
@@ -177,6 +196,7 @@ class MeetingAnalyzer:
 
     def _normalize_decision(self, sentence: str) -> str:
         text = self._content(sentence).strip(" .?!")
+        text = re.sub(r"^decision\s*[-:–—]\s*", "", text, flags=re.IGNORECASE)
         match = re.search(r"(?:finali[sz]e|settle on|decide on)\s+(.*?)(?:\s*(?:then|—|-|that's settled|that is settled).*)?$", text, re.I)
         if match and match.group(1).strip():
             return f"Finalized {match.group(1).strip().rstrip('.')} .".replace(" .", ".")

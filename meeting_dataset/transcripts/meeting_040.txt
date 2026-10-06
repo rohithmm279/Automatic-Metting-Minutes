@@ -1,0 +1,33 @@
+# meeting_040 | style: client_call | date: 2026-10-29 (Thursday) | attendees: Karthik, Meena, Manoj
+Karthik: Thanks for joining the call, let's go through the open items.
+Manoj: Maybe we should redo the logo from scratch.
+Meena: No, let's keep the existing logo.
+Manoj: Okay, fair.
+Meena: Hmm, interesting.
+Manoj: I'll check the audio setup this weekend --
+Meena: Actually, tomorrow, I just checked the calendar.
+Manoj: Okay, tomorrow.
+Karthik: Okay, next point.
+Manoj: Fair enough.
+Meena: Let's tentatively start the training sessions on the 12th, but only if the lab access is sorted.
+Manoj: Right, we'll confirm once we know.
+Karthik: Okay, moving on.
+Manoj: We don't know how many people will actually turn up.
+Karthik: We'll revisit it.
+Manoj: Wait, can I--
+Karthik: Go ahead.
+Manoj: Never mind, it can wait.
+Manoj: Okay, final call. We use Postgres for the database.
+Meena: Sounds good.
+Manoj: Can everyone see my screen?
+Meena: Who's going to write the API documentation next week?
+Karthik: Yeah, that's true.
+Manoj: Let me pull up the notes.
+Karthik: Should we pick a hybrid format or a fully offline format for the event format?
+Manoj: I lean a hybrid format, but let's confirm with Ms. Geetha first.
+Karthik: So, ms. Geetha is out till Monday, so we decide then.
+Manoj: Fine. I'll create the invitation card, either way.
+Karthik: Sorry, I was on mute.
+Karthik: I'll prepare the demo script by Friday.
+Manoj: Good.
+Karthik: Great, we'll talk again soon.

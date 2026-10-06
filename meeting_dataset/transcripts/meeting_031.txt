@@ -1,0 +1,28 @@
+# meeting_031 | style: standup | date: 2026-10-28 (Wednesday) | attendees: Tom, Dev, Kavya
+Tom: Okay, quick standup, let's go around the room.
+Kavya: Right, that makes sense.
+Tom: Um, the model accuracy is still stuck below the target.
+Kavya: Yeah, that's a worry.
+Dev: The Wi-Fi here is terrible again.
+Tom: Nothing else from my side.
+Tom: The deployment keeps failing and we don't know why.
+Kavya: We'll revisit it.
+Tom: Yeah, I agree with that.
+Dev: Let me label the sample transcripts.
+Tom: It's so hot in this room today.
+Dev: Wait, can I--
+Kavya: Go ahead.
+Dev: Never mind, it can wait.
+Dev: Did anyone write the unit tests?
+Kavya: I did, yesterday.
+Dev: Can everyone see my screen?
+Tom: Kavya, can you test the mobile layout?
+Kavya: Yes, I can do that tomorrow.
+Tom: Who covers the helpdesk on day two? That's still open.
+Kavya: Let's park it for now.
+Dev: Did anyone watch the match last night?
+Tom: We don't know how many people will actually turn up.
+Dev: Yeah, that's a worry.
+Kavya: Okay, moving on.
+Kavya: Quick update: I've cleaned the training dataset.
+Tom: Okay, see you all tomorrow.

@@ -26,10 +26,6 @@ export default function ActionTracker({
       }
     } catch (err) {
       console.error('Status update failed:', err);
-      // Fallback local update for UI fluidity
-      if (onStatusUpdate) {
-        onStatusUpdate(meetingId, itemId, newStatus);
-      }
     } finally {
       setUpdatingId(null);
     }

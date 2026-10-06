@@ -1,0 +1,92 @@
+{
+  "summary": "Event operations with 6 attendees. 4 decision(s): Drop the souvenir kits; Keep the contest to two rounds; Hold demo day in the lab. 2 open issue(s): API key request still pending with the admin office; Finals date (Saturday) tentative, pending hall availability. 8 pending and 3 completed action item(s), 1 without an owner.",
+  "action_items": [
+    {
+      "task": "Send the agenda",
+      "owner": "Swetha",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Print the certificates",
+      "owner": "Swetha",
+      "deadline": "by Tuesday",
+      "deadline_iso": "2026-10-20",
+      "status": "pending"
+    },
+    {
+      "task": "Confirm the guest speaker",
+      "owner": "Karthik",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Design the poster",
+      "owner": null,
+      "deadline": "next month",
+      "deadline_iso": "2026-11-01/2026-11-30",
+      "status": "pending"
+    },
+    {
+      "task": "Contact the sponsors",
+      "owner": "Swetha",
+      "deadline": "by tomorrow",
+      "deadline_iso": "2026-10-20",
+      "status": "pending"
+    },
+    {
+      "task": "Collect the team photos",
+      "owner": "Tom",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Write the API documentation",
+      "owner": "Karthik",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Prepare the slides",
+      "owner": "Arun",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Arrange the projector",
+      "owner": "Swetha",
+      "deadline": "next week",
+      "deadline_iso": "2026-10-26/2026-11-01",
+      "status": "pending"
+    },
+    {
+      "task": "Clean the training dataset",
+      "owner": "Tom",
+      "deadline": "yesterday",
+      "deadline_iso": "2026-10-18",
+      "status": "completed"
+    },
+    {
+      "task": "Arrange the transport",
+      "owner": "Lena",
+      "deadline": "by tomorrow",
+      "deadline_iso": "2026-10-20",
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Drop the souvenir kits",
+    "Keep the contest to two rounds",
+    "Hold demo day in the lab",
+    "Use the hall's built-in sound system"
+  ],
+  "unresolved_issues": [
+    "API key request still pending with the admin office",
+    "Finals date (Saturday) tentative, pending hall availability"
+  ]
+}

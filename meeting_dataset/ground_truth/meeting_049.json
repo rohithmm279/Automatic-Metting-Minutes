@@ -1,0 +1,41 @@
+{
+  "summary": "Event operations with 4 attendees. 2 decision(s): Limit each pitch to five minutes; Use Postgres for the database. 2 open issue(s): Helpdesk coverage for day two undecided; Training start on the 12th tentative, pending lab access. 3 pending and 1 completed action item(s), 0 without an owner.",
+  "action_items": [
+    {
+      "task": "Schedule the mock interview",
+      "owner": "Meena",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Design the poster",
+      "owner": "Faizal",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Share the meeting notes",
+      "owner": "Vikram",
+      "deadline": "by Friday",
+      "deadline_iso": "2026-10-16",
+      "status": "pending"
+    },
+    {
+      "task": "Collect the volunteer list",
+      "owner": "Vikram",
+      "deadline": "today",
+      "deadline_iso": "2026-10-15",
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Limit each pitch to five minutes",
+    "Use Postgres for the database"
+  ],
+  "unresolved_issues": [
+    "Helpdesk coverage for day two undecided",
+    "Training start on the 12th tentative, pending lab access"
+  ]
+}

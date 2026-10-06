@@ -1,0 +1,54 @@
+# meeting_050 | style: client_call | date: 2026-12-16 (Wednesday) | attendees: Aarav, Imran, Anjali, Divya
+Aarav: Thanks for joining the call, let's go through the open items.
+Anjali: Let me pull up the notes.
+Anjali: Okay, next point.
+Imran: I'll prepare the demo script by next Friday.
+Anjali: Sorry, make it by Monday, the lab is closed till then.
+Imran: Right, by Monday then.
+Divya: It's so hot in this room today.
+Divya: The Wi-Fi here is terrible again.
+Anjali: Let's tentatively start the training sessions on the 12th, but only if the lab access is sorted.
+Divya: Right, we'll confirm once we know.
+Anjali: Did anyone watch the match last night?
+Divya: Let me note that down.
+Anjali: If I get time, I might deploy the staging build.
+Divya: Okay, no pressure.
+Aarav: Let's tentatively hold the finals on Saturday, but only if the hall is free.
+Divya: Right, we'll confirm once we know.
+Imran: Hmm, interesting.
+Anjali: Fair enough.
+Imran: I'll collect the registration forms --
+Anjali: Sorry, I lost the call for a second.
+Imran: Sorry, as I was saying, by Friday.
+Divya: Great, thanks.
+Divya: Wait, can I--
+Aarav: Go ahead.
+Divya: Never mind, it can wait.
+Divya: I'll write the API documentation --
+Aarav: Sorry, I lost the call for a second.
+Divya: Sorry, as I was saying, next month.
+Anjali: Alright.
+Anjali: Can everyone see my screen?
+Aarav: The deployment keeps failing and we don't know why.
+Anjali: Yeah, that's a worry.
+Imran: The model accuracy is still stuck below the target.
+Anjali: Let's park it for now.
+Anjali: Sorry, I was on mute.
+Anjali: Um, okay, final call. We keep the team size at four.
+Imran: Fine by me.
+Aarav: That's helpful context.
+Divya: Okay, moving on.
+Divya: So, I'll print the certificates by Thursday.
+Divya: Wait, can I--
+Aarav: Go ahead.
+Divya: Never mind, it can wait.
+Aarav: I'll set up the photo booth.
+Aarav: Actually no, forget it, there's no space.
+Divya: Okay, then we skip it.
+Anjali: Yeah, so right, that makes sense.
+Aarav: Wait, can I--
+Imran: Go ahead.
+Aarav: Yeah, so never mind, it can wait.
+Divya: I'd like Anjali to write the unit tests by the end of the month.
+Anjali: Okay, noted.
+Aarav: Thanks for your time, everyone.

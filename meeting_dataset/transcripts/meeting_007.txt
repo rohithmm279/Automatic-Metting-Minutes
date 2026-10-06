@@ -1,0 +1,36 @@
+# meeting_007 | style: faculty_advisor | date: 2026-10-02 (Friday) | attendees: Aarav, Priya, Anjali
+Aarav: Good afternoon, shall we begin with the progress update?
+Anjali: Please continue.
+Aarav: Should we pick round robin or knockout for the contest format?
+Priya: I lean round robin, but let's confirm with Mr. Selvam first.
+Aarav: Mr. Selvam is out till Friday, so we decide then.
+Priya: Should we pick Flutter or React Native for the mobile app?
+Anjali: I lean Flutter, but let's confirm with Ms. Geetha first.
+Priya: Ms. Geetha is out till Friday, so we decide then.
+Anjali: Fine. I'll book the seminar hall today, either way.
+Anjali: It's so hot in this room today.
+Aarav: Did anyone renew the domain?
+Priya: I've already renewed the domain.
+Aarav: Did anyone watch the match last night?
+Aarav: The Wi-Fi here is terrible again.
+Priya: Wait, can I--
+Anjali: Go ahead.
+Priya: Never mind, it can wait.
+Priya: I'll write the unit tests by Monday.
+Aarav: Um, sorry, make it this weekend, the review is before that.
+Priya: Right, this weekend then.
+Anjali: Let me pull up the notes.
+Priya: Nobody knows who is judging the final round.
+Aarav: Yeah, that's a worry.
+Aarav: Can everyone see my screen?
+Aarav: That's a fair point.
+Priya: Anjali, can you set up the Slack channel tomorrow?
+Anjali: Yes, will do.
+Aarav: Hmm, interesting.
+Priya: Yeah, I agree with that.
+Anjali: I'll write the API documentation by Wednesday.
+Aarav: Sorry, I was on mute.
+Anjali: Right, that makes sense.
+Priya: Let's tentatively open registration on Monday, but only if the form is approved.
+Aarav: Right, we'll confirm once we know.
+Aarav: Good, let's meet again soon.

@@ -1,0 +1,69 @@
+# meeting_015 | style: sprint_planning | date: 2026-11-18 (Wednesday) | attendees: Lena, Pooja, Aarav, Arun, Anjali, Swetha
+Lena: Welcome to sprint planning, let's go through the backlog.
+Swetha: Okay, next point.
+Aarav: Someone needs to write the API documentation by end of day.
+Pooja: I'm not free for that, sorry.
+Swetha: The Wi-Fi here is terrible again.
+Anjali: Fair enough.
+Lena: Let's run demo day in the lab.
+Swetha: Sounds good.
+Swetha: Let me pull up the notes.
+Lena: Anjali, could you label the sample transcripts by Friday?
+Anjali: Yes, no problem.
+Arun: Sorry, I was on mute.
+Anjali: Let's size it later.
+Pooja: Let's freeze the feature list today.
+Lena: Fine by me.
+Pooja: Right, that makes sense.
+Pooja: Okay, moving on.
+Aarav: Yeah, so okay, final call. We record all the sessions.
+Anjali: Fine by me.
+Pooja: Did anyone watch the match last night?
+Swetha: Let's limit each pitch to five minutes.
+Anjali: Fine by me.
+Anjali: That ticket is bigger than it looks.
+Swetha: Okay, final call. We name the event Code Sprint.
+Aarav: Um, works for me.
+Swetha: Yeah, I agree with that.
+Swetha: It's so hot in this room today.
+Swetha: Did anyone compile the final report?
+Aarav: I've already compiled the final report.
+Pooja: Arun, can you fix the login bug?
+Arun: I'm swamped this week, sorry.
+Lena: I'll take it.
+Pooja: Okay, final call. We use Postgres for the database.
+Arun: Works for me.
+Anjali: Hmm, interesting.
+Arun: Lena, could you deploy the staging build once the budget is approved?
+Lena: Yes, no problem.
+Arun: Can everyone see my screen?
+Arun: Yeah, so the backlog is getting long.
+Aarav: Maybe we should extend registration by a week.
+Lena: No, let's close registration on the original date.
+Aarav: So, okay, fair.
+Aarav: Who covers the helpdesk on day two? That's still open.
+Swetha: Yeah, that's a worry.
+Pooja: Right, that makes sense.
+Pooja: Arun, can you update the README?
+Arun: Yes, I can do that by Monday.
+Anjali: Yeah, I agree with that.
+Anjali: The backlog is getting long.
+Arun: Yeah, so should we pick a hybrid format or a fully offline format for the event format?
+Pooja: I lean a hybrid format, but let's confirm with Ravi first.
+Arun: Yeah, so Ravi is out till Wednesday, so we decide then.
+Pooja: Fine. I'll prepare the demo script by the end of the month, either way.
+Pooja: It's so hot in this room today.
+Aarav: Maybe we should print the brochures in colour.
+Swetha: No, let's keep them black and white.
+Aarav: Okay, fair.
+Lena: Let's size it later.
+Aarav: Let me pull up the notes.
+Pooja: Maybe we should move the event to Saturday.
+Anjali: No, let's stay with Friday.
+Pooja: Okay, fair.
+Aarav: Wait, can I--
+Arun: Go ahead.
+Aarav: Never mind, it can wait.
+Arun: Aarav, could you test the prototype by Thursday?
+Aarav: Yes, no problem.
+Lena: Sprint is set, thanks everyone.

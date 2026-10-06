@@ -30,8 +30,14 @@ export default function AnalyticsView({
   const itemsWithOwner = actionItems.filter((a) => a.assignee && a.assignee !== 'Unassigned').length;
   const itemsWithDeadline = actionItems.filter((a) => a.deadline && a.deadline !== 'No deadline' && a.deadline !== 'None').length;
 
-  const ownerIdentPct = totalActions > 0 ? Math.round((itemsWithOwner / totalActions) * 100) : 85;
-  const deadlineIdentPct = totalActions > 0 ? Math.round((itemsWithDeadline / totalActions) * 100) : 78;
+  const ownerIdentPct = totalActions > 0 ? Math.round((itemsWithOwner / totalActions) * 100) : 0;
+  const deadlineIdentPct = totalActions > 0 ? Math.round((itemsWithDeadline / totalActions) * 100) : 0;
+  const summaryCoveragePct = totalMeetings > 0
+    ? Math.round((meetings.filter((meeting) => meeting.summary && meeting.summary.trim()).length / totalMeetings) * 100)
+    : 0;
+  const evidenceCoveragePct = totalActions > 0
+    ? Math.round((actionItems.filter((item) => item.evidence && item.evidence.trim()).length / totalActions) * 100)
+    : 0;
 
   // Average extractions per meeting
   const avgActions = totalMeetings > 0 ? (totalActions / totalMeetings).toFixed(1) : 0;
@@ -102,8 +108,8 @@ export default function AnalyticsView({
 
         <div className="ai-quality-grid">
           {[
-            { metric: 'Summary Coverage', score: 100, label: '100% grounded in transcript' },
-            { metric: 'Action Extraction Density', score: 92, label: 'Explicit commitment capture' },
+            { metric: 'Summary Availability', score: summaryCoveragePct, label: `${summaryCoveragePct}% of saved meetings have summaries` },
+            { metric: 'Evidence Coverage', score: evidenceCoveragePct, label: `${evidenceCoveragePct}% of actions include source evidence` },
             { metric: 'Owner Resolution', score: ownerIdentPct, label: `${itemsWithOwner}/${totalActions} mapped to speaker` },
             { metric: 'Temporal Deadline Grounding', score: deadlineIdentPct, label: `${itemsWithDeadline}/${totalActions} resolved dates` },
           ].map((q) => (

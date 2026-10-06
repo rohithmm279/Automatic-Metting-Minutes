@@ -1,0 +1,44 @@
+# meeting_044 | style: brainstorm | date: 2026-11-30 (Monday) | attendees: Lena, Kavya, Faizal, Riya, Karthik
+Lena: Okay, open floor, throw out any ideas you have.
+Karthik: Let's tentatively open registration on Monday, but only if the form is approved.
+Faizal: Right, we'll confirm once we know.
+Faizal: The Wi-Fi here is terrible again.
+Lena: If I get time, I might prepare the judging rubric.
+Kavya: Okay, no pressure.
+Lena: Right, that makes sense.
+Lena: Let's not filter ourselves yet.
+Karthik: We could organise the shared drive if we had more people, but we don't.
+Lena: True, let's leave it.
+Lena: Interesting angle, keep going.
+Kavya: Yeah, I agree with that.
+Faizal: Someone needs to set up the CI pipeline in three days.
+Kavya: Um, let's see who has time.
+Lena: That's a wild idea, I love it.
+Kavya: I'll arrange the guest lecture.
+Kavya: Actually no, forget it, the speaker pulled out.
+Faizal: Okay, then we skip it.
+Kavya: Okay, next point.
+Karthik: I'll clean the training dataset by Wednesday --
+Faizal: Actually, next week, I just checked the calendar.
+Karthik: Yeah, so okay, next week.
+Karthik: Okay, moving on.
+Faizal: I'll create the invitation card by Thursday --
+Lena: Actually, by Tuesday, I just checked the calendar.
+Faizal: Okay, by Tuesday.
+Kavya: Can everyone see my screen?
+Karthik: Hmm, interesting.
+Kavya: Maybe we should add a third round to the contest.
+Lena: No, let's keep it to two rounds.
+Kavya: Okay, fair.
+Kavya: It's so hot in this room today.
+Riya: Um, the budget is still not approved.
+Faizal: We'll revisit it.
+Faizal: Let me pull up the notes.
+Karthik: We don't know how many people will actually turn up.
+Faizal: Yeah, that's a worry.
+Kavya: Karthik is going to update the budget sheet next month.
+Karthik: Um, yes, that's right.
+Faizal: Fair enough.
+Faizal: Lena, can you update the README?
+Lena: Yes, I can do that by end of day.
+Lena: Good ideas today, thanks everyone.

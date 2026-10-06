@@ -10,6 +10,7 @@ Or from the backend/ directory:
 from __future__ import annotations
 
 import logging
+import os
 import sys
 from contextlib import asynccontextmanager
 from pathlib import Path
@@ -56,7 +57,12 @@ async def lifespan(application: FastAPI) -> AsyncGenerator[None, None]:
     init_db(db_path=DEFAULT_DB_PATH)
 
     application.state.repository = MeetingRepository(db_path=DEFAULT_DB_PATH)
-    application.state.orchestrator = MeetingOrchestrator(temperature=0.0)
+    two_pass = os.getenv("MEETING_TWO_PASS", "false").strip().lower() not in {"0", "false", "no", "off"}
+    application.state.orchestrator = MeetingOrchestrator(
+        temperature=0.0,
+        two_pass=two_pass,
+        evidence_repair=True,
+    )
 
     logger.info("Application ready — Qwen2.5:3b via Ollama + SQLite persistence active.")
     yield

@@ -247,3 +247,64 @@ def test_14_decision_filtering_rejects_tasks_and_risk_mitigations():
     assert not any("Escalate billing provider" in d for d in filtered_flat)
 
 
+def test_15_timestamp_speaker_attribution_and_deduplication():
+    import datetime
+    from app.agents.orchestrator import AgentOrchestrator
+    from app.schemas.meeting_schema import ActionItem
+
+    meeting_date = datetime.date(2026, 9, 20)  # Sunday
+    transcript = "[00:03:51] Karthik: Okay, I'll send the meeting link in the group."
+
+    task, owner, deadline = AgentOrchestrator._resolve_owner_and_deadline(
+        task="Send the meeting link in the group",
+        owner="Not specified",
+        deadline="Not specified",
+        evidence="[00:03:51] Karthik: Okay, I'll send the meeting link in the group.",
+        transcript_clean=transcript,
+        meeting_date=meeting_date,
+    )
+    assert owner == "Karthik"
+
+    # Test deduplication merging
+    items = [
+        ActionItem(task="Send the meeting link in the group", owner="Karthik", deadline="Not specified"),
+        ActionItem(task="Send meeting link in group", owner="Not specified", deadline="2026-09-24"),
+    ]
+    deduped = AgentOrchestrator._deduplicate_action_items(items)
+    assert len(deduped) == 1
+    assert deduped[0].owner == "Karthik"
+    assert deduped[0].deadline == "2026-09-24"
+
+
+def test_16_role_assignment_decision_migration():
+    from app.agents.orchestrator import AgentOrchestrator
+    from app.schemas.meeting_schema import ActionItem, DecisionItem
+
+    action_items = []
+    raw_decisions = [
+        "Use FAISS for vector search and Streamlit for UI",
+        "Adopt 'StudyGen' as project name",
+        "Arun will handle the RAG feature and backend development",
+        "Karthik will handle UI development",
+    ]
+    raw_detailed = [DecisionItem(decision=d) for d in raw_decisions]
+
+    filtered_flat, filtered_detailed = AgentOrchestrator._filter_action_items_from_decisions(
+        raw_decisions, raw_detailed, action_items
+    )
+
+    # Decisions should only contain the 2 architectural/naming decisions
+    assert len(filtered_flat) == 2
+    assert "Use FAISS for vector search and Streamlit for UI" in filtered_flat
+    assert "Adopt 'StudyGen' as project name" in filtered_flat
+    assert not any("will handle" in d for d in filtered_flat)
+
+    # Action items should now have the 2 migrated tasks
+    assert len(action_items) == 2
+    arun_item = next(ai for ai in action_items if ai.owner == "Arun")
+    assert "RAG feature" in arun_item.task
+    karthik_item = next(ai for ai in action_items if ai.owner == "Karthik")
+    assert "UI development" in karthik_item.task
+
+
+

@@ -13,6 +13,7 @@ if str(ROOT) not in sys.path:
 from backend.ai.ollama_client import OllamaClient
 from backend.ai.orchestrator import MeetingOrchestrator, MeetingParseError
 from backend.ai.validator import MeetingValidator, MeetingValidationError
+from backend.ai.evidence_repair import repair_output
 from backend.models.meeting import ActionItem, Decision, UnresolvedIssue, MeetingOutput
 
 
@@ -58,6 +59,96 @@ class TestAIPipelineMocked(unittest.TestCase):
         self.assertEqual(result.decisions[0].decision, "Allocate $500 for catering")
         self.assertEqual(len(result.unresolved_issues), 1)
         self.assertEqual(result.unresolved_issues[0].issue, "Venue permit still needed")
+
+    def test_01g_evidence_repair_adds_missing_explicit_commitment(self):
+        output = MeetingOutput(
+            summary="The team discussed the project.",
+            action_items=[],
+            decisions=[],
+            unresolved_issues=[],
+        )
+        repaired = repair_output(
+            output,
+            "Karthik: I will arrange laptops for the coding session by Thursday.\n"
+            "Kavya: The printing order is still not confirmed.",
+        )
+
+        self.assertEqual(repaired.action_items[0].task, "Arrange laptops for the coding session")
+        self.assertEqual(repaired.action_items[0].owner, "Karthik")
+        self.assertEqual(len(repaired.unresolved_issues), 1)
+
+    def test_01e_unrelated_input_is_rejected_before_model_call(self):
+        """Plain unrelated content must not be sent to the extraction model."""
+        with self.assertRaisesRegex(ValueError, "does not look like a meeting transcript"):
+            self.orchestrator.analyze("The latest football score was 4 to 1.")
+
+        self.mock_client.generate.assert_not_called()
+
+    def test_01c_two_pass_tags_intent_before_extraction(self):
+        """Two-pass mode sends intent evidence to the structural extraction pass."""
+        tags = {
+            "meeting_archetype": "corporate_sync",
+            "utterance_tags": [
+                {
+                    "speaker": "Jordan",
+                    "text": "I will finalize the sponsorship deck by Friday.",
+                    "intent": "assigned_task",
+                },
+                {
+                    "speaker": "Alex",
+                    "text": "We decided to allocate $500 for catering.",
+                    "intent": "final_decision",
+                },
+            ],
+        }
+        payload = {
+            "summary": "The committee reviewed the annual budget and event planning.",
+            "action_items": [{"task": "Finalize the sponsorship deck", "owner": "Jordan", "deadline": "Friday"}],
+            "decisions": ["Allocate $500 for catering"],
+            "unresolved_issues": [],
+        }
+        self.mock_client.generate.side_effect = [json.dumps(tags), json.dumps(payload)]
+        orchestrator = MeetingOrchestrator(client=self.mock_client, temperature=0.0, two_pass=True)
+
+        result = orchestrator.analyze(self.sample_transcript)
+
+        self.assertEqual(result.pipeline_name, "qwen_application")
+        self.assertEqual(result.prompt_version, "backend.ai.prompts.v3-two-pass")
+        self.assertEqual(self.mock_client.generate.call_count, 2)
+        self.assertIn("assigned_task", self.mock_client.generate.call_args_list[1].kwargs["prompt"])
+        self.assertIn("corporate_sync", self.mock_client.generate.call_args_list[1].kwargs["prompt"])
+
+    def test_01d_two_pass_falls_back_to_one_pass_on_bad_tags(self):
+        """Malformed pass-one output does not prevent normal extraction."""
+        payload = {
+            "summary": "The committee reviewed the annual budget.",
+            "action_items": [],
+            "decisions": [],
+            "unresolved_issues": [],
+        }
+        self.mock_client.generate.side_effect = ["not json", json.dumps(payload)]
+        orchestrator = MeetingOrchestrator(client=self.mock_client, temperature=0.0, two_pass=True)
+
+        result = orchestrator.analyze(self.sample_transcript)
+
+        self.assertEqual(result.summary, payload["summary"])
+        self.assertEqual(self.mock_client.generate.call_count, 2)
+        self.assertNotIn("PASS 1 INTENT GUIDANCE", self.mock_client.generate.call_args_list[1].kwargs["prompt"])
+
+    @patch("backend.ai.ollama_client.requests.post")
+    def test_01b_ollama_limits_are_configurable(self, mock_post):
+        """Ollama requests expose configurable timeout and output limits."""
+        response = MagicMock()
+        response.json.return_value = {"response": "{}"}
+        mock_post.return_value = response
+
+        client = OllamaClient(timeout_seconds=45, max_output_tokens=512)
+        client.generate("test prompt")
+
+        request = mock_post.call_args
+        self.assertEqual(request.kwargs["timeout"], (10, 45))
+        self.assertEqual(request.kwargs["json"]["options"]["num_predict"], 512)
+        self.assertEqual(request.kwargs["json"]["keep_alive"], "10m")
 
     def test_02_json_inside_markdown_fences(self):
         """Test 2: Strips markdown code fences (```json ... ```) correctly."""
@@ -114,6 +205,56 @@ class TestAIPipelineMocked(unittest.TestCase):
         with self.assertRaises(MeetingValidationError) as ctx:
             self.orchestrator.analyze(self.sample_transcript)
         self.assertIn("invalid status", str(ctx.exception).lower())
+
+    def test_04b_known_status_alias_is_normalized(self):
+        """Common model status aliases are converted to the public status enum."""
+        payload = {
+            "summary": "The team reviewed the annual budget.",
+            "action_items": [{"task": "Finalize the sponsorship deck", "owner": "Jordan", "status": "settled"}],
+            "decisions": [],
+            "unresolved_issues": [],
+        }
+        self.mock_client.generate.return_value = json.dumps(payload)
+
+        result = self.orchestrator.analyze(self.sample_transcript)
+
+        self.assertEqual(result.action_items[0].status, "completed")
+
+    def test_04c_confirmed_action_status_is_pending(self):
+        """Model status 'confirmed' means accepted assignment, not completed work."""
+        payload = {
+            "summary": "The team confirmed the prototype test assignment.",
+            "action_items": [{
+                "task": "Test the prototype",
+                "owner": "Jordan",
+                "status": "confirmed",
+            }],
+            "decisions": [],
+            "unresolved_issues": [],
+        }
+        self.mock_client.generate.return_value = json.dumps(payload)
+
+        result = self.orchestrator.analyze(self.sample_transcript)
+
+        self.assertEqual(result.action_items[0].status, "pending")
+
+    def test_04d_resolved_action_status_is_completed(self):
+        """Model status 'resolved' maps to the public completed state."""
+        payload = {
+            "summary": "The assigned issue was resolved.",
+            "action_items": [{
+                "task": "Fix the issue",
+                "owner": "Jordan",
+                "status": "resolved",
+            }],
+            "decisions": [],
+            "unresolved_issues": [],
+        }
+        self.mock_client.generate.return_value = json.dumps(payload)
+
+        result = self.orchestrator.analyze(self.sample_transcript)
+
+        self.assertEqual(result.action_items[0].status, "completed")
 
     def test_05_unassigned_action_item(self):
         """Test 5: Unassigned action item (owner=None or missing) is allowed and parsed."""
@@ -175,6 +316,29 @@ class TestAIPipelineMocked(unittest.TestCase):
         result = self.orchestrator.analyze(transcript_with_date)
         self.assertEqual(result.action_items[0].deadline, "2026-09-23")
 
+    def test_06b1_iso_date_is_not_grounded_by_generic_deadline_words(self):
+        """Generic temporal words must not support an invented ISO deadline."""
+        transcript_without_date = (
+            "Jordan: I will send the draft before the deadline.\n"
+            "Alex: We still need to confirm the external reviewer."
+        )
+        output = MeetingOutput(
+            summary="The team discussed the report.",
+            action_items=[
+                ActionItem(
+                    task="Send the draft",
+                    owner="Jordan",
+                    deadline="2026-11-01",
+                    status="pending",
+                )
+            ],
+            decisions=[],
+            unresolved_issues=[],
+        )
+
+        with self.assertRaises(MeetingValidationError):
+            self.orchestrator.validator.validate(output, transcript_without_date)
+
     def test_06c_relative_resolved_iso_deadline_grounding(self):
         """Test 6c: ISO date (e.g. 2026-09-14) resolved from relative words (e.g. next Monday) is validated successfully."""
         transcript_relative = (
@@ -198,6 +362,122 @@ class TestAIPipelineMocked(unittest.TestCase):
         self.mock_client.generate.return_value = json.dumps(payload)
         result = self.orchestrator.analyze(transcript_relative)
         self.assertEqual(result.action_items[0].deadline, "2026-09-14")
+
+    def test_06d_header_relative_iso_deadline_grounding(self):
+        """Header-relative dates are grounded after normalization to ISO format."""
+        transcript_relative = (
+            "Date: 22 September 2026\n"
+            "Rohith: Tomorrow we'll do a complete test together."
+        )
+        payload = {
+            "summary": "The team scheduled a complete test for tomorrow.",
+            "action_items": [
+                {
+                    "task": "Complete the test",
+                    "owner": "Rohith",
+                    "deadline": "2026-09-23",
+                    "status": "pending",
+                }
+            ],
+            "decisions": [],
+            "unresolved_issues": [],
+        }
+        self.mock_client.generate.return_value = json.dumps(payload)
+
+        result = self.orchestrator.analyze(transcript_relative)
+
+        self.assertEqual(result.action_items[0].deadline, "2026-09-23")
+
+    def test_06e_month_first_header_relative_iso_deadline_grounding(self):
+        """Month-first headers must ground normalized relative deadlines."""
+        transcript = (
+            "Date: October 1, 2026\n"
+            "Rohith: Tomorrow we'll complete the test together.\n"
+            "Alex: I will review the results after that."
+        )
+        payload = {
+            "summary": "The team scheduled a complete test for tomorrow.",
+            "action_items": [{
+                "task": "Complete the test",
+                "owner": "Rohith",
+                "deadline": "2026-10-02",
+                "status": "pending",
+            }],
+            "decisions": [],
+            "unresolved_issues": [],
+        }
+        self.mock_client.generate.return_value = json.dumps(payload)
+
+        result = self.orchestrator.analyze(transcript)
+        self.assertEqual(result.action_items[0].deadline, "2026-10-02")
+
+    def test_06g_relative_iso_deadline_without_meeting_header_is_grounded(self):
+        """Relative timing can ground a normalized ISO date without a date header."""
+        transcript = (
+            "Karthik: I will arrange laptops for the coding session by Thursday evening.\n"
+            "Kavya: I will fix the club website bug by end of this week."
+        )
+        output = MeetingOutput(
+            summary="The team assigned laptop and website work.",
+            action_items=[
+                ActionItem(task="Arrange laptops for the coding session", owner="Karthik", deadline="2026-10-02", status="pending"),
+            ],
+            decisions=[],
+            unresolved_issues=[],
+        )
+
+        self.assertIs(self.orchestrator.validator.validate(output, transcript), output)
+
+    def test_06e_header_relative_iso_hallucinated_deadline_rejected(self):
+        """An ISO date not resolved by the meeting header or transcript is rejected."""
+        transcript_relative = (
+            "Date: 22 September 2026\n"
+            "Rohith: Tomorrow we'll do a complete test together."
+        )
+        output = MeetingOutput(
+            summary="The team scheduled a complete test for tomorrow.",
+            action_items=[
+                ActionItem(
+                    task="Complete the test",
+                    owner="Rohith",
+                    deadline="2026-09-24",
+                    status="pending",
+                )
+            ],
+            decisions=[],
+            unresolved_issues=[],
+        )
+
+        with self.assertRaises(MeetingValidationError) as ctx:
+            self.orchestrator.validator.validate(output, transcript_relative)
+
+        self.assertIn("references deadline", str(ctx.exception).lower())
+
+    def test_06f_datetime_deadline_recovers_from_transcript_turn(self):
+        """A model datetime with the wrong date is corrected from the matched relative commitment."""
+        transcript_relative = (
+            "Date: 22 September 2026\n"
+            "Rohith: Tomorrow we'll do a complete test together.\n"
+            "Arun: I'll create the GitHub repo."
+        )
+        payload = {
+            "summary": "The team scheduled a complete test for tomorrow.",
+            "action_items": [
+                {
+                    "task": "Complete the test",
+                    "owner": "Rohith",
+                    "deadline": "2026-09-24T19:00:00",
+                    "status": "pending",
+                }
+            ],
+            "decisions": [],
+            "unresolved_issues": [],
+        }
+        self.mock_client.generate.return_value = json.dumps(payload)
+
+        result = self.orchestrator.analyze(transcript_relative)
+
+        self.assertEqual(result.action_items[0].deadline, "2026-09-23")
 
     def test_07_duplicate_action_items(self):
         """Test 7: Handles multiple action items including duplicates without crashing."""
@@ -238,8 +518,26 @@ class TestAIPipelineMocked(unittest.TestCase):
             self.orchestrator.analyze(self.sample_transcript)
         self.assertIn("not valid json", str(ctx.exception).lower())
 
+    def test_09b_wrapped_llm_json_is_recovered(self):
+        """Test 9b: Common model wrappers do not prevent structured parsing."""
+        payload = {
+            "summary": "The club planned its showcase materials and staffing.",
+            "action_items": [],
+            "decisions": [],
+            "unresolved_issues": [],
+        }
+        self.mock_client.generate.return_value = (
+            "Here is the requested JSON:\n```json\n"
+            + json.dumps(payload)
+            + "\n```"
+        )
+
+        result = self.orchestrator.analyze(self.sample_transcript)
+
+        self.assertEqual(result.summary, payload["summary"])
+
     def test_10_hallucinated_owner_grounding(self):
-        """Test 10: Owner not present in transcript triggers MeetingValidationError."""
+        """Test 10: Unsupported owners are safely cleared, not allowed to poison output."""
         payload = {
             "summary": "Meeting with hallucinated owner.",
             "action_items": [
@@ -250,9 +548,8 @@ class TestAIPipelineMocked(unittest.TestCase):
         }
         self.mock_client.generate.return_value = json.dumps(payload)
 
-        with self.assertRaises(MeetingValidationError) as ctx:
-            self.orchestrator.analyze(self.sample_transcript)
-        self.assertIn("references owner", str(ctx.exception).lower())
+        result = self.orchestrator.analyze(self.sample_transcript)
+        self.assertIsNone(result.action_items[0].owner)
 
     def test_11_preprocessing_integration(self):
         """Test 11: Verifies raw transcript is preprocessed via TranscriptProcessor."""
@@ -276,6 +573,38 @@ class TestAIPipelineMocked(unittest.TestCase):
         called_prompt = self.mock_client.generate.call_args[1]["prompt"]
         self.assertNotIn("   Alex:   Welcome", called_prompt)
         self.assertIn("Alex: Welcome everyone.", called_prompt)
+
+    def test_12_unsupported_prompt_examples_are_removed(self):
+        """Prompt examples must not become unsupported decisions or issues."""
+        payload = {
+            "summary": "The team reviewed the event plan.",
+            "action_items": [],
+            "decisions": ["Finalize the event date"],
+            "unresolved_issues": ["Guest's travel plans", "Budget approval"],
+        }
+        self.mock_client.generate.return_value = json.dumps(payload)
+
+        result = self.orchestrator.analyze(self.sample_transcript)
+
+        self.assertEqual(result.decisions, [])
+        self.assertEqual(result.unresolved_issues, [])
+
+    def test_13_prompt_example_is_kept_when_transcript_supports_it(self):
+        """A prompt example remains valid when it is actually discussed."""
+        transcript = self.sample_transcript + "\nTaylor: Guest's travel plans remain unresolved."
+        payload = {
+            "summary": "The team reviewed the event plan.",
+            "action_items": [],
+            "decisions": [],
+            "unresolved_issues": ["Guest's travel plans"],
+        }
+        self.mock_client.generate.return_value = json.dumps(payload)
+
+        result = self.orchestrator.analyze(transcript)
+
+        self.assertEqual(len(result.unresolved_issues), 1)
+        self.assertEqual(result.unresolved_issues[0].issue, "Guest's travel plans")
+
 
 
 if __name__ == "__main__":

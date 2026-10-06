@@ -1,0 +1,44 @@
+# meeting_026 | style: hackathon_sync | date: 2026-12-09 (Wednesday) | attendees: Priya, Anjali, Harini, Arun, Kavya
+Priya: Team, quick sync before the hackathon, let's be fast.
+Arun: Okay, moving on.
+Harini: Can everyone see my screen?
+Harini: Okay, final call. We keep the team size at four.
+Priya: Sounds good.
+Kavya: Let me pull up the notes.
+Anjali: Quick update: I've designed the poster.
+Kavya: Coffee run anyone?
+Priya: It's so hot in this room today.
+Arun: Maybe we should extend registration by a week.
+Harini: No, let's close registration on the original date.
+Arun: Okay, fair.
+Harini: Right, that makes sense.
+Harini: Hmm, interesting.
+Harini: Anjali, you write the unit tests today.
+Anjali: Arun knows that part better, honestly.
+Harini: Fair enough. Arun, you take it.
+Arun: Okay.
+Kavya: Did anyone watch the match last night?
+Arun: Fair enough.
+Arun: Someone needs to upload the code to the repository after the review.
+Harini: I'm not free for that, sorry.
+Priya: Okay, next point.
+Anjali: The sponsor hasn't replied to our email.
+Harini: Let's park it for now.
+Priya: Should we pick a hybrid format or a fully offline format for the event format?
+Kavya: I lean a hybrid format, but let's confirm with Mr. Selvam first.
+Priya: Mr. Selvam is out till Tuesday, so we decide then.
+Priya: I'll write the API documentation by Monday.
+Harini: Okay.
+Harini: Um, did anyone test the mobile layout?
+Kavya: I've already tested the mobile layout.
+Arun: Yeah, I agree with that.
+Harini: I'll prepare the slides next week.
+Anjali: Okay.
+Priya: The demo needs to be rock solid.
+Priya: Let's tentatively open registration on Monday, but only if the form is approved.
+Kavya: Right, we'll confirm once we know.
+Priya: We're running out of time.
+Harini: I'll check the audio setup by Monday --
+Anjali: Actually, by Thursday, I just checked the calendar.
+Harini: Okay, by Thursday.
+Priya: Okay, back to work everyone.

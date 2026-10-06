@@ -1,0 +1,62 @@
+{
+  "summary": "Project review with 5 attendees. 0 decision(s): none. 5 open issue(s): Venue confirmation not received; Choice between Postgres and MongoDB for the database undecided, pending Dr. Lakshmi's input on Tuesday; Budget is not yet approved. 7 pending and 0 completed action item(s), 0 without an owner.",
+  "action_items": [
+    {
+      "task": "Compile the final report",
+      "owner": "Naveen",
+      "deadline": "by Thursday",
+      "deadline_iso": "2026-10-15",
+      "status": "pending"
+    },
+    {
+      "task": "Test the mobile layout",
+      "owner": "Naveen",
+      "deadline": "by Thursday",
+      "deadline_iso": "2026-10-15",
+      "status": "pending"
+    },
+    {
+      "task": "Set up the CI pipeline",
+      "owner": "Naveen",
+      "deadline": "by tomorrow",
+      "deadline_iso": "2026-10-14",
+      "status": "pending"
+    },
+    {
+      "task": "Renew the domain",
+      "owner": "Manoj",
+      "deadline": "next week",
+      "deadline_iso": "2026-10-19/2026-10-25",
+      "status": "pending"
+    },
+    {
+      "task": "Prepare the demo script",
+      "owner": "Divya",
+      "deadline": "by Monday",
+      "deadline_iso": "2026-10-19",
+      "status": "pending"
+    },
+    {
+      "task": "Arrange the transport",
+      "owner": "Divya",
+      "deadline": "by the end of the month",
+      "deadline_iso": "2026-10-31",
+      "status": "pending"
+    },
+    {
+      "task": "Clean the training dataset",
+      "owner": "Imran",
+      "deadline": "once the budget is approved",
+      "deadline_iso": null,
+      "status": "pending"
+    }
+  ],
+  "decisions": [],
+  "unresolved_issues": [
+    "Venue confirmation not received",
+    "Choice between Postgres and MongoDB for the database undecided, pending Dr. Lakshmi's input on Tuesday",
+    "Budget is not yet approved",
+    "Helpdesk coverage for day two undecided",
+    "Choice between Flutter and React Native for the mobile app undecided, pending Ravi's input on Thursday"
+  ]
+}

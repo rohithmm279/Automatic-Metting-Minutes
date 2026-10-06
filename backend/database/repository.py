@@ -9,6 +9,8 @@ from backend.database.connection import get_connection, DEFAULT_DB_PATH
 from backend.database.schema import init_db
 from backend.models.meeting import MeetingOutput, ActionItem, Decision, UnresolvedIssue
 
+ALLOWED_ACTION_STATUSES = {"pending", "in_progress", "completed", "cancelled"}
+
 # Optional import — only needed when persisting agentic-pipeline output.
 # Imported lazily in save_meeting_analysis to avoid circular deps if the
 # agentic stack is not installed.
@@ -115,8 +117,9 @@ class MeetingRepository:
                     cursor.execute(
                         """
                         INSERT INTO meetings 
-                            (transcript, summary, title, meeting_date, meeting_time, start_time, end_time, created_at)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+                            (transcript, summary, title, meeting_date, meeting_time, start_time, end_time,
+                             model_name, pipeline_name, prompt_version, fallback_used, created_at)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
                         """,
                         (
                             transcript,
@@ -126,6 +129,10 @@ class MeetingRepository:
                             getattr(meeting_output, 'meeting_time', None),
                             getattr(meeting_output, 'start_time', None),
                             getattr(meeting_output, 'end_time', None),
+                            getattr(meeting_output, 'model_name', None),
+                            getattr(meeting_output, 'pipeline_name', None),
+                            getattr(meeting_output, 'prompt_version', None),
+                            int(bool(getattr(meeting_output, 'fallback_used', False))),
                             meeting_output.created_at,
                         ),
                     )
@@ -133,8 +140,9 @@ class MeetingRepository:
                     cursor.execute(
                         """
                         INSERT INTO meetings 
-                            (transcript, summary, title, meeting_date, meeting_time, start_time, end_time)
-                        VALUES (?, ?, ?, ?, ?, ?, ?);
+                            (transcript, summary, title, meeting_date, meeting_time, start_time, end_time,
+                             model_name, pipeline_name, prompt_version, fallback_used)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
                         """,
                         (
                             transcript,
@@ -144,6 +152,10 @@ class MeetingRepository:
                             getattr(meeting_output, 'meeting_time', None),
                             getattr(meeting_output, 'start_time', None),
                             getattr(meeting_output, 'end_time', None),
+                            getattr(meeting_output, 'model_name', None),
+                            getattr(meeting_output, 'pipeline_name', None),
+                            getattr(meeting_output, 'prompt_version', None),
+                            int(bool(getattr(meeting_output, 'fallback_used', False))),
                         ),
                     )
                 meeting_id = cursor.lastrowid
@@ -217,7 +229,8 @@ class MeetingRepository:
             cursor = conn.cursor()
             cursor.execute(
                 """
-                SELECT id, transcript, summary, title, meeting_date, meeting_time, start_time, end_time, created_at 
+                  SELECT id, transcript, summary, title, meeting_date, meeting_time, start_time, end_time,
+                      model_name, pipeline_name, prompt_version, fallback_used, created_at
                 FROM meetings WHERE id = ?;
                 """,
                 (meeting_id,),
@@ -249,6 +262,10 @@ class MeetingRepository:
                     m.meeting_time,
                     m.start_time,
                     m.end_time,
+                    m.model_name,
+                    m.pipeline_name,
+                    m.prompt_version,
+                    m.fallback_used,
                     m.created_at,
                     COUNT(DISTINCT a.id) AS action_items_count,
                     COUNT(DISTINCT d.id) AS decisions_count,
@@ -341,6 +358,8 @@ class MeetingRepository:
 
     def update_action_item_status(self, action_item_id: int, status: str) -> bool:
         """Update the status of an existing action item."""
+        if status not in ALLOWED_ACTION_STATUSES:
+            raise ValueError(f"Invalid action item status: {status}")
         conn = self._get_connection()
         try:
             with conn:
@@ -397,8 +416,9 @@ class MeetingRepository:
                     cursor.execute(
                         """
                         INSERT INTO meetings 
-                            (transcript, summary, title, meeting_date, meeting_time, start_time, end_time, created_at)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+                            (transcript, summary, title, meeting_date, meeting_time, start_time, end_time,
+                             model_name, pipeline_name, prompt_version, fallback_used, created_at)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
                         """,
                         (
                             transcript,
@@ -408,6 +428,10 @@ class MeetingRepository:
                             getattr(analysis, 'meeting_time', None),
                             getattr(analysis, 'start_time', None),
                             getattr(analysis, 'end_time', None),
+                            getattr(analysis, 'model_name', None),
+                            getattr(analysis, 'pipeline_name', None),
+                            getattr(analysis, 'prompt_version', None),
+                            int(bool(getattr(analysis, 'fallback_used', False))),
                             analysis.created_at,
                         ),
                     )
@@ -415,8 +439,9 @@ class MeetingRepository:
                     cursor.execute(
                         """
                         INSERT INTO meetings 
-                            (transcript, summary, title, meeting_date, meeting_time, start_time, end_time)
-                        VALUES (?, ?, ?, ?, ?, ?, ?);
+                            (transcript, summary, title, meeting_date, meeting_time, start_time, end_time,
+                             model_name, pipeline_name, prompt_version, fallback_used)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
                         """,
                         (
                             transcript,
@@ -426,6 +451,10 @@ class MeetingRepository:
                             getattr(analysis, 'meeting_time', None),
                             getattr(analysis, 'start_time', None),
                             getattr(analysis, 'end_time', None),
+                            getattr(analysis, 'model_name', None),
+                            getattr(analysis, 'pipeline_name', None),
+                            getattr(analysis, 'prompt_version', None),
+                            int(bool(getattr(analysis, 'fallback_used', False))),
                         ),
                     )
                 meeting_id = cursor.lastrowid

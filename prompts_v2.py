@@ -24,6 +24,8 @@ def build_meeting_analysis_prompt_v2(transcript: str) -> str:
 2. ACTION ITEMS
 Extract only tasks that are actually assigned or explicitly committed to.
 Every action item object must contain exactly these 4 keys: "task", "owner", "deadline", "status".
+- If the transcript ends with an explicit "Action Items", "Next Steps", or "Assignments" wrap-up, treat that named or numbered list as authoritative. Extract every listed task with its stated owner and deadline.
+- Never substitute a broad technical decision for a listed task. For example, "switch to WebSockets" is a decision, while "Priya: draft the exponential-backoff design by Wednesday" is an action item.
 - task: ONLY the core task action. Time and deadline words (e.g., "before the weekend", "sometime next week", "by Friday") are STRICTLY FORBIDDEN inside the task field.
   * Correct: "Book the auditorium"
   * Correct: "Set up the registration desk"

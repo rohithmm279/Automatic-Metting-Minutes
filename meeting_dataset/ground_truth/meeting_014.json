@@ -1,0 +1,57 @@
+{
+  "summary": "Brainstorm with 5 attendees. 4 decision(s): Record all sessions; Keep the workshop at two hours; Keep the contest to two rounds. 2 open issue(s): Registration opening on Monday tentative, pending form approval; Audio echo in the hall not resolved. 6 pending and 0 completed action item(s), 3 without an owner.",
+  "action_items": [
+    {
+      "task": "Compile the final report",
+      "owner": "Manoj",
+      "deadline": "after the review",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Print the certificates",
+      "owner": null,
+      "deadline": "before the demo",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Verify the attendance sheet",
+      "owner": null,
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Update the README",
+      "owner": null,
+      "deadline": "by Friday",
+      "deadline_iso": "2026-11-20",
+      "status": "pending"
+    },
+    {
+      "task": "Share the meeting notes",
+      "owner": "Tom",
+      "deadline": "before the demo",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Set up the CI pipeline",
+      "owner": "Manoj",
+      "deadline": "next week",
+      "deadline_iso": "2026-11-23/2026-11-29",
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Record all sessions",
+    "Keep the workshop at two hours",
+    "Keep the contest to two rounds",
+    "Stay with Java for the backend"
+  ],
+  "unresolved_issues": [
+    "Registration opening on Monday tentative, pending form approval",
+    "Audio echo in the hall not resolved"
+  ]
+}

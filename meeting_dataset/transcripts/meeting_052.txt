@@ -1,0 +1,37 @@
+# meeting_052 | style: club_planning | date: 2026-11-02 (Monday) | attendees: Swetha, Dev, Nisha, Naveen
+Swetha: Alright everyone, let's plan the upcoming event.
+Naveen: Did anyone watch the match last night?
+Swetha: Nisha, you submit the permission letter by Thursday.
+Nisha: Naveen knows that part better, honestly.
+Swetha: Fair enough. Naveen, you take it.
+Naveen: Okay.
+Swetha: Let me pull up the notes.
+Naveen: Who's going to verify the attendance sheet today?
+Dev: I'm not free for that, sorry.
+Nisha: Can everyone see my screen?
+Nisha: So, maybe we should move the event to Saturday.
+Naveen: No, let's stay with Friday.
+Nisha: Okay, fair.
+Nisha: Yeah, so the Wi-Fi here is terrible again.
+Dev: Yeah, so okay, moving on.
+Swetha: I can send the agenda by Thursday.
+Dev: I like that idea.
+Swetha: Okay, final call. We name the event Code Sprint.
+Nisha: Works for me.
+Swetha: Okay, next point.
+Nisha: It's so hot in this room today.
+Naveen: Swetha, you collect the volunteer list tomorrow.
+Swetha: Nisha knows that part better, honestly.
+Naveen: Fair enough. Nisha, you take it.
+Nisha: Okay.
+Dev: Hmm, interesting.
+Naveen: Right, that makes sense.
+Dev: So, let's tentatively start the training sessions on the 12th, but only if the lab access is sorted.
+Nisha: Right, we'll confirm once we know.
+Nisha: Wait, can I--
+Naveen: Go ahead.
+Nisha: Never mind, it can wait.
+Nisha: I'll update the budget sheet --
+Swetha: Sorry, can you repeat that? The audio dropped.
+Nisha: Sorry, as I was saying, by the end of the month.
+Swetha: Okay, let's wrap up here.

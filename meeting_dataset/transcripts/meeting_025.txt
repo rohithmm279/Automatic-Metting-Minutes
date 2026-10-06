@@ -1,0 +1,34 @@
+# meeting_025 | style: sprint_planning | date: 2026-12-15 (Tuesday) | attendees: Manoj, Deepak, Lena, Divya
+Manoj: Welcome to sprint planning, let's go through the backlog.
+Divya: The Wi-Fi here is terrible again.
+Manoj: I'll print the brochures.
+Manoj: Yeah, so actually no, forget it, we're going digital only.
+Divya: Um, okay, then we skip it.
+Lena: Okay, moving on.
+Lena: Um, right, that makes sense.
+Divya: I'll set up the Slack channel --
+Deepak: Sorry to cut in, my mic was muted for a moment.
+Divya: Sorry, as I was saying, by Wednesday.
+Lena: Okay.
+Deepak: The backlog is getting long.
+Manoj: Hmm, interesting.
+Manoj: I can test the mobile layout by the end of the month.
+Lena: Good.
+Lena: Maybe we should redo the logo from scratch.
+Manoj: No, let's keep the existing logo.
+Lena: Okay, fair.
+Manoj: Divya, can you migrate the database?
+Divya: I'm swamped this week, sorry.
+Lena: I'll take it.
+Deepak: That ticket is bigger than it looks.
+Deepak: Let's tentatively hold the finals on Saturday, but only if the hall is free.
+Manoj: Right, we'll confirm once we know.
+Divya: So, let's size it later.
+Manoj: I'll contact the sponsors by Wednesday.
+Deepak: Sorry, make it by Thursday, everyone is busy until then.
+Manoj: Right, by Thursday then.
+Manoj: Okay, next point.
+Manoj: Let me pull up the notes.
+Divya: Um, if I get time, I might schedule the mock interview.
+Lena: Okay, no pressure.
+Manoj: That's the plan for this sprint.

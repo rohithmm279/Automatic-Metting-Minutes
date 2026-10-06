@@ -1,0 +1,53 @@
+# meeting_035 | style: sprint_planning | date: 2026-11-26 (Thursday) | attendees: Vikram, Priya, Lena, Faizal, Kavya
+Vikram: Welcome to sprint planning, let's go through the backlog.
+Vikram: That ticket is bigger than it looks.
+Faizal: The backlog is getting long.
+Kavya: Faizal is going to update the README in two days.
+Faizal: Right, that's me.
+Vikram: Let me pull up the notes.
+Vikram: Faizal will label the sample transcripts by next Friday, right?
+Faizal: Right, that's me.
+Kavya: It's so hot in this room today.
+Faizal: Right, that makes sense.
+Lena: Vikram will renew the domain this weekend, right?
+Vikram: Yes, that's right.
+Vikram: Okay, moving on.
+Lena: Okay, final call. We hold the kickoff meeting on the 15th.
+Kavya: Sounds good.
+Kavya: Yeah, I agree with that.
+Priya: Wait, can I--
+Vikram: Go ahead.
+Priya: Never mind, it can wait.
+Priya: Yeah, so maybe we should extend registration by a week.
+Lena: No, let's close registration on the original date.
+Priya: Okay, fair.
+Lena: Sorry, I was on mute.
+Kavya: If I get time, I might benchmark the model.
+Vikram: Okay, no pressure.
+Lena: Okay, next point.
+Priya: Okay, final call. We freeze the feature list today.
+Lena: Works for me.
+Priya: Should we pick Postgres or MongoDB for the database?
+Kavya: I lean Postgres, but let's confirm with Prof. Anand first.
+Priya: Prof. Anand is out till Thursday, so we decide then.
+Faizal: Hmm, interesting.
+Priya: Wait, can I--
+Vikram: Go ahead.
+Priya: Never mind, it can wait.
+Vikram: Kavya, you record the demo video this weekend.
+Kavya: Priya knows that part better, honestly.
+Vikram: Fair enough. Priya, you take it.
+Priya: Okay.
+Priya: Can everyone see my screen?
+Kavya: Should we pick Whisper or a cloud speech API for speech-to-text?
+Lena: I lean Whisper, but let's confirm with Ms. Geetha first.
+Kavya: Ms. Geetha is out till Thursday, so we decide then.
+Lena: Did anyone watch the match last night?
+Priya: Vikram, you deploy the staging build by Monday.
+Vikram: Faizal knows that part better, honestly.
+Priya: Fair enough. Faizal, you take it.
+Faizal: Okay.
+Lena: Fair enough.
+Priya: Lena, could you set up the Slack channel by end of day?
+Lena: Yes, no problem.
+Vikram: That's the plan for this sprint.

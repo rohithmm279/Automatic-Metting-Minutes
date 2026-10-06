@@ -1,6 +1,5 @@
 """Explainable baseline and semantic evaluation for meeting dataset records."""
 
-import re
 import time
 from collections.abc import Callable
 from typing import Any
@@ -15,6 +14,7 @@ from app.schemas.evaluation_schema import (
 from app.schemas.meeting_schema import MeetingAnalysis
 from app.services.analysis_pipeline import PipelineAnalysisResult
 from app.services.semantic_matcher import SemanticMatcher
+from app.services.evaluation_metrics import greedy_match_count, precision_recall_f1, token_overlap
 
 
 class EvaluationService:
@@ -59,6 +59,10 @@ class EvaluationService:
                         record_id=record.id,
                         source=source,
                         rate_limited=is_rl,
+                        model_name=getattr(analysis, "model_name", None),
+                        pipeline_name=getattr(analysis, "pipeline_name", None),
+                        prompt_version=getattr(analysis, "prompt_version", None),
+                        fallback_used=bool(getattr(analysis, "fallback_used", False)),
                     )
                 )
                 if source == "GEMINI":
@@ -70,6 +74,15 @@ class EvaluationService:
 
             except (ValueError, TypeError):
                 skipped += 1
+                if any(
+                    reference is not None
+                    for reference in (
+                        record.reference_action_items,
+                        record.reference_decisions,
+                        record.reference_issues,
+                    )
+                ):
+                    predictions.append((record, MeetingAnalysis(summary="")))
 
             if pacing_seconds > 0.0 and i < len(records) - 1:
                 time.sleep(pacing_seconds)
@@ -160,13 +173,12 @@ class EvaluationService:
             lexical_matches += self._match_count(predicted, reference)
             semantic_matches += SemanticMatcher.count_semantic_matches(predicted, reference, category=category)  # type: ignore[arg-type]
 
-        lex_p = round(lexical_matches / predicted_count, 4) if predicted_count else 0.0
-        lex_r = round(lexical_matches / reference_count, 4) if reference_count else 0.0
-        lex_f1 = round(2 * lex_p * lex_r / (lex_p + lex_r), 4) if lex_p + lex_r else 0.0
-
-        sem_p = round(semantic_matches / predicted_count, 4) if predicted_count else 0.0
-        sem_r = round(semantic_matches / reference_count, 4) if reference_count else 0.0
-        sem_f1 = round(2 * sem_p * sem_r / (sem_p + sem_r), 4) if sem_p + sem_r else 0.0
+        lex_p, lex_r, lex_f1 = precision_recall_f1(
+            lexical_matches, predicted_count, reference_count
+        )
+        sem_p, sem_r, sem_f1 = precision_recall_f1(
+            semantic_matches, predicted_count, reference_count
+        )
 
         lex_score = MetricScore(
             match_count=lexical_matches,
@@ -219,21 +231,9 @@ class EvaluationService:
     @staticmethod
     def _match_count(predicted: list[str], reference: list[str]) -> int:
         """Count one-to-one text matches using a transparent token-overlap threshold."""
-        unmatched_references = list(reference)
-        matches = 0
-        for prediction in predicted:
-            for reference_item in unmatched_references:
-                if EvaluationService._token_overlap(prediction, reference_item) >= 0.5:
-                    unmatched_references.remove(reference_item)
-                    matches += 1
-                    break
-        return matches
+        return greedy_match_count(predicted, reference)
 
     @staticmethod
     def _token_overlap(left: str, right: str) -> float:
         """Return Jaccard overlap for lower-cased alphanumeric word sets."""
-        left_tokens = set(re.findall(r"\w+", left.lower()))
-        right_tokens = set(re.findall(r"\w+", right.lower()))
-        if not left_tokens or not right_tokens:
-            return 0.0
-        return len(left_tokens & right_tokens) / len(left_tokens | right_tokens)
+        return token_overlap(left, right)

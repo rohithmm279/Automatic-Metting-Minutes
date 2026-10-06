@@ -1,0 +1,47 @@
+# meeting_011 | style: standup | date: 2026-09-14 (Monday) | attendees: Kavya, Meena, Vikram, Manoj
+Kavya: Okay, quick standup, let's go around the room.
+Manoj: I'll collect the team photos in two days.
+Kavya: Sorry, make it by the end of the month, the review is before that.
+Manoj: Right, by the end of the month then.
+Kavya: Meena, could you migrate the database next week?
+Meena: Yes, no problem.
+Meena: The Wi-Fi here is terrible again.
+Meena: Alright, who's next?
+Kavya: Wait, can I--
+Vikram: Go ahead.
+Kavya: Never mind, it can wait.
+Meena: I'll deploy the staging build --
+Manoj: Sorry, can you repeat that? The audio dropped.
+Meena: Sorry, as I was saying, by Wednesday.
+Manoj: Yeah, I agree with that.
+Meena: Quick update: I've compiled the final report.
+Manoj: Same here, just continuing the ongoing work.
+Kavya: I'll write the API documentation by end of day --
+Meena: So, actually, by Friday, I just checked the calendar.
+Kavya: Okay, by Friday.
+Meena: Yeah, so okay, moving on.
+Kavya: Let me benchmark the model by the end of the month.
+Manoj: Good.
+Meena: Who's going to set up the CI pipeline when the hall is confirmed?
+Manoj: Yeah, that's true.
+Vikram: Yeah, so sorry, I was on mute.
+Meena: Fair enough.
+Meena: The model accuracy is still stuck below the target.
+Vikram: We'll revisit it.
+Meena: Wait, can I--
+Kavya: Go ahead.
+Meena: Never mind, it can wait.
+Kavya: The deployment keeps failing and we don't know why.
+Meena: Um, we'll revisit it.
+Manoj: Hmm, interesting.
+Manoj: Nothing else from my side.
+Meena: Wait, can I--
+Manoj: Go ahead.
+Meena: Never mind, it can wait.
+Manoj: Nobody knows who is judging the final round.
+Vikram: Let's park it for now.
+Meena: Let me set up the registration page before the demo.
+Meena: I'll draft the press note next week --
+Kavya: Actually, today, I just checked the calendar.
+Meena: Okay, today.
+Kavya: That's all for today.

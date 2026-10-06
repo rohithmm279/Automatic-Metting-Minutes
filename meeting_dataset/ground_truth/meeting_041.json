@@ -1,0 +1,75 @@
+{
+  "summary": "Daily standup with 4 attendees. 1 decision(s): Meet every Wednesday. 2 open issue(s): Training start on the 12th tentative, pending lab access; Budget is not yet approved. 7 pending and 2 completed action item(s), 2 without an owner.",
+  "action_items": [
+    {
+      "task": "Organise the shared drive",
+      "owner": "Anjali",
+      "deadline": "this weekend",
+      "deadline_iso": "2026-10-10/2026-10-11",
+      "status": "pending"
+    },
+    {
+      "task": "Set up the Slack channel",
+      "owner": "Divya",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Prepare the demo script",
+      "owner": null,
+      "deadline": "by end of day",
+      "deadline_iso": "2026-10-09",
+      "status": "pending"
+    },
+    {
+      "task": "Draft the press note",
+      "owner": "Anjali",
+      "deadline": "by end of day",
+      "deadline_iso": "2026-10-09",
+      "status": "pending"
+    },
+    {
+      "task": "Test the prototype",
+      "owner": "Meena",
+      "deadline": "by tomorrow",
+      "deadline_iso": "2026-10-10",
+      "status": "pending"
+    },
+    {
+      "task": "Benchmark the model",
+      "owner": "Meena",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Follow up with the vendor",
+      "owner": "Nisha",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Email the faculty coordinator",
+      "owner": "Anjali",
+      "deadline": "yesterday",
+      "deadline_iso": "2026-10-08",
+      "status": "completed"
+    },
+    {
+      "task": "Record the demo video",
+      "owner": null,
+      "deadline": "by the end of the month",
+      "deadline_iso": "2026-10-31",
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Meet every Wednesday"
+  ],
+  "unresolved_issues": [
+    "Training start on the 12th tentative, pending lab access",
+    "Budget is not yet approved"
+  ]
+}

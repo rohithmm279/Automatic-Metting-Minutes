@@ -1,0 +1,30 @@
+{
+  "summary": "Project review with 3 attendees. 3 decision(s): Keep the existing logo; Keep the workshop at two hours; Keep the weekly meeting in the evening. 4 open issue(s): Dataset licence unclear; Lab access letter still unsigned; Choice between Flutter and React Native for the mobile app undecided, pending Dr. Lakshmi's input on Monday. 2 pending and 0 completed action item(s), 0 without an owner.",
+  "action_items": [
+    {
+      "task": "Set up the Slack channel",
+      "owner": "Naveen",
+      "deadline": "by the end of the month",
+      "deadline_iso": "2026-10-31",
+      "status": "pending"
+    },
+    {
+      "task": "Upload the code to the repository",
+      "owner": "Meena",
+      "deadline": "by Wednesday",
+      "deadline_iso": "2026-10-07",
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Keep the existing logo",
+    "Keep the workshop at two hours",
+    "Keep the weekly meeting in the evening"
+  ],
+  "unresolved_issues": [
+    "Dataset licence unclear",
+    "Lab access letter still unsigned",
+    "Choice between Flutter and React Native for the mobile app undecided, pending Dr. Lakshmi's input on Monday",
+    "Sponsor has not replied"
+  ]
+}

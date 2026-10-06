@@ -1,0 +1,68 @@
+# meeting_012 | style: club_planning | date: 2026-12-02 (Wednesday) | attendees: Manoj, Karthik, Naveen, Lena, Divya, Faizal
+Manoj: Alright everyone, let's plan the upcoming event.
+Naveen: Right, that makes sense.
+Lena: Okay, next point.
+Divya: Did anyone arrange the transport?
+Karthik: I've already arranged the transport.
+Divya: Let's keep it simple this year.
+Faizal: Let me pull up the notes.
+Naveen: Let's run demo day in the lab.
+Karthik: Sounds good.
+Karthik: I'll set up the registration page --
+Divya: Sorry, can you repeat that? The audio dropped.
+Karthik: Sorry, as I was saying, once the budget is approved.
+Lena: Wait, can I--
+Manoj: Go ahead.
+Lena: Never mind, it can wait.
+Manoj: Someone needs to collect the team photos when the hall is confirmed.
+Karthik: Let's see who has time.
+Karthik: I like that idea.
+Lena: Faizal, can you arrange the projector?
+Faizal: Yes, I can do that by Tuesday.
+Lena: Fair enough.
+Karthik: Um, who's going to schedule the mock interview?
+Faizal: Not me, I'm swamped this week.
+Faizal: So, the turnout last time was good, wasn't it?
+Naveen: If I get time, I might fix the login bug.
+Divya: Okay, no pressure.
+Lena: So, okay, moving on.
+Manoj: Did anyone update the budget sheet?
+Divya: I've already updated the budget sheet.
+Manoj: Sorry, I was on mute.
+Divya: I'll reserve the cafeteria tables by Monday.
+Naveen: Sorry, make it this weekend, the review is before that.
+Divya: Right, this weekend then.
+Divya: It's so hot in this room today.
+Manoj: Maybe we should print the brochures in colour.
+Divya: No, let's keep them black and white.
+Manoj: Okay, fair.
+Naveen: The Wi-Fi here is terrible again.
+Manoj: The API key request is still stuck with the admin office.
+Naveen: We'll revisit it.
+Divya: Hmm, interesting.
+Faizal: I'll order the T-shirts.
+Faizal: Actually no, forget it, the budget is tight.
+Manoj: Okay, then we skip it.
+Karthik: Can everyone see my screen?
+Naveen: I'll set up the photo booth.
+Naveen: Actually no, forget it, there's no space.
+Karthik: Okay, then we skip it.
+Faizal: I'll create the souvenir kits.
+Faizal: Actually no, forget it, we don't have the funds.
+Naveen: Okay, then we skip it.
+Manoj: Yeah, I agree with that.
+Manoj: Did anyone watch the match last night?
+Divya: Wait, can I--
+Karthik: Yeah, so go ahead.
+Divya: Never mind, it can wait.
+Faizal: Karthik is going to publish the event announcement by Thursday.
+Karthik: Right, that's me.
+Naveen: The turnout last time was good, wasn't it?
+Naveen: I'll confirm the guest speaker in two days.
+Lena: Fair enough.
+Lena: Faizal, can you draft the press note?
+Faizal: Yes, I can do that before the demo.
+Karthik: Maybe we should extend registration by a week.
+Naveen: No, let's close registration on the original date.
+Karthik: Okay, fair.
+Manoj: Okay, let's wrap up here.

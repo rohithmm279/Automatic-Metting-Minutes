@@ -1,0 +1,43 @@
+# meeting_020 | style: client_call | date: 2026-09-07 (Monday) | attendees: Pooja, Arun, Kavya, Aarav
+Pooja: Thanks for joining the call, let's go through the open items.
+Arun: It's so hot in this room today.
+Aarav: I'll prepare the demo script next month --
+Arun: Actually, by Wednesday, I just checked the calendar.
+Aarav: Okay, by Wednesday.
+Pooja: Let's name the event Code Sprint.
+Arun: Works for me.
+Kavya: So, that's helpful context.
+Arun: Did anyone watch the match last night?
+Aarav: The lab access letter still has no signature.
+Arun: Let's park it for now.
+Kavya: Hmm, interesting.
+Arun: Fair enough.
+Kavya: I'll write the API documentation --
+Pooja: Sorry, can you repeat that? The audio dropped.
+Kavya: Sorry, as I was saying, next week.
+Arun: Okay.
+Arun: If I get time, I might record the demo video.
+Pooja: Okay, no pressure.
+Arun: Okay, moving on.
+Aarav: Wait, can I--
+Kavya: Go ahead.
+Aarav: Never mind, it can wait.
+Arun: The budget is still not approved.
+Aarav: We'll revisit it.
+Aarav: If I get time, I might compile the final report.
+Pooja: Okay, no pressure.
+Kavya: Let's tentatively hold the finals on Saturday, but only if the hall is free.
+Arun: Right, we'll confirm once we know.
+Pooja: Okay, next point.
+Aarav: Right, that makes sense.
+Pooja: Quick update: I've submitted the permission letter.
+Aarav: Can everyone see my screen?
+Pooja: Maybe we should cut the workshop to one hour.
+Arun: No, let's keep the full two hours.
+Pooja: Okay, fair.
+Aarav: I'll reserve the cafeteria tables by Wednesday --
+Pooja: Actually, by the end of the month, I just checked the calendar.
+Aarav: Okay, by the end of the month.
+Aarav: The model accuracy is still stuck below the target.
+Kavya: Let's park it for now.
+Pooja: Thanks for your time, everyone.

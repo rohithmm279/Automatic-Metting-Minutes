@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ConfirmModal({ isOpen, title, message, onConfirm, onCancel, isDeleting }) {
+export default function ConfirmModal({ isOpen, title, message, onConfirm, onCancel, isDeleting, confirmText }) {
   if (!isOpen) return null;
 
   return (
@@ -17,7 +17,7 @@ export default function ConfirmModal({ isOpen, title, message, onConfirm, onCanc
             Cancel
           </button>
           <button className="s5-btn s5-btn-danger" onClick={onConfirm} disabled={isDeleting}>
-            {isDeleting ? 'Deleting...' : 'Delete Meeting'}
+            {isDeleting ? 'Deleting...' : (confirmText || 'Delete Meeting')}
           </button>
         </div>
       </div>

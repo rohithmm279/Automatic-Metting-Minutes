@@ -1,0 +1,44 @@
+{
+  "summary": "Faculty advisor meeting with 3 attendees. 0 decision(s): none. 1 open issue(s): Finals date (Saturday) tentative, pending hall availability. 4 pending and 1 completed action item(s), 0 without an owner.",
+  "action_items": [
+    {
+      "task": "Prepare the slides",
+      "owner": "Meena",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Reserve the cafeteria tables",
+      "owner": "Anjali",
+      "deadline": "today",
+      "deadline_iso": "2026-09-11",
+      "status": "pending"
+    },
+    {
+      "task": "Submit the permission letter",
+      "owner": "Anjali",
+      "deadline": "by Monday",
+      "deadline_iso": "2026-09-14",
+      "status": "pending"
+    },
+    {
+      "task": "Fix the login bug",
+      "owner": "Meena",
+      "deadline": "once the budget is approved",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Publish the event announcement",
+      "owner": "Naveen",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    }
+  ],
+  "decisions": [],
+  "unresolved_issues": [
+    "Finals date (Saturday) tentative, pending hall availability"
+  ]
+}

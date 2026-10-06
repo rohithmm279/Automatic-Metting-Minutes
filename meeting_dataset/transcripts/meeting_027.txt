@@ -1,0 +1,70 @@
+# meeting_027 | style: faculty_advisor | date: 2026-10-16 (Friday) | attendees: Pooja, Swetha, Riya, Vikram, Aarav, Meena
+Pooja: Good afternoon, shall we begin with the progress update?
+Aarav: We should keep the department's guidelines in mind.
+Pooja: That's a fair point.
+Swetha: Wait, can I--
+Vikram: Go ahead.
+Swetha: Never mind, it can wait.
+Riya: Who covers the helpdesk on day two? That's still open.
+Meena: We'll revisit it.
+Aarav: Wait, can I--
+Meena: Go ahead.
+Aarav: Never mind, it can wait.
+Aarav: The API key request is still stuck with the admin office.
+Meena: We'll revisit it.
+Riya: Did anyone publish the event announcement?
+Meena: I did, yesterday.
+Pooja: Yeah, I agree with that.
+Aarav: Riya is going to arrange the transport by Thursday.
+Riya: Right, that's me.
+Vikram: Please continue.
+Vikram: Parking arrangements for guests are still open.
+Riya: We'll revisit it.
+Vikram: Can everyone see my screen?
+Aarav: The dataset licence is unclear.
+Riya: We'll revisit it.
+Swetha: Sorry, I was on mute.
+Riya: Wait, can I--
+Swetha: Go ahead.
+Riya: Never mind, it can wait.
+Aarav: Swetha, can you send the agenda?
+Swetha: I'm swamped this week, sorry.
+Meena: I'll take it.
+Pooja: Okay, moving on.
+Vikram: Did anyone watch the match last night?
+Vikram: Yeah, so let's tentatively start the training sessions on the 12th, but only if the lab access is sorted.
+Pooja: Right, we'll confirm once we know.
+Pooja: It's so hot in this room today.
+Meena: Hmm, interesting.
+Vikram: Let's tentatively hold the finals on Saturday, but only if the hall is free.
+Aarav: Right, we'll confirm once we know.
+Swetha: Riya, can you check the audio setup?
+Riya: Yes, I can do that by the end of the month.
+Vikram: Right, that makes sense.
+Vikram: I'll order the T-shirts.
+Vikram: Actually no, forget it, the budget is tight.
+Pooja: Okay, then we skip it.
+Pooja: The sponsor hasn't replied to our email.
+Vikram: We'll revisit it.
+Pooja: The Wi-Fi here is terrible again.
+Meena: Wait, can I--
+Vikram: Go ahead.
+Meena: Never mind, it can wait.
+Pooja: I'll book the catering.
+Pooja: Actually no, forget it, the budget is tight.
+Vikram: Okay, then we skip it.
+Riya: Okay, final call. We name the event Code Sprint.
+Meena: Um, fine by me.
+Pooja: Yeah, so okay, next point.
+Riya: The lab access letter still has no signature.
+Meena: Yeah, that's a worry.
+Swetha: Let me pull up the notes.
+Pooja: Meena is going to print the certificates today.
+Meena: Yes, that's right.
+Vikram: Fair enough.
+Pooja: Nobody knows who is judging the final round.
+Swetha: Yeah, that's a worry.
+Riya: It's so hot in this room today.
+Swetha: Meena is going to collect the registration forms by Tuesday.
+Meena: Right, that's me.
+Pooja: Good, let's meet again soon.

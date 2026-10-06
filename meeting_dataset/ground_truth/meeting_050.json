@@ -1,0 +1,50 @@
+{
+  "summary": "Client call with 4 attendees. 2 decision(s): Keep the team size at four members; Skip the photo booth. 4 open issue(s): Training start on the 12th tentative, pending lab access; Finals date (Saturday) tentative, pending hall availability; Cause of recurring deployment failure unknown. 5 pending and 0 completed action item(s), 0 without an owner.",
+  "action_items": [
+    {
+      "task": "Prepare the demo script",
+      "owner": "Imran",
+      "deadline": "by Monday",
+      "deadline_iso": "2026-12-21",
+      "status": "pending"
+    },
+    {
+      "task": "Collect the registration forms",
+      "owner": "Imran",
+      "deadline": "by Friday",
+      "deadline_iso": "2026-12-18",
+      "status": "pending"
+    },
+    {
+      "task": "Write the API documentation",
+      "owner": "Divya",
+      "deadline": "next month",
+      "deadline_iso": "2027-01-01/2027-01-31",
+      "status": "pending"
+    },
+    {
+      "task": "Print the certificates",
+      "owner": "Divya",
+      "deadline": "by Thursday",
+      "deadline_iso": "2026-12-17",
+      "status": "pending"
+    },
+    {
+      "task": "Write the unit tests",
+      "owner": "Anjali",
+      "deadline": "by the end of the month",
+      "deadline_iso": "2026-12-31",
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Keep the team size at four members",
+    "Skip the photo booth"
+  ],
+  "unresolved_issues": [
+    "Training start on the 12th tentative, pending lab access",
+    "Finals date (Saturday) tentative, pending hall availability",
+    "Cause of recurring deployment failure unknown",
+    "Model accuracy still below target"
+  ]
+}

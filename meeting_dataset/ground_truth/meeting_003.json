@@ -1,0 +1,80 @@
+{
+  "summary": "Project review with 7 attendees. 2 decision(s): Go digital only, no printed brochures; Limit each pitch to five minutes. 6 open issue(s): Guest parking arrangements still open; Choice between Saturday and Sunday for the hackathon date undecided, pending Ravi's input on Monday; Judges for the final round not identified. 9 pending and 0 completed action item(s), 3 without an owner.",
+  "action_items": [
+    {
+      "task": "Label the sample transcripts",
+      "owner": "Aarav",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Benchmark the model",
+      "owner": null,
+      "deadline": "by end of day",
+      "deadline_iso": "2026-12-01",
+      "status": "pending"
+    },
+    {
+      "task": "Clean the training dataset",
+      "owner": "Nisha",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Renew the domain",
+      "owner": "Divya",
+      "deadline": "by Wednesday",
+      "deadline_iso": "2026-12-02",
+      "status": "pending"
+    },
+    {
+      "task": "Compile the final report",
+      "owner": "Deepak",
+      "deadline": "this weekend",
+      "deadline_iso": "2026-12-05/2026-12-06",
+      "status": "pending"
+    },
+    {
+      "task": "Fix the login bug",
+      "owner": null,
+      "deadline": "by Thursday",
+      "deadline_iso": "2026-12-03",
+      "status": "pending"
+    },
+    {
+      "task": "Check the audio setup",
+      "owner": null,
+      "deadline": "by Wednesday",
+      "deadline_iso": "2026-12-02",
+      "status": "pending"
+    },
+    {
+      "task": "Set up the Slack channel",
+      "owner": "Nisha",
+      "deadline": "in two days",
+      "deadline_iso": "2026-12-03",
+      "status": "pending"
+    },
+    {
+      "task": "Test the mobile layout",
+      "owner": "Arun",
+      "deadline": "by Thursday",
+      "deadline_iso": "2026-12-03",
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Go digital only, no printed brochures",
+    "Limit each pitch to five minutes"
+  ],
+  "unresolved_issues": [
+    "Guest parking arrangements still open",
+    "Choice between Saturday and Sunday for the hackathon date undecided, pending Ravi's input on Monday",
+    "Judges for the final round not identified",
+    "Choice between Seminar Hall A and the auditorium for the venue undecided, pending Dr. Lakshmi's input on Friday",
+    "Choice between Whisper and a cloud speech API for speech-to-text undecided, pending Mr. Selvam's input on Friday",
+    "Expected attendance unknown"
+  ]
+}

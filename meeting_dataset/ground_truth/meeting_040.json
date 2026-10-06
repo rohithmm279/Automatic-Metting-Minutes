@@ -1,0 +1,42 @@
+{
+  "summary": "Client call with 3 attendees. 2 decision(s): Keep the existing logo; Use Postgres for the database. 3 open issue(s): Training start on the 12th tentative, pending lab access; Expected attendance unknown; Choice between a hybrid format and a fully offline format for the event format undecided, pending Ms. Geetha's input on Monday. 4 pending and 0 completed action item(s), 1 without an owner.",
+  "action_items": [
+    {
+      "task": "Check the audio setup",
+      "owner": "Manoj",
+      "deadline": "tomorrow",
+      "deadline_iso": "2026-10-30",
+      "status": "pending"
+    },
+    {
+      "task": "Write the API documentation",
+      "owner": null,
+      "deadline": "next week",
+      "deadline_iso": "2026-11-02/2026-11-08",
+      "status": "pending"
+    },
+    {
+      "task": "Create the invitation card",
+      "owner": "Manoj",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Prepare the demo script",
+      "owner": "Karthik",
+      "deadline": "by Friday",
+      "deadline_iso": "2026-10-30",
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Keep the existing logo",
+    "Use Postgres for the database"
+  ],
+  "unresolved_issues": [
+    "Training start on the 12th tentative, pending lab access",
+    "Expected attendance unknown",
+    "Choice between a hybrid format and a fully offline format for the event format undecided, pending Ms. Geetha's input on Monday"
+  ]
+}

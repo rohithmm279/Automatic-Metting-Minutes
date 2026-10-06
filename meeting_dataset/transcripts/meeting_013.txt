@@ -1,0 +1,34 @@
+# meeting_013 | style: project_review | date: 2026-10-01 (Thursday) | attendees: Meena, Tom, Naveen
+Meena: Let's start the project review and go through where we stand.
+Tom: I'll leave the details for the report.
+Naveen: Sorry, I was on mute.
+Naveen: The dataset licence is unclear.
+Tom: Yeah, that's a worry.
+Tom: Let's keep the discussion focused.
+Meena: Maybe we should redo the logo from scratch.
+Tom: So, no, let's keep the existing logo.
+Meena: Okay, fair.
+Naveen: Maybe we should cut the workshop to one hour.
+Tom: No, let's keep the full two hours.
+Naveen: Okay, fair.
+Tom: Let me pull up the notes.
+Tom: Did anyone watch the match last night?
+Tom: Wait, can I--
+Naveen: Go ahead.
+Tom: Never mind, it can wait.
+Naveen: The lab access letter still has no signature.
+Meena: Um, yeah, that's a worry.
+Naveen: It's so hot in this room today.
+Meena: Naveen is going to set up the Slack channel by the end of the month.
+Naveen: Yes, that's right.
+Tom: Fair enough.
+Meena: Maybe we should move the weekly meeting to mornings.
+Naveen: No, let's keep the evening slot.
+Meena: Okay, fair.
+Naveen: Should we pick Flutter or React Native for the mobile app?
+Meena: Yeah, so I lean Flutter, but let's confirm with Dr. Lakshmi first.
+Naveen: Um, dr. Lakshmi is out till Monday, so we decide then.
+Meena: Fine. I'll upload the code to the repository by Wednesday, either way.
+Meena: The sponsor hasn't replied to our email.
+Tom: So, yeah, that's a worry.
+Meena: Thanks all, let's close the review.

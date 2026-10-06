@@ -1,0 +1,97 @@
+{
+  "summary": "Project review with 7 attendees. 3 decision(s): Keep the workshop at two hours; Drop the souvenir kits; Hold the kickoff meeting on the 15th. 1 open issue(s): Handling of late registrations undecided. 7 pending and 5 completed action item(s), 0 without an owner.",
+  "action_items": [
+    {
+      "task": "Check the audio setup",
+      "owner": "Priya",
+      "deadline": "by end of day",
+      "deadline_iso": "2026-10-20",
+      "status": "pending"
+    },
+    {
+      "task": "Migrate the database",
+      "owner": "Harini",
+      "deadline": "yesterday",
+      "deadline_iso": "2026-10-19",
+      "status": "completed"
+    },
+    {
+      "task": "Fix the login bug",
+      "owner": "Dev",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Write the unit tests",
+      "owner": "Anjali",
+      "deadline": "by Thursday",
+      "deadline_iso": "2026-10-22",
+      "status": "pending"
+    },
+    {
+      "task": "Label the sample transcripts",
+      "owner": "Lena",
+      "deadline": "today",
+      "deadline_iso": "2026-10-20",
+      "status": "pending"
+    },
+    {
+      "task": "Benchmark the model",
+      "owner": "Dev",
+      "deadline": "by Thursday",
+      "deadline_iso": "2026-10-22",
+      "status": "pending"
+    },
+    {
+      "task": "Prepare the slides",
+      "owner": "Manoj",
+      "deadline": "by Thursday",
+      "deadline_iso": "2026-10-22",
+      "status": "pending"
+    },
+    {
+      "task": "Test the prototype",
+      "owner": "Faizal",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Clean the training dataset",
+      "owner": "Priya",
+      "deadline": "by end of day",
+      "deadline_iso": "2026-10-20",
+      "status": "pending"
+    },
+    {
+      "task": "Prepare the demo script",
+      "owner": "Harini",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Set up the registration page",
+      "owner": "Anjali",
+      "deadline": "yesterday",
+      "deadline_iso": "2026-10-19",
+      "status": "completed"
+    },
+    {
+      "task": "Set up the Slack channel",
+      "owner": "Faizal",
+      "deadline": "by tomorrow",
+      "deadline_iso": "2026-10-21",
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Keep the workshop at two hours",
+    "Drop the souvenir kits",
+    "Hold the kickoff meeting on the 15th"
+  ],
+  "unresolved_issues": [
+    "Handling of late registrations undecided"
+  ]
+}

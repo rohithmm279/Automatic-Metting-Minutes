@@ -1,0 +1,29 @@
+# meeting_028 | style: retrospective | date: 2026-10-21 (Wednesday) | attendees: Karthik, Arun, Aarav, Dev
+Karthik: Let's start the retro, what went well and what didn't?
+Dev: Right, that makes sense.
+Arun: I'll arrange the guest lecture.
+Arun: Actually no, forget it, the speaker pulled out.
+Dev: Okay, then we skip it.
+Karthik: Someone needs to write the API documentation in three days.
+Dev: Yeah, that's true.
+Arun: The Wi-Fi here is terrible again.
+Aarav: Arun, can you test the prototype by Monday?
+Arun: No problem.
+Dev: Okay, next point.
+Karthik: I think we all felt that.
+Karthik: The deployment keeps failing and we don't know why.
+Dev: Yeah, that's a worry.
+Karthik: So, I'll create the souvenir kits.
+Karthik: Actually no, forget it, we don't have the funds.
+Dev: Okay, then we skip it.
+Arun: Who's going to set up the CI pipeline before the demo?
+Aarav: Um, I'm not free for that, sorry.
+Karthik: It's so hot in this room today.
+Arun: Yeah, I agree with that.
+Arun: Did anyone email the faculty coordinator?
+Karthik: Yeah, so I've already emailed the faculty coordinator.
+Aarav: Let's be honest about it.
+Arun: Hmm, interesting.
+Arun: If I get time, I might check the audio setup.
+Karthik: Okay, no pressure.
+Karthik: Good retro, everyone.

@@ -1,0 +1,78 @@
+{
+  "summary": "Hackathon sync with 5 attendees. 2 decision(s): Meet every Wednesday; Freeze the feature list. 4 open issue(s): Training start on the 12th tentative, pending lab access; Choice between Postgres and MongoDB for the database undecided, pending Prof. Anand's input on Friday; Choice between round robin and knockout for the contest format undecided, pending Prof. Anand's input on Friday. 9 pending and 0 completed action item(s), 3 without an owner.",
+  "action_items": [
+    {
+      "task": "Test the mobile layout",
+      "owner": "Karthik",
+      "deadline": "in two days",
+      "deadline_iso": "2026-12-06",
+      "status": "pending"
+    },
+    {
+      "task": "Label the sample transcripts",
+      "owner": "Karthik",
+      "deadline": "after the review",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Book the seminar hall",
+      "owner": "Riya",
+      "deadline": "before the demo",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Write the unit tests",
+      "owner": "Karthik",
+      "deadline": "after the review",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Submit the permission letter",
+      "owner": null,
+      "deadline": "once the budget is approved",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Create the feedback form",
+      "owner": null,
+      "deadline": "by end of day",
+      "deadline_iso": "2026-12-04",
+      "status": "pending"
+    },
+    {
+      "task": "Check the audio setup",
+      "owner": "Aarav",
+      "deadline": "by Thursday",
+      "deadline_iso": "2026-12-10",
+      "status": "pending"
+    },
+    {
+      "task": "Record the demo video",
+      "owner": null,
+      "deadline": "by end of day",
+      "deadline_iso": "2026-12-04",
+      "status": "pending"
+    },
+    {
+      "task": "Write the API documentation",
+      "owner": "Karthik",
+      "deadline": "today",
+      "deadline_iso": "2026-12-04",
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Meet every Wednesday",
+    "Freeze the feature list"
+  ],
+  "unresolved_issues": [
+    "Training start on the 12th tentative, pending lab access",
+    "Choice between Postgres and MongoDB for the database undecided, pending Prof. Anand's input on Friday",
+    "Choice between round robin and knockout for the contest format undecided, pending Prof. Anand's input on Friday",
+    "Registration opening on Monday tentative, pending form approval"
+  ]
+}

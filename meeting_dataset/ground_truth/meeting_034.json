@@ -1,0 +1,38 @@
+{
+  "summary": "Brainstorm with 4 attendees. 0 decision(s): none. 2 open issue(s): Venue confirmation not received; Finals date (Saturday) tentative, pending hall availability. 4 pending and 0 completed action item(s), 2 without an owner.",
+  "action_items": [
+    {
+      "task": "Write the unit tests",
+      "owner": null,
+      "deadline": "by Monday",
+      "deadline_iso": "2026-11-09",
+      "status": "pending"
+    },
+    {
+      "task": "Benchmark the model",
+      "owner": "Harini",
+      "deadline": "in two days",
+      "deadline_iso": "2026-11-07",
+      "status": "pending"
+    },
+    {
+      "task": "Update the budget sheet",
+      "owner": "Harini",
+      "deadline": "by Wednesday",
+      "deadline_iso": "2026-11-11",
+      "status": "pending"
+    },
+    {
+      "task": "Check the audio setup",
+      "owner": null,
+      "deadline": "by end of day",
+      "deadline_iso": "2026-11-05",
+      "status": "pending"
+    }
+  ],
+  "decisions": [],
+  "unresolved_issues": [
+    "Venue confirmation not received",
+    "Finals date (Saturday) tentative, pending hall availability"
+  ]
+}

@@ -57,14 +57,6 @@ export default function MeetingDetailsView({
       }
     } catch (err) {
       console.error('Status update failed:', err);
-      // Optimistic fallback
-      setMeeting((prev) => {
-        if (!prev) return prev;
-        const nextItems = (prev.action_items || []).map((i) =>
-          i.id === itemId ? { ...i, status: newStatus } : i
-        );
-        return { ...prev, action_items: nextItems };
-      });
     }
   };
 

@@ -1,0 +1,78 @@
+# meeting_039 | style: event_ops | date: 2026-11-25 (Wednesday) | attendees: Naveen, Imran, Harini, Deepak, Riya
+Naveen: Okay, event day is close, let's walk through the logistics.
+Imran: It's so hot in this room today.
+Naveen: Yeah, I agree with that.
+Deepak: Wait, can I--
+Naveen: Um, go ahead.
+Deepak: Never mind, it can wait.
+Riya: Maybe we should switch to Python for the backend.
+Imran: No, let's stick with Java.
+Riya: Okay, fair.
+Deepak: So, right, that makes sense.
+Deepak: We still need to schedule the mock interview after the review, but nobody has picked it up.
+Imran: So, let's see who has time.
+Harini: Can everyone see my screen?
+Naveen: Let's tentatively open registration on Monday, but only if the form is approved.
+Harini: Right, we'll confirm once we know.
+Riya: Okay, next point.
+Imran: I'll create the feedback form by next Friday.
+Riya: Sorry, make it today, the lab is closed till then.
+Imran: Right, today then.
+Harini: Okay, moving on.
+Riya: Wait, can I--
+Deepak: Go ahead.
+Riya: Never mind, it can wait.
+Harini: Naveen, could you send the agenda?
+Naveen: Yes, no problem.
+Naveen: So, Riya is going to submit the permission letter by Monday.
+Riya: Yes, that's right.
+Riya: Let's double check everything.
+Deepak: Let me pull up the notes.
+Naveen: Wait, can I--
+Imran: Go ahead.
+Naveen: Never mind, it can wait.
+Naveen: Deepak, you prepare the demo script this weekend.
+Deepak: Riya knows that part better, honestly.
+Naveen: Fair enough. Riya, you take it.
+Riya: Okay.
+Imran: Parking arrangements for guests are still open.
+Naveen: Yeah, that's a worry.
+Harini: Sorry, I was on mute.
+Harini: We still need to design the poster by Monday, but nobody has picked it up.
+Riya: Yeah, that's true.
+Imran: Remember last year's chaos?
+Deepak: I'd like Harini to draft the press note when the hall is confirmed.
+Harini: Okay, noted.
+Naveen: Logistics always get messy.
+Deepak: I'll create the social media schedule when the hall is confirmed.
+Harini: Great, thanks.
+Deepak: The Wi-Fi here is terrible again.
+Naveen: Wait, can I--
+Harini: Go ahead.
+Naveen: Never mind, it can wait.
+Riya: The deployment keeps failing and we don't know why.
+Naveen: Let's park it for now.
+Naveen: Did anyone watch the match last night?
+Harini: Wait, can I--
+Deepak: Go ahead.
+Harini: Never mind, it can wait.
+Riya: Let's tentatively start the training sessions on the 12th, but only if the lab access is sorted.
+Imran: Right, we'll confirm once we know.
+Harini: Fair enough.
+Riya: I'll create the invitation card by Thursday.
+Harini: So, sorry, make it this weekend, the lab is closed till then.
+Riya: Right, this weekend then.
+Riya: Let's tentatively hold the finals on Saturday, but only if the hall is free.
+Deepak: Right, we'll confirm once we know.
+Harini: Hmm, interesting.
+Riya: Did anyone share the meeting notes?
+Imran: I did, yesterday.
+Riya: Fair enough.
+Riya: Hmm, interesting.
+Deepak: We still need to prepare the slides by next Friday, but nobody has picked it up.
+Naveen: So, let's see who has time.
+Imran: Remember last year's chaos?
+Riya: Right, that makes sense.
+Harini: Riya, can you book the seminar hall?
+Riya: Yes, I can do that by Thursday.
+Naveen: Alright, that's the logistics.

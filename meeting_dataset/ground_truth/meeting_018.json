@@ -1,0 +1,67 @@
+{
+  "summary": "Retrospective with 6 attendees. 5 decision(s): Use the hall's built-in sound system; Keep the team size at four members; Use Google Forms for registration. 4 open issue(s): Helpdesk coverage for day two undecided; Registration opening on Monday tentative, pending form approval; Venue confirmation not received. 3 pending and 4 completed action item(s), 0 without an owner.",
+  "action_items": [
+    {
+      "task": "Contact the sponsors",
+      "owner": "Harini",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Migrate the database",
+      "owner": "Anjali",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Write the unit tests",
+      "owner": "Dev",
+      "deadline": "next week",
+      "deadline_iso": "2026-10-19/2026-10-25",
+      "status": "pending"
+    },
+    {
+      "task": "Update the README",
+      "owner": "Priya",
+      "deadline": "this weekend",
+      "deadline_iso": "2026-10-17/2026-10-18",
+      "status": "pending"
+    },
+    {
+      "task": "Send the agenda",
+      "owner": "Harini",
+      "deadline": "tomorrow",
+      "deadline_iso": "2026-10-15",
+      "status": "pending"
+    },
+    {
+      "task": "Verify the attendance sheet",
+      "owner": "Harini",
+      "deadline": "yesterday",
+      "deadline_iso": "2026-10-13",
+      "status": "completed"
+    },
+    {
+      "task": "Compile the final report",
+      "owner": "Anjali",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    }
+  ],
+  "decisions": [
+    "Use the hall's built-in sound system",
+    "Keep the team size at four members",
+    "Use Google Forms for registration",
+    "Drop the souvenir kits",
+    "Limit each pitch to five minutes"
+  ],
+  "unresolved_issues": [
+    "Helpdesk coverage for day two undecided",
+    "Registration opening on Monday tentative, pending form approval",
+    "Venue confirmation not received",
+    "Handling of late registrations undecided"
+  ]
+}

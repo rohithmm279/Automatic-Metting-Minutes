@@ -1,5 +1,7 @@
 """Gemini-backed meeting analysis with Pydantic response validation and key management."""
 
+import datetime
+from datetime import timedelta
 import json
 import logging
 import os
@@ -256,12 +258,86 @@ class GeminiAnalyzer:
                 return float(match.group(1))
         return None
 
-    @staticmethod
-    def _build_prompt(transcript: str) -> str:
+    @classmethod
+    def _extract_meeting_date(cls, transcript: str) -> Optional[datetime.date]:
+        """Extract calendar date from meeting headers for prompt date anchoring."""
+        month_map = {
+            "january": 1, "jan": 1, "february": 2, "feb": 2, "march": 3, "mar": 3,
+            "april": 4, "apr": 4, "may": 5, "june": 6, "jun": 6, "july": 7, "jul": 7,
+            "august": 8, "aug": 8, "september": 9, "sep": 9, "sept": 9,
+            "october": 10, "oct": 10, "november": 11, "nov": 11, "december": 12, "dec": 12,
+        }
+        match_iso = re.search(r"(?i)\b(?:date|meeting\s+date)\s*[:|-]?\s*(\d{4})-(\d{1,2})-(\d{1,2})\b", transcript)
+        if match_iso:
+            try:
+                return datetime.date(int(match_iso.group(1)), int(match_iso.group(2)), int(match_iso.group(3)))
+            except ValueError:
+                pass
+        match_text = re.search(
+            r"(?i)\b(?:date|meeting\s+date)\s*[:|-]?\s*([A-Za-z]+)\s+(\d{1,2})(?:st|nd|rd|th)?,?\s+(\d{4})\b",
+            transcript,
+        )
+        if match_text:
+            m_val = month_map.get(match_text.group(1).lower())
+            if m_val:
+                try:
+                    return datetime.date(int(match_text.group(3)), m_val, int(match_text.group(2)))
+                except ValueError:
+                    pass
+        match_day_first = re.search(
+            r"(?i)\b(?:date|meeting\s+date)\s*[:|-]?\s*(\d{1,2})(?:st|nd|rd|th)?\s+([A-Za-z]+),?\s+(\d{4})\b",
+            transcript,
+        )
+        if match_day_first:
+            m_val = month_map.get(match_day_first.group(2).lower())
+            if m_val:
+                try:
+                    return datetime.date(int(match_day_first.group(3)), m_val, int(match_day_first.group(1)))
+                except ValueError:
+                    pass
+        match_hdr = re.search(r"(?i)\b([A-Za-z]+)\s+(\d{1,2})(?:st|nd|rd|th)?,?\s+(\d{4})\b", transcript[:500])
+        if match_hdr:
+            m_val = month_map.get(match_hdr.group(1).lower())
+            if m_val:
+                try:
+                    return datetime.date(int(match_hdr.group(3)), m_val, int(match_hdr.group(2)))
+                except ValueError:
+                    pass
+        return None
+
+    @classmethod
+    def _generate_calendar_context(cls, transcript: str) -> str:
+        """Construct explicit calendar reference table for relative time math."""
+        meeting_date = cls._extract_meeting_date(transcript)
+        if not meeting_date:
+            return ""
+        
+        weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+        meeting_weekday = weekdays[meeting_date.weekday()]
+        
+        lines = [
+            f"ANCHOR_DATE = {meeting_date.isoformat()} ({meeting_weekday})",
+            "CALENDAR REFERENCE FOR RELATIVE TIME RESOLUTION:",
+            f"- Today / Tonight / EOD = {meeting_weekday} ({meeting_date.isoformat()})",
+            f"- Tomorrow / Tomorrow night = {weekdays[(meeting_date.weekday() + 1) % 7]} ({(meeting_date + timedelta(days=1)).isoformat()})",
+        ]
+        for offset in range(1, 8):
+            target_dt = meeting_date + timedelta(days=offset)
+            target_day_name = weekdays[target_dt.weekday()]
+            lines.append(f"- {target_day_name} = {target_dt.isoformat()}")
+        
+        lines.append(f"- Next Monday = {(meeting_date + timedelta(days=((0 - meeting_date.weekday()) % 7 or 7))).isoformat()}")
+        lines.append(f"- Next Friday = {(meeting_date + timedelta(days=((4 - meeting_date.weekday()) % 7 or 7))).isoformat()}")
+        return "\n".join(lines)
+
+    @classmethod
+    def _build_prompt(cls, transcript: str) -> str:
         """Create a strict, comprehensive single-call prompt without changing transcript text."""
+        cal_anchor = cls._generate_calendar_context(transcript)
+        cal_block = f"\nCALENDAR ANCHOR & RELATIVE DATE REFERENCE:\n{cal_anchor}\n" if cal_anchor else ""
         return f"""You are an expert AI meeting analyst for organizational, business, and technical meetings.
 Analyze the following meeting transcript and produce a complete, factual analysis in a single response.
-
+{cal_block}
 Return STRICT JSON only. Do not use Markdown, code fences, commentary, or fields
 other than summary, action_items, decisions, and unresolved_issues.
 
@@ -295,55 +371,61 @@ STRICT RULES & GROUNDING:
    - Never describe an initial proposal as an agreed outcome if the transcript records subsequent pushback, debate, or postponement.
    - ACCURATE ATTRIBUTION & SENDER/RECIPIENT DISTINCTION: When summarizing commitments, accurately state who will perform the task versus who receives the output (e.g., if Person A commits to circulate materials to Team B, state that Person A will circulate them to Team B, NEVER that Team B was tasked with providing or preparing the materials).
 
-
-2. ACTION ITEMS & OWNER BINDING:
-   - Extract all explicit engineering/operational tasks, commitments, deliverables, assignments, or agreed prerequisite steps.
-   - OWNER BINDING & SELF-COMMITMENT PRECEDENCE:
-     * Assign tasks to the person who explicitly self-commits ("I will do X", "I'll handle this", "My action item is X", "I can take that") or is directly requested ("Priya, can you circulate...").
+2. ACTION ITEMS, DEDUPLICATION, ATOMIZATION & OWNER BINDING:
+   - Extract all explicit engineering/operational tasks, commitments, deliverables (e.g., prototype delivery, registration), assignments, or agreed prerequisite steps.
+   - DEDUPLICATION GUARDRAIL:
+     * Deduplicate all action items before finalizing JSON output.
+     * Never output identical or semantically duplicate tasks (e.g., do not output the same link sharing or setup task multiple times).
+   - MULTI-SPEAKER TASK ATOMIZATION:
+     * If a task or workstream is shared between multiple people (e.g., "Rohith does intro, Arun does tech demo" or "Marcus and Sarah will review PRs"), ALWAYS split into separate atomic action items:
+       1. [Rohith] Handle introduction
+       2. [Arun] Handle technical demo
+   - EXPLICIT SPEAKER ATTRIBUTION & FIRST-PERSON OWNERSHIP CONSTRAINT:
+     * When a participant speaks in first-person (e.g., "I'll send the meeting link", "I can take that", "I'll handle this", "I will do X", "My action item is X"), map the speaker name from the dialogue line or timestamp (e.g., [00:03:51] Karthik: or Karthik:) directly as the owner.
+     * NEVER output "Unassigned" or "Not specified" if a speaker voluntarily takes ownership or commits in dialogue.
      * When tasks are listed with names (e.g. "1. Marcus: Update specs..."), extract that named person as the owner.
      * NEVER assign tasks to the meeting host, facilitator, or Incident Commander simply because they summarized or requested the task at the end.
      * If unassigned, use "Not specified" or null. NEVER invent an owner.
-   - NO META-TASKS: Do NOT extract meta-instructions or meeting administrative commands (e.g., "log the action items", "assign tasks to log", "note down the meeting minutes", "record these items in Jira") as action items.
+   - IN-MEETING COMPLETIONS (TEMPORAL AWARENESS): If a participant states they have ALREADY completed a task during the call (e.g., "I just tried it", "I'm pushing the hotfix right now", "Done", "I've pushed the commit"), DO NOT mark it as a pending action item. Either mark its status as "completed" or exclude it. Ensure pending action items capture actual future/post-meeting deliverables.
+   - A date in the meeting header is never an implicit deadline. Only assign a deadline when the same action's dialogue explicitly says by/before/on/due/tomorrow/today, names a date, or uses an equivalent temporal cue.
+   - NO META-TASKS / NO MEETING OBJECTIVES:
+     * DO NOT log meta-goals, meeting agendas, or conversation topics (e.g., "Discuss budget", "Plan event", "Finalize workshop", "Log action items", "Note down meeting minutes") as Action Items.
+     * Action Items MUST be atomic deliverables assigned to a person with a clear output (e.g., "Write PDF", "Send link", "Deploy hotfix").
    - task: ONLY the core task action. Normalize the task to the actual action. NEVER include deadline/timeframe words (e.g., "by Friday", "before the weekend", "next week", "by Sept 23", "post-launch", "by EOD today", "today") inside the task field.
 
-3. DATE FORMATTING & FORWARD DATE COMPUTATION:
-   - ALL action item deadlines MUST be formatted strictly as ISO standard dates: YYYY-MM-DD (e.g., "2026-09-20", "2026-09-22", "2026-09-23", "2026-10-05").
+3. DATE FORMATTING, RELATIVE DATE MATH & DEPENDENCIES:
+   - ALL action item deadlines MUST be formatted strictly as ISO standard dates: YYYY-MM-DD (e.g., "2026-09-20", "2026-09-22", "2026-09-23", "2026-09-24", "2026-09-25", "2026-10-05").
    - FORWARD RELATIVE DATE MATH RULE:
-     * When calculating relative weekdays ("by Wednesday", "by Tuesday", "this Friday", "tomorrow", "by EOD"), ALWAYS compute strictly forward from the Meeting Header Date.
-     * For example, if the meeting took place on Sunday, September 20, 2026:
-       - "today" or "today EOD" -> "2026-09-20"
-       - "tomorrow" -> "2026-09-21"
-       - "by Tuesday" -> "2026-09-22" (September 20 + 2 days = September 22)
-       - "by Wednesday" -> "2026-09-23" (September 20 + 3 days = September 23)
-       - "this Friday" -> "2026-09-25" (September 20 + 5 days = September 25)
+     * When calculating relative weekdays ("by Thursday evening", "by Wednesday", "by Tuesday", "this Friday at 5 PM", "tomorrow", "by EOD"), ALWAYS compute strictly forward from the Meeting Header Date.
      * NEVER output a deadline date that occurs BEFORE the meeting header date (e.g., NEVER output 2026-09-03 or 2026-09-14 for a meeting held on September 20, 2026).
+   - DEPENDENT TASK CHAIN CONSTRAINT:
+     * If Task B explicitly depends on the completion of Task A (e.g., "after registration closes on Friday", "once backend API is deployed"):
+       Enforce: Deadline(Task B) >= Deadline(Task A).
    - NO INCIDENT / TIMELINE TIMESTAMPS AS DEADLINES: Incident event timestamps, alert firing times (e.g., "11:02 AM", "14:30 UTC"), log timestamps, and dialogue timestamps indicate when past events occurred, NOT task deadlines. NEVER treat past incident times as deadlines. If no explicit future calendar date exists, deadline MUST be "Not specified".
    - status: Use "pending" unless the transcript explicitly states that specific task is completed.
    - confidence: Numeric confidence from 0.0 to 1.0 (default 1.0).
    - evidence: A short verbatim quote or dialogue snippet from the transcript demonstrating this action item.
 
-4. KEY DECISIONS (STRICT TAXONOMY & DECISION DISCRIMINATOR):
-   - A DECISION is an organizational agreement, policy, schedule target, vendor choice, scope cutoff, or architectural design choice confirmed by the group (e.g., "Launch pricing experiment on September 29, 2026 (pending bugs/QA)", "Keep current paywall layout for the experiment", "Monitor conversion daily and decide on changes after seven days of data").
-   - DECISION DISCRIMINATOR & ZERO TASK/RISK OVERLAP:
-     * Ask: "Is this a structural policy/agreement, or is it an action item, conditional task, or risk mitigation?"
-     * NEVER classify individual tasks, operational actions, conditional action items, or risk mitigations as Key Decisions:
-       - "Escalate billing provider's sandbox stability issue..." is an Action Item (#5), NOT a Key Decision.
-       - "Hard freeze campaign creatives today..." is an operational risk mitigation strategy, NOT an independent Key Decision.
-     * If a person or team is assigned to execute or deliver it (e.g., "Priya Sharma will circulate...", "Dev will escalate..."), it belongs ONLY under Action Items.
-     * NEVER list an Action Item, conditional task, or deliverable handoff inside Key Decisions.
-   - Look for decision and consensus markers: "Let's make [X] official", "Approved", "Agreed", "We keep...", "We decided", "completely fine for v1", "good to go", "locked in".
-   - REJECT CONTESTED PROPOSALS: If a proposal was contested, modified, or postponed, do NOT list it as a confirmed decision.
+4. KEY DECISIONS (STRICT TAXONOMY, CONSENSUS VERIFICATION & ZERO TASK CONFLATION):
+   - A DECISION is strictly reserved for organizational agreements, policy choices, Tech Stack selections (e.g., Streamlit, FAISS, sentence-transformers), Architectural design, Project Naming (e.g., "StudyGen"), Scope cutoffs, or presentation role division strategy.
+   - CONSENSUS VERIFICATION:
+     * A statement is ONLY a Key Decision if it contains explicit team consensus ("Approved", "Let's make [X] official", "Agreed", "We keep...", "We decided", "completely fine for v1", "good to go", "locked in").
+     * REJECT CONTESTED & SPECULATIVE PROPOSALS: Reject tentative phrases ("What if", "Tentative", "Need to check with X first", "Maybe"). If a proposal requires future external approval or was postponed, do NOT list it as a confirmed decision; move it to Unresolved Issues / Risks.
+   - ZERO TASK OVERLAP & NO INDIVIDUAL TASK ASSIGNMENTS:
+     * Do NOT put individual task assignments ("Person X will handle backend/UI/documentation", "Person X to circulate...") under Key Decisions. Put them ONLY under Action Items with that person as the owner.
+     * Decisions must be phrased as collective choices, technical decisions, or agreed policies (e.g., "Use FAISS for vector search and Streamlit for UI", "Adopt 'StudyGen' as working project name").
 
-5. OPEN ISSUES & RISKS (ZERO-RISK HANDLING):
-   - Include active technical and operational risks, unresolved blockers, or pending external sign-offs explicitly discussed in this transcript.
+5. OPEN ISSUES & RISKS (EXPLICIT RISK & BLOCKER CAPTURE):
+   - Open Issues & Risks MUST be active blockers, explicit capacity limits, missing dependencies, or unconfirmed approvals that threaten the timeline (e.g., tight deadline for vector pipeline, "Wi-Fi unstable", "Need faculty approval", "No budget confirmed").
+   - ROUTINE MONITORING VS. RISK: General statements like "Let's monitor the logs", "Keep an eye on metrics", or routine operational checks are ongoing operational follow-ups, NOT Open Issues or Risks. Only log explicit blockers, unresolved bugs, or threats to timelines as Open Issues/Risks.
    - ZERO DATA CONTAMINATION & ZERO-RISK HANDLING: If no active blockers or open risks exist in the transcript, return "unresolved_issues": [] (an empty array). NEVER generate a dummy risk item containing text like "No issues identified" or "No issues found". NEVER copy example text or invent risks/issues from other meetings.
-   - Provide clear, descriptive phrasing with context grounded in the transcript.
+   - Do not repeat an action item as an unresolved issue. An issue is the unresolved blocker, risk, pending approval, or unanswered question behind the action, not the action itself.
 
 6. GROUNDING & SELF-CHECK:
    - Preserve factual meaning; NEVER invent or assume owners, deadlines, decisions, evidence, or issues not present in the transcript.
+   - In-meeting completed tasks are not marked as pending action items; pending action items are real upcoming deliverables.
+   - Routine monitoring is not extracted as an unresolved issue or risk.
    - Use empty arrays [] when no items exist for a category.
 
 Transcript:
 {transcript}"""
-
-

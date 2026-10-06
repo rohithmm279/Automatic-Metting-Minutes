@@ -1,0 +1,93 @@
+{
+  "summary": "Client call with 6 attendees. 3 decision(s): Stay with Java for the backend; Hold the event on Friday; Keep the workshop at two hours. 4 open issue(s): Finals date (Saturday) tentative, pending hall availability; Choice between Flutter and React Native for the mobile app undecided, pending Ms. Geetha's input on Tuesday; Registration opening on Monday tentative, pending form approval. 9 pending and 2 completed action item(s), 2 without an owner.",
+  "action_items": [
+    {
+      "task": "Write the unit tests",
+      "owner": "Kavya",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Benchmark the model",
+      "owner": "Meena",
+      "deadline": "this weekend",
+      "deadline_iso": "2026-11-21/2026-11-22",
+      "status": "pending"
+    },
+    {
+      "task": "Migrate the database",
+      "owner": "Priya",
+      "deadline": "next month",
+      "deadline_iso": "2026-12-01/2026-12-31",
+      "status": "pending"
+    },
+    {
+      "task": "Prepare the demo script",
+      "owner": "Priya",
+      "deadline": "before the demo",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Set up the Slack channel",
+      "owner": null,
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Prepare the judging rubric",
+      "owner": null,
+      "deadline": "by tomorrow",
+      "deadline_iso": "2026-11-21",
+      "status": "pending"
+    },
+    {
+      "task": "Clean the training dataset",
+      "owner": "Lena",
+      "deadline": "by Thursday",
+      "deadline_iso": "2026-11-26",
+      "status": "pending"
+    },
+    {
+      "task": "Record the demo video",
+      "owner": "Meena",
+      "deadline": "next week",
+      "deadline_iso": "2026-11-23/2026-11-29",
+      "status": "pending"
+    },
+    {
+      "task": "Write the API documentation",
+      "owner": "Meena",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Label the sample transcripts",
+      "owner": "Meena",
+      "deadline": "when the hall is confirmed",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Organise the shared drive",
+      "owner": "Meena",
+      "deadline": "by Monday",
+      "deadline_iso": "2026-11-23",
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Stay with Java for the backend",
+    "Hold the event on Friday",
+    "Keep the workshop at two hours"
+  ],
+  "unresolved_issues": [
+    "Finals date (Saturday) tentative, pending hall availability",
+    "Choice between Flutter and React Native for the mobile app undecided, pending Ms. Geetha's input on Tuesday",
+    "Registration opening on Monday tentative, pending form approval",
+    "Training start on the 12th tentative, pending lab access"
+  ]
+}

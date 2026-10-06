@@ -58,6 +58,10 @@ class RecordSourceInfo(BaseModel):
     record_id: str
     source: str
     rate_limited: bool = False
+    model_name: Optional[str] = None
+    pipeline_name: Optional[str] = None
+    prompt_version: Optional[str] = None
+    fallback_used: bool = False
 
 
 class EvaluationRequest(BaseModel):

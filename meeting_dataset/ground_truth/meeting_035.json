@@ -1,0 +1,56 @@
+{
+  "summary": "Sprint planning with 5 attendees. 3 decision(s): Hold the kickoff meeting on the 15th; Close registration on the original date; Freeze the feature list. 2 open issue(s): Choice between Postgres and MongoDB for the database undecided, pending Prof. Anand's input on Thursday; Choice between Whisper and a cloud speech API for speech-to-text undecided, pending Ms. Geetha's input on Thursday. 6 pending and 0 completed action item(s), 0 without an owner.",
+  "action_items": [
+    {
+      "task": "Update the README",
+      "owner": "Faizal",
+      "deadline": "in two days",
+      "deadline_iso": "2026-11-28",
+      "status": "pending"
+    },
+    {
+      "task": "Label the sample transcripts",
+      "owner": "Faizal",
+      "deadline": "by next Friday",
+      "deadline_iso": "2026-12-04",
+      "status": "pending"
+    },
+    {
+      "task": "Renew the domain",
+      "owner": "Vikram",
+      "deadline": "this weekend",
+      "deadline_iso": "2026-11-28/2026-11-29",
+      "status": "pending"
+    },
+    {
+      "task": "Record the demo video",
+      "owner": "Priya",
+      "deadline": "this weekend",
+      "deadline_iso": "2026-11-28/2026-11-29",
+      "status": "pending"
+    },
+    {
+      "task": "Deploy the staging build",
+      "owner": "Faizal",
+      "deadline": "by Monday",
+      "deadline_iso": "2026-11-30",
+      "status": "pending"
+    },
+    {
+      "task": "Set up the Slack channel",
+      "owner": "Lena",
+      "deadline": "by end of day",
+      "deadline_iso": "2026-11-26",
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Hold the kickoff meeting on the 15th",
+    "Close registration on the original date",
+    "Freeze the feature list"
+  ],
+  "unresolved_issues": [
+    "Choice between Postgres and MongoDB for the database undecided, pending Prof. Anand's input on Thursday",
+    "Choice between Whisper and a cloud speech API for speech-to-text undecided, pending Ms. Geetha's input on Thursday"
+  ]
+}

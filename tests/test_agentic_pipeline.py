@@ -1,6 +1,7 @@
 """Deterministic unit tests for Agentic AI Pipeline (Summary, Action, Decision, Validation, Orchestrator, Fallback)."""
 
 import json
+import datetime
 from pathlib import Path
 import sys
 import unittest
@@ -21,6 +22,7 @@ from app.agents.orchestrator import AgentOrchestrator
 from app.schemas.meeting_schema import ActionItem, DecisionItem, MeetingAnalysis
 from app.services.gemini_analyzer import GeminiAnalyzer, GeminiAnalysisError
 from app.services.meeting_analyzer import MeetingAnalyzer
+from backend.ai.prompts import build_meeting_analysis_prompt
 
 
 class TestAgenticPipeline(unittest.TestCase):
@@ -34,6 +36,23 @@ class TestAgenticPipeline(unittest.TestCase):
             "Alex: Great. We all agreed to host the hackathon on November 15th.\n"
             "Sam: What about the guest speaker? That's still pending confirmation."
         )
+
+    def test_action_prompt_prioritizes_explicit_wrap_up_assignments(self):
+        """The production prompt must preserve named wrap-up tasks and deadlines."""
+        prompt = build_meeting_analysis_prompt("Priya: Action Items: Draft the design by Wednesday, September 23rd.")
+
+        self.assertIn("Treat a transcript wrap-up", prompt)
+        self.assertIn("preserving its named owner and explicit deadline", prompt)
+        self.assertIn("Do not replace a wrap-up task with the broader decision", prompt)
+
+    def test_prompt_separates_tentative_dates_from_confirmed_format(self):
+        """The production prompt must distinguish pending approval from decisions."""
+        prompt = build_meeting_analysis_prompt("Date: September 21, 2026\nArun: October 7th is tentative and needs faculty approval.")
+
+        self.assertIn("PENDING APPROVAL RULE", prompt)
+        self.assertIn("FORMAT DECISIONS", prompt)
+        self.assertIn('"tomorrow" = 2026-09-22', prompt)
+        self.assertIn("deadline 2026-09-23", prompt)
 
     # -----------------------------------------------------------------------
     # 1. Summary Agent Tests
@@ -52,6 +71,17 @@ class TestAgenticPipeline(unittest.TestCase):
 
         self.assertIn("Robotics Club", summary)
         self.assertIn("November 15th", summary)
+
+    def test_01b_unrelated_input_is_rejected_before_gemini(self):
+        """Plain unrelated content must not enter the agentic extraction path."""
+        mock_analyzer = MagicMock(spec=GeminiAnalyzer)
+        mock_analyzer.is_configured = True
+        orchestrator = AgentOrchestrator(gemini_analyzer=mock_analyzer)
+
+        with self.assertRaisesRegex(ValueError, "does not look like a meeting transcript"):
+            orchestrator.process_transcript("A recipe for pancakes with blueberries and honey.")
+
+        mock_analyzer.generate_json.assert_not_called()
 
     # -----------------------------------------------------------------------
     # 2. Action Agent Tests
@@ -433,6 +463,71 @@ class TestAgenticPipeline(unittest.TestCase):
         self.assertEqual(res.action_items[0].owner, "Marcus")
         self.assertEqual(res.action_items[1].owner, "Elena")
         self.assertTrue(any("October 6th" in d for d in res.decisions))
+
+    def test_18_decision_prefix_is_cleaned_and_conditional_risk_commitment_is_action(self):
+        transcript = (
+            "Aarav: Decision – we go ahead with TechVista 2026 on October 18, 2026, only if both pending sponsorships are confirmed.\n"
+            "Kabir: One more risk – the college admin portal has been down since morning. "
+            "I’ll escalate to the student affairs office by Wednesday if it stays down."
+        )
+
+        result = MeetingAnalyzer().analyze(transcript)
+
+        self.assertEqual(
+            result.decisions,
+            ["We go ahead with TechVista 2026 on October 18, 2026, only if both pending sponsorships are confirmed"],
+        )
+        self.assertTrue(any("Escalate to the student affairs office" in item.task for item in result.action_items))
+        self.assertEqual(result.action_items[0].owner, "Kabir")
+
+    def test_20_sc002_deferrals_are_issues_and_tonight_is_meeting_date(self):
+        from app.agents.orchestrator import AgentOrchestrator
+        from app.schemas.meeting_schema import DecisionItem
+
+        deferred, detailed, issues = AgentOrchestrator._move_deferred_decisions_to_issues(
+            ["The event date will be decided after the availability poll"],
+            [DecisionItem(decision="The event date will be decided after the availability poll")],
+            [],
+        )
+
+        self.assertEqual(deferred, [])
+        self.assertEqual(detailed, [])
+        self.assertEqual(issues, ["The event date will be decided after the availability poll"])
+        self.assertEqual(
+            AgentOrchestrator._format_iso_deadline("tonight", datetime.date(2026, 9, 21)),
+            "2026-09-21",
+        )
+
+    def test_21_header_date_is_not_an_implicit_action_deadline(self):
+        self.assertFalse(
+            AgentOrchestrator._deadline_is_explicit_for_action(
+                "2026-09-22", "Create the GitHub repository", "Arun: I'll create the GitHub repository."
+            )
+        )
+        self.assertTrue(
+            AgentOrchestrator._deadline_is_explicit_for_action(
+                "2026-09-23", "Join the complete test", "Rohith: We'll test together tomorrow at 7 PM."
+            )
+        )
+
+    def test_22_followup_attendance_is_not_an_action_item(self):
+        self.assertTrue(
+            AgentOrchestrator._is_unassigned_meeting_attendance(
+                "Everyone joins tomorrow at 7 PM on Discord", "Not specified"
+            )
+        )
+        self.assertFalse(
+            AgentOrchestrator._is_unassigned_meeting_attendance(
+                "Create the Discord meeting", "Not specified"
+            )
+        )
+
+    def test_23_action_is_not_repeated_as_unresolved_issue(self):
+        action = ActionItem(task="Check the event guidelines", owner="Priya")
+        issues = AgentOrchestrator._remove_action_issue_duplicates(
+            ["Check the event guidelines", "API free usage limit remains unknown"], [action]
+        )
+        self.assertEqual(issues, ["API free usage limit remains unknown"])
 
     def test_17_incident_retro_guardrails(self):
         """Test 17: Validates anti-contamination, meta-task filtering, timestamp safety, and self-commitments."""

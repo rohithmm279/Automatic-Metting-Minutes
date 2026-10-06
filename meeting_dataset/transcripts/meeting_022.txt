@@ -1,0 +1,28 @@
+# meeting_022 | style: club_planning | date: 2026-12-14 (Monday) | attendees: Naveen, Imran, Aarav
+Naveen: Alright everyone, let's plan the upcoming event.
+Aarav: So, let's keep it simple this year.
+Aarav: The sponsor hasn't replied to our email.
+Imran: We'll revisit it.
+Naveen: Nobody knows who is judging the final round.
+Aarav: We'll revisit it.
+Imran: Did anyone watch the match last night?
+Imran: Quick update: I've reviewed the pull request.
+Imran: The lab access letter still has no signature.
+Aarav: Yeah, that's a worry.
+Aarav: Yeah, I agree with that.
+Imran: Wait, can I--
+Naveen: Go ahead.
+Imran: Never mind, it can wait.
+Imran: Let's give certificates to all participants.
+Aarav: So, sounds good.
+Imran: The Wi-Fi here is terrible again.
+Aarav: We still need to set up the registration page, but nobody has picked it up.
+Imran: Not me, I'm swamped this week.
+Aarav: Fair enough.
+Naveen: I'll compile the final report by Wednesday.
+Imran: Noted.
+Aarav: I like that idea.
+Aarav: Hmm, interesting.
+Imran: Naveen is going to set up the Slack channel by Wednesday.
+Naveen: Right, that's me.
+Naveen: Okay, let's wrap up here.

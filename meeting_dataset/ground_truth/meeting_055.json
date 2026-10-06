@@ -1,0 +1,46 @@
+{
+  "summary": "Sprint planning with 4 attendees. 3 decision(s): Print brochures in black and white; Keep the current venue; Go digital only, no printed brochures. 0 open issue(s): none. 5 pending and 0 completed action item(s), 1 without an owner.",
+  "action_items": [
+    {
+      "task": "Test the prototype",
+      "owner": null,
+      "deadline": "before the demo",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Set up the Slack channel",
+      "owner": "Swetha",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Test the mobile layout",
+      "owner": "Lena",
+      "deadline": "after the review",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Prepare the demo script",
+      "owner": "Lena",
+      "deadline": "in three days",
+      "deadline_iso": "2026-11-16",
+      "status": "pending"
+    },
+    {
+      "task": "Benchmark the model",
+      "owner": "Nisha",
+      "deadline": "in two days",
+      "deadline_iso": "2026-11-15",
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Print brochures in black and white",
+    "Keep the current venue",
+    "Go digital only, no printed brochures"
+  ],
+  "unresolved_issues": []
+}

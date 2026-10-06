@@ -1,6 +1,7 @@
 """Deterministic validator for meeting intelligence outputs."""
 
 import re
+from datetime import date, timedelta
 from backend.models.meeting import MeetingOutput, ActionItem, Decision, UnresolvedIssue
 
 ALLOWED_STATUSES = {"pending", "in_progress", "completed", "cancelled"}
@@ -16,6 +17,67 @@ class MeetingValidator:
 
     def __init__(self, allowed_statuses: set[str] | None = None):
         self.allowed_statuses = allowed_statuses or ALLOWED_STATUSES
+
+    @staticmethod
+    def _supported_iso_dates(transcript: str) -> set[str]:
+        """Return ISO dates supported by header dates and relative date phrases."""
+        meeting_date = None
+        header_patterns = (
+            r"(?i)\bdate\s*[:\-]\s*(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})\b",
+            r"(?i)\bdate\s*[:\-]\s*([A-Za-z]+)\s+(\d{1,2})(?:st|nd|rd|th)?[,]?\s+(\d{4})\b",
+            r"(?i)\bdate\s*[:\-]\s*(\d{4})[-/]((?:0?[1-9]|1[0-2]))[-/](\d{1,2})\b",
+        )
+        header = next(
+            (match for pattern in header_patterns if (match := re.search(pattern, transcript))),
+            None,
+        )
+        if header:
+            first, second, third = header.groups()
+            months = {
+                "january": 1, "jan": 1, "february": 2, "feb": 2,
+                "march": 3, "mar": 3, "april": 4, "apr": 4,
+                "may": 5, "june": 6, "jun": 6, "july": 7, "jul": 7,
+                "august": 8, "aug": 8, "september": 9, "sep": 9, "sept": 9,
+                "october": 10, "oct": 10, "november": 11, "nov": 11,
+                "december": 12, "dec": 12,
+            }
+            if first.isdigit() and len(first) == 4:
+                year, month, day = int(first), int(second), int(third)
+            elif first.isdigit():
+                year, month, day = int(third), months.get(second.lower(), 0), int(first)
+            else:
+                year, month, day = int(third), months.get(first.lower(), 0), int(second)
+            if month:
+                try:
+                    meeting_date = date(year, month, day)
+                except ValueError:
+                    pass
+
+        supported: set[str] = set()
+        if meeting_date:
+            supported.add(meeting_date.isoformat())
+            if re.search(r"\b(?:today|tonight|eod)\b", transcript, re.I):
+                supported.add(meeting_date.isoformat())
+            if re.search(r"\btomorrow\b", transcript, re.I):
+                supported.add((meeting_date + timedelta(days=1)).isoformat())
+
+            weekdays = {
+                "monday": 0, "tuesday": 1, "wednesday": 2, "thursday": 3,
+                "friday": 4, "saturday": 5, "sunday": 6,
+            }
+            for weekday_name, weekday_number in weekdays.items():
+                if re.search(rf"\b{weekday_name}\b", transcript, re.I):
+                    days_ahead = (weekday_number - meeting_date.weekday()) % 7
+                    if days_ahead == 0:
+                        days_ahead = 7
+                    supported.add((meeting_date + timedelta(days=days_ahead)).isoformat())
+
+        for match in re.finditer(r"\b\d{4}-\d{2}-\d{2}\b", transcript):
+            try:
+                supported.add(date.fromisoformat(match.group(0)).isoformat())
+            except ValueError:
+                pass
+        return supported
 
     def validate(self, output: MeetingOutput, transcript: str) -> MeetingOutput:
         """Run all deterministic validations against the MeetingOutput and transcript."""
@@ -133,6 +195,32 @@ class MeetingValidator:
                         "sunday": ["sunday", "sun"],
                     }
                     is_iso_date = bool(re.match(r"^\d{4}-\d{2}-\d{2}$", cleaned_deadline))
+                    if is_iso_date:
+                        supported_dates = self._supported_iso_dates(transcript)
+                        if cleaned_deadline in supported_dates:
+                            continue
+                        has_meeting_header = bool(
+                            re.search(
+                                r"(?i)\bdate\s*[:\-]\s*(?:\d{1,2}\s+[A-Za-z]+\s+\d{4}|[A-Za-z]+\s+\d{1,2},?\s+\d{4})\b",
+                                transcript,
+                            )
+                        )
+                        if has_meeting_header:
+                            raise MeetingValidationError(
+                                f"Action item at index {idx} references deadline '{item.deadline}' which is not in the transcript."
+                            )
+                        # With no absolute meeting date, an ISO value can only be
+                        # grounded by an explicit relative phrase in the source.
+                        # Do not reject the normalized value merely because the
+                        # transcript contains the original phrase rather than ISO text.
+                        if re.search(
+                            r"\b(?:today|tonight|tomorrow|eod|end of (?:this|the) week|"
+                            r"next week|next month|(?:next\s+)?(?:monday|tuesday|wednesday|"
+                            r"thursday|friday|saturday|sunday))\b",
+                            transcript,
+                            re.IGNORECASE,
+                        ):
+                            continue
                     has_temporal_context = any(
                         term in transcript_lower
                         for term in (
@@ -153,8 +241,6 @@ class MeetingValidator:
                     if dl_tokens:
                         def _token_grounded(t: str, other_grounded: bool = False) -> bool:
                             if t in transcript_lower:
-                                return True
-                            if is_iso_date and has_temporal_context:
                                 return True
                             expanded_months = MONTH_MAP.get(t)
                             if expanded_months and any(m in transcript_lower for m in expanded_months):

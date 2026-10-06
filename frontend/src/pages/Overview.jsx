@@ -22,7 +22,7 @@ export default function Overview({
   const completedActions = actionItems.filter(
     (a) => a.status === 'completed' || completedTaskIds.has(a.id)
   ).length;
-  const completionRate = totalActions > 0 ? Math.round((completedActions / totalActions) * 100) : 84;
+  const completionRate = totalActions > 0 ? Math.round((completedActions / totalActions) * 100) : 0;
 
   // 1. Attention Radar Calculation
   const isActionOverdueOrUrgent = (a) => {

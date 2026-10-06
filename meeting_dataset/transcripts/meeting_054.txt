@@ -1,0 +1,64 @@
+# meeting_054 | style: brainstorm | date: 2026-11-19 (Thursday) | attendees: Anjali, Imran, Pooja, Naveen, Meena, Deepak, Swetha
+Anjali: Okay, open floor, throw out any ideas you have.
+Anjali: Let me pull up the notes.
+Pooja: Wait, can I--
+Deepak: Go ahead.
+Pooja: Never mind, it can wait.
+Imran: Should we pick Seminar Hall A or the auditorium for the venue?
+Pooja: I lean Seminar Hall A, but let's confirm with Ravi first.
+Imran: Ravi is out till Monday, so we decide then.
+Pooja: Fine. I'll print the certificates when the hall is confirmed, either way.
+Anjali: The Wi-Fi here is terrible again.
+Imran: If I get time, I might upload the code to the repository.
+Pooja: Okay, no pressure.
+Meena: Sorry, I was on mute.
+Naveen: I'll print the brochures.
+Naveen: Actually no, forget it, we're going digital only.
+Swetha: Okay, then we skip it.
+Imran: I'll draft the press note --
+Pooja: Sorry, can you repeat that? The audio dropped.
+Imran: Sorry, as I was saying, after the review.
+Swetha: Noted.
+Anjali: Okay, final call. We use the shared drive for all documents.
+Imran: Fine by me.
+Deepak: That's a wild idea, I love it.
+Swetha: Should we pick Postgres or MongoDB for the database?
+Naveen: I lean Postgres, but let's confirm with Dr. Lakshmi first.
+Swetha: Dr. Lakshmi is out till Tuesday, so we decide then.
+Deepak: Hmm, interesting.
+Anjali: Let's freeze the feature list today.
+Pooja: Agreed.
+Imran: Can everyone see my screen?
+Swetha: Let's go with the dark theme for the poster.
+Anjali: So, agreed.
+Anjali: It's so hot in this room today.
+Swetha: Let's not filter ourselves yet.
+Imran: If I get time, I might book the seminar hall.
+Naveen: Okay, no pressure.
+Deepak: Okay, moving on.
+Deepak: If I get time, I might prepare the demo script.
+Pooja: Okay, no pressure.
+Meena: So, fair enough.
+Swetha: Okay, final call. We run demo day in the lab.
+Meena: Works for me.
+Anjali: Okay, final call. We give certificates to all participants.
+Meena: Sounds good.
+Swetha: I'll book the catering.
+Swetha: Actually no, forget it, the budget is tight.
+Imran: Okay, then we skip it.
+Pooja: Okay, next point.
+Swetha: If I get time, I might migrate the database.
+Pooja: Um, okay, no pressure.
+Pooja: Interesting angle, keep going.
+Anjali: Yeah, I agree with that.
+Naveen: Okay, final call. We use Postgres for the database.
+Meena: Works for me.
+Meena: The budget is still not approved.
+Deepak: We'll revisit it.
+Pooja: Did anyone watch the match last night?
+Deepak: Pooja will test the prototype next month, right?
+Pooja: Right, that's me.
+Swetha: So, right, that makes sense.
+Pooja: We could arrange the transport if we had more people, but we don't.
+Naveen: True, let's leave it.
+Anjali: Good ideas today, thanks everyone.

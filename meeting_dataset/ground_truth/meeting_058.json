@@ -1,0 +1,46 @@
+{
+  "summary": "Retrospective with 4 attendees. 1 decision(s): Limit each pitch to five minutes. 1 open issue(s): API key request still pending with the admin office. 4 pending and 1 completed action item(s), 1 without an owner.",
+  "action_items": [
+    {
+      "task": "Review the pull request",
+      "owner": "Lena",
+      "deadline": "next week",
+      "deadline_iso": "2026-10-05/2026-10-11",
+      "status": "pending"
+    },
+    {
+      "task": "Write the unit tests",
+      "owner": "Kavya",
+      "deadline": "tomorrow",
+      "deadline_iso": "2026-09-29",
+      "status": "pending"
+    },
+    {
+      "task": "Follow up with the vendor",
+      "owner": "Lena",
+      "deadline": "after the review",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Send the agenda",
+      "owner": null,
+      "deadline": "by Friday",
+      "deadline_iso": "2026-10-02",
+      "status": "pending"
+    },
+    {
+      "task": "Label the sample transcripts",
+      "owner": "Lena",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    }
+  ],
+  "decisions": [
+    "Limit each pitch to five minutes"
+  ],
+  "unresolved_issues": [
+    "API key request still pending with the admin office"
+  ]
+}

@@ -1,0 +1,32 @@
+# meeting_016 | style: hackathon_sync | date: 2026-09-29 (Tuesday) | attendees: Tom, Swetha, Kavya
+Tom: Team, quick sync before the hackathon, let's be fast.
+Kavya: Um, can everyone see my screen?
+Kavya: We could check the audio setup if we had more people, but we don't.
+Swetha: True, let's leave it.
+Kavya: Sorry, I was on mute.
+Tom: Should we pick Saturday or Sunday for the hackathon date?
+Swetha: I lean Saturday, but let's confirm with Prof. Anand first.
+Tom: Prof. Anand is out till Thursday, so we decide then.
+Tom: Okay, moving on.
+Tom: The model accuracy is still stuck below the target.
+Swetha: Let's park it for now.
+Tom: Did anyone watch the match last night?
+Kavya: We still need to review the pull request by Thursday, but nobody has picked it up.
+Tom: Yeah, that's true.
+Swetha: Right, that makes sense.
+Kavya: Quick update: I've collected the registration forms.
+Swetha: The demo needs to be rock solid.
+Swetha: Tom, can you record the demo video by Monday?
+Tom: I'm swamped this week, sorry.
+Kavya: I'll take it.
+Tom: Yeah, I agree with that.
+Kavya: Wait, can I--
+Swetha: Go ahead.
+Kavya: Never mind, it can wait.
+Tom: The sponsor hasn't replied to our email.
+Swetha: Let's park it for now.
+Swetha: Coffee run anyone?
+Tom: Let me pull up the notes.
+Tom: Swetha, can you migrate the database next month?
+Swetha: Yes, will do.
+Tom: Good sync, let's go.

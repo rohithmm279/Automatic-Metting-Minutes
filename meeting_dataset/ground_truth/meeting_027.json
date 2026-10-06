@@ -1,0 +1,63 @@
+{
+  "summary": "Faculty advisor meeting with 6 attendees. 3 decision(s): No T-shirts this time; No catering; Name the event Code Sprint. 9 open issue(s): Helpdesk coverage for day two undecided; API key request still pending with the admin office; Guest parking arrangements still open. 5 pending and 1 completed action item(s), 0 without an owner.",
+  "action_items": [
+    {
+      "task": "Publish the event announcement",
+      "owner": "Meena",
+      "deadline": "yesterday",
+      "deadline_iso": "2026-10-15",
+      "status": "completed"
+    },
+    {
+      "task": "Arrange the transport",
+      "owner": "Riya",
+      "deadline": "by Thursday",
+      "deadline_iso": "2026-10-22",
+      "status": "pending"
+    },
+    {
+      "task": "Send the agenda",
+      "owner": "Meena",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Check the audio setup",
+      "owner": "Riya",
+      "deadline": "by the end of the month",
+      "deadline_iso": "2026-10-31",
+      "status": "pending"
+    },
+    {
+      "task": "Print the certificates",
+      "owner": "Meena",
+      "deadline": "today",
+      "deadline_iso": "2026-10-16",
+      "status": "pending"
+    },
+    {
+      "task": "Collect the registration forms",
+      "owner": "Meena",
+      "deadline": "by Tuesday",
+      "deadline_iso": "2026-10-20",
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "No T-shirts this time",
+    "No catering",
+    "Name the event Code Sprint"
+  ],
+  "unresolved_issues": [
+    "Helpdesk coverage for day two undecided",
+    "API key request still pending with the admin office",
+    "Guest parking arrangements still open",
+    "Dataset licence unclear",
+    "Training start on the 12th tentative, pending lab access",
+    "Finals date (Saturday) tentative, pending hall availability",
+    "Sponsor has not replied",
+    "Lab access letter still unsigned",
+    "Judges for the final round not identified"
+  ]
+}

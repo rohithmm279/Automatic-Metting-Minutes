@@ -1,0 +1,58 @@
+# meeting_051 | style: standup | date: 2026-09-30 (Wednesday) | attendees: Tom, Aarav, Naveen, Meena, Divya
+Tom: Okay, quick standup, let's go around the room.
+Meena: Nobody knows who is judging the final round.
+Aarav: Let's park it for now.
+Tom: Yeah, I agree with that.
+Divya: Naveen, can you benchmark the model by next Friday?
+Naveen: I'm swamped this week, sorry.
+Aarav: I'll take it.
+Meena: Okay, moving on.
+Naveen: The Wi-Fi here is terrible again.
+Naveen: I'll update the budget sheet once the budget is approved.
+Meena: Alright.
+Divya: Alright, who's next?
+Divya: We still need to check the audio setup in three days, but nobody has picked it up.
+Tom: I'm not free for that, sorry.
+Meena: Fair enough.
+Tom: Wait, can I--
+Aarav: Go ahead.
+Tom: Never mind, it can wait.
+Aarav: Quick update: I've verified the attendance sheet.
+Tom: Can everyone see my screen?
+Meena: We don't know how many people will actually turn up.
+Divya: Let's park it for now.
+Meena: Hmm, interesting.
+Naveen: We still don't have confirmation from the venue.
+Divya: We'll revisit it.
+Divya: The model accuracy is still stuck below the target.
+Naveen: Let's park it for now.
+Naveen: Let me fix the login bug by end of day.
+Meena: Good.
+Aarav: Nothing else from my side.
+Naveen: Did anyone watch the match last night?
+Meena: Yeah, so how do we handle late registrations? No idea yet.
+Tom: We'll revisit it.
+Naveen: It's so hot in this room today.
+Tom: Um, Divya, can you test the mobile layout?
+Divya: Yes, I can do that by tomorrow.
+Meena: I'll set up the Slack channel next month.
+Tom: So, sorry, make it by Friday, everyone is busy until then.
+Meena: Right, by Friday then.
+Aarav: Sorry, I was on mute.
+Meena: I can deploy the staging build before the demo.
+Divya: Yeah, so noted.
+Tom: Right, that makes sense.
+Naveen: Okay, next point.
+Meena: If I get time, I might test the prototype.
+Naveen: Okay, no pressure.
+Tom: Let me pull up the notes.
+Tom: The API key request is still stuck with the admin office.
+Naveen: Yeah, that's a worry.
+Aarav: Let me prepare the demo script tomorrow.
+Meena: Quick update: I've scheduled the mock interview.
+Divya: Same here, just continuing the ongoing work.
+Tom: I'll label the sample transcripts --
+Naveen: Hold on, someone is at the door, one second.
+Tom: Sorry, as I was saying, today.
+Aarav: Noted.
+Tom: That's all for today.

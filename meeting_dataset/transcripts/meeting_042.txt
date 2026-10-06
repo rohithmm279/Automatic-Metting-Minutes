@@ -1,0 +1,68 @@
+# meeting_042 | style: club_planning | date: 2026-10-12 (Monday) | attendees: Lena, Harini, Karthik, Imran, Kavya, Arun, Aarav
+Lena: Alright everyone, let's plan the upcoming event.
+Arun: The turnout last time was good, wasn't it?
+Karthik: The Wi-Fi here is terrible again.
+Aarav: Wait, can I--
+Karthik: Go ahead.
+Aarav: Never mind, it can wait.
+Harini: Maybe we should print the brochures in colour.
+Lena: No, let's keep them black and white.
+Harini: Okay, fair.
+Kavya: Okay, final call. We name the event Code Sprint.
+Lena: Agreed.
+Arun: I like that idea.
+Aarav: Imran is going to confirm the guest speaker by the end of the month.
+Imran: Right, that's me.
+Lena: Let's keep it simple this year.
+Kavya: Let's tentatively hold the finals on Saturday, but only if the hall is free.
+Lena: Right, we'll confirm once we know.
+Karthik: Let me pull up the notes.
+Karthik: Imran is going to submit the permission letter by Friday.
+Imran: Right, that's me.
+Kavya: I can reserve the cafeteria tables by Wednesday.
+Harini: Okay.
+Kavya: Hmm, interesting.
+Karthik: Did anyone watch the match last night?
+Arun: Maybe we should cut the workshop to one hour.
+Harini: No, let's keep the full two hours.
+Arun: Okay, fair.
+Karthik: Sorry, I was on mute.
+Lena: Let's use Google Forms for registration.
+Imran: Agreed.
+Arun: Karthik, can you design the poster?
+Karthik: Yes, I can do that this weekend.
+Aarav: I'll book the catering.
+Aarav: Actually no, forget it, the budget is tight.
+Harini: Okay, then we skip it.
+Arun: Okay, moving on.
+Imran: So, it's so hot in this room today.
+Kavya: I can create the invitation card after the review.
+Karthik: I'll set up the photo booth.
+Karthik: Actually no, forget it, there's no space.
+Lena: Okay, then we skip it.
+Arun: Okay, next point.
+Harini: Wait, can I--
+Kavya: Go ahead.
+Harini: Never mind, it can wait.
+Imran: Aarav, you send the agenda before the demo.
+Aarav: Harini knows that part better, honestly.
+Imran: Fair enough. Harini, you take it.
+Harini: Okay.
+Kavya: Arun will prepare the judging rubric before the demo, right?
+Arun: Yes, that's right.
+Karthik: I'll hire the sound system.
+Karthik: Actually no, forget it, the hall already has one.
+Harini: Okay, then we skip it.
+Karthik: Yeah, I agree with that.
+Harini: Okay, final call. We meet every Wednesday.
+Karthik: Works for me.
+Imran: I'll book the seminar hall in two days --
+Karthik: Actually, by next Friday, I just checked the calendar.
+Imran: Okay, by next Friday.
+Arun: Can everyone see my screen?
+Kavya: Fair enough.
+Imran: Should we pick a hybrid format or a fully offline format for the event format?
+Lena: I lean a hybrid format, but let's confirm with Prof. Anand first.
+Imran: Prof. Anand is out till Monday, so we decide then.
+Lena: Fine. I'll arrange the transport before the demo, either way.
+Lena: Okay, let's wrap up here.

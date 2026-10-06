@@ -57,6 +57,11 @@ _MIGRATIONS = [
     "ALTER TABLE meetings ADD COLUMN meeting_time TEXT;",
     "ALTER TABLE meetings ADD COLUMN start_time TEXT;",
     "ALTER TABLE meetings ADD COLUMN end_time TEXT;",
+    # v1.4: record analysis provenance for reproducible comparisons
+    "ALTER TABLE meetings ADD COLUMN model_name TEXT;",
+    "ALTER TABLE meetings ADD COLUMN pipeline_name TEXT;",
+    "ALTER TABLE meetings ADD COLUMN prompt_version TEXT;",
+    "ALTER TABLE meetings ADD COLUMN fallback_used INTEGER NOT NULL DEFAULT 0;",
 ]
 
 

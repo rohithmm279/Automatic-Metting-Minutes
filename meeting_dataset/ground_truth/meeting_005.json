@@ -1,0 +1,69 @@
+{
+  "summary": "Sprint planning with 4 attendees. 3 decision(s): Close registration on the original date; Hold demo day in the lab; Hold the kickoff meeting on the 15th. 1 open issue(s): Finals date (Saturday) tentative, pending hall availability. 8 pending and 0 completed action item(s), 1 without an owner.",
+  "action_items": [
+    {
+      "task": "Write the API documentation",
+      "owner": "Anjali",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Compile the final report",
+      "owner": "Kavya",
+      "deadline": "before the demo",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Deploy the staging build",
+      "owner": "Riya",
+      "deadline": "in two days",
+      "deadline_iso": "2026-10-07",
+      "status": "pending"
+    },
+    {
+      "task": "Review the pull request",
+      "owner": "Riya",
+      "deadline": "by Friday",
+      "deadline_iso": "2026-10-09",
+      "status": "pending"
+    },
+    {
+      "task": "Benchmark the model",
+      "owner": "Riya",
+      "deadline": "when the hall is confirmed",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Write the unit tests",
+      "owner": "Anjali",
+      "deadline": "next week",
+      "deadline_iso": "2026-10-12/2026-10-18",
+      "status": "pending"
+    },
+    {
+      "task": "Migrate the database",
+      "owner": "Manoj",
+      "deadline": "this weekend",
+      "deadline_iso": "2026-10-10/2026-10-11",
+      "status": "pending"
+    },
+    {
+      "task": "Fix the login bug",
+      "owner": null,
+      "deadline": "in two days",
+      "deadline_iso": "2026-10-07",
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Close registration on the original date",
+    "Hold demo day in the lab",
+    "Hold the kickoff meeting on the 15th"
+  ],
+  "unresolved_issues": [
+    "Finals date (Saturday) tentative, pending hall availability"
+  ]
+}

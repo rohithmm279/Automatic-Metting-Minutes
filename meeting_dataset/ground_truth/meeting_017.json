@@ -1,0 +1,58 @@
+{
+  "summary": "Faculty advisor meeting with 5 attendees. 1 decision(s): Hold demo day in the lab. 6 open issue(s): Choice between a hybrid format and a fully offline format for the event format undecided, pending Prof. Anand's input on Monday; Training start on the 12th tentative, pending lab access; Guest parking arrangements still open. 4 pending and 2 completed action item(s), 1 without an owner.",
+  "action_items": [
+    {
+      "task": "Create the social media schedule",
+      "owner": "Vikram",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Contact the sponsors",
+      "owner": "Nisha",
+      "deadline": "by Thursday",
+      "deadline_iso": "2026-12-03",
+      "status": "pending"
+    },
+    {
+      "task": "Write the unit tests",
+      "owner": "Nisha",
+      "deadline": "today",
+      "deadline_iso": "2026-11-27",
+      "status": "pending"
+    },
+    {
+      "task": "Set up the registration page",
+      "owner": "Vikram",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Review the pull request",
+      "owner": null,
+      "deadline": "tomorrow",
+      "deadline_iso": "2026-11-28",
+      "status": "pending"
+    },
+    {
+      "task": "Write the API documentation",
+      "owner": "Pooja",
+      "deadline": "next week",
+      "deadline_iso": "2026-11-30/2026-12-06",
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Hold demo day in the lab"
+  ],
+  "unresolved_issues": [
+    "Choice between a hybrid format and a fully offline format for the event format undecided, pending Prof. Anand's input on Monday",
+    "Training start on the 12th tentative, pending lab access",
+    "Guest parking arrangements still open",
+    "Judges for the final round not identified",
+    "Registration opening on Monday tentative, pending form approval",
+    "Dataset licence unclear"
+  ]
+}

@@ -1,0 +1,64 @@
+# meeting_045 | style: sprint_planning | date: 2026-09-24 (Thursday) | attendees: Dev, Harini, Karthik, Nisha, Arun
+Dev: Welcome to sprint planning, let's go through the backlog.
+Harini: Hmm, interesting.
+Dev: Can everyone see my screen?
+Karthik: Let's use Postgres for the database.
+Arun: So, agreed.
+Nisha: Let me pull up the notes.
+Dev: Yeah, I agree with that.
+Arun: The dataset licence is unclear.
+Karthik: Yeah, that's a worry.
+Nisha: I can set up the registration page by Monday.
+Arun: I'd like Dev to set up the Slack channel by end of day.
+Dev: Okay, noted.
+Nisha: Okay, next point.
+Dev: Um, Arun is going to migrate the database when the hall is confirmed.
+Arun: Yes, that's right.
+Dev: Fair enough.
+Nisha: I'd like Arun to test the prototype.
+Arun: Okay, noted.
+Dev: The lab access letter still has no signature.
+Arun: We'll revisit it.
+Dev: It's so hot in this room today.
+Dev: Did anyone upload the code to the repository?
+Nisha: I did, yesterday.
+Arun: Let's size it later.
+Nisha: Harini will clean the training dataset by Friday, right?
+Harini: Right, that's me.
+Arun: Sorry, I was on mute.
+Nisha: Okay, final call. We freeze the feature list today.
+Karthik: Works for me.
+Karthik: The Wi-Fi here is terrible again.
+Karthik: I'll organise the shared drive tomorrow.
+Nisha: Sorry, make it by Tuesday, the review is before that.
+Karthik: Right, by Tuesday then.
+Dev: Okay, moving on.
+Karthik: I'll share the meeting notes next week --
+Dev: Actually, tomorrow, I just checked the calendar.
+Karthik: Okay, tomorrow.
+Nisha: Right, that makes sense.
+Arun: The backlog is getting long.
+Karthik: Wait, can I--
+Arun: Go ahead.
+Karthik: Never mind, it can wait.
+Arun: Okay, final call. We name the event Code Sprint.
+Nisha: Fine by me.
+Nisha: That ticket is bigger than it looks.
+Arun: Wait, can I--
+Dev: Go ahead.
+Arun: Never mind, it can wait.
+Nisha: Who's going to fix the login bug by Friday?
+Harini: I'm not free for that, sorry.
+Karthik: Did anyone watch the match last night?
+Dev: Did anyone benchmark the model?
+Karthik: I did, yesterday.
+Dev: Who's going to update the README by Monday?
+Arun: I'm not free for that, sorry.
+Dev: Okay, moving on.
+Arun: Um, Harini, can you prepare the demo script after the review?
+Harini: Yes, will do.
+Nisha: Let's size it later.
+Karthik: Did anyone watch the match last night?
+Karthik: Let's hold the kickoff meeting on the 15th.
+Arun: Sounds good.
+Dev: That's the plan for this sprint.

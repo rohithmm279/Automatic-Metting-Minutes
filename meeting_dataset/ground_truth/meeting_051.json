@@ -1,0 +1,91 @@
+{
+  "summary": "Daily standup with 5 attendees. 0 decision(s): none. 6 open issue(s): Judges for the final round not identified; Expected attendance unknown; Venue confirmation not received. 9 pending and 2 completed action item(s), 1 without an owner.",
+  "action_items": [
+    {
+      "task": "Benchmark the model",
+      "owner": "Aarav",
+      "deadline": "by next Friday",
+      "deadline_iso": "2026-10-09",
+      "status": "pending"
+    },
+    {
+      "task": "Update the budget sheet",
+      "owner": "Naveen",
+      "deadline": "once the budget is approved",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Check the audio setup",
+      "owner": null,
+      "deadline": "in three days",
+      "deadline_iso": "2026-10-03",
+      "status": "pending"
+    },
+    {
+      "task": "Verify the attendance sheet",
+      "owner": "Aarav",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Fix the login bug",
+      "owner": "Naveen",
+      "deadline": "by end of day",
+      "deadline_iso": "2026-09-30",
+      "status": "pending"
+    },
+    {
+      "task": "Test the mobile layout",
+      "owner": "Divya",
+      "deadline": "by tomorrow",
+      "deadline_iso": "2026-10-01",
+      "status": "pending"
+    },
+    {
+      "task": "Set up the Slack channel",
+      "owner": "Meena",
+      "deadline": "by Friday",
+      "deadline_iso": "2026-10-02",
+      "status": "pending"
+    },
+    {
+      "task": "Deploy the staging build",
+      "owner": "Meena",
+      "deadline": "before the demo",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Prepare the demo script",
+      "owner": "Aarav",
+      "deadline": "tomorrow",
+      "deadline_iso": "2026-10-01",
+      "status": "pending"
+    },
+    {
+      "task": "Schedule the mock interview",
+      "owner": "Meena",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Label the sample transcripts",
+      "owner": "Tom",
+      "deadline": "today",
+      "deadline_iso": "2026-09-30",
+      "status": "pending"
+    }
+  ],
+  "decisions": [],
+  "unresolved_issues": [
+    "Judges for the final round not identified",
+    "Expected attendance unknown",
+    "Venue confirmation not received",
+    "Model accuracy still below target",
+    "Handling of late registrations undecided",
+    "API key request still pending with the admin office"
+  ]
+}

@@ -1,0 +1,44 @@
+# meeting_041 | style: standup | date: 2026-10-09 (Friday) | attendees: Divya, Anjali, Nisha, Meena
+Divya: Okay, quick standup, let's go around the room.
+Anjali: I'll organise the shared drive tomorrow.
+Divya: Sorry, make it this weekend, everyone is busy until then.
+Anjali: Right, this weekend then.
+Meena: Um, can everyone see my screen?
+Divya: I'll set up the Slack channel.
+Nisha: Great, thanks.
+Nisha: Did anyone watch the match last night?
+Anjali: Let's tentatively start the training sessions on the 12th, but only if the lab access is sorted.
+Nisha: Right, we'll confirm once we know.
+Nisha: Um, it's so hot in this room today.
+Divya: Okay, moving on.
+Nisha: Someone needs to prepare the demo script by end of day.
+Anjali: I'm not free for that, sorry.
+Divya: Um, right, that makes sense.
+Divya: Alright, who's next?
+Anjali: I'll draft the press note by end of day.
+Divya: Noted.
+Meena: Sorry, I was on mute.
+Divya: Yeah, I agree with that.
+Meena: Let me test the prototype by tomorrow.
+Divya: Noted.
+Nisha: Divya, you benchmark the model.
+Divya: Meena knows that part better, honestly.
+Nisha: Fair enough. Meena, you take it.
+Meena: Okay.
+Nisha: Okay, final call. We meet every Wednesday.
+Anjali: Works for me.
+Meena: The budget is still not approved.
+Anjali: We'll revisit it.
+Nisha: Fair enough.
+Anjali: Nothing else from my side.
+Meena: Did anyone follow up with the vendor?
+Nisha: I've already followed up with the vendor.
+Nisha: So, hmm, interesting.
+Anjali: Wait, can I--
+Nisha: Um, go ahead.
+Anjali: Never mind, it can wait.
+Divya: Did anyone email the faculty coordinator?
+Anjali: I did, yesterday.
+Divya: Who's going to record the demo video by the end of the month?
+Meena: Yeah, that's true.
+Divya: Okay, see you all tomorrow.

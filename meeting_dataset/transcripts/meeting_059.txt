@@ -1,0 +1,53 @@
+# meeting_059 | style: event_ops | date: 2026-11-11 (Wednesday) | attendees: Aarav, Divya, Imran, Naveen
+Aarav: Okay, event day is close, let's walk through the logistics.
+Aarav: Should we pick Saturday or Sunday for the hackathon date?
+Divya: I lean Saturday, but let's confirm with Prof. Anand first.
+Aarav: Prof. Anand is out till Monday, so we decide then.
+Imran: Logistics always get messy.
+Naveen: Did anyone design the poster?
+Imran: I did, yesterday.
+Imran: Maybe we should move the weekly meeting to mornings.
+Aarav: No, let's keep the evening slot.
+Imran: Okay, fair.
+Divya: Wait, can I--
+Imran: Go ahead.
+Divya: Never mind, it can wait.
+Aarav: I'll print the brochures.
+Aarav: Um, actually no, forget it, we're going digital only.
+Naveen: Okay, then we skip it.
+Aarav: Sorry, I was on mute.
+Aarav: Should we pick Seminar Hall A or the auditorium for the venue?
+Naveen: I lean Seminar Hall A, but let's confirm with Mr. Selvam first.
+Aarav: Mr. Selvam is out till Monday, so we decide then.
+Naveen: Fine. I'll email the faculty coordinator, either way.
+Imran: Yeah, I agree with that.
+Aarav: I'll set up the photo booth.
+Aarav: Actually no, forget it, there's no space.
+Naveen: Okay, then we skip it.
+Divya: Okay, moving on.
+Divya: Wait, can I--
+Imran: Go ahead.
+Divya: Never mind, it can wait.
+Imran: Maybe we should cut the workshop to one hour.
+Divya: No, let's keep the full two hours.
+Imran: Okay, fair.
+Aarav: Remember last year's chaos?
+Divya: The Wi-Fi here is terrible again.
+Naveen: Maybe we should use a paid hosting plan.
+Divya: No, let's stay on the free tier.
+Naveen: Okay, fair.
+Naveen: Let's double check everything.
+Aarav: It's so hot in this room today.
+Aarav: I'll book the catering.
+Aarav: Actually no, forget it, the budget is tight.
+Imran: Okay, then we skip it.
+Aarav: Right, that makes sense.
+Aarav: I'll test the prototype this weekend.
+Divya: Sorry, make it next week, everyone is busy until then.
+Aarav: Right, next week then.
+Naveen: So, quick update: I've arranged the transport.
+Aarav: Did anyone watch the match last night?
+Aarav: Fair enough.
+Imran: Divya, can you confirm the guest speaker?
+Divya: Yes, I can do that before the demo.
+Aarav: Alright, that's the logistics.

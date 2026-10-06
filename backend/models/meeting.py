@@ -33,3 +33,7 @@ class MeetingOutput(BaseModel):
     meeting_time: Optional[str] = Field(default=None, description="Meeting time range or start time string extracted from transcript")
     start_time: Optional[str] = Field(default=None, description="Meeting start time extracted from transcript")
     end_time: Optional[str] = Field(default=None, description="Meeting end time extracted from transcript if available")
+    model_name: Optional[str] = Field(default=None, description="Model used to generate the analysis")
+    pipeline_name: Optional[str] = Field(default=None, description="Pipeline that generated the analysis")
+    prompt_version: Optional[str] = Field(default=None, description="Prompt version used for the analysis")
+    fallback_used: bool = Field(default=False, description="Whether a fallback analyzer generated the output")

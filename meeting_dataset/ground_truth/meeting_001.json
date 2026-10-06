@@ -1,0 +1,46 @@
+{
+  "summary": "Daily standup with 3 attendees. 0 decision(s): none. 3 open issue(s): Dataset licence unclear; Audio echo in the hall not resolved; Budget is not yet approved. 5 pending and 0 completed action item(s), 1 without an owner.",
+  "action_items": [
+    {
+      "task": "Write the API documentation",
+      "owner": "Arun",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Set up the Slack channel",
+      "owner": null,
+      "deadline": "this weekend",
+      "deadline_iso": "2026-09-19/2026-09-20",
+      "status": "pending"
+    },
+    {
+      "task": "Deploy the staging build",
+      "owner": "Manoj",
+      "deadline": "by end of day",
+      "deadline_iso": "2026-09-15",
+      "status": "pending"
+    },
+    {
+      "task": "Test the mobile layout",
+      "owner": "Manoj",
+      "deadline": "in two days",
+      "deadline_iso": "2026-09-17",
+      "status": "pending"
+    },
+    {
+      "task": "Label the sample transcripts",
+      "owner": "Manoj",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    }
+  ],
+  "decisions": [],
+  "unresolved_issues": [
+    "Dataset licence unclear",
+    "Audio echo in the hall not resolved",
+    "Budget is not yet approved"
+  ]
+}

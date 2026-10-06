@@ -1,0 +1,58 @@
+# meeting_023 | style: project_review | date: 2026-10-13 (Tuesday) | attendees: Manoj, Divya, Imran, Naveen, Tom
+Manoj: Let's start the project review and go through where we stand.
+Naveen: Sorry, I was on mute.
+Manoj: Okay, next point.
+Manoj: Naveen, could you compile the final report by Thursday?
+Naveen: Yes, no problem.
+Manoj: The Wi-Fi here is terrible again.
+Manoj: We still don't have confirmation from the venue.
+Naveen: We'll revisit it.
+Imran: I'll leave the details for the report.
+Divya: Yeah, so should we pick Postgres or MongoDB for the database?
+Manoj: I lean Postgres, but let's confirm with Dr. Lakshmi first.
+Divya: Dr. Lakshmi is out till Tuesday, so we decide then.
+Divya: Hmm, interesting.
+Divya: Okay, moving on.
+Manoj: Wait, can I--
+Divya: Go ahead.
+Manoj: Never mind, it can wait.
+Imran: Yeah, so the budget is still not approved.
+Tom: Yeah, that's a worry.
+Manoj: The latest numbers look better than last week.
+Manoj: Fair enough.
+Tom: If I get time, I might benchmark the model.
+Imran: Okay, no pressure.
+Tom: Can everyone see my screen?
+Naveen: I'll test the mobile layout by next Friday.
+Manoj: Sorry, make it by Thursday, everyone is busy until then.
+Naveen: Right, by Thursday then.
+Naveen: I'll set up the CI pipeline --
+Divya: Sorry to cut in, my mic was muted for a moment.
+Naveen: Sorry, as I was saying, by tomorrow.
+Manoj: Good.
+Imran: Did anyone watch the match last night?
+Naveen: It's so hot in this room today.
+Divya: Manoj, can you renew the domain next week?
+Manoj: Sure, I'll do that.
+Manoj: Let's keep the discussion focused.
+Tom: Who covers the helpdesk on day two? That's still open.
+Divya: Let's park it for now.
+Divya: Let me pull up the notes.
+Tom: Yeah, I agree with that.
+Manoj: Wait, can I--
+Naveen: Go ahead.
+Manoj: Never mind, it can wait.
+Divya: I'll prepare the demo script in three days --
+Tom: Actually, by Monday, I just checked the calendar.
+Divya: Okay, by Monday.
+Naveen: Right, that makes sense.
+Naveen: The Wi-Fi here is terrible again.
+Manoj: Should we pick Flutter or React Native for the mobile app?
+Divya: I lean Flutter, but let's confirm with Ravi first.
+Manoj: Um, Ravi is out till Thursday, so we decide then.
+Divya: Fine. I'll arrange the transport by the end of the month, either way.
+Naveen: Let's keep the discussion focused.
+Imran: I'll clean the training dataset --
+Manoj: Sorry, can you repeat that? The audio dropped.
+Imran: Sorry, as I was saying, once the budget is approved.
+Manoj: Okay, that covers the review.

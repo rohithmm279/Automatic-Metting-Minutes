@@ -1,0 +1,74 @@
+{
+  "summary": "Daily standup with 4 attendees. 0 decision(s): none. 3 open issue(s): Model accuracy still below target; Cause of recurring deployment failure unknown; Judges for the final round not identified. 8 pending and 1 completed action item(s), 1 without an owner.",
+  "action_items": [
+    {
+      "task": "Collect the team photos",
+      "owner": "Manoj",
+      "deadline": "by the end of the month",
+      "deadline_iso": "2026-09-30",
+      "status": "pending"
+    },
+    {
+      "task": "Migrate the database",
+      "owner": "Meena",
+      "deadline": "next week",
+      "deadline_iso": "2026-09-21/2026-09-27",
+      "status": "pending"
+    },
+    {
+      "task": "Deploy the staging build",
+      "owner": "Meena",
+      "deadline": "by Wednesday",
+      "deadline_iso": "2026-09-16",
+      "status": "pending"
+    },
+    {
+      "task": "Compile the final report",
+      "owner": "Meena",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Write the API documentation",
+      "owner": "Kavya",
+      "deadline": "by Friday",
+      "deadline_iso": "2026-09-18",
+      "status": "pending"
+    },
+    {
+      "task": "Benchmark the model",
+      "owner": "Kavya",
+      "deadline": "by the end of the month",
+      "deadline_iso": "2026-09-30",
+      "status": "pending"
+    },
+    {
+      "task": "Set up the CI pipeline",
+      "owner": null,
+      "deadline": "when the hall is confirmed",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Set up the registration page",
+      "owner": "Meena",
+      "deadline": "before the demo",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Draft the press note",
+      "owner": "Meena",
+      "deadline": "today",
+      "deadline_iso": "2026-09-14",
+      "status": "pending"
+    }
+  ],
+  "decisions": [],
+  "unresolved_issues": [
+    "Model accuracy still below target",
+    "Cause of recurring deployment failure unknown",
+    "Judges for the final round not identified"
+  ]
+}

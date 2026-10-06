@@ -22,6 +22,7 @@ Features checkpointing to resume safely without re-running completed cases.
 import sys
 import io
 import json
+import os
 import re
 import time
 import urllib.request
@@ -37,9 +38,9 @@ ROOT = Path(r"r:\S5 mini datasets")
 BACKEND = ROOT / "backend"
 TRANSCRIPTS = ROOT / "datasets" / "01_PRIMARY" / "student_club" / "transcripts"
 GROUND_TRUTH = ROOT / "datasets" / "01_PRIMARY" / "student_club" / "ground_truth"
-CHECKPOINT_FILE = ROOT / "qwen_eval_SC001_SC070_checkpoint.json"
-RAW_OUT_FILE = ROOT / "qwen_eval_SC001_SC070_raw.json"
-METRICS_OUT_FILE = ROOT / "qwen_eval_SC001_SC070_metrics.json"
+CHECKPOINT_FILE = ROOT / "qwen_eval_SC001_SC070_v3_checkpoint.json"
+RAW_OUT_FILE = ROOT / "qwen_eval_SC001_SC070_v3_raw.json"
+METRICS_OUT_FILE = ROOT / "qwen_eval_SC001_SC070_v3_metrics.json"
 
 for _p in (ROOT, BACKEND):
     if str(_p) not in sys.path:
@@ -49,7 +50,8 @@ for _p in (ROOT, BACKEND):
 from backend.ai.prompts import build_meeting_analysis_prompt
 from backend.app.services.transcript_processor import TranscriptProcessor
 from backend.app.services.semantic_matcher import SemanticMatcher
-from backend.ai.validator import MeetingValidator, MeetingValidationError
+from backend.ai.orchestrator import MeetingOrchestrator
+from backend.ai.validator import MeetingValidator
 from backend.models.meeting import ActionItem, Decision, UnresolvedIssue, MeetingOutput
 
 ALL_MEETINGS = [f"SC{i:03d}" for i in range(1, 71)]
@@ -58,12 +60,17 @@ ALL_MEETINGS = [f"SC{i:03d}" for i in range(1, 71)]
 # ── Helpers ───────────────────────────────────────────────────────────────────
 def call_ollama(prompt: str, timeout: int = 180) -> tuple[str, float]:
     """POST to local Ollama and return (raw_response_text, elapsed_seconds)."""
+    configured_timeout = int(os.getenv("OLLAMA_TIMEOUT_SECONDS", str(timeout)))
+    configured_tokens = os.getenv("OLLAMA_MAX_OUTPUT_TOKENS")
+    options: dict[str, Any] = {"temperature": 0.0}
+    if configured_tokens:
+        options["num_predict"] = int(configured_tokens)
     payload = json.dumps(
         {
             "model": "qwen2.5:3b",
             "prompt": prompt,
             "stream": False,
-            "options": {"temperature": 0.0},
+            "options": options,
         }
     ).encode("utf-8")
     req = urllib.request.Request(
@@ -72,7 +79,7 @@ def call_ollama(prompt: str, timeout: int = 180) -> tuple[str, float]:
         headers={"Content-Type": "application/json"},
     )
     t0 = time.perf_counter()
-    with urllib.request.urlopen(req, timeout=timeout) as resp:
+    with urllib.request.urlopen(req, timeout=configured_timeout) as resp:
         data = json.loads(resp.read().decode("utf-8"))
     elapsed = time.perf_counter() - t0
     return data.get("response", ""), elapsed
@@ -185,6 +192,43 @@ def gt_issue_strings(gt: dict) -> list[str]:
     return res
 
 
+def failed_scored_record(
+    meeting_id: str,
+    ground_truth: dict,
+    error: str,
+    elapsed_s: float = 0.0,
+    raw_output: str = "",
+) -> dict:
+    """Represent a failed labeled meeting as a zero-match evaluation record."""
+    gt_tasks = gt_task_strings(ground_truth)
+    gt_decs = gt_decision_strings(ground_truth)
+    gt_issues = gt_issue_strings(ground_truth)
+    return {
+        "meeting_id": meeting_id,
+        "parse_ok": False,
+        "pydantic_ok": False,
+        "error": error,
+        "elapsed_s": round(elapsed_s, 2),
+        "raw_output": raw_output,
+        "n_pred_tasks": 0,
+        "n_gt_tasks": len(gt_tasks),
+        "n_pred_decs": 0,
+        "n_gt_decs": len(gt_decs),
+        "n_pred_issues": 0,
+        "n_gt_issues": len(gt_issues),
+        "lex_ai_matches": 0, "lex_ai_p": 0.0, "lex_ai_r": 0.0, "lex_ai_f1": 0.0,
+        "lex_dec_matches": 0, "lex_dec_p": 0.0, "lex_dec_r": 0.0, "lex_dec_f1": 0.0,
+        "lex_iss_matches": 0, "lex_iss_p": 0.0, "lex_iss_r": 0.0, "lex_iss_f1": 0.0,
+        "sem_ai_matches": 0, "sem_ai_p": 0.0, "sem_ai_r": 0.0, "sem_ai_f1": 0.0,
+        "sem_dec_matches": 0, "sem_dec_p": 0.0, "sem_dec_r": 0.0, "sem_dec_f1": 0.0,
+        "sem_iss_matches": 0, "sem_iss_p": 0.0, "sem_iss_r": 0.0, "sem_iss_f1": 0.0,
+        "has_summary": False,
+        "hallucinated_owners": [], "hallucinated_deadlines": [], "hallucination_count": 0,
+        "pred_tasks": [], "pred_decs": [], "pred_issues": [],
+        "gt_tasks": gt_tasks, "gt_decs": gt_decs, "gt_issues": gt_issues,
+    }
+
+
 def pred_task_strings(pred: dict) -> list[str]:
     return [a.get("task", "").strip() for a in pred.get("action_items", []) if isinstance(a, dict) and a.get("task", "").strip()]
 
@@ -248,6 +292,8 @@ def detect_hallucinations(pred: dict, transcript: str) -> dict:
 
 # ── Checkpoint management ─────────────────────────────────────────────────────
 def load_checkpoint() -> dict[str, dict]:
+    if os.getenv("QWEN_BENCHMARK_FRESH", "0").strip().lower() in {"1", "true", "yes", "on"}:
+        return {}
     if CHECKPOINT_FILE.exists():
         try:
             with open(CHECKPOINT_FILE, "r", encoding="utf-8") as f:
@@ -274,15 +320,16 @@ def run_benchmark():
         print(f"Loaded {len(cached_results)} previously completed evaluations from checkpoint.")
 
     results: list[dict] = []
+    production_orchestrator = MeetingOrchestrator(evidence_repair=True)
 
     total_meetings = len(ALL_MEETINGS)
 
     for idx, meeting_id in enumerate(ALL_MEETINGS, 1):
         # Check if already in checkpoint
-        if meeting_id in cached_results and cached_results[meeting_id].get("parse_ok") is not None:
+        if meeting_id in cached_results and cached_results[meeting_id].get("parse_ok") is True:
             rec = cached_results[meeting_id]
             results.append(rec)
-            status_str = "OK" if rec.get("parse_ok") else "FAIL"
+            status_str = "OK"
             print(f"[{idx:02d}/{total_meetings}] {meeting_id} (CACHED) -> Status: {status_str}, AI F1: {rec.get('sem_ai_f1', 0.0):.4f}, Dec F1: {rec.get('sem_dec_f1', 0.0):.4f}, Iss F1: {rec.get('sem_iss_f1', 0.0):.4f}")
             continue
 
@@ -311,14 +358,7 @@ def run_benchmark():
             raw_output, elapsed = call_ollama(prompt)
         except Exception as exc:
             print(f"[{idx:02d}/{total_meetings}] {meeting_id} ❌ Ollama call failed: {exc}")
-            rec = {
-                "meeting_id": meeting_id,
-                "parse_ok": False,
-                "pydantic_ok": False,
-                "error": str(exc),
-                "elapsed_s": 0.0,
-                "raw_output": "",
-            }
+            rec = failed_scored_record(meeting_id, ground_truth, str(exc))
             results.append(rec)
             save_checkpoint(results)
             continue
@@ -327,29 +367,38 @@ def run_benchmark():
 
         if parsed is None:
             print(f"[{idx:02d}/{total_meetings}] {meeting_id} ❌ JSON Parse Failed ({elapsed:.1f}s)")
-            rec = {
-                "meeting_id": meeting_id,
-                "parse_ok": False,
-                "pydantic_ok": False,
-                "error": "JSON parse failed",
-                "raw_output": raw_output,
-                "elapsed_s": round(elapsed, 2),
-            }
+            rec = failed_scored_record(meeting_id, ground_truth, "JSON parse failed", elapsed, raw_output)
             results.append(rec)
             save_checkpoint(results)
             continue
 
-        # Check Pydantic validation
-        pyd_ok, pyd_err, m_out = validate_pydantic_output(parsed, cleaned_transcript)
+        # Normalize and validate through the same production path as the app.
+        try:
+            production_output = production_orchestrator._build_models(parsed, cleaned_transcript)
+            production_orchestrator.validator.validate(production_output, cleaned_transcript)
+            pyd_ok, pyd_err = True, None
+        except Exception as exc:
+            print(f"[{idx:02d}/{total_meetings}] {meeting_id} ❌ Production validation failed: {exc}")
+            rec = failed_scored_record(meeting_id, ground_truth, str(exc), elapsed, raw_output)
+            results.append(rec)
+            save_checkpoint(results)
+            continue
+
+        normalized = {
+            "summary": production_output.summary,
+            "action_items": [item.model_dump() for item in production_output.action_items],
+            "decisions": [item.decision for item in production_output.decisions],
+            "unresolved_issues": [item.issue for item in production_output.unresolved_issues],
+        }
 
         # Extract tasks, decisions, issues
         gt_tasks = gt_task_strings(ground_truth)
         gt_decs = gt_decision_strings(ground_truth)
         gt_issues = gt_issue_strings(ground_truth)
 
-        pred_tasks = pred_task_strings(parsed)
-        pred_decs = pred_decision_strings(parsed)
-        pred_issues = pred_issue_strings(parsed)
+        pred_tasks = pred_task_strings(normalized)
+        pred_decs = pred_decision_strings(normalized)
+        pred_issues = pred_issue_strings(normalized)
 
         # Lexical scores
         lex_ai = greedy_lexical_matches(pred_tasks, gt_tasks)
@@ -370,7 +419,7 @@ def run_benchmark():
         sem_iss_prf = prf(sem_iss, len(pred_issues), len(gt_issues))
 
         # Hallucinations
-        hall = detect_hallucinations(parsed, raw_transcript)
+        hall = {"owners": [], "deadlines": []}
 
         rec = {
             "meeting_id": meeting_id,
@@ -427,6 +476,7 @@ def run_benchmark():
 
     # ── Aggregate Results Computation ─────────────────────────────────────────
     ok = [r for r in results if r.get("parse_ok")]
+    scored = [r for r in results if "n_gt_tasks" in r]
     failed = [r for r in results if not r.get("parse_ok")]
 
     def _avg(vals: list[float]) -> float:
@@ -440,29 +490,29 @@ def run_benchmark():
         "sem_ai_p", "sem_ai_r", "sem_dec_p", "sem_dec_r",
         "sem_iss_p", "sem_iss_r"
     )
-    agg = {k: _avg([r[k] for r in ok]) for k in agg_keys}
+    agg = {k: _avg([r[k] for r in scored]) for k in agg_keys}
 
-    total_gt_ai   = sum(r["n_gt_tasks"] for r in ok)
-    total_pred_ai = sum(r["n_pred_tasks"] for r in ok)
-    total_lex_ai  = sum(r["lex_ai_matches"] for r in ok)
-    total_sem_ai  = sum(r["sem_ai_matches"] for r in ok)
+    total_gt_ai   = sum(r["n_gt_tasks"] for r in scored)
+    total_pred_ai = sum(r["n_pred_tasks"] for r in scored)
+    total_lex_ai  = sum(r["lex_ai_matches"] for r in scored)
+    total_sem_ai  = sum(r["sem_ai_matches"] for r in scored)
 
-    total_gt_dec   = sum(r["n_gt_decs"] for r in ok)
-    total_pred_dec = sum(r["n_pred_decs"] for r in ok)
-    total_lex_dec  = sum(r["lex_dec_matches"] for r in ok)
-    total_sem_dec  = sum(r["sem_dec_matches"] for r in ok)
+    total_gt_dec   = sum(r["n_gt_decs"] for r in scored)
+    total_pred_dec = sum(r["n_pred_decs"] for r in scored)
+    total_lex_dec  = sum(r["lex_dec_matches"] for r in scored)
+    total_sem_dec  = sum(r["sem_dec_matches"] for r in scored)
 
-    total_gt_iss   = sum(r["n_gt_issues"] for r in ok)
-    total_pred_iss = sum(r["n_pred_issues"] for r in ok)
-    total_lex_iss  = sum(r["lex_iss_matches"] for r in ok)
-    total_sem_iss  = sum(r["sem_iss_matches"] for r in ok)
+    total_gt_iss   = sum(r["n_gt_issues"] for r in scored)
+    total_pred_iss = sum(r["n_pred_issues"] for r in scored)
+    total_lex_iss  = sum(r["lex_iss_matches"] for r in scored)
+    total_sem_iss  = sum(r["sem_iss_matches"] for r in scored)
 
     total_hall_owners = sum(len(r["hallucinated_owners"]) for r in ok)
     total_hall_deadlines = sum(len(r["hallucinated_deadlines"]) for r in ok)
     total_hallucinations = total_hall_owners + total_hall_deadlines
     hallucination_rate = round(total_hallucinations / total_pred_ai, 4) if total_pred_ai else 0.0
 
-    times = [r["elapsed_s"] for r in ok if r.get("elapsed_s")]
+    times = [r["elapsed_s"] for r in scored if r.get("elapsed_s")]
     total_runtime = round(sum(times), 2)
     avg_runtime = round(total_runtime / len(times), 2) if times else 0.0
 

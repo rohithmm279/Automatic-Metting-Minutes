@@ -1,0 +1,39 @@
+{
+  "summary": "Hackathon sync with 3 attendees. 0 decision(s): none. 3 open issue(s): Choice between Saturday and Sunday for the hackathon date undecided, pending Prof. Anand's input on Thursday; Model accuracy still below target; Sponsor has not replied. 3 pending and 1 completed action item(s), 1 without an owner.",
+  "action_items": [
+    {
+      "task": "Review the pull request",
+      "owner": null,
+      "deadline": "by Thursday",
+      "deadline_iso": "2026-10-01",
+      "status": "pending"
+    },
+    {
+      "task": "Collect the registration forms",
+      "owner": "Kavya",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Record the demo video",
+      "owner": "Kavya",
+      "deadline": "by Monday",
+      "deadline_iso": "2026-10-05",
+      "status": "pending"
+    },
+    {
+      "task": "Migrate the database",
+      "owner": "Swetha",
+      "deadline": "next month",
+      "deadline_iso": "2026-10-01/2026-10-31",
+      "status": "pending"
+    }
+  ],
+  "decisions": [],
+  "unresolved_issues": [
+    "Choice between Saturday and Sunday for the hackathon date undecided, pending Prof. Anand's input on Thursday",
+    "Model accuracy still below target",
+    "Sponsor has not replied"
+  ]
+}

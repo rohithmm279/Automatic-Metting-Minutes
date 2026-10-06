@@ -1,0 +1,80 @@
+{
+  "summary": "Hackathon sync with 7 attendees. 3 decision(s): Freeze the feature list; Use the shared drive for all documents; Keep the current venue. 5 open issue(s): Judges for the final round not identified; Expected attendance unknown; Training start on the 12th tentative, pending lab access. 8 pending and 1 completed action item(s), 2 without an owner.",
+  "action_items": [
+    {
+      "task": "Follow up with the vendor",
+      "owner": "Dev",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Compile the final report",
+      "owner": "Faizal",
+      "deadline": "by Thursday",
+      "deadline_iso": "2026-09-10",
+      "status": "pending"
+    },
+    {
+      "task": "Renew the domain",
+      "owner": null,
+      "deadline": "before the demo",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Write the unit tests",
+      "owner": "Tom",
+      "deadline": "by Monday",
+      "deadline_iso": "2026-09-14",
+      "status": "pending"
+    },
+    {
+      "task": "Print the certificates",
+      "owner": "Dev",
+      "deadline": "in three days",
+      "deadline_iso": "2026-09-11",
+      "status": "pending"
+    },
+    {
+      "task": "Set up the Slack channel",
+      "owner": null,
+      "deadline": "next month",
+      "deadline_iso": "2026-10-01/2026-10-31",
+      "status": "pending"
+    },
+    {
+      "task": "Draft the press note",
+      "owner": "Tom",
+      "deadline": "by Friday",
+      "deadline_iso": "2026-09-11",
+      "status": "pending"
+    },
+    {
+      "task": "Email the faculty coordinator",
+      "owner": "Priya",
+      "deadline": "yesterday",
+      "deadline_iso": "2026-09-07",
+      "status": "completed"
+    },
+    {
+      "task": "Collect the registration forms",
+      "owner": "Dev",
+      "deadline": "in two days",
+      "deadline_iso": "2026-09-10",
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Freeze the feature list",
+    "Use the shared drive for all documents",
+    "Keep the current venue"
+  ],
+  "unresolved_issues": [
+    "Judges for the final round not identified",
+    "Expected attendance unknown",
+    "Training start on the 12th tentative, pending lab access",
+    "Sponsor has not replied",
+    "Choice between round robin and knockout for the contest format undecided, pending Prof. Anand's input on Wednesday"
+  ]
+}

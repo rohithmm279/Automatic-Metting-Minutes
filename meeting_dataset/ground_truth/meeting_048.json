@@ -1,0 +1,62 @@
+{
+  "summary": "Retrospective with 7 attendees. 8 decision(s): Keep the current venue; Limit each pitch to five minutes; Drop the guest lecture. 3 open issue(s): Training start on the 12th tentative, pending lab access; Cause of recurring deployment failure unknown; Choice between Saturday and Sunday for the hackathon date undecided, pending Prof. Anand's input on Thursday. 4 pending and 2 completed action item(s), 3 without an owner.",
+  "action_items": [
+    {
+      "task": "Collect the registration forms",
+      "owner": null,
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Prepare the demo script",
+      "owner": "Kavya",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Fix the login bug",
+      "owner": null,
+      "deadline": "before the demo",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Contact the sponsors",
+      "owner": "Anjali",
+      "deadline": "by Thursday",
+      "deadline_iso": "2026-10-29",
+      "status": "pending"
+    },
+    {
+      "task": "Collect the volunteer list",
+      "owner": null,
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Review the pull request",
+      "owner": "Karthik",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    }
+  ],
+  "decisions": [
+    "Keep the current venue",
+    "Limit each pitch to five minutes",
+    "Drop the guest lecture",
+    "Skip the photo booth",
+    "Hold the kickoff meeting on the 15th",
+    "Record all sessions",
+    "Use the dark theme for the poster",
+    "Hold demo day in the lab"
+  ],
+  "unresolved_issues": [
+    "Training start on the 12th tentative, pending lab access",
+    "Cause of recurring deployment failure unknown",
+    "Choice between Saturday and Sunday for the hackathon date undecided, pending Prof. Anand's input on Thursday"
+  ]
+}

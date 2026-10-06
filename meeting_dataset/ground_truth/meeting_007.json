@@ -1,0 +1,47 @@
+{
+  "summary": "Faculty advisor meeting with 3 attendees. 0 decision(s): none. 4 open issue(s): Choice between round robin and knockout for the contest format undecided, pending Mr. Selvam's input on Friday; Choice between Flutter and React Native for the mobile app undecided, pending Ms. Geetha's input on Friday; Judges for the final round not identified. 4 pending and 1 completed action item(s), 0 without an owner.",
+  "action_items": [
+    {
+      "task": "Book the seminar hall",
+      "owner": "Anjali",
+      "deadline": "today",
+      "deadline_iso": "2026-10-02",
+      "status": "pending"
+    },
+    {
+      "task": "Renew the domain",
+      "owner": "Priya",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Write the unit tests",
+      "owner": "Priya",
+      "deadline": "this weekend",
+      "deadline_iso": "2026-10-03/2026-10-04",
+      "status": "pending"
+    },
+    {
+      "task": "Set up the Slack channel",
+      "owner": "Anjali",
+      "deadline": "tomorrow",
+      "deadline_iso": "2026-10-03",
+      "status": "pending"
+    },
+    {
+      "task": "Write the API documentation",
+      "owner": "Anjali",
+      "deadline": "by Wednesday",
+      "deadline_iso": "2026-10-07",
+      "status": "pending"
+    }
+  ],
+  "decisions": [],
+  "unresolved_issues": [
+    "Choice between round robin and knockout for the contest format undecided, pending Mr. Selvam's input on Friday",
+    "Choice between Flutter and React Native for the mobile app undecided, pending Ms. Geetha's input on Friday",
+    "Judges for the final round not identified",
+    "Registration opening on Monday tentative, pending form approval"
+  ]
+}

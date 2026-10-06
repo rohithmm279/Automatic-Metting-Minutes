@@ -1,0 +1,40 @@
+{
+  "summary": "Daily standup with 3 attendees. 0 decision(s): none. 4 open issue(s): Model accuracy still below target; Cause of recurring deployment failure unknown; Helpdesk coverage for day two undecided. 2 pending and 2 completed action item(s), 0 without an owner.",
+  "action_items": [
+    {
+      "task": "Label the sample transcripts",
+      "owner": "Dev",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Write the unit tests",
+      "owner": "Kavya",
+      "deadline": "yesterday",
+      "deadline_iso": "2026-10-27",
+      "status": "completed"
+    },
+    {
+      "task": "Test the mobile layout",
+      "owner": "Kavya",
+      "deadline": "tomorrow",
+      "deadline_iso": "2026-10-29",
+      "status": "pending"
+    },
+    {
+      "task": "Clean the training dataset",
+      "owner": "Kavya",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    }
+  ],
+  "decisions": [],
+  "unresolved_issues": [
+    "Model accuracy still below target",
+    "Cause of recurring deployment failure unknown",
+    "Helpdesk coverage for day two undecided",
+    "Expected attendance unknown"
+  ]
+}

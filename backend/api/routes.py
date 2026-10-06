@@ -107,6 +107,9 @@ def create_meeting(body: CreateMeetingRequest, request: Request) -> CreateMeetin
             status_code=status.HTTP_502_BAD_GATEWAY,
             detail="The AI model returned an unparseable response. Please retry.",
         ) from exc
+    except ValueError as exc:
+        logger.warning("Invalid transcript input: %s", exc)
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
     except Exception as exc:
         logger.error("Unexpected error during AI analysis: %s", exc)
         raise HTTPException(
@@ -144,6 +147,10 @@ def create_meeting(body: CreateMeetingRequest, request: Request) -> CreateMeetin
         decisions=[_row_to_decision(r) for r in saved["decisions"]],
         unresolved_issues=[_row_to_issue(r) for r in saved["unresolved_issues"]],
         created_at=saved["created_at"],
+        model_name=saved.get("model_name"),
+        pipeline_name=saved.get("pipeline_name"),
+        prompt_version=saved.get("prompt_version"),
+        fallback_used=bool(saved.get("fallback_used", 0)),
     )
 
 
@@ -174,6 +181,10 @@ def list_meetings(request: Request, limit: int = 50, offset: int = 0) -> list[Me
             action_items_count=r["action_items_count"],
             decisions_count=r["decisions_count"],
             unresolved_issues_count=r["unresolved_issues_count"],
+            model_name=r.get("model_name"),
+            pipeline_name=r.get("pipeline_name"),
+            prompt_version=r.get("prompt_version"),
+            fallback_used=bool(r.get("fallback_used", 0)),
         )
         for r in rows
     ]
@@ -211,6 +222,10 @@ def get_meeting(meeting_id: int, request: Request) -> MeetingDetailResponse:
         action_items=[_row_to_action_item(r) for r in row["action_items"]],
         decisions=[_row_to_decision(r) for r in row["decisions"]],
         unresolved_issues=[_row_to_issue(r) for r in row["unresolved_issues"]],
+        model_name=row.get("model_name"),
+        pipeline_name=row.get("pipeline_name"),
+        prompt_version=row.get("prompt_version"),
+        fallback_used=bool(row.get("fallback_used", 0)),
     )
 
 

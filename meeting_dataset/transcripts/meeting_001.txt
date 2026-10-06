@@ -1,0 +1,32 @@
+# meeting_001 | style: standup | date: 2026-09-15 (Tuesday) | attendees: Manoj, Nisha, Arun
+Manoj: Okay, quick standup, let's go around the room.
+Manoj: Alright, who's next?
+Arun: The dataset licence is unclear.
+Nisha: Yeah, that's a worry.
+Arun: Okay, moving on.
+Nisha: The Wi-Fi here is terrible again.
+Arun: I can write the API documentation.
+Arun: Hmm, interesting.
+Manoj: We haven't figured out how to handle the audio echo in the hall.
+Nisha: We'll revisit it.
+Arun: Let me pull up the notes.
+Manoj: Who's going to set up the Slack channel this weekend?
+Nisha: Yeah, that's true.
+Manoj: Right, that makes sense.
+Arun: Wait, can I--
+Manoj: Go ahead.
+Arun: Never mind, it can wait.
+Nisha: I'd like Manoj to deploy the staging build by end of day.
+Manoj: Okay, noted.
+Arun: Sorry, I was on mute.
+Manoj: I'll test the mobile layout --
+Arun: Hold on, someone is at the door, one second.
+Manoj: Sorry, as I was saying, in two days.
+Arun: Okay.
+Manoj: It's so hot in this room today.
+Manoj: Fair enough.
+Arun: The budget is still not approved.
+Nisha: Let's park it for now.
+Nisha: Manoj will label the sample transcripts, right?
+Manoj: Right, that's me.
+Manoj: Okay, see you all tomorrow.

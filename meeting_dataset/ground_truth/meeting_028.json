@@ -1,0 +1,40 @@
+{
+  "summary": "Retrospective with 4 attendees. 2 decision(s): Drop the guest lecture; Drop the souvenir kits. 1 open issue(s): Cause of recurring deployment failure unknown. 3 pending and 1 completed action item(s), 2 without an owner.",
+  "action_items": [
+    {
+      "task": "Write the API documentation",
+      "owner": null,
+      "deadline": "in three days",
+      "deadline_iso": "2026-10-24",
+      "status": "pending"
+    },
+    {
+      "task": "Test the prototype",
+      "owner": "Arun",
+      "deadline": "by Monday",
+      "deadline_iso": "2026-10-26",
+      "status": "pending"
+    },
+    {
+      "task": "Set up the CI pipeline",
+      "owner": null,
+      "deadline": "before the demo",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Email the faculty coordinator",
+      "owner": "Karthik",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    }
+  ],
+  "decisions": [
+    "Drop the guest lecture",
+    "Drop the souvenir kits"
+  ],
+  "unresolved_issues": [
+    "Cause of recurring deployment failure unknown"
+  ]
+}

@@ -1,0 +1,27 @@
+# meeting_019 | style: event_ops | date: 2026-11-06 (Friday) | attendees: Meena, Arun, Priya
+Meena: Okay, event day is close, let's walk through the logistics.
+Arun: I'll fix the login bug --
+Meena: Hold on, someone is at the door, one second.
+Arun: Sorry, as I was saying, next month.
+Arun: How do we handle late registrations? No idea yet.
+Meena: Yeah, that's a worry.
+Meena: The Wi-Fi here is terrible again.
+Meena: Priya, could you verify the attendance sheet today?
+Priya: Yes, no problem.
+Meena: Let's double check everything.
+Meena: Fair enough.
+Arun: The dataset licence is unclear.
+Priya: Let's park it for now.
+Meena: Let's tentatively open registration on Monday, but only if the form is approved.
+Priya: Right, we'll confirm once we know.
+Meena: I'll publish the event announcement --
+Priya: Sorry, I lost the call for a second.
+Meena: Sorry, as I was saying, in two days.
+Meena: Can everyone see my screen?
+Priya: Meena will book the seminar hall, right?
+Meena: Yes, that's right.
+Priya: Yeah, I agree with that.
+Meena: I'll schedule the mock interview by Thursday.
+Priya: Sorry, make it next week, everyone is busy until then.
+Meena: Right, next week then.
+Meena: Alright, that's the logistics.

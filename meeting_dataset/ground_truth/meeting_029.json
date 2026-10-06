@@ -1,0 +1,75 @@
+{
+  "summary": "Event operations with 5 attendees. 2 decision(s): Go digital only, no printed brochures; Use Google Forms for registration. 1 open issue(s): Venue confirmation not received. 9 pending and 0 completed action item(s), 0 without an owner.",
+  "action_items": [
+    {
+      "task": "Create the social media schedule",
+      "owner": "Manoj",
+      "deadline": "by Tuesday",
+      "deadline_iso": "2026-10-27",
+      "status": "pending"
+    },
+    {
+      "task": "Draft the press note",
+      "owner": "Riya",
+      "deadline": "by the end of the month",
+      "deadline_iso": "2026-10-31",
+      "status": "pending"
+    },
+    {
+      "task": "Create the feedback form",
+      "owner": "Manoj",
+      "deadline": "tomorrow",
+      "deadline_iso": "2026-10-23",
+      "status": "pending"
+    },
+    {
+      "task": "Confirm the guest speaker",
+      "owner": "Manoj",
+      "deadline": "in two days",
+      "deadline_iso": "2026-10-24",
+      "status": "pending"
+    },
+    {
+      "task": "Book the seminar hall",
+      "owner": "Manoj",
+      "deadline": "in three days",
+      "deadline_iso": "2026-10-25",
+      "status": "pending"
+    },
+    {
+      "task": "Collect the volunteer list",
+      "owner": "Faizal",
+      "deadline": "once the budget is approved",
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Prepare the judging rubric",
+      "owner": "Aarav",
+      "deadline": "by Tuesday",
+      "deadline_iso": "2026-10-27",
+      "status": "pending"
+    },
+    {
+      "task": "Organise the shared drive",
+      "owner": "Lena",
+      "deadline": "today",
+      "deadline_iso": "2026-10-22",
+      "status": "pending"
+    },
+    {
+      "task": "Arrange the transport",
+      "owner": "Lena",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Go digital only, no printed brochures",
+    "Use Google Forms for registration"
+  ],
+  "unresolved_issues": [
+    "Venue confirmation not received"
+  ]
+}

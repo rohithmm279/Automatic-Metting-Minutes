@@ -1,0 +1,42 @@
+# meeting_043 | style: project_review | date: 2026-09-21 (Monday) | attendees: Nisha, Kavya, Priya, Lena
+Nisha: Let's start the project review and go through where we stand.
+Priya: Sorry, I was on mute.
+Kavya: Okay, final call. We name the event Code Sprint.
+Priya: Agreed.
+Lena: Did anyone watch the match last night?
+Nisha: Maybe we should move the weekly meeting to mornings.
+Priya: No, let's keep the evening slot.
+Nisha: Okay, fair.
+Nisha: Yeah, I agree with that.
+Lena: Hmm, interesting.
+Lena: Priya, you prepare the demo script today.
+Priya: Kavya knows that part better, honestly.
+Lena: Fair enough. Kavya, you take it.
+Kavya: Okay.
+Lena: Okay, next point.
+Nisha: I'll label the sample transcripts --
+Priya: Sorry, I lost the call for a second.
+Nisha: Sorry, as I was saying, by end of day.
+Lena: Noted.
+Kavya: Okay, moving on.
+Lena: Priya is going to set up the CI pipeline by Thursday.
+Priya: Yes, that's right.
+Lena: Um, the latest numbers look better than last week.
+Lena: Wait, can I--
+Nisha: Go ahead.
+Lena: Never mind, it can wait.
+Priya: Should we pick Seminar Hall A or the auditorium for the venue?
+Kavya: I lean Seminar Hall A, but let's confirm with Mr. Selvam first.
+Priya: Mr. Selvam is out till Wednesday, so we decide then.
+Kavya: Fine. I'll verify the attendance sheet in two days, either way.
+Nisha: Let me pull up the notes.
+Lena: Wait, can I--
+Priya: Go ahead.
+Lena: Never mind, it can wait.
+Priya: Nisha, could you set up the Slack channel after the review?
+Nisha: Yes, no problem.
+Priya: Let's keep the discussion focused.
+Priya: It's so hot in this room today.
+Priya: I'd like Kavya to benchmark the model this weekend.
+Kavya: Okay, noted.
+Nisha: Thanks all, let's close the review.

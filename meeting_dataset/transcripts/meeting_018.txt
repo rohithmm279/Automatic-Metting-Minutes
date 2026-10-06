@@ -1,0 +1,68 @@
+# meeting_018 | style: retrospective | date: 2026-10-14 (Wednesday) | attendees: Priya, Anjali, Harini, Dev, Pooja, Lena
+Priya: Let's start the retro, what went well and what didn't?
+Dev: Sorry, I was on mute.
+Pooja: Let's be honest about it.
+Dev: Wait, can I--
+Pooja: Go ahead.
+Dev: Never mind, it can wait.
+Harini: Who covers the helpdesk on day two? That's still open.
+Lena: We'll revisit it.
+Pooja: Okay, next point.
+Priya: I'll hire the sound system.
+Priya: Actually no, forget it, the hall already has one.
+Anjali: Okay, then we skip it.
+Lena: That went better than I expected.
+Anjali: Let me pull up the notes.
+Dev: Let's keep the team size at four.
+Harini: Fine by me.
+Harini: So, okay, moving on.
+Priya: Let's tentatively open registration on Monday, but only if the form is approved.
+Anjali: Right, we'll confirm once we know.
+Lena: Right, that makes sense.
+Lena: Did anyone contact the sponsors?
+Harini: I've already contacted the sponsors.
+Dev: I think we all felt that.
+Dev: Let's use Google Forms for registration.
+Lena: Fine by me.
+Dev: Yeah, I agree with that.
+Dev: I'll create the souvenir kits.
+Dev: Actually no, forget it, we don't have the funds.
+Harini: Okay, then we skip it.
+Pooja: Fair enough.
+Priya: Did anyone watch the match last night?
+Dev: Did anyone migrate the database?
+Anjali: I've already migrated the database.
+Pooja: The Wi-Fi here is terrible again.
+Harini: We could publish the event announcement if we had more people, but we don't.
+Priya: True, let's leave it.
+Pooja: Hmm, interesting.
+Dev: I'll write the unit tests --
+Pooja: Sorry, I lost the call for a second.
+Dev: Sorry, as I was saying, next week.
+Priya: Noted.
+Dev: It's so hot in this room today.
+Lena: We still don't have confirmation from the venue.
+Harini: Let's park it for now.
+Priya: Um, I can update the README this weekend.
+Anjali: Okay.
+Dev: Can everyone see my screen?
+Harini: I'll send the agenda --
+Anjali: Sorry to cut in, my mic was muted for a moment.
+Harini: Sorry, as I was saying, tomorrow.
+Dev: Noted.
+Priya: Did anyone verify the attendance sheet?
+Harini: I did, yesterday.
+Pooja: Okay, next point.
+Lena: That went better than I expected.
+Harini: Did anyone compile the final report?
+Anjali: I've already compiled the final report.
+Harini: Yeah, so if I get time, I might create the social media schedule.
+Dev: Okay, no pressure.
+Harini: I think we all felt that.
+Priya: Let's limit each pitch to five minutes.
+Dev: Fine by me.
+Harini: The Wi-Fi here is terrible again.
+Priya: Okay, moving on.
+Anjali: How do we handle late registrations? No idea yet.
+Priya: Yeah, that's a worry.
+Priya: Good retro, everyone.

@@ -1,0 +1,67 @@
+# meeting_036 | style: hackathon_sync | date: 2026-09-08 (Tuesday) | attendees: Dev, Tom, Anjali, Swetha, Faizal, Karthik, Priya
+Dev: Team, quick sync before the hackathon, let's be fast.
+Dev: So, the demo needs to be rock solid.
+Tom: If I get time, I might create the feedback form.
+Priya: Okay, no pressure.
+Dev: Wait, can I--
+Karthik: Go ahead.
+Dev: Never mind, it can wait.
+Karthik: Dev, could you follow up with the vendor?
+Dev: Yes, no problem.
+Tom: Fair enough.
+Tom: Nobody knows who is judging the final round.
+Anjali: Yeah, that's a worry.
+Priya: Sorry, I was on mute.
+Priya: Okay, final call. We freeze the feature list today.
+Dev: Agreed.
+Dev: It's so hot in this room today.
+Swetha: Um, Faizal, can you compile the final report?
+Faizal: Yes, I can do that by Thursday.
+Dev: Did anyone watch the match last night?
+Dev: Um, someone needs to renew the domain before the demo.
+Karthik: I'm not free for that, sorry.
+Tom: So, let me write the unit tests by Monday.
+Dev: Okay, moving on.
+Tom: We don't know how many people will actually turn up.
+Dev: Let's park it for now.
+Tom: Coffee run anyone?
+Karthik: Okay, next point.
+Dev: I can print the certificates in three days.
+Karthik: We're running out of time.
+Anjali: The Wi-Fi here is terrible again.
+Anjali: Okay, final call. We use the shared drive for all documents.
+Swetha: Fine by me.
+Karthik: Let's tentatively start the training sessions on the 12th, but only if the lab access is sorted.
+Dev: Right, we'll confirm once we know.
+Tom: Hmm, interesting.
+Priya: The sponsor hasn't replied to our email.
+Karthik: Yeah, that's a worry.
+Swetha: Wait, can I--
+Karthik: Go ahead.
+Swetha: Never mind, it can wait.
+Priya: Maybe we should change the venue to the auditorium.
+Swetha: No, let's keep the current venue.
+Priya: Okay, fair.
+Faizal: Can everyone see my screen?
+Priya: Yeah, I agree with that.
+Tom: We still need to set up the Slack channel next month, but nobody has picked it up.
+Faizal: I'm not free for that, sorry.
+Swetha: Right, that makes sense.
+Karthik: Wait, can I--
+Swetha: Go ahead.
+Karthik: Never mind, it can wait.
+Faizal: Tom, could you draft the press note by Friday?
+Tom: Yes, no problem.
+Karthik: Did anyone email the faculty coordinator?
+Priya: I did, yesterday.
+Priya: So, let me pull up the notes.
+Dev: I'll collect the registration forms in two days.
+Karthik: Okay, moving on.
+Faizal: Fair enough.
+Priya: Wait, can I--
+Faizal: Go ahead.
+Priya: Never mind, it can wait.
+Swetha: Should we pick round robin or knockout for the contest format?
+Tom: I lean round robin, but let's confirm with Prof. Anand first.
+Swetha: Prof. Anand is out till Wednesday, so we decide then.
+Dev: Okay, back to work everyone.

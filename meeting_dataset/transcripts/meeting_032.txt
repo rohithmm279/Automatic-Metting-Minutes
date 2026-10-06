@@ -1,0 +1,53 @@
+# meeting_032 | style: club_planning | date: 2026-11-24 (Tuesday) | attendees: Naveen, Divya, Tom, Meena
+Naveen: Alright everyone, let's plan the upcoming event.
+Tom: Hmm, interesting.
+Divya: Let's keep it simple this year.
+Tom: Wait, can I--
+Naveen: Go ahead.
+Tom: Never mind, it can wait.
+Divya: Naveen will confirm the guest speaker once the budget is approved, right?
+Naveen: Right, that's me.
+Meena: Can everyone see my screen?
+Meena: Naveen will create the social media schedule by Monday, right?
+Naveen: Right, that's me.
+Naveen: Let me pull up the notes.
+Naveen: Okay, final call. We limit each pitch to five minutes.
+Meena: Works for me.
+Tom: Fair enough.
+Meena: The deployment keeps failing and we don't know why.
+Tom: We'll revisit it.
+Naveen: Okay, moving on.
+Tom: Did anyone watch the match last night?
+Meena: Wait, can I--
+Divya: Go ahead.
+Meena: Never mind, it can wait.
+Tom: So, maybe we should move the event to Saturday.
+Meena: No, let's stay with Friday.
+Tom: Okay, fair.
+Divya: Did anyone design the poster?
+Naveen: I did, yesterday.
+Tom: Wait, can I--
+Divya: Go ahead.
+Tom: Never mind, it can wait.
+Divya: Maybe we should cut the workshop to one hour.
+Meena: No, let's keep the full two hours.
+Divya: Okay, fair.
+Tom: Sorry, I was on mute.
+Divya: Who's going to schedule the mock interview by Wednesday?
+Tom: Not me, I'm swamped this week.
+Naveen: It's so hot in this room today.
+Meena: Maybe we should redo the logo from scratch.
+Tom: No, let's keep the existing logo.
+Meena: Yeah, so okay, fair.
+Naveen: The turnout last time was good, wasn't it?
+Tom: Maybe we should move the weekly meeting to mornings.
+Naveen: No, let's keep the evening slot.
+Tom: Okay, fair.
+Tom: Okay, next point.
+Divya: Right, that makes sense.
+Divya: Okay, final call. We give certificates to all participants.
+Meena: Works for me.
+Divya: The Wi-Fi here is terrible again.
+Naveen: I'll prepare the slides once the budget is approved.
+Meena: Alright.
+Naveen: Okay, let's wrap up here.

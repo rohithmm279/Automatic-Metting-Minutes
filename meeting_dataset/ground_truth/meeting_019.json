@@ -1,0 +1,46 @@
+{
+  "summary": "Event operations with 3 attendees. 0 decision(s): none. 3 open issue(s): Handling of late registrations undecided; Dataset licence unclear; Registration opening on Monday tentative, pending form approval. 5 pending and 0 completed action item(s), 0 without an owner.",
+  "action_items": [
+    {
+      "task": "Fix the login bug",
+      "owner": "Arun",
+      "deadline": "next month",
+      "deadline_iso": "2026-12-01/2026-12-31",
+      "status": "pending"
+    },
+    {
+      "task": "Verify the attendance sheet",
+      "owner": "Priya",
+      "deadline": "today",
+      "deadline_iso": "2026-11-06",
+      "status": "pending"
+    },
+    {
+      "task": "Publish the event announcement",
+      "owner": "Meena",
+      "deadline": "in two days",
+      "deadline_iso": "2026-11-08",
+      "status": "pending"
+    },
+    {
+      "task": "Book the seminar hall",
+      "owner": "Meena",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Schedule the mock interview",
+      "owner": "Meena",
+      "deadline": "next week",
+      "deadline_iso": "2026-11-09/2026-11-15",
+      "status": "pending"
+    }
+  ],
+  "decisions": [],
+  "unresolved_issues": [
+    "Handling of late registrations undecided",
+    "Dataset licence unclear",
+    "Registration opening on Monday tentative, pending form approval"
+  ]
+}

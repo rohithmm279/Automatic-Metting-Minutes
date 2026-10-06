@@ -1,0 +1,43 @@
+# meeting_005 | style: sprint_planning | date: 2026-10-05 (Monday) | attendees: Manoj, Anjali, Kavya, Riya
+Manoj: Welcome to sprint planning, let's go through the backlog.
+Kavya: Let me pull up the notes.
+Anjali: Maybe we should extend registration by a week.
+Kavya: No, let's close registration on the original date.
+Anjali: Okay, fair.
+Kavya: Anjali, could you write the API documentation?
+Anjali: Yes, no problem.
+Riya: Wait, can I--
+Anjali: Go ahead.
+Riya: Never mind, it can wait.
+Anjali: Manoj, can you compile the final report before the demo?
+Manoj: Um, I'm swamped this week, sorry.
+Kavya: I'll take it.
+Kavya: Did anyone watch the match last night?
+Manoj: Riya will deploy the staging build in two days, right?
+Riya: Right, that's me.
+Riya: That ticket is bigger than it looks.
+Riya: I'll review the pull request by end of day --
+Manoj: Actually, by Friday, I just checked the calendar.
+Riya: Okay, by Friday.
+Kavya: Right, that makes sense.
+Anjali: I'd like Riya to benchmark the model when the hall is confirmed.
+Riya: Okay, noted.
+Riya: Let's run demo day in the lab.
+Manoj: So, agreed.
+Kavya: Okay, final call. We hold the kickoff meeting on the 15th.
+Manoj: Um, fine by me.
+Riya: Let's tentatively hold the finals on Saturday, but only if the hall is free.
+Kavya: Right, we'll confirm once we know.
+Kavya: The backlog is getting long.
+Kavya: Wait, can I--
+Riya: Go ahead.
+Kavya: Yeah, so never mind, it can wait.
+Anjali: I'll write the unit tests by Thursday --
+Manoj: Actually, next week, I just checked the calendar.
+Anjali: Okay, next week.
+Kavya: It's so hot in this room today.
+Riya: Manoj, can you migrate the database this weekend?
+Manoj: Sure, I'll do that.
+Anjali: Who's going to fix the login bug in two days?
+Riya: Yeah, that's true.
+Manoj: Sprint is set, thanks everyone.

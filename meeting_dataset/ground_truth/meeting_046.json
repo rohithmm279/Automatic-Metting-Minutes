@@ -1,0 +1,51 @@
+{
+  "summary": "Hackathon sync with 4 attendees. 1 decision(s): Drop the souvenir kits. 0 open issue(s): none. 3 pending and 3 completed action item(s), 1 without an owner.",
+  "action_items": [
+    {
+      "task": "Check the audio setup",
+      "owner": "Pooja",
+      "deadline": "yesterday",
+      "deadline_iso": "2026-12-09",
+      "status": "completed"
+    },
+    {
+      "task": "Test the prototype",
+      "owner": "Divya",
+      "deadline": "by Friday",
+      "deadline_iso": "2026-12-11",
+      "status": "pending"
+    },
+    {
+      "task": "Compile the final report",
+      "owner": "Swetha",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Upload the code to the repository",
+      "owner": "Divya",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Arrange the transport",
+      "owner": null,
+      "deadline": "by tomorrow",
+      "deadline_iso": "2026-12-11",
+      "status": "pending"
+    },
+    {
+      "task": "Fix the login bug",
+      "owner": "Swetha",
+      "deadline": "by Friday",
+      "deadline_iso": "2026-12-11",
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Drop the souvenir kits"
+  ],
+  "unresolved_issues": []
+}

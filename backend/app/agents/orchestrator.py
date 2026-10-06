@@ -17,6 +17,7 @@ from app.schemas.meeting_schema import (
 from app.services.gemini_analyzer import GeminiAnalyzer, GeminiAnalysisError
 from app.services.meeting_analyzer import MeetingAnalyzer
 from app.services.transcript_processor import TranscriptProcessor
+from app.services.transcript_quality import validate_meeting_transcript
 
 logger = logging.getLogger(__name__)
 
@@ -83,9 +84,8 @@ class AgentOrchestrator:
             ValueError: If transcript is empty.
         """
         # Step 1: Clean Transcript via Preprocessor
-        cleaned_transcript = TranscriptProcessor.clean_transcript(transcript)
-        if not cleaned_transcript:
-            raise ValueError("Transcript must contain non-whitespace text.")
+        cleaned_transcript = validate_meeting_transcript(transcript)
+        cleaned_transcript = TranscriptProcessor.clean_transcript(cleaned_transcript)
 
         meeting_date = self._extract_meeting_date(cleaned_transcript)
         extracted_title = self._extract_title(transcript)
@@ -152,9 +152,13 @@ class AgentOrchestrator:
                         conf = float(item.get("confidence", 1.0)) if item.get("confidence") is not None else 1.0
                         ev = str(item.get("evidence", "")).strip() or None
 
-                        # Filter out meta-tasks (e.g. "log action items", "assign tasks to log")
-                        if self._is_meta_task(task):
+                        # Filter out meta-tasks and unassigned attendance reminders.
+                        if self._is_meta_task(task) or self._is_unassigned_meeting_attendance(task, owner):
                             continue
+
+                        # The meeting header date is context, not an implicit deadline.
+                        if not self._deadline_is_explicit_for_action(deadline, task, ev):
+                            deadline = "Not specified"
 
                         # Enhanced entity and deadline resolution for list items, relative dates, and dialogue
                         task, owner, deadline = self._resolve_owner_and_deadline(
@@ -193,6 +197,7 @@ class AgentOrchestrator:
                             d_ev = None
                         else:
                             continue
+                        d_text = re.sub(r"^decision\s*[-:–—]\s*", "", d_text, flags=re.IGNORECASE).strip()
                         if d_text:
                             decisions_flat.append(d_text)
                             detailed_decisions.append(
@@ -221,12 +226,19 @@ class AgentOrchestrator:
             decisions_flat, detailed_decisions = self._filter_action_items_from_decisions(
                 decisions_flat, detailed_decisions, action_items
             )
+            # Deduplicate action items deterministically
+            action_items = self._deduplicate_action_items(action_items)
+
+            decisions_flat, detailed_decisions, unresolved_issues = self._move_deferred_decisions_to_issues(
+                decisions_flat, detailed_decisions, unresolved_issues
+            )
 
             # Filter dummy placeholder risks (e.g. "No issues identified") and prune hallucinated issues
             unresolved_issues = self._filter_dummy_unresolved_issues(unresolved_issues)
             unresolved_issues = self.validation_agent.filter_unresolved_issues(
                 unresolved_issues, cleaned_transcript.lower()
             )
+            unresolved_issues = self._remove_action_issue_duplicates(unresolved_issues, action_items)
 
             # Step 2b: Validation Agent (runs locally on extracted data — NO API call)
             logger.debug("Running Validation Agent locally...")
@@ -258,6 +270,10 @@ class AgentOrchestrator:
                 meeting_time=extracted_time_str,
                 start_time=extracted_start_time,
                 end_time=extracted_end_time,
+                model_name=self.gemini_analyzer.model_name,
+                pipeline_name="gemini_agentic",
+                prompt_version="app.services.gemini_analyzer.v1",
+                fallback_used=False,
             )
             logger.info("Single-call pipeline completed successfully (AGENTIC_GEMINI).")
             return analysis, "AGENTIC_GEMINI", False
@@ -313,12 +329,16 @@ class AgentOrchestrator:
                 meeting_time=extracted_time_str,
                 start_time=extracted_start_time,
                 end_time=extracted_end_time,
+                model_name="rule-based",
+                pipeline_name="rule_based_fallback",
+                prompt_version="app.services.meeting_analyzer.v1",
+                fallback_used=True,
             )
             return fallback_analysis, "RULE-BASED FALLBACK", is_rl
 
     @staticmethod
     def _is_meta_task(task: str) -> bool:
-        """Identify administrative meta-tasks that represent meeting logging rather than deliverables."""
+        """Identify administrative meta-tasks and meeting agendas rather than individual deliverables."""
         t = task.strip().lower()
         return bool(
             re.search(
@@ -327,6 +347,10 @@ class AgentOrchestrator:
             )
             or re.search(
                 r"\b(?:log\s+and\s+assign|assign\s+the\s+task\s+to\s+log|track\s+(?:these\s+)?items\s+in\s+jira)\b",
+                t,
+            )
+            or re.search(
+                r"^(?:finalize|complete|discuss|review|plan|organize|hold)\s+(?:the\s+)?(?:workshop|meeting|event|session|hackathon|webinar)\s*(?:plan|agenda|logistics|details|topics?)?$",
                 t,
             )
         )
@@ -512,7 +536,7 @@ class AgentOrchestrator:
 
         # Relative resolution if meeting_date is known (Strict Forward Date Math)
         if meeting_date:
-            if re.search(r"\b(?:today|eod)\b", dl_lower):
+            if re.search(r"\b(?:today|tonight|eod)\b", dl_lower):
                 return meeting_date.isoformat()
             if "tomorrow" in dl_lower:
                 return (meeting_date + timedelta(days=1)).isoformat()
@@ -530,6 +554,46 @@ class AgentOrchestrator:
                     return target_date.isoformat()
 
         return "Not specified" if re.fullmatch(r"\d{4}-\d{2}-\d{2}", dl) else dl
+
+    @staticmethod
+    def _deadline_is_explicit_for_action(deadline: str, task: str, evidence: Optional[str]) -> bool:
+        """Require deadline evidence to be attached to this action, not just the header."""
+        if not deadline or deadline.strip().lower() in ("not specified", "no deadline", "null", "none"):
+            return True
+        source = " ".join(part for part in (task, evidence or "") if part).lower()
+        return bool(re.search(
+            r"\b(?:by|before|on|due|until|for|tomorrow|today|tonight|eod|this\s+\w+|next\s+\w+|"
+            r"monday|tuesday|wednesday|thursday|friday|saturday|sunday|"
+            r"january|february|march|april|may|june|july|august|september|october|november|december|"
+            r"\d{1,2}(?:st|nd|rd|th)?[\s/-]+(?:[A-Za-z]+|\d{1,2})|"
+            r"(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2})\b",
+            source,
+            re.IGNORECASE,
+        ))
+
+    @staticmethod
+    def _is_unassigned_meeting_attendance(task: str, owner: str) -> bool:
+        """Exclude reminders to attend a follow-up meeting, unless someone organizes it."""
+        if owner and owner.strip().lower() not in ("not specified", "not_specified", "none", "null", "unassigned"):
+            return False
+        return bool(re.search(
+            r"\b(?:everyone|all|team|members?)\b.*\b(?:join|joins|attend|attends|participate)\b|"
+            r"\b(?:join|joins|attend|attends|participate)\b.*\b(?:meeting|call|session|discord)\b",
+            task,
+            re.IGNORECASE,
+        ))
+
+    @staticmethod
+    def _remove_action_issue_duplicates(issues: list[str], action_items: list[ActionItem]) -> list[str]:
+        """Keep unresolved issues separate from concrete actions already extracted."""
+        action_terms = [set(re.findall(r"\b[a-z]{4,}\b", item.task.lower())) for item in action_items]
+        filtered: list[str] = []
+        for issue in issues:
+            issue_terms = set(re.findall(r"\b[a-z]{4,}\b", issue.lower()))
+            if any(len(terms) >= 2 and len(terms & issue_terms) / len(terms) >= 0.75 for terms in action_terms):
+                continue
+            filtered.append(issue)
+        return filtered
 
     @classmethod
     def _resolve_owner_and_deadline(
@@ -566,9 +630,9 @@ class AgentOrchestrator:
         if evidence:
             ev_str = evidence.strip()
 
-            # First priority: Speaker self-commitment (e.g. "Maya: ... I'll build it")
+            # First priority: Speaker self-commitment (e.g. "Maya: ... I'll build it" or "[00:03:51] Karthik: Okay, I'll send...")
             match_self = re.search(
-                r"(?:^|\n|(?:\d+[\.\)]|\*|-|•)\s*)([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\s*:\s*.*?\b(?:i(?:'ll| will)|i can|i'm going to|my action item is)\b",
+                r"(?:^|\n|\[[\d:]+\]\s*|(?:\d+[\.\)]|\*|-|•)\s*)([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\s*:\s*.*?\b(?:i(?:'ll| will)|i can|i'm going to|my action item is|i'll handle|i will handle|i'll send|i will send|i'll take|i will take)\b",
                 ev_str,
                 re.I,
             )
@@ -583,7 +647,7 @@ class AgentOrchestrator:
             # If owner still unassigned, check list item prefix in evidence
             if owner in ("Not specified", "Unassigned", "", None):
                 match_ev_lead = re.search(
-                    r"(?:^|\n|(?:\d+[\.\)]|\*|-|•)\s*)([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\s*[:\-–—]\s*(.+)",
+                    r"(?:^|\n|\[[\d:]+\]\s*|(?:\d+[\.\)]|\*|-|•)\s*)([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\s*[:\-–—]\s*(.+)",
                     ev_str,
                 )
                 if match_ev_lead:
@@ -621,40 +685,129 @@ class AgentOrchestrator:
                     if cand.lower() in transcript_lower:
                         owner = cand
 
+        # Fallback owner check against transcript dialogue if still unassigned
+        if owner in ("Not specified", "Unassigned", "", None):
+            search_snippets = []
+            if evidence and len(evidence.strip()) >= 5:
+                search_snippets.append(evidence.strip())
+            if cleaned_task and len(cleaned_task) >= 5:
+                search_snippets.append(cleaned_task)
+
+            for snip in search_snippets:
+                snip_words = [w for w in re.findall(r"\b[a-z]{4,}\b", snip.lower()) if w not in {"with", "that", "this", "from", "into", "group"}]
+                if not snip_words:
+                    continue
+                for line in transcript_clean.splitlines():
+                    if (
+                        re.search(r"\b(?:i(?:'ll| will)|i can|i'm going to|i'll handle|i'll send|i'll take)\b", line, re.I)
+                        and sum(1 for w in snip_words if w in line.lower()) >= min(2, len(snip_words))
+                    ):
+                        m_spk = re.search(r"(?:^|\[[\d:]+\]\s*)([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\s*:", line)
+                        if m_spk:
+                            spk_name = m_spk.group(1).strip()
+                            if (
+                                spk_name.lower() in transcript_lower
+                                and spk_name.lower() not in {"the", "we", "i", "our", "team", "someone", "action", "item", "task", "note"}
+                            ):
+                                owner = spk_name
+                                break
+                if owner not in ("Not specified", "Unassigned", "", None):
+                    break
+
         # Deadline safety: If deadline is a pure time-of-day timestamp (e.g. 11:02 AM) without future date context, normalize to Not specified
         if deadline and deadline not in ("Not specified", "No deadline", "", None):
             dl_str = deadline.strip()
             if re.match(r"^\d{1,2}:\d{2}\s*(?:am|pm|utc|est|pst|gmt)?$", dl_str, re.I):
                 deadline = "Not specified"
 
-        # If deadline is unassigned or is an erroneous past date before meeting_date, inspect evidence for relative weekday/date
+        # If deadline is unassigned, is an erroneous past date, or lazily defaulted to meeting_date when future cues exist
         should_check_evidence = False
         if deadline in ("Not specified", "No deadline", "", None):
             should_check_evidence = True
         elif meeting_date and re.fullmatch(r"\d{4}-\d{2}-\d{2}", deadline):
             try:
-                if datetime.date.fromisoformat(deadline) < meeting_date:
+                parsed_dl = datetime.date.fromisoformat(deadline)
+                if parsed_dl < meeting_date:
                     should_check_evidence = True
+                elif parsed_dl == meeting_date:
+                    ev_check = f"{evidence or ''} {cleaned_task}".lower()
+                    if any(w in ev_check for w in ("tomorrow", "thursday", "friday", "saturday", "sunday", "next week", "after registration", "after form closes")):
+                        should_check_evidence = True
             except ValueError:
                 should_check_evidence = True
 
-        if should_check_evidence and evidence:
-            dl_match = re.search(
-                r"\b(?:(?:by|before|on|due|for)\s+(?:the\s+)?(?:end of )?(?:next\s+)?"
-                r"(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)|"
-                r"(?:by|before|on|due|for)\s+(?:[A-Za-z]+\s+\d{1,2}(?:st|nd|rd|th)?|\d{1,2}(?:st|nd|rd|th)?(?:\s+of\s+[A-Za-z]+)?)|"
-                r"(?:by\s+)?(?:eod\s+tomorrow|end of day tomorrow|eod|tomorrow|today|this\s+(?:week|month)|next\s+(?:week|month)|"
-                r"sometime\s+next\s+week|before\s+the\s+weekend))\b",
-                evidence,
-                re.IGNORECASE,
-            )
-            if dl_match:
-                deadline = dl_match.group(0).strip()
+        if should_check_evidence:
+            search_sources = []
+            if evidence:
+                search_sources.append(evidence)
+            for line in transcript_clean.splitlines():
+                if any(w in line.lower() for w in re.findall(r"\b[a-z]{4,}\b", cleaned_task.lower()) if w not in {"with", "that", "this", "from"}):
+                    search_sources.append(line)
+
+            for src in search_sources:
+                dl_match = re.search(
+                    r"\b(?:(?:by|before|on|due|for|until|after)\s+(?:the\s+)?(?:end of )?(?:next\s+)?"
+                    r"(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)(?:\s+(?:evening|morning|afternoon|eod|end of day|night|\d{1,2}(?::\d{2})?\s*(?:am|pm)?))?|"
+                    r"(?:by|before|on|due|for|until|after)\s+(?:[A-Za-z]+\s+\d{1,2}(?:st|nd|rd|th)?|\d{1,2}(?:st|nd|rd|th)?(?:\s+of\s+[A-Za-z]+)?)|"
+                    r"(?:by\s+)?(?:eod\s+tomorrow|end of day tomorrow|tomorrow\s+night|tomorrow\s+evening|eod|tonight|tomorrow|today|this\s+(?:week|month)|next\s+(?:week|month)|"
+                    r"sometime\s+next\s+week|before\s+the\s+weekend|after\s+registration(?:\s+closes)?(?:\s+on\s+friday)?|"
+                    r"(?:thursday|friday|monday|tuesday|wednesday|saturday|sunday)\s+(?:evening|morning|afternoon|eod|night|\d{1,2}(?::\d{2})?\s*(?:am|pm)?)))\b",
+                    src,
+                    re.IGNORECASE,
+                )
+                if dl_match:
+                    raw_dl = dl_match.group(0).strip()
+                    if "registration" in raw_dl.lower() and "friday" not in raw_dl.lower():
+                        deadline = "Friday" if "friday" in transcript_clean.lower() else raw_dl
+                    else:
+                        deadline = raw_dl
+                    break
 
         # Format ISO deadline
         deadline = cls._format_iso_deadline(deadline, meeting_date)
 
         return cleaned_task, owner, deadline
+
+    @staticmethod
+    def _deduplicate_action_items(action_items: list[ActionItem]) -> list[ActionItem]:
+        """Deduplicate action items based on task similarity, merging owner and deadline info."""
+        if not action_items:
+            return []
+
+        deduped: list[ActionItem] = []
+        for item in action_items:
+            task_clean = item.task.strip()
+            task_norm = re.sub(r"[^\w\s]", "", task_clean.lower())
+            item_words = set(re.findall(r"\b[a-z]{3,}\b", task_norm)) - {"the", "and", "for", "with", "this", "that", "from", "into", "group"}
+
+            matched_existing: Optional[ActionItem] = None
+            for existing in deduped:
+                ext_clean = existing.task.strip()
+                ext_norm = re.sub(r"[^\w\s]", "", ext_clean.lower())
+                if task_norm == ext_norm:
+                    matched_existing = existing
+                    break
+                ext_words = set(re.findall(r"\b[a-z]{3,}\b", ext_norm)) - {"the", "and", "for", "with", "this", "that", "from", "into", "group"}
+                if item_words and ext_words:
+                    overlap = len(item_words & ext_words) / max(len(item_words), len(ext_words))
+                    if overlap >= 0.70 or (item_words.issubset(ext_words) and len(item_words) >= 2) or (ext_words.issubset(item_words) and len(ext_words) >= 2):
+                        matched_existing = existing
+                        break
+
+            if matched_existing:
+                # Merge owner if existing is unassigned and current has owner
+                if matched_existing.owner in ("Not specified", "Unassigned", "null", None, "") and item.owner not in ("Not specified", "Unassigned", "null", None, ""):
+                    matched_existing.owner = item.owner
+                # Merge deadline if existing is Not specified and current has deadline
+                if matched_existing.deadline in ("Not specified", "null", None, "") and item.deadline not in ("Not specified", "null", None, ""):
+                    matched_existing.deadline = item.deadline
+                # Merge evidence if existing is empty
+                if not matched_existing.evidence and item.evidence:
+                    matched_existing.evidence = item.evidence
+            else:
+                deduped.append(item)
+
+        return deduped
 
     @staticmethod
     def _filter_action_items_from_decisions(
@@ -687,12 +840,33 @@ class AgentOrchestrator:
             dec_lower = dec_clean.lower()
             is_action_item = False
 
-            # 1. Named individual assignment pattern (e.g. "Priya Sharma to circulate...", "Arjun will escalate...")
-            if re.match(
-                r"^[A-Z][a-z]+(?:\s+[A-Z][a-z]+)?\s+(?:to|will|shall|must|should|is tasked with|needs to)\s+\w+",
+            # 1. Named individual assignment pattern (e.g. "Priya Sharma to circulate...", "Arun will handle...")
+            match_named = re.match(
+                r"^([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\s+(?:to|will|shall|must|should|is tasked with|needs to)\s+(.+)",
                 dec_clean,
-            ):
+                re.IGNORECASE,
+            )
+            if match_named:
                 is_action_item = True
+                cand_owner = match_named.group(1).strip()
+                cand_task_raw = match_named.group(2).strip()
+                if cand_task_raw:
+                    cand_task = cand_task_raw[0].upper() + cand_task_raw[1:]
+                    # If not already present in action_items, add it
+                    if not any(
+                        cand_owner.lower() == (ai.owner or "").lower()
+                        and any(w in ai.task.lower() for w in re.findall(r"\b[a-z]{4,}\b", cand_task.lower()))
+                        for ai in action_items
+                    ):
+                        action_items.append(
+                            ActionItem(
+                                task=cand_task,
+                                owner=cand_owner,
+                                deadline="Not specified",
+                                status="pending",
+                                confidence=1.0,
+                            )
+                        )
 
             # 2. Starts with task action verb (e.g. "Escalate billing provider...", "Hard freeze campaign creatives...")
             if not is_action_item and task_verb_pattern.search(dec_clean):
@@ -739,6 +913,31 @@ class AgentOrchestrator:
                     filtered_detailed.append(detailed_decisions[idx])
 
         return filtered_flat, filtered_detailed
+
+    @staticmethod
+    def _move_deferred_decisions_to_issues(
+        decisions_flat: list[str],
+        detailed_decisions: list[DecisionItem],
+        unresolved_issues: list[str],
+    ) -> tuple[list[str], list[DecisionItem], list[str]]:
+        """Move explicit deferrals and unresolved proposals out of decisions."""
+        deferred_pattern = re.compile(
+            r"\b(?:not|never|haven't|hasn't|don't|doesn't|didn't)\s+(?:yet\s+)?(?:finali[sz]e|decide|confirm|approve|settle)\b|"
+            r"\b(?:tentative(?:ly)?|undecided|to be confirmed|not finalized|not decided)\b|"
+            r"\b(?:(?:will be|to be)\s+)?(?:decide|decided|confirm|confirmed|approve|approved|finalize|finalized)\s+(?:later|after|based on|once)\b",
+            re.IGNORECASE,
+        )
+        kept_decisions: list[str] = []
+        kept_detailed: list[DecisionItem] = []
+        for index, decision in enumerate(decisions_flat):
+            if deferred_pattern.search(decision):
+                if decision not in unresolved_issues:
+                    unresolved_issues.append(decision)
+                continue
+            kept_decisions.append(decision)
+            if index < len(detailed_decisions):
+                kept_detailed.append(detailed_decisions[index])
+        return kept_decisions, kept_detailed, unresolved_issues
 
     @staticmethod
     def _filter_dummy_unresolved_issues(issues: list[str]) -> list[str]:

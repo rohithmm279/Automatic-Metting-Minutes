@@ -1,0 +1,47 @@
+# meeting_056 | style: hackathon_sync | date: 2026-10-23 (Friday) | attendees: Tom, Kavya, Lena, Aarav, Riya
+Tom: Team, quick sync before the hackathon, let's be fast.
+Kavya: The demo needs to be rock solid.
+Aarav: Maybe we should change the venue to the auditorium.
+Lena: No, let's keep the current venue.
+Aarav: Okay, fair.
+Tom: Let me pull up the notes.
+Riya: Kavya, can you submit the permission letter next week?
+Kavya: Sure, I'll do that.
+Tom: Okay, moving on.
+Tom: Coffee run anyone?
+Aarav: Quick update: I've uploaded the code to the repository.
+Lena: Um, did anyone watch the match last night?
+Riya: Sorry, I was on mute.
+Lena: Let's tentatively open registration on Monday, but only if the form is approved.
+Aarav: Right, we'll confirm once we know.
+Riya: Right, that makes sense.
+Lena: The budget is still not approved.
+Aarav: We'll revisit it.
+Aarav: It's so hot in this room today.
+Tom: The Wi-Fi here is terrible again.
+Kavya: We still need to set up the CI pipeline when the hall is confirmed, but nobody has picked it up.
+Aarav: Let's see who has time.
+Tom: We're running out of time.
+Lena: Yeah, so Tom will schedule the mock interview this weekend, right?
+Tom: Yes, that's right.
+Lena: Can everyone see my screen?
+Kavya: Wait, can I--
+Aarav: Go ahead.
+Kavya: Never mind, it can wait.
+Aarav: Quick update: I've tested the prototype.
+Aarav: Fair enough.
+Aarav: Hmm, interesting.
+Tom: How do we handle late registrations? No idea yet.
+Aarav: Yeah, that's a worry.
+Aarav: Okay, next point.
+Tom: Did anyone check the audio setup?
+Lena: I've already checked the audio setup.
+Kavya: Yeah, I agree with that.
+Kavya: Right, that makes sense.
+Kavya: Did anyone follow up with the vendor?
+Riya: I've already followed up with the vendor.
+Kavya: Okay, moving on.
+Tom: Did anyone watch the match last night?
+Tom: Did anyone label the sample transcripts?
+Kavya: I did, yesterday.
+Tom: Good sync, let's go.

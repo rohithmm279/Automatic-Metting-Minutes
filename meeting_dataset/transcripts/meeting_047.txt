@@ -1,0 +1,42 @@
+# meeting_047 | style: faculty_advisor | date: 2026-09-09 (Wednesday) | attendees: Deepak, Kavya, Divya, Vikram, Riya
+Deepak: Good afternoon, shall we begin with the progress update?
+Deepak: Did anyone watch the match last night?
+Divya: I'll check the audio setup --
+Kavya: Sorry to cut in, my mic was muted for a moment.
+Divya: Sorry, as I was saying, by the end of the month.
+Riya: So, okay.
+Kavya: Right, that makes sense.
+Kavya: Fair enough.
+Divya: Yeah, so let's tentatively open registration on Monday, but only if the form is approved.
+Vikram: Right, we'll confirm once we know.
+Kavya: Who's going to set up the Slack channel this weekend?
+Deepak: So, not me, I'm swamped this week.
+Deepak: Okay, moving on.
+Deepak: We could confirm the guest speaker if we had more people, but we don't.
+Kavya: True, let's leave it.
+Divya: Hmm, interesting.
+Riya: We should keep the department's guidelines in mind.
+Riya: We still don't have confirmation from the venue.
+Divya: We'll revisit it.
+Deepak: Yeah, I agree with that.
+Deepak: I'll clean the training dataset --
+Kavya: Sorry, I lost the call for a second.
+Deepak: Sorry, as I was saying, by Friday.
+Vikram: We could set up the CI pipeline if we had more people, but we don't.
+Kavya: True, let's leave it.
+Vikram: I'll print the brochures.
+Vikram: Actually no, forget it, we're going digital only.
+Riya: Okay, then we skip it.
+Divya: The Wi-Fi here is terrible again.
+Deepak: Vikram is going to prepare the judging rubric.
+Vikram: Yes, that's right.
+Riya: Please continue.
+Divya: I'll hire the sound system.
+Divya: Actually no, forget it, the hall already has one.
+Riya: So, okay, then we skip it.
+Kavya: Okay, next point.
+Riya: The sponsor hasn't replied to our email.
+Kavya: Yeah, that's a worry.
+Kavya: Can everyone see my screen?
+Deepak: I can submit the permission letter today.
+Deepak: Good, let's meet again soon.

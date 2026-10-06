@@ -1,0 +1,56 @@
+{
+  "summary": "Project review with 5 attendees. 0 decision(s): none. 6 open issue(s): Helpdesk coverage for day two undecided; Guest parking arrangements still open; Dataset licence unclear. 5 pending and 1 completed action item(s), 0 without an owner.",
+  "action_items": [
+    {
+      "task": "Test the prototype",
+      "owner": "Imran",
+      "deadline": "by Tuesday",
+      "deadline_iso": "2026-12-08",
+      "status": "pending"
+    },
+    {
+      "task": "Fix the login bug",
+      "owner": "Nisha",
+      "deadline": "by Friday",
+      "deadline_iso": "2026-12-11",
+      "status": "pending"
+    },
+    {
+      "task": "Benchmark the model",
+      "owner": "Meena",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "pending"
+    },
+    {
+      "task": "Upload the code to the repository",
+      "owner": "Nisha",
+      "deadline": "by the end of the month",
+      "deadline_iso": "2026-12-31",
+      "status": "pending"
+    },
+    {
+      "task": "Check the audio setup",
+      "owner": "Deepak",
+      "deadline": "by Tuesday",
+      "deadline_iso": "2026-12-08",
+      "status": "pending"
+    },
+    {
+      "task": "Organise the shared drive",
+      "owner": "Meena",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    }
+  ],
+  "decisions": [],
+  "unresolved_issues": [
+    "Helpdesk coverage for day two undecided",
+    "Guest parking arrangements still open",
+    "Dataset licence unclear",
+    "Choice between Postgres and MongoDB for the database undecided, pending Ravi's input on Thursday",
+    "Sponsor has not replied",
+    "Finals date (Saturday) tentative, pending hall availability"
+  ]
+}

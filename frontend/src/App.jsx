@@ -110,7 +110,7 @@ export default function App() {
 
   const handleMeetingDeleted = () => {
     setSelectedMeetingId(null);
-    setCurrentView('overview');
+    setCurrentView('meetings');
     refreshAllData();
   };
 
@@ -168,7 +168,7 @@ export default function App() {
       {currentView === 'meeting-details' && selectedMeetingId && (
         <MeetingDetailsView
           meetingId={selectedMeetingId}
-          onBack={() => setCurrentView('overview')}
+          onBack={() => setCurrentView('meetings')}
           onDeleted={handleMeetingDeleted}
           onSelectMeeting={handleSelectMeeting}
         />
@@ -205,7 +205,7 @@ export default function App() {
           meetings={meetings}
           onSelectMeeting={handleSelectMeeting}
           onNavigateToAnalyze={() => setCurrentView('analyze')}
-          onMeetingDeleted={handleMeetingDeleted}
+          onMeetingDeleted={() => refreshAllData()}
         />
       )}
 

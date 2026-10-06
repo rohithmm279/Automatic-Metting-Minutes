@@ -1,0 +1,43 @@
+{
+  "summary": "Client call with 4 attendees. 2 decision(s): Name the event Code Sprint; Keep the workshop at two hours. 4 open issue(s): Lab access letter still unsigned; Budget is not yet approved; Finals date (Saturday) tentative, pending hall availability. 3 pending and 1 completed action item(s), 0 without an owner.",
+  "action_items": [
+    {
+      "task": "Prepare the demo script",
+      "owner": "Aarav",
+      "deadline": "by Wednesday",
+      "deadline_iso": "2026-09-09",
+      "status": "pending"
+    },
+    {
+      "task": "Write the API documentation",
+      "owner": "Kavya",
+      "deadline": "next week",
+      "deadline_iso": "2026-09-14/2026-09-20",
+      "status": "pending"
+    },
+    {
+      "task": "Submit the permission letter",
+      "owner": "Pooja",
+      "deadline": null,
+      "deadline_iso": null,
+      "status": "completed"
+    },
+    {
+      "task": "Reserve the cafeteria tables",
+      "owner": "Aarav",
+      "deadline": "by the end of the month",
+      "deadline_iso": "2026-09-30",
+      "status": "pending"
+    }
+  ],
+  "decisions": [
+    "Name the event Code Sprint",
+    "Keep the workshop at two hours"
+  ],
+  "unresolved_issues": [
+    "Lab access letter still unsigned",
+    "Budget is not yet approved",
+    "Finals date (Saturday) tentative, pending hall availability",
+    "Model accuracy still below target"
+  ]
+}

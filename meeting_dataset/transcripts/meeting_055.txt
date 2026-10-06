@@ -1,0 +1,34 @@
+# meeting_055 | style: sprint_planning | date: 2026-11-13 (Friday) | attendees: Swetha, Lena, Nisha, Arun
+Swetha: Welcome to sprint planning, let's go through the backlog.
+Swetha: Fair enough.
+Arun: We still need to test the prototype before the demo, but nobody has picked it up.
+Swetha: Let's see who has time.
+Lena: Right, that makes sense.
+Nisha: Yeah, I agree with that.
+Nisha: So, I'd like Swetha to set up the Slack channel.
+Swetha: Okay, noted.
+Swetha: Lena will test the mobile layout after the review, right?
+Lena: Right, that's me.
+Arun: The backlog is getting long.
+Lena: The Wi-Fi here is terrible again.
+Lena: Maybe we should print the brochures in colour.
+Nisha: No, let's keep them black and white.
+Lena: Okay, fair.
+Swetha: Wait, can I--
+Lena: Go ahead.
+Swetha: Never mind, it can wait.
+Lena: Maybe we should change the venue to the auditorium.
+Arun: No, let's keep the current venue.
+Lena: Okay, fair.
+Lena: I'll print the brochures.
+Lena: Actually no, forget it, we're going digital only.
+Arun: Okay, then we skip it.
+Lena: Okay, moving on.
+Lena: I'll prepare the demo script by Thursday.
+Swetha: Sorry, make it in three days, the lab is closed till then.
+Lena: Um, right, in three days then.
+Nisha: Hmm, interesting.
+Lena: Swetha, can you benchmark the model in two days?
+Swetha: I'm swamped this week, sorry.
+Nisha: I'll take it.
+Swetha: That's the plan for this sprint.
