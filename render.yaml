@@ -19,8 +19,9 @@ services:
       - key: OLLAMA_MODEL
         value: qwen2.5:3b
 
-  - type: static
+  - type: web
     name: s5-meeting-minutes-ui
+    runtime: static
     rootDir: frontend
     buildCommand: npm ci && npm run build
     staticPublishPath: dist
