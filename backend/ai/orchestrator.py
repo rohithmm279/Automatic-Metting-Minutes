@@ -437,10 +437,12 @@ class MeetingOrchestrator:
         validator: MeetingValidator | None = None,
         temperature: float = 0.0,
         repository: Any | None = None,
+        model: str = "qwen2.5:3b",
+        ollama_base_url: str = "http://localhost:11434",
         two_pass: bool = False,
         evidence_repair: bool = False,
     ):
-        self.client = client or OllamaClient()
+        self.client = client or OllamaClient(model=model, base_url=ollama_base_url)
         self.validator = validator or MeetingValidator()
         self.temperature = temperature
         self.repository = repository
@@ -847,4 +849,3 @@ class MeetingOrchestrator:
         validated_output = self.analyze(transcript)
         meeting_id = repo.save_meeting(transcript=transcript, meeting_output=validated_output)
         return validated_output, meeting_id
-

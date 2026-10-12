@@ -44,7 +44,7 @@ The offline Qwen benchmark is the current full baseline. The research API's `lim
 | Gemini research analysis and fallback | Implemented; requires credentials and provider availability |
 | Dataset discovery and bounded evaluation API | Implemented; requires annotated records for scoring |
 | Cross-meeting React views, search, and analytics | Implemented in the frontend; frontend build verified |
-| Production deployment | Not supported by the current documented architecture |
+| Production deployment | Render blueprint included; requires a reachable Ollama service |
 
 ## What Makes It Technical
 
@@ -138,6 +138,22 @@ flowchart LR
 | `eval_*.py` | Reproducible Qwen and Gemini benchmark runners |
 
 The deeper implementation notes live in [ARCHITECTURE.md](ARCHITECTURE.md).
+
+## Render deployment
+
+The repository includes [`render.yaml`](render.yaml), which defines the product API as a Python Web Service and the React client as a Static Site.
+
+- Deploy from the repository root and select **New > Blueprint** in Render.
+- Backend build command: `pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt`
+- Backend start command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
+- Frontend build command: `npm ci && npm run build`
+- Frontend publish directory: `dist`
+- The frontend receives the backend URL from the blueprint configuration.
+- Set the backend `OLLAMA_BASE_URL` secret to a reachable Ollama-compatible HTTPS endpoint. Render does not run the local `localhost:11434` Ollama server.
+- Keep `OLLAMA_MODEL` aligned with the model installed on that endpoint.
+- Set `CORS_ORIGINS` to the exact frontend Render URL plus any local development URLs.
+
+The default SQLite database is stored on the service filesystem. Render free services have ephemeral filesystems, so meeting data can be lost on redeploy or restart. Use a persistent disk or migrate the repository layer to a managed database before treating the deployment as production storage.
 
 ## Frontend Experience
 

@@ -18,6 +18,7 @@ from typing import AsyncGenerator
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+import uvicorn
 from fastapi.responses import JSONResponse
 
 # ---------------------------------------------------------------------------
@@ -46,6 +47,23 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+DEFAULT_CORS_ORIGINS = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+
+
+def get_cors_origins() -> list[str]:
+    configured = os.getenv("CORS_ORIGINS", "")
+    if not configured:
+        return DEFAULT_CORS_ORIGINS
+
+    origins = [origin.strip() for origin in configured.split(",") if origin.strip()]
+    return origins if origins else DEFAULT_CORS_ORIGINS
+
+
 # ---------------------------------------------------------------------------
 # Lifespan — initialise shared resources once at startup
 # ---------------------------------------------------------------------------
@@ -59,6 +77,8 @@ async def lifespan(application: FastAPI) -> AsyncGenerator[None, None]:
     application.state.repository = MeetingRepository(db_path=DEFAULT_DB_PATH)
     two_pass = os.getenv("MEETING_TWO_PASS", "false").strip().lower() not in {"0", "false", "no", "off"}
     application.state.orchestrator = MeetingOrchestrator(
+        model=os.getenv("OLLAMA_MODEL", "qwen2.5:3b"),
+        ollama_base_url=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434"),
         temperature=0.0,
         two_pass=two_pass,
         evidence_repair=True,
@@ -83,12 +103,16 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# CORS — allow all origins during local development (lock down before production)
+# CORS
+cors_origins = get_cors_origins()
+allow_credentials = "*" not in cors_origins
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=cors_origins,
     allow_methods=["*"],
     allow_headers=["*"],
+    allow_credentials=allow_credentials,
 )
 
 # ---------------------------------------------------------------------------
@@ -123,3 +147,12 @@ def health_check() -> dict:
 # ---------------------------------------------------------------------------
 
 app.include_router(router, tags=["meetings"])
+
+
+if __name__ == "__main__":
+    uvicorn.run(
+        "main:app",
+        host="0.0.0.0",
+        port=int(os.getenv("PORT", "8000")),
+        reload=False,
+    )

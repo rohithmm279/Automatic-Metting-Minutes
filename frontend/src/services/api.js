@@ -3,7 +3,11 @@
  * Centralizes all HTTP communication with the backend.
  */
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000';
+const fallbackBaseUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? 'http://127.0.0.1:8000'
+  : window.location.origin;
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || fallbackBaseUrl;
 
 async function request(endpoint, options = {}) {
   const url = `${API_BASE_URL}${endpoint}`;
