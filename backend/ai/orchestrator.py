@@ -5,6 +5,7 @@ import os
 import re
 from datetime import date, timedelta
 from typing import Any
+from backend.ai.groq_client import GroqClient
 from backend.ai.ollama_client import OllamaClient
 from backend.ai.evidence_repair import repair_output
 from backend.ai.prompts import build_intent_tagging_prompt, build_meeting_analysis_prompt
@@ -433,16 +434,21 @@ class MeetingOrchestrator:
 
     def __init__(
         self,
-        client: OllamaClient | None = None,
+        client: Any | None = None,
         validator: MeetingValidator | None = None,
         temperature: float = 0.0,
         repository: Any | None = None,
-        model: str = "qwen2.5:3b",
+        model: str | None = None,
         ollama_base_url: str = "http://localhost:11434",
         two_pass: bool = False,
         evidence_repair: bool = False,
     ):
-        self.client = client or OllamaClient(model=model, base_url=ollama_base_url)
+        if client is not None:
+            self.client = client
+        elif os.getenv("GROQ_API_KEY", "").strip():
+            self.client = GroqClient(model=model or os.getenv("GROQ_MODEL", "qwen/qwen3.8-27b"))
+        else:
+            self.client = OllamaClient(model=model or "qwen2.5:3b", base_url=ollama_base_url)
         self.validator = validator or MeetingValidator()
         self.temperature = temperature
         self.repository = repository
@@ -793,7 +799,11 @@ class MeetingOrchestrator:
         validated_output.start_time = extracted_start_time
         validated_output.end_time = extracted_end_time
         validated_output.model_name = getattr(self.client, "model", "qwen2.5:3b")
-        validated_output.pipeline_name = "qwen_application"
+        validated_output.pipeline_name = getattr(
+            self.client,
+            "pipeline_name",
+            "groq_application" if isinstance(self.client, GroqClient) else "qwen_application",
+        )
         validated_output.prompt_version = "backend.ai.prompts.v3-two-pass" if self.two_pass else "backend.ai.prompts.v2"
         validated_output.fallback_used = False
 

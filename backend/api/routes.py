@@ -114,7 +114,7 @@ def create_meeting(body: CreateMeetingRequest, request: Request) -> CreateMeetin
         logger.error("Unexpected error during AI analysis: %s", exc)
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-            detail="AI model is currently unavailable. Please ensure Ollama is running.",
+            detail="AI model is currently unavailable. Please check your LLM configuration (Groq API key or Ollama service).",
         ) from exc
 
     try:

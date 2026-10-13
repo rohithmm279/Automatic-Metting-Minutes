@@ -29,8 +29,19 @@ if str(_ROOT) not in sys.path:
     sys.path.insert(0, str(_ROOT))
 
 # ---------------------------------------------------------------------------
+# Environment variables
+# ---------------------------------------------------------------------------
+from dotenv import load_dotenv
+
+load_dotenv(Path(__file__).resolve().parent / ".env")
+load_dotenv(_ROOT / ".env")
+load_dotenv()
+
+# ---------------------------------------------------------------------------
 # Internal imports
 # ---------------------------------------------------------------------------
+from backend.ai.groq_client import GroqClient                    # noqa: E402
+from backend.ai.ollama_client import OllamaClient                # noqa: E402
 from backend.ai.orchestrator import MeetingOrchestrator        # noqa: E402
 from backend.database.connection import DEFAULT_DB_PATH         # noqa: E402
 from backend.database.repository import MeetingRepository       # noqa: E402
@@ -76,15 +87,24 @@ async def lifespan(application: FastAPI) -> AsyncGenerator[None, None]:
 
     application.state.repository = MeetingRepository(db_path=DEFAULT_DB_PATH)
     two_pass = os.getenv("MEETING_TWO_PASS", "false").strip().lower() not in {"0", "false", "no", "off"}
+
+    groq_api_key = os.getenv("GROQ_API_KEY", "").strip()
+    if groq_api_key:
+        groq_model = os.getenv("GROQ_MODEL", "qwen/qwen3.8-27b")
+        ai_client = GroqClient(api_key=groq_api_key, model=groq_model)
+        logger.info("Application ready — Groq (%s) + SQLite persistence active.", groq_model)
+    else:
+        ollama_model = os.getenv("OLLAMA_MODEL", "qwen2.5:3b")
+        ollama_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+        ai_client = OllamaClient(model=ollama_model, base_url=ollama_url)
+        logger.info("Application ready — Qwen2.5:3b via Ollama (%s) + SQLite persistence active.", ollama_url)
+
     application.state.orchestrator = MeetingOrchestrator(
-        model=os.getenv("OLLAMA_MODEL", "qwen2.5:3b"),
-        ollama_base_url=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434"),
+        client=ai_client,
         temperature=0.0,
         two_pass=two_pass,
         evidence_repair=True,
     )
-
-    logger.info("Application ready — Qwen2.5:3b via Ollama + SQLite persistence active.")
     yield
     logger.info("Application shutting down.")
 
@@ -96,7 +116,7 @@ async def lifespan(application: FastAPI) -> AsyncGenerator[None, None]:
 app = FastAPI(
     title="Meeting Minutes API",
     description=(
-        "AI-powered meeting analysis using Qwen2.5:3b (local Ollama) "
+        "AI-powered meeting analysis using Groq or local Ollama "
         "with SQLite persistence."
     ),
     version="1.0.0",
