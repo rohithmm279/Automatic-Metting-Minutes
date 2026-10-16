@@ -10,7 +10,7 @@ services:
       - key: PYTHON_VERSION
         value: "3.12"
       - key: CORS_ORIGINS
-        value: https://s5-meeting-minutes-ui.onrender.com,http://localhost:5173,http://127.0.0.1:5173
+        value: https://s5-meeting-minutes-ui.onrender.com,https://automatic-metting-minutes-1.onrender.com,http://localhost:5173,http://127.0.0.1:5173
       - key: MEETING_TWO_PASS
         value: "false"
       - key: GROQ_API_KEY
