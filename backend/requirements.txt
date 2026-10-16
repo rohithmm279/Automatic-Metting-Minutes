@@ -3,4 +3,5 @@ uvicorn[standard]
 pydantic
 python-dotenv
 google-genai
+groq
 requests
