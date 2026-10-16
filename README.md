@@ -15,7 +15,7 @@ The project is intentionally split into two runtime paths:
 
 | Runtime | Purpose | AI provider | Entry point | Port |
 | --- | --- | --- | --- | --- |
-| Product | React application used for interactive meeting analysis | Local Qwen2.5:3b through Ollama | `backend.main:app` | `8000` |
+| Product | React application used for interactive meeting analysis | Groq cloud (default) or local Ollama fallback | `backend.main:app` | `8000` |
 | Research | Dataset analysis, provider comparison, and benchmark reporting | Gemini with deterministic fallback | `backend.app.main:app` | `8001` |
 
 Both paths share the SQLite database and repository layer, while keeping their API models and inference workflows separate.
@@ -26,29 +26,31 @@ The provider boundaries are deliberate:
 
 | Workflow | Provider | Execution surface | Scope |
 | --- | --- | --- | --- |
-| Product meeting analysis | Ollama / `qwen2.5:3b` | Product API on port `8000` | Interactive UI workflow |
+| Product meeting analysis | Groq (`qwen/qwen3-8b-27b`) or Ollama (`qwen2.5:3b`) | Product API on port `8000` | Interactive UI workflow |
 | Research API analysis | Gemini + rule-based fallback | Research API on port `8001` | Dataset discovery and bounded evaluation |
 | Qwen benchmark | Ollama / `qwen2.5:3b` | Offline `eval_qwen_*.py` scripts | SC001-SC070 comparison artifacts |
 | Gemini benchmark | Gemini | Offline `eval_gemini_*.py` scripts | Provider comparison; quota may make a run partial |
 
-The offline Qwen benchmark is the current full baseline. The research API's `limit` is intentionally bounded to 50 records per request; the offline runners are the workflow used for the complete SC001-SC070 batch.
+The product runtime uses Groq when `GROQ_API_KEY` is set, and falls back to Ollama otherwise. The offline Qwen benchmark is the current full baseline. The research API's `limit` is intentionally bounded to 50 records per request; the offline runners are the workflow used for the complete SC001-SC070 batch.
 
 ## Implementation Status
 
 | Capability | Status |
 | --- | --- |
-| Local Qwen inference and structured extraction | Implemented; full benchmark artifact available |
-| Two-pass intent tagging | Implemented for the product runtime; disable with `MEETING_TWO_PASS=false` |
+| Groq cloud inference (primary product provider) | Implemented; set `GROQ_API_KEY` to activate |
+| Local Ollama / Qwen2.5:3b inference (fallback) | Implemented; used when `GROQ_API_KEY` is unset |
+| Two-pass intent tagging | Implemented; disabled by default (`MEETING_TWO_PASS=false`) |
+| Evidence repair post-processing | Implemented; always active in the product orchestrator |
 | SQLite meeting persistence and cascade deletion | Implemented and covered by tests |
 | Action-item status updates | Implemented; statuses are documented below |
 | Gemini research analysis and fallback | Implemented; requires credentials and provider availability |
 | Dataset discovery and bounded evaluation API | Implemented; requires annotated records for scoring |
 | Cross-meeting React views, search, and analytics | Implemented in the frontend; frontend build verified |
-| Production deployment | Render blueprint included; requires a reachable Ollama service |
+| Production deployment | Render blueprint included; uses Groq by default (no local Ollama required) |
 
 ## What Makes It Technical
 
-### Deterministic orchestration around a local model
+### Deterministic orchestration around a cloud or local model
 
 The product request is not a free-form chat loop. It is a bounded extraction pipeline:
 
@@ -57,17 +59,20 @@ flowchart LR
     A[Transcript] --> B[Metadata extraction]
     B --> C[Transcript cleaning]
     C --> D[Intent tagging prompt]
-    D --> E[Qwen2.5:3b via Ollama]
-    E --> F[Specialized extraction prompt]
-    F --> G[Qwen2.5:3b via Ollama]
-    G --> H[JSON parsing]
-    H --> I[Pydantic normalization]
-    I --> J[Transcript grounding validation]
-    J --> K[Atomic SQLite persistence]
-    K --> L[React meeting workspace]
+    D --> E{Provider?}
+    E -->|GROQ_API_KEY set| F[Groq API]
+    E -->|no key| G[Ollama / Qwen2.5:3b]
+    F --> H[Specialized extraction prompt]
+    G --> H
+    H --> I[JSON parsing]
+    I --> J[Pydantic normalization]
+    J --> K[Evidence repair]
+    K --> L[Transcript grounding validation]
+    L --> M[Atomic SQLite persistence]
+    M --> N[React meeting workspace]
 ```
 
-The model is asked for exactly four top-level fields: `summary`, `action_items`, `decisions`, and `unresolved_issues`. Deterministic code then parses, normalizes, validates, and persists the result.
+The model is asked for exactly four top-level fields: `summary`, `action_items`, `decisions`, and `unresolved_issues`. Deterministic code then parses, normalizes, repairs evidence, validates, and persists the result.
 
 ### Grounding and normalization safeguards
 
@@ -80,9 +85,10 @@ After inference, the product orchestrator:
 - extracts title, date, and time metadata from transcript headers
 - rejects unsupported owners, invented deadlines, and known prompt-example leakage
 - validates extracted records against the source transcript
+- repairs missing evidence fields using conservative transcript substring matching
 - records provider, pipeline, prompt version, and fallback provenance
 
-The product request uses a two-pass Ollama workflow by default. Pass one classifies the meeting archetype and tags evidence as proposal, final decision, assigned task, or unresolved issue. Pass two uses those tags as guidance for the existing strict extractor, then applies the same deterministic normalization and grounding checks. If pass one returns malformed JSON, extraction automatically falls back to the original one-pass prompt. Set `MEETING_TWO_PASS=false` to benchmark or operate the legacy path. The research runtime has separate retry, key-failover, and fallback behavior.
+The product request uses a two-pass workflow when `MEETING_TWO_PASS=true`. Pass one classifies the meeting archetype and tags evidence as proposal, final decision, assigned task, or unresolved issue. Pass two uses those tags as guidance for the strict extractor, then applies the same deterministic normalization and grounding checks. If pass one returns malformed JSON, extraction automatically falls back to the original one-pass prompt. The default is single-pass (`MEETING_TWO_PASS=false`). The research runtime has separate retry, key-failover, and fallback behavior.
 
 Run the compact archetype benchmark with `python eval_archetypes.py`; its five ground-truthed cases live in `tests/fixtures/archetype_eval.json`.
 
@@ -113,7 +119,8 @@ flowchart LR
     U[User] --> UI[React + Vite SPA]
     UI -->|HTTP JSON| API[FastAPI product API]
     API --> ORCH[MeetingOrchestrator]
-    ORCH --> OLLAMA[Ollama / Qwen2.5:3b]
+    ORCH -->|GROQ_API_KEY set| GROQ[Groq API]
+    ORCH -->|no key| OLLAMA[Ollama / Qwen2.5:3b]
     API --> REPO[MeetingRepository]
     REPO --> DB[(SQLite)]
     RESEARCH[Evaluation scripts] --> RAPI[FastAPI research API]
@@ -127,7 +134,7 @@ flowchart LR
 | --- | --- |
 | `frontend/` | React single-page workspace built with Vite |
 | `backend/api/` | Product routes and request/response schemas |
-| `backend/ai/` | Ollama client, prompt construction, parsing, normalization, validation |
+| `backend/ai/` | Groq and Ollama clients, prompt construction, evidence repair, parsing, normalization, validation |
 | `backend/models/` | Product-side Pydantic domain models |
 | `backend/database/` | SQLite connection, schema initialization, repository, migrations |
 | `backend/app/agents/` | Research orchestration and local validation |
@@ -139,18 +146,18 @@ flowchart LR
 
 The deeper implementation notes live in [ARCHITECTURE.md](ARCHITECTURE.md).
 
-## Render deployment
+## Render Deployment
 
-The repository includes [`render.yaml`](render.yaml), which defines the product API as a Python Web Service and the React client as a Static Site.
+The repository includes [`render.yaml`](render.yaml), which defines the product API as a Python Web Service and the React client as a Static Site. The Render blueprint uses Groq for inference — no Ollama service is required.
 
 - Deploy from the repository root and select **New > Blueprint** in Render.
 - Backend build command: `pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt`
 - Backend start command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
 - Frontend build command: `npm ci && npm run build`
 - Frontend publish directory: `dist`
-- The frontend receives the backend URL from the blueprint configuration.
-- Set the backend `OLLAMA_BASE_URL` secret to a reachable Ollama-compatible HTTPS endpoint. Render does not run the local `localhost:11434` Ollama server.
-- Keep `OLLAMA_MODEL` aligned with the model installed on that endpoint.
+- Set the `GROQ_API_KEY` secret in the Render dashboard (the blueprint syncs it as a secret).
+- `GROQ_MODEL` defaults to `qwen/qwen3-8b-27b` in the blueprint.
+- If Groq is not configured, set `OLLAMA_BASE_URL` to a reachable Ollama-compatible HTTPS endpoint.
 - Set `CORS_ORIGINS` to the exact frontend Render URL plus any local development URLs.
 
 The default SQLite database is stored on the service filesystem. Render free services have ephemeral filesystems, so meeting data can be lost on redeploy or restart. Use a persistent disk or migrate the repository layer to a managed database before treating the deployment as production storage.
@@ -284,8 +291,8 @@ The product API returns persisted records with IDs, provenance, and child-row me
     "unresolved_issues": [
         { "id": 103, "meeting_id": 42, "issue": "Room confirmation is still pending", "confidence": 1.0 }
     ],
-    "model_name": "qwen2.5:3b",
-    "pipeline_name": "ollama_product",
+    "model_name": "qwen/qwen3-8b-27b",
+    "pipeline_name": "groq_application",
     "prompt_version": "production",
     "fallback_used": false
 }
@@ -361,10 +368,10 @@ The primary student-club corpus has SC001-SC070 transcript and ground-truth file
 
 ### Prerequisites
 
-- Python 3.10+ recommended
+- Python 3.10+ recommended (3.12 used in Render deployment)
 - Node.js and npm
-- Ollama for the product runtime
-- Qwen2.5:3b pulled into Ollama
+- A Groq API key **or** a local Ollama installation for the product runtime
+- Qwen2.5:3b pulled into Ollama (only required when Groq is not configured)
 - Gemini API credentials only for the research runtime
 
 ### 1. Create the Python environment
@@ -379,16 +386,27 @@ python -m pip install --upgrade pip
 pip install -r backend/requirements.txt
 ```
 
-### 2. Start the local model
+### 2. Configure the inference provider
 
-Install Ollama, then pull the configured product model:
+**Option A — Groq (recommended, no local GPU needed):**
+
+Copy [backend/.env.example](backend/.env.example) to `backend/.env` and set:
+
+```
+GROQ_API_KEY=your_groq_api_key
+GROQ_MODEL=qwen/qwen3-8b-27b
+```
+
+**Option B — Local Ollama fallback:**
+
+Install Ollama, pull the model, and leave `GROQ_API_KEY` unset:
 
 ```powershell
 ollama pull qwen2.5:3b
 ollama serve
 ```
 
-The product runtime expects Ollama at `http://localhost:11434`. The current client uses this base URL as a constructor default; there is no documented `OLLAMA_BASE_URL` environment variable. Relevant controls include `OLLAMA_TIMEOUT_SECONDS` and `OLLAMA_MAX_OUTPUT_TOKENS`.
+The product runtime expects Ollama at `http://localhost:11434` by default. Override with `OLLAMA_BASE_URL` in `backend/.env`.
 
 ### 3. Start the product backend
 
@@ -396,7 +414,7 @@ The product runtime expects Ollama at `http://localhost:11434`. The current clie
 uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
-The backend initializes `backend/meetings.db` at startup.
+The backend initializes `backend/meetings.db` at startup and logs which provider is active (Groq or Ollama).
 
 ### 4. Start the frontend
 
@@ -417,11 +435,10 @@ npm run dev
 
 ### 5. Run the research runtime
 
-Copy [backend/.env.example](backend/.env.example) to `backend/.env` and fill in Gemini credentials, then run from `backend/`:
+Copy [backend/.env.example](backend/.env.example) to `backend/.env` and fill in Gemini credentials, then run from the repo root:
 
 ```powershell
-cd backend
-uvicorn app.main:app --host 0.0.0.0 --port 8001 --reload
+uvicorn backend.app.main:app --host 0.0.0.0 --port 8001 --reload
 ```
 
 The product and research servers should be treated as separate entry points even though they share the repository and database implementation.
@@ -430,10 +447,10 @@ The product and research servers should be treated as separate entry points even
 
 | Terminal | Command | Required for product UI? |
 | --- | --- | --- |
-| 1 | `ollama serve` | Yes |
+| 1 | `ollama serve` *(only if Groq key is not set)* | Conditional |
 | 2 | `uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload` | Yes |
 | 3 | `cd frontend; npm run dev` | Yes |
-| 4 | `cd backend; uvicorn app.main:app --host 0.0.0.0 --port 8001 --reload` | No, research only |
+| 4 | `uvicorn backend.app.main:app --host 0.0.0.0 --port 8001 --reload` | No, research only |
 
 The frontend uses port `8000`; the research backend is independent and is not required for interactive product analysis.
 
@@ -459,37 +476,47 @@ The test suite covers API contracts, mocked AI orchestration, persistence and ca
 
 | Variable | Purpose | Required | Default |
 | --- | --- | --- | --- |
-| `OLLAMA_TIMEOUT_SECONDS` | Product/evaluation inference timeout | No | `120` seconds in `OllamaClient`; benchmark runner fallback is `180` seconds |
+| `GROQ_API_KEY` | Groq cloud inference key (activates Groq provider) | No | Unset (Ollama used) |
+| `GROQ_MODEL` | Groq model identifier | No | `qwen/qwen3-8b-27b` |
+| `GROQ_TIMEOUT_SECONDS` | Groq request timeout | No | `60` seconds |
+| `GROQ_MAX_OUTPUT_TOKENS` | Optional Groq `max_tokens` limit | No | Unset |
+| `OLLAMA_BASE_URL` | Ollama server URL (product fallback) | No | `http://localhost:11434` |
+| `OLLAMA_MODEL` | Ollama model name | No | `qwen2.5:3b` |
+| `OLLAMA_TIMEOUT_SECONDS` | Ollama inference timeout | No | `120` seconds |
 | `OLLAMA_MAX_OUTPUT_TOKENS` | Optional Ollama `num_predict` limit | No | Unset |
+| `MEETING_TWO_PASS` | Enable two-pass intent tagging | No | `false` |
 | `GEMINI_API_KEY_PRIMARY` | Primary research Gemini credential | Conditional | Unset |
 | `GEMINI_API_KEY_BACKUP` | Backup research Gemini credential | No | Unset |
-| `GEMINI_API_KEY` | Compatibility key used by some offline benchmark scripts | Conditional for those scripts | Unset |
-| `GEMINI_MODEL` | Research Gemini model | No | `gemini-3.5-flash-lite` in the research service; benchmark scripts may define their own default |
+| `GEMINI_API_KEY` | Compatibility key used by some offline benchmark scripts | Conditional | Unset |
+| `GEMINI_MODEL` | Research Gemini model | No | `gemini-2.5-flash-lite` |
 | `GEMINI_KEY_MODE` | Key selection: `auto`, `primary`, or `backup` | No | `auto` |
+| `CORS_ORIGINS` | Comma-separated allowed CORS origins | No | `http://localhost:5173,http://127.0.0.1:5173` |
 | `VITE_API_BASE_URL` | Frontend product API URL | No | `http://127.0.0.1:8000` |
+| `PORT` | Backend server port | No | `8000` |
 
-The database path is not environment-configurable in the current implementation; it defaults to `backend/meetings.db`. Keep credentials in `backend/.env`, which is based on [backend/.env.example](backend/.env.example), and never commit real keys.
+The database path is not environment-configurable; it defaults to `backend/meetings.db`. Keep credentials in `backend/.env` (modelled on [backend/.env.example](backend/.env.example)) and never commit real keys.
 
 ## Troubleshooting
 
 | Symptom | Check |
 | --- | --- |
 | Frontend cannot connect | Confirm the product backend is on port `8000` and `VITE_API_BASE_URL` is correct |
+| Groq service unavailable | Confirm `GROQ_API_KEY` is set and valid; check quota; the API returns `503` |
 | Ollama service unavailable | Run `ollama serve`, confirm `ollama list`, and pull `qwen2.5:3b` |
-| Inference times out | Increase `OLLAMA_TIMEOUT_SECONDS` or reduce transcript/model output size |
-| AI output is unparseable | Retry after checking Ollama logs; the API returns `502` and does not persist the invalid result |
+| Inference times out | Increase `GROQ_TIMEOUT_SECONDS` or `OLLAMA_TIMEOUT_SECONDS`, or reduce transcript size |
+| AI output is unparseable | Retry after checking provider logs; the API returns `502` and does not persist the invalid result |
 | Gemini research is unavailable | Confirm the relevant key variable, model name, and quota; fallback/provenance fields identify fallback records |
 | Database is locked | Stop duplicate local server processes and retry; shared SQLite is not a multi-host deployment target |
 | PowerShell blocks npm | Run `npm.cmd run lint` / `npm.cmd run build`, or use a process-scoped execution policy |
 
 ## Configuration and Operational Boundaries
 
-- The product path is local-first and uses Qwen through Ollama.
+- The product path uses Groq when `GROQ_API_KEY` is set; Ollama is the local fallback.
 - Gemini is for research and comparison; it is not the frontend's default provider.
 - SQLite is designed for the current local or single-host workflow.
 - There is no queue, object store, authentication layer, or distributed worker in the implemented architecture.
 - CORS is open for local development and must be restricted before external deployment.
-- Transcripts are sent to local Ollama in the product path and persisted in SQLite; research Gemini requests send transcripts to Google's API when configured.
+- Transcripts are sent to Groq or local Ollama in the product path and persisted in SQLite; research Gemini requests send transcripts to Google's API when configured.
 - Back up `backend/meetings.db` before experiments that write through the research API.
 - Never commit real API keys. Rotate any key exposed in a local environment before sharing the repository.
 
@@ -502,4 +529,4 @@ The database path is not environment-configurable in the current implementation;
 
 ## License
 
-No license file is currently included. Add the project license before distributing the repository outside its intended development context.
+No license file is currently included. Add the project license before distributing the repository outside its intended development context.iZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
